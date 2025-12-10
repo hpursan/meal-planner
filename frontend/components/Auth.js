@@ -1,0 +1,120 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import { supabase } from '../services/supabase';
+
+export default function Auth({ onLoginSuccess }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    const signInWithEmail = async () => {
+        if (!email || !password) return Alert.alert("Error", "Please fill in all fields");
+        setLoading(true);
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
+        setLoading(false);
+        if (error) Alert.alert("Error", error.message);
+        // onLoginSuccess will be triggered by App.js listening to auth state change ideally, 
+        // but we can call it here if we want manual control. 
+        // Usually onAuthStateChange is better.
+    };
+
+    const signUpWithEmail = async () => {
+        if (!email || !password) return Alert.alert("Error", "Please fill in all fields");
+        setLoading(true);
+        const { error } = await supabase.auth.signUp({
+            email,
+            password,
+        });
+        setLoading(false);
+        if (error) Alert.alert("Error", error.message);
+        else Alert.alert("Success", "Check your inbox for the verification email!");
+    };
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.title}>Welcome</Text>
+            <Text style={styles.subtitle}>Sign in to save your plans.</Text>
+
+            <TextInput
+                style={styles.input}
+                placeholder="Email"
+                placeholderTextColor="#666"
+                onChangeText={setEmail}
+                value={email}
+                autoCapitalize="none"
+                keyboardType="email-address"
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Password"
+                placeholderTextColor="#666"
+                onChangeText={setPassword}
+                value={password}
+                secureTextEntry={true}
+                autoCapitalize="none"
+            />
+
+            <TouchableOpacity style={styles.button} onPress={signInWithEmail} disabled={loading}>
+                {loading ? <ActivityIndicator color="#000" /> : <Text style={styles.buttonText}>Sign In</Text>}
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.secondaryButton} onPress={signUpWithEmail} disabled={loading}>
+                <Text style={styles.secondaryButtonText}>Create Account</Text>
+            </TouchableOpacity>
+        </View>
+    );
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        padding: 24,
+        justifyContent: 'center',
+        backgroundColor: '#1E1E2E',
+    },
+    title: {
+        fontSize: 32,
+        fontWeight: '800',
+        color: '#FFF',
+        marginBottom: 8,
+    },
+    subtitle: {
+        fontSize: 16,
+        color: '#AAA',
+        marginBottom: 40,
+    },
+    input: {
+        backgroundColor: '#2A2A35',
+        color: '#FFF',
+        padding: 16,
+        borderRadius: 12,
+        fontSize: 16,
+        marginBottom: 16,
+        borderWidth: 1,
+        borderColor: '#333',
+    },
+    button: {
+        backgroundColor: '#BB86FC',
+        padding: 16,
+        borderRadius: 12,
+        alignItems: 'center',
+        marginBottom: 16,
+    },
+    buttonText: {
+        color: '#000',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    secondaryButton: {
+        padding: 16,
+        alignItems: 'center',
+    },
+    secondaryButtonText: {
+        color: '#BB86FC',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+});
