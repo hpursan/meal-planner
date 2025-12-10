@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Misc
+.DS_Store
+.env
+.npm
+*.log
+
+# Expo
+.expo/
+*.jks
+*.p12
+*.keystore
+web-build/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
