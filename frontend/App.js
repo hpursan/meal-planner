@@ -10,6 +10,7 @@ import ShoppingListView from './components/ShoppingListView';
 import RecipeModal from './components/RecipeModal';
 import Auth from './components/Auth';
 import PlanHistoryView from './components/PlanHistoryView';
+import UpdatePasswordForm from './components/UpdatePasswordForm';
 
 // Services
 import { generatePlan, swapMeal as swapMealApi } from './services/api';
@@ -27,6 +28,7 @@ export default function App() {
   const [view, setView] = useState('INPUT'); // INPUT | RESULTS | HISTORY
   const [resultsTab, setResultsTab] = useState('PLAN'); // PLAN | SHOPPING
   const [selectedMeal, setSelectedMeal] = useState(null);
+  const [isRecovery, setIsRecovery] = useState(false);
 
   // Auth & Data Loading
   useEffect(() => {
@@ -35,7 +37,10 @@ export default function App() {
       if (session) loadLatestPlan(session.user.id);
     });
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        setIsRecovery(true);
+      }
       setSession(session);
       if (session) loadLatestPlan(session.user.id);
       else setPlan(null);
@@ -172,6 +177,18 @@ export default function App() {
           <StatusBar barStyle="light-content" />
           <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
           <Auth />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    );
+  }
+
+  if (isRecovery) {
+    return (
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <StatusBar barStyle="light-content" />
+          <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
+          <UpdatePasswordForm onPasswordUpdated={() => setIsRecovery(false)} />
         </SafeAreaView>
       </SafeAreaProvider>
     );
