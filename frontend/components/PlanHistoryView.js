@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Alert, Platform } from 'react-native';
 import { supabase } from '../services/supabase';
 
 export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
@@ -19,11 +18,37 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
             .order('created_at', { ascending: false });
 
         if (error) {
-            Alert.alert("Error", "Could not fetch history.");
+            alert(error.message);
         } else {
             setPlans(data || []);
         }
         setLoading(false);
+    };
+
+    const deletePlan = async (id) => {
+        const confirmDelete = async () => {
+            const { error } = await supabase.from('saved_plans').delete().eq('id', id);
+            if (error) {
+                alert("Failed to delete plan: " + error.message);
+            } else {
+                setPlans(plans.filter(p => p.id !== id));
+            }
+        };
+
+        if (Platform.OS === 'web') {
+            if (window.confirm("Are you sure you want to delete this plan?")) {
+                confirmDelete();
+            }
+        } else {
+            Alert.alert(
+                "Delete Plan",
+                "Are you sure you want to delete this plan?",
+                [
+                    { text: "Cancel", style: "cancel" },
+                    { text: "Delete", style: "destructive", onPress: confirmDelete }
+                ]
+            );
+        }
     };
 
     const formatDate = (dateString) => {
@@ -32,16 +57,21 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
     };
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity
-            style={styles.card}
-            onPress={() => onLoadPlan(item)}
-        >
-            <View>
-                <Text style={styles.planName}>{item.name || "Untitled Plan"}</Text>
-                <Text style={styles.date}>{formatDate(item.created_at)}</Text>
-            </View>
-            <Text style={styles.arrow}>→</Text>
-        </TouchableOpacity>
+        <View style={styles.card}>
+            <TouchableOpacity
+                style={styles.cardContent}
+                onPress={() => onLoadPlan(item)}
+            >
+                <View>
+                    <Text style={styles.planName}>{item.name || "Untitled Plan"}</Text>
+                    <Text style={styles.date}>{formatDate(item.created_at)}</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={() => deletePlan(item.id)} style={styles.deleteButton}>
+                <Text style={styles.deleteText}>🗑</Text>
+            </TouchableOpacity>
+        </View>
     );
 
     return (
@@ -73,6 +103,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
+        maxWidth: 800, // web polish: max width
+        alignSelf: 'center', // web polish: center
     },
     header: {
         flexDirection: 'row',
@@ -100,13 +132,27 @@ const styles = StyleSheet.create({
     card: {
         backgroundColor: '#1E1E2E',
         borderRadius: 12,
-        padding: 16,
         marginBottom: 12,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         borderWidth: 1,
         borderColor: '#333',
+        overflow: 'hidden',
+    },
+    cardContent: {
+        flex: 1,
+        padding: 16,
+    },
+    deleteButton: {
+        padding: 16,
+        backgroundColor: '#382020',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    deleteText: {
+        fontSize: 20,
     },
     planName: {
         color: '#FFF',
@@ -117,10 +163,6 @@ const styles = StyleSheet.create({
     date: {
         color: '#888',
         fontSize: 12,
-    },
-    arrow: {
-        color: '#BB86FC',
-        fontSize: 24,
     },
     emptyText: {
         color: '#666',

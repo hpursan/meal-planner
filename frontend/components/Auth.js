@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
         padding: 24,
         justifyContent: 'center',
         backgroundColor: '#1E1E2E',
+        maxWidth: 600,
+        width: '100%',
+        alignSelf: 'center',
     },
     title: {
         fontSize: 32,

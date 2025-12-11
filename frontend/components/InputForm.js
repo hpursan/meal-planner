@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 const PREFERENCES_OPTIONS = ["Vegan", "Vegetarian", "Keto", "Paleo", "Gluten-Free", "No Beef", "No Pork"];
 const DAYS_OF_WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -7,6 +7,8 @@ const DAYS_OF_WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "S
 export default function InputForm({
     days,
     setDays,
+    planName,
+    setPlanName,
     selectedPrefs,
     togglePref,
     meatFreeDays,
@@ -15,60 +17,75 @@ export default function InputForm({
     loading
 }) {
     return (
-        <View style={styles.formContainer}>
-            <Text style={styles.title}>Meal Planner</Text>
-            <Text style={styles.subtitle}>Design your perfect diet.</Text>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <View style={styles.formContainer}>
+                <Text style={styles.title}>Meal Planner</Text>
+                <Text style={styles.subtitle}>Design your perfect diet.</Text>
 
-            <View style={styles.section}>
-                <Text style={styles.label}>Duration (Days)</Text>
-                <TextInput
-                    style={styles.input}
-                    value={days}
-                    onChangeText={setDays}
-                    keyboardType="numeric"
-                    maxLength={2}
-                />
-            </View>
-
-            <View style={styles.section}>
-                <Text style={styles.label}>Preferences</Text>
-                <View style={styles.chipContainer}>
-                    {PREFERENCES_OPTIONS.map(pref => (
-                        <TouchableOpacity
-                            key={pref}
-                            style={[styles.chip, selectedPrefs.includes(pref) && styles.chipSelected]}
-                            onPress={() => togglePref(pref)}
-                        >
-                            <Text style={[styles.chipText, selectedPrefs.includes(pref) && styles.chipTextSelected]}>
-                                {pref}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
+                <View style={styles.section}>
+                    <Text style={styles.label}>Plan Name</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={planName}
+                        onChangeText={setPlanName}
+                        placeholder="e.g. Summer Keto"
+                        placeholderTextColor="#666"
+                        returnKeyType="done"
+                    />
                 </View>
-            </View>
 
-            <View style={styles.section}>
-                <Text style={styles.label}>Meat-Free Days</Text>
-                <Text style={styles.helperText}>Select days to go vegetarian (Starts Monday)</Text>
-                <View style={styles.chipContainer}>
-                    {DAYS_OF_WEEK.map(day => (
-                        <TouchableOpacity
-                            key={day}
-                            style={[styles.chip, meatFreeDays.includes(day) && styles.chipSelected]}
-                            onPress={() => toggleMeatFreeDay(day)}
-                        >
-                            <Text style={[styles.chipText, meatFreeDays.includes(day) && styles.chipTextSelected]}>
-                                {day.slice(0, 3)}
-                            </Text>
-                        </TouchableOpacity>
-                    ))}
+                <View style={styles.section}>
+                    <Text style={styles.label}>Duration (Days)</Text>
+                    <TextInput
+                        style={styles.input}
+                        value={days}
+                        onChangeText={setDays}
+                        keyboardType="numeric"
+                        maxLength={2}
+                        returnKeyType="done"
+                    />
                 </View>
-            </View>
 
-            <TouchableOpacity style={styles.button} onPress={onGenerate} disabled={loading}>
-                {loading ? <ActivityIndicator color="#FFF" /> : <Text style={styles.buttonText}>Generate Plan</Text>}
-            </TouchableOpacity>
-        </View>
+                <View style={styles.section}>
+                    <Text style={styles.label}>Preferences</Text>
+                    <View style={styles.chipContainer}>
+                        {PREFERENCES_OPTIONS.map(pref => (
+                            <TouchableOpacity
+                                key={pref}
+                                style={[styles.chip, selectedPrefs.includes(pref) && styles.chipSelected]}
+                                onPress={() => togglePref(pref)}
+                            >
+                                <Text style={[styles.chipText, selectedPrefs.includes(pref) && styles.chipTextSelected]}>
+                                    {pref}
+                                </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+
+                <View style={styles.section}>
+                    <Text style={styles.label}>Meat-Free Days</Text>
+                    <Text style={styles.helperText}>Select days to go vegetarian (Starts Monday)</Text>
+                    <View style={styles.chipContainer}>
+                        {DAYS_OF_WEEK.map(day => (
+                            <TouchableOpacity
+                                key={day}
+                                style={[styles.chip, meatFreeDays.includes(day) && styles.chipSelected]}
+                                onPress={() => toggleMeatFreeDay(day)}
+                            >
+                                <Text style={[styles.chipText, meatFreeDays.includes(day) && styles.chipTextSelected]}>
+                                    {day.slice(0, 3)}
+                                </Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                </View>
+
+                <TouchableOpacity style={styles.button} onPress={onGenerate} disabled={loading}>
+                    {loading ? <ActivityIndicator color="#FFF" /> : <Text style={styles.buttonText}>Generate Plan</Text>}
+                </TouchableOpacity>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
 
@@ -77,6 +94,9 @@ const styles = StyleSheet.create({
         padding: 24,
         justifyContent: 'center',
         flex: 1,
+        maxWidth: 600,
+        width: '100%',
+        alignSelf: 'center',
     },
     title: {
         fontSize: 32,
