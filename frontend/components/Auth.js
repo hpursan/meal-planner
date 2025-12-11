@@ -1,46 +1,54 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, ActivityIndicator } from 'react-native';
 import { supabase } from '../services/supabase';
+import CustomAlert from './CustomAlert';
 
 export default function Auth({ onLoginSuccess }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
+
+    const showAlert = (title, message) => {
+        setAlertConfig({ visible: true, title, message, buttons: [] });
+    };
+
+    const closeAlert = () => {
+        setAlertConfig(prev => ({ ...prev, visible: false }));
+    };
 
     const signInWithEmail = async () => {
-        console.log("Sign In Clicked");
-        if (!email || !password) return alert("Please fill in all fields");
+        if (!email || !password) return showAlert("Error", "Please fill in all fields");
         setLoading(true);
         const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         setLoading(false);
-        if (error) alert(error.message);
+        if (error) showAlert("Error", error.message);
     };
 
     const signUpWithEmail = async () => {
-        console.log("Sign Up Clicked");
-        if (!email || !password) return alert("Please fill in all fields");
+        if (!email || !password) return showAlert("Error", "Please fill in all fields");
         setLoading(true);
         const { error } = await supabase.auth.signUp({
             email,
             password,
         });
         setLoading(false);
-        if (error) alert(error.message);
-        else alert("Check your inbox for the verification email!");
+        if (error) showAlert("Error", error.message);
+        else showAlert("Success", "Check your inbox for the verification email!");
     };
 
     const sendResetPassword = async () => {
-        if (!email) return alert("Please enter your email address first.");
+        if (!email) return showAlert("Error", "Please enter your email address first.");
         setLoading(true);
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
             redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your deployed URL
         });
         setLoading(false);
-        if (error) alert(error.message);
-        else alert("Password reset email sent!");
+        if (error) showAlert("Error", error.message);
+        else showAlert("Success", "Password reset email sent!");
     };
 
     return (
@@ -78,6 +86,13 @@ export default function Auth({ onLoginSuccess }) {
             <TouchableOpacity style={styles.secondaryButton} onPress={signUpWithEmail} disabled={loading}>
                 <Text style={styles.secondaryButtonText}>Create Account</Text>
             </TouchableOpacity>
+            <CustomAlert
+                visible={alertConfig.visible}
+                title={alertConfig.title}
+                message={alertConfig.message}
+                buttons={alertConfig.buttons}
+                onClose={closeAlert}
+            />
         </View>
     );
 }

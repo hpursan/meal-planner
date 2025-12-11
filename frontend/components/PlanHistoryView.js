@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Alert, Platform } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { supabase } from '../services/supabase';
+import CustomAlert from './CustomAlert';
 
 export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
     const [plans, setPlans] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
 
     useEffect(() => {
         fetchHistory();
@@ -19,40 +21,44 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
             .order('created_at', { ascending: false });
 
         if (error) {
-            alert(error.message);
+            showAlert("Error", error.message);
         } else {
             setPlans(data || []);
         }
         setLoading(false);
     };
 
-    const deletePlan = async (id) => {
-        const confirmDelete = async () => {
-            const { data, error } = await supabase.from('saved_plans').delete().eq('id', id).select();
-            if (error) {
-                alert("Failed to delete plan: " + error.message);
-            } else if (!data || data.length === 0) {
-                alert("Could not delete plan. check your database permissions.");
-                // Verify RLS policy for DELETE exists
-            } else {
-                setPlans(plans.filter(p => p.id !== id));
-            }
-        };
+    const showAlert = (title, message, buttons = []) => {
+        setAlertConfig({ visible: true, title, message, buttons });
+    };
 
-        if (Platform.OS === 'web') {
-            if (window.confirm("Are you sure you want to delete this plan?")) {
-                confirmDelete();
-            }
-        } else {
-            Alert.alert(
-                "Delete Plan",
-                "Are you sure you want to delete this plan?",
-                [
-                    { text: "Cancel", style: "cancel" },
-                    { text: "Delete", style: "destructive", onPress: confirmDelete }
-                ]
-            );
-        }
+    const closeAlert = () => {
+        setAlertConfig(prev => ({ ...prev, visible: false }));
+    };
+
+    const deletePlan = (id) => {
+        showAlert(
+            "Delete Plan",
+            "Are you sure you want to delete this plan? This cannot be undone.",
+            [
+                { text: "Cancel", style: "cancel" },
+                {
+                    text: "Delete",
+                    style: "destructive",
+                    onPress: async () => {
+                        closeAlert();
+                        const { data, error } = await supabase.from('saved_plans').delete().eq('id', id).select();
+                        if (error) {
+                            setTimeout(() => showAlert("Error", "Failed to delete: " + error.message), 300);
+                        } else if (!data || data.length === 0) {
+                            setTimeout(() => showAlert("Error", "Could not delete. Check DB permissions."), 300);
+                        } else {
+                            setPlans(prev => prev.filter(p => p.id !== id));
+                        }
+                    }
+                }
+            ]
+        );
     };
 
     const formatDate = (dateString) => {
@@ -99,6 +105,14 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
                     ListEmptyComponent={<Text style={styles.emptyText}>No saved plans yet.</Text>}
                 />
             )}
+
+            <CustomAlert
+                visible={alertConfig.visible}
+                title={alertConfig.title}
+                message={alertConfig.message}
+                buttons={alertConfig.buttons}
+                onClose={closeAlert}
+            />
         </View>
     );
 }
