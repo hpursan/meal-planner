@@ -32,6 +32,17 @@ export default function Auth({ onLoginSuccess }) {
         else alert("Check your inbox for the verification email!");
     };
 
+    const sendResetPassword = async () => {
+        if (!email) return alert("Please enter your email address first.");
+        setLoading(true);
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your deployed URL
+        });
+        setLoading(false);
+        if (error) alert(error.message);
+        else alert("Password reset email sent!");
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome</Text>
@@ -58,6 +69,10 @@ export default function Auth({ onLoginSuccess }) {
 
             <TouchableOpacity style={styles.button} onPress={signInWithEmail} disabled={loading}>
                 {loading ? <ActivityIndicator color="#000" /> : <Text style={styles.buttonText}>Sign In</Text>}
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={sendResetPassword} style={{ marginBottom: 20, alignItems: 'center' }}>
+                <Text style={{ color: '#BB86FC' }}>Forgot Password?</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.secondaryButton} onPress={signUpWithEmail} disabled={loading}>
