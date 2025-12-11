@@ -8,29 +8,28 @@ export default function Auth({ onLoginSuccess }) {
     const [loading, setLoading] = useState(false);
 
     const signInWithEmail = async () => {
-        if (!email || !password) return Alert.alert("Error", "Please fill in all fields");
+        console.log("Sign In Clicked");
+        if (!email || !password) return alert("Please fill in all fields");
         setLoading(true);
         const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         setLoading(false);
-        if (error) Alert.alert("Error", error.message);
-        // onLoginSuccess will be triggered by App.js listening to auth state change ideally, 
-        // but we can call it here if we want manual control. 
-        // Usually onAuthStateChange is better.
+        if (error) alert(error.message);
     };
 
     const signUpWithEmail = async () => {
-        if (!email || !password) return Alert.alert("Error", "Please fill in all fields");
+        console.log("Sign Up Clicked");
+        if (!email || !password) return alert("Please fill in all fields");
         setLoading(true);
         const { error } = await supabase.auth.signUp({
             email,
             password,
         });
         setLoading(false);
-        if (error) Alert.alert("Error", error.message);
-        else Alert.alert("Success", "Check your inbox for the verification email!");
+        if (error) alert(error.message);
+        else alert("Check your inbox for the verification email!");
     };
 
     return (
