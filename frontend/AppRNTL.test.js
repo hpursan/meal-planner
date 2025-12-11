@@ -1,33 +1,29 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react-native';
+import { render, screen, waitFor } from '@testing-library/react-native';
 import App from './App';
+import { supabase } from './services/supabase';
 
-// Mocks
-jest.mock('react-native-reanimated', () => {
-    const { View } = require('react-native');
-    return {
-        __esModule: true,
-        default: {
-            View: (props) => <View {...props} testID="reanimated-view" />,
-            createAnimatedComponent: (c) => c,
-        },
-        FadeInUp: {},
-        FadeOutDown: {},
-        LayoutAnimation: {},
-    };
-});
+describe('App Integration', () => {
+    it('renders Auth screen when not logged in', async () => {
+        // Mock no session
+        supabase.auth.getSession.mockResolvedValueOnce({ data: { session: null } });
 
-jest.mock('expo-linear-gradient', () => {
-    const { View } = require('react-native');
-    return {
-        LinearGradient: (props) => <View {...props} testID="linear-gradient" />
-    };
-});
-
-describe('App', () => {
-    it('renders correctly', () => {
         render(<App />);
-        expect(screen.getByText('Meal Planner')).toBeTruthy();
+
+        // Wait for async effect
+        await waitFor(() => expect(screen.getByText('Welcome')).toBeTruthy());
+        expect(screen.getByText('Sign in to save your plans.')).toBeTruthy();
+    });
+
+    it('renders Planner screen when logged in', async () => {
+        // Mock active session
+        supabase.auth.getSession.mockResolvedValueOnce({
+            data: { session: { user: { id: '123' } } }
+        });
+
+        render(<App />);
+
+        await waitFor(() => expect(screen.getByText('Meal Planner')).toBeTruthy());
         expect(screen.getByText('Design your perfect diet.')).toBeTruthy();
     });
 });

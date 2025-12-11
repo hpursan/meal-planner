@@ -28,7 +28,7 @@ To ensure the codebase doesn't become a "spaghetti" mess as we add features.
 
 ## 🛠 Phase 2: Quality Assurance & Standards (High Priority)
 Before adding complexity, we must ensure the application is stable.
-- [ ] **Fix Frontend Tests**: Resolve failing Jest tests in the frontend. Ensure the generated snapshot tests passed.
+- [x] **Fix Frontend Tests**: Resolve failing Jest tests in the frontend. Ensure the generated snapshot tests passed.
 - [ ] **Backend Testing**: implementing unit tests for the planner logic (`planner.js`) to ensure algorithm correctness.
 - [ ] **Linting & Formatting**: Standardize code style to prevent syntax errors (like the recent Reanimated crash).
 
