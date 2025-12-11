@@ -28,9 +28,12 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
 
     const deletePlan = async (id) => {
         const confirmDelete = async () => {
-            const { error } = await supabase.from('saved_plans').delete().eq('id', id);
+            const { data, error } = await supabase.from('saved_plans').delete().eq('id', id).select();
             if (error) {
                 alert("Failed to delete plan: " + error.message);
+            } else if (!data || data.length === 0) {
+                alert("Could not delete plan. check your database permissions.");
+                // Verify RLS policy for DELETE exists
             } else {
                 setPlans(plans.filter(p => p.id !== id));
             }
