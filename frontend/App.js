@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, StatusBar, Alert, ActivityIndicator } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 
 // Components
@@ -9,6 +9,7 @@ import MealPlanView from './components/MealPlanView';
 import ShoppingListView from './components/ShoppingListView';
 import RecipeModal from './components/RecipeModal';
 import Auth from './components/Auth';
+import PlanHistoryView from './components/PlanHistoryView';
 
 // Services
 import { generatePlan, swapMeal as swapMealApi } from './services/api';
@@ -17,12 +18,13 @@ import { supabase } from './services/supabase';
 export default function App() {
   const [session, setSession] = useState(null);
   const [days, setDays] = useState('7');
+  const [planName, setPlanName] = useState(`Plan ${new Date().toLocaleDateString()}`);
   const [selectedPrefs, setSelectedPrefs] = useState([]);
   const [meatFreeDays, setMeatFreeDays] = useState([]);
   const [plan, setPlan] = useState(null);
   const [planId, setPlanId] = useState(null); // Track the DB ID of the current plan
   const [loading, setLoading] = useState(false);
-  const [view, setView] = useState('INPUT'); // INPUT | RESULTS
+  const [view, setView] = useState('INPUT'); // INPUT | RESULTS | HISTORY
   const [resultsTab, setResultsTab] = useState('PLAN'); // PLAN | SHOPPING
   const [selectedMeal, setSelectedMeal] = useState(null);
 
@@ -91,7 +93,11 @@ export default function App() {
       if (session && session.user) {
         const { data: savedData, error } = await supabase
           .from('saved_plans')
-          .insert([{ user_id: session.user.id, plan_data: data.plan }])
+          .insert([{
+            user_id: session.user.id,
+            plan_data: data.plan,
+            name: planName
+          }])
           .select()
           .single();
 
@@ -144,7 +150,15 @@ export default function App() {
   const reset = () => {
     setPlan(null);
     setPlanId(null);
+    setPlanName(`Plan ${new Date().toLocaleDateString()}`);
     setView('INPUT');
+  };
+
+  const handleLoadPlan = (historyItem) => {
+    setPlan(historyItem.plan_data);
+    setPlanId(historyItem.id);
+    setPlanName(historyItem.name);
+    setView('RESULTS');
   };
 
   const handleLogout = async () => {
@@ -162,73 +176,86 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <LinearGradient
-        colors={['#121212', '#1E1E2E']}
-        style={styles.background}
-      />
-
-      {/* Top Bar with Logout */}
-      <View style={styles.topBar}>
-        <TouchableOpacity onPress={handleLogout}>
-          <Text style={styles.logoutText}>Sign Out</Text>
-        </TouchableOpacity>
-      </View>
-
-      <RecipeModal
-        selectedMeal={selectedMeal}
-        onClose={() => setSelectedMeal(null)}
-      />
-
-      {view === 'INPUT' ? (
-        <InputForm
-          days={days}
-          setDays={setDays}
-          selectedPrefs={selectedPrefs}
-          togglePref={togglePref}
-          meatFreeDays={meatFreeDays}
-          toggleMeatFreeDay={toggleMeatFreeDay}
-          onGenerate={handleGeneratePlan}
-          loading={loading}
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="light-content" />
+        <LinearGradient
+          colors={['#121212', '#1E1E2E']}
+          style={styles.background}
         />
-      ) : (
-        <View style={styles.resultsContainer}>
-          <View style={styles.headerRow}>
-            <Text style={styles.title}>Your Plan</Text>
-            <TouchableOpacity onPress={reset} style={styles.smallButton}>
-              <Text style={styles.smallButtonText}>New</Text>
-            </TouchableOpacity>
-          </View>
 
-          {/* TAB BAR */}
-          <View style={styles.tabBar}>
-            <TouchableOpacity
-              style={[styles.tab, resultsTab === 'PLAN' && styles.tabActive]}
-              onPress={() => setResultsTab('PLAN')}
-            >
-              <Text style={[styles.tabText, resultsTab === 'PLAN' && styles.tabTextActive]}>Weekly Plan</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={[styles.tab, resultsTab === 'SHOPPING' && styles.tabActive]}
-              onPress={() => setResultsTab('SHOPPING')}
-            >
-              <Text style={[styles.tabText, resultsTab === 'SHOPPING' && styles.tabTextActive]}>Shopping List</Text>
-            </TouchableOpacity>
-          </View>
-
-          {resultsTab === 'PLAN' ? (
-            <MealPlanView
-              plan={plan}
-              onSelectMeal={setSelectedMeal}
-              onSwapMeal={handleSwapMeal}
-            />
-          ) : (
-            <ShoppingListView plan={plan} />
-          )}
+        {/* Top Bar with Logout and History */}
+        <View style={styles.topBar}>
+          <TouchableOpacity onPress={() => setView('HISTORY')} style={{ marginRight: 20 }}>
+            <Text style={styles.historyText}>My Plans</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={handleLogout}>
+            <Text style={styles.logoutText}>Sign Out</Text>
+          </TouchableOpacity>
         </View>
-      )}
-    </SafeAreaView>
+
+        <RecipeModal
+          selectedMeal={selectedMeal}
+          onClose={() => setSelectedMeal(null)}
+        />
+
+        {view === 'HISTORY' ? (
+          <PlanHistoryView
+            userId={session.user.id}
+            onLoadPlan={handleLoadPlan}
+            onBack={() => setView(plan ? 'RESULTS' : 'INPUT')}
+          />
+        ) : view === 'INPUT' ? (
+          <InputForm
+            days={days}
+            setDays={setDays}
+            planName={planName}
+            setPlanName={setPlanName}
+            selectedPrefs={selectedPrefs}
+            togglePref={togglePref}
+            meatFreeDays={meatFreeDays}
+            toggleMeatFreeDay={toggleMeatFreeDay}
+            onGenerate={handleGeneratePlan}
+            loading={loading}
+          />
+        ) : (
+          <View style={styles.resultsContainer}>
+            <View style={styles.headerRow}>
+              <Text style={styles.title}>{planName || "Your Plan"}</Text>
+              <TouchableOpacity onPress={reset} style={styles.smallButton}>
+                <Text style={styles.smallButtonText}>New</Text>
+              </TouchableOpacity>
+            </View>
+
+            {/* TAB BAR */}
+            <View style={styles.tabBar}>
+              <TouchableOpacity
+                style={[styles.tab, resultsTab === 'PLAN' && styles.tabActive]}
+                onPress={() => setResultsTab('PLAN')}
+              >
+                <Text style={[styles.tabText, resultsTab === 'PLAN' && styles.tabTextActive]}>Weekly Plan</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.tab, resultsTab === 'SHOPPING' && styles.tabActive]}
+                onPress={() => setResultsTab('SHOPPING')}
+              >
+                <Text style={[styles.tabText, resultsTab === 'SHOPPING' && styles.tabTextActive]}>Shopping List</Text>
+              </TouchableOpacity>
+            </View>
+
+            {resultsTab === 'PLAN' ? (
+              <MealPlanView
+                plan={plan}
+                onSelectMeal={setSelectedMeal}
+                onSwapMeal={handleSwapMeal}
+              />
+            ) : (
+              <ShoppingListView plan={plan} />
+            )}
+          </View>
+        )}
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
 
@@ -293,9 +320,15 @@ const styles = StyleSheet.create({
   topBar: {
     paddingHorizontal: 20,
     paddingTop: 10,
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
     width: '100%',
     zIndex: 10,
+  },
+  historyText: {
+    color: '#BB86FC',
+    fontWeight: 'bold',
+    fontSize: 14,
   },
   logoutText: {
     color: '#FF6B6B',
