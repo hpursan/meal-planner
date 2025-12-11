@@ -51,10 +51,36 @@ export default function Auth({ onLoginSuccess }) {
         else showAlert("Success", "Password reset email sent!");
     };
 
+    const signInWithGoogle = async () => {
+        setLoading(true);
+        const { error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your Render URL
+            },
+        });
+        setLoading(false);
+        if (error) showAlert("Error", error.message);
+    };
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Welcome</Text>
             <Text style={styles.subtitle}>Sign in to save your plans.</Text>
+
+            <TouchableOpacity
+                style={[styles.button, styles.googleButton]}
+                onPress={signInWithGoogle}
+                disabled={loading}
+            >
+                <Text style={styles.googleButtonText}>🔵  Sign in with Google</Text>
+            </TouchableOpacity>
+
+            <View style={styles.divider}>
+                <View style={styles.line} />
+                <Text style={styles.orText}>OR</Text>
+                <View style={styles.line} />
+            </View>
 
             <TextInput
                 style={styles.input}
@@ -86,6 +112,7 @@ export default function Auth({ onLoginSuccess }) {
             <TouchableOpacity style={styles.secondaryButton} onPress={signUpWithEmail} disabled={loading}>
                 <Text style={styles.secondaryButtonText}>Create Account</Text>
             </TouchableOpacity>
+
             <CustomAlert
                 visible={alertConfig.visible}
                 title={alertConfig.title}
@@ -135,6 +162,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 16,
     },
+    googleButton: {
+        backgroundColor: '#FFF',
+        marginBottom: 24,
+    },
+    googleButtonText: {
+        color: '#000',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
     buttonText: {
         color: '#000',
         fontSize: 16,
@@ -148,5 +184,21 @@ const styles = StyleSheet.create({
         color: '#BB86FC',
         fontSize: 16,
         fontWeight: '600',
+    },
+    divider: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 24,
+    },
+    line: {
+        flex: 1,
+        height: 1,
+        backgroundColor: '#444',
+    },
+    orText: {
+        color: '#666',
+        paddingHorizontal: 10,
+        fontSize: 14,
+        fontWeight: 'bold',
     },
 });
