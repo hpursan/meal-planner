@@ -1,6 +1,6 @@
 // Host handling for Android Emulator vs iOS Simulator vs Web vs Physical Device
 // Using specific LAN IP to allow physical device testing via Expo Go
-const API_HOST = 'http://192.168.68.104:3000';
+const API_HOST = 'https://meal-planner-dtkf.onrender.com';
 
 export const generatePlan = async (days, preferences, meatFreeDays) => {
     try {
