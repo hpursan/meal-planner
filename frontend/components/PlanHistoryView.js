@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Alert, Platform } from 'react-native';
 import { supabase } from '../services/supabase';
 
