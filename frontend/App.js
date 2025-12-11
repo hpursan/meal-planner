@@ -167,11 +167,13 @@ export default function App() {
 
   if (!session) {
     return (
-      <SafeAreaView style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
-        <Auth />
-      </SafeAreaView>
+      <SafeAreaProvider>
+        <SafeAreaView style={styles.container}>
+          <StatusBar barStyle="light-content" />
+          <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
+          <Auth />
+        </SafeAreaView>
+      </SafeAreaProvider>
     );
   }
 
