@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
