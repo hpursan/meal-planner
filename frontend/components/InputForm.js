@@ -134,7 +134,12 @@ export default function InputForm({
                         style={styles.gradientButton}
                     >
                         {loading ? (
-                            <ActivityIndicator color="#FFF" />
+                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                                <ActivityIndicator color="#FFF" />
+                                <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>
+                                    (Server waking up...)
+                                </Text>
+                            </View>
                         ) : (
                             <Text style={styles.buttonText}>✨ Generate Magic Plan</Text>
                         )}
