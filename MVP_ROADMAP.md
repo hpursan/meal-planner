@@ -24,7 +24,7 @@ To ensure the codebase doesn't become a "spaghetti" mess as we add features.
     - `components/ShoppingListView.js`
     - `components/RecipeModal.js`
 - [x] **Service Layer**: Extract all `fetch` calls (API logic) out of UI components into a dedicated `services/api.js` module.
-- [ ] **Navigation**: Implement a proper navigation library (e.g., `expo-router` or `react-navigation`) instead of conditional rendering (`if view === 'INPUT'`).
+- [x] **Navigation**: Implement a proper navigation library (`expo-router`) instead of conditional rendering.
 
 ## 🛠 Phase 2: Quality Assurance & Standards (High Priority)
 Before adding complexity, we must ensure the application is stable.
@@ -50,11 +50,24 @@ Moving from a "toy app" to a real product requires User Accounts.
 ## 💾 Phase 4: Persistence & Features
 - [x] **Save Plan Feature**: Allow users to "Save" a generated plan to their profile.
 - [x] **Load Plan Feature**: Restore the user's active plan when the app launches.
+- [x] **Persistent Shopping List**: Save checked items to database so state persists across reloads.
 - [ ] **Offline Mode**: Cache the current plan locally (`AsyncStorage`) so the app works without internet (optional but good).
-- [ ] **Reset Password API**: Basic account recovery flow.
+- [x] **Reset Password API**: Basic account recovery flow (Supabase integration).
+
+## 📚 Phase 4.5: Plan Management (Completed)
+- [x] **Plan History UI**: Create a "My Plans" screen to list all saved plans.
+- [x] **Naming Plans**: specific input field to name a plan (e.g., "Keto Week 1") when generating or saving logic.
+- [x] **Switch Plans**: Ability to load any previous plan from the list active view.
+
+## 🎨 Phase 4.6: Visual & Data Enrichment (Completed)
+- [x] **Recipe Images**: Add high-quality Unsplash images to all recipes for better UX.
+- [x] **Ingredient Quantities**: Update backend data to include precise measurements (e.g., "1/2 cup").
+- [x] **Recipe Card Polish**: Hero image in modal and better formatting.
+- [x] **Data QA**: Audit and fix all missing or incorrect images/data.
 
 ## 🚀 Phase 5: Production Readiness
-- [ ] **Environment Variables**: Move `API_HOST` and DB credentials to `.env` files (Do not hardcode IP addresses).
+- [x] **Cloud Deployment**: Backend on Render (Node), Frontend on Render (Web Static).
+- [x] **Environment Variables**: Move `API_HOST` and DB credentials to `.env` files.
 - [ ] **Error Handling**: Add global error boundaries to prevent "White/Red Screen of Death".
 - [ ] **Assets**: Generate proper App Icon and Splash Screen.
 
