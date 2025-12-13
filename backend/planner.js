@@ -92,6 +92,8 @@ const generateMealPlan = (basePreferences, days, meatFreeDays = []) => {
         const fallback = (type) => ({
             name: `Generic ${type} (No match found for ${dailyPreferences.join(', ')})`,
             tags: [],
+            ingredients: [], // Empty array to prevent crash in ShoppingListView
+            instructions: ["No specific recipe found fitting criteria."],
             image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600&auto=format&fit=crop" // Generic food image
         });
 
