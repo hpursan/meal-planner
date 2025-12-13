@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
 
 export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
     if (!plan) return null;
@@ -19,7 +19,12 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
                                 <Text style={styles.mealType}>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
                                 <View style={styles.mealContent}>
                                     <TouchableOpacity onPress={() => onSelectMeal(meal)} style={styles.mealTouchable}>
-                                        <Text style={styles.mealName}>{meal.name}</Text>
+                                        <View style={styles.mealInfoContainer}>
+                                            {meal.image && (
+                                                <Image source={{ uri: meal.image }} style={styles.mealImage} />
+                                            )}
+                                            <Text style={styles.mealName}>{meal.name}</Text>
+                                        </View>
                                     </TouchableOpacity>
                                     <TouchableOpacity
                                         onPress={() => onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)}
@@ -78,11 +83,23 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#FFF',
         fontWeight: '500',
+        flexShrink: 1, // Allow text to wrap if image takes space
     },
     mealContent: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+    },
+    mealInfoContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    mealImage: {
+        width: 50,
+        height: 50,
+        borderRadius: 8,
+        marginRight: 12,
+        backgroundColor: '#2A2A35',
     },
     mealTouchable: {
         flex: 1,
