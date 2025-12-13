@@ -7,8 +7,10 @@ export default function ShoppingListView({ plan }) {
     // Use Global Context instead of local state
     const { checkedItems, setCheckedItems, planId } = usePlan();
 
-    // 1. Consolidate Ingredients
+    // 1. Consolidate Ingredients and Track Usage
     const ingredients = {};
+    const ingredientSources = {}; // Map: "Ingredient Name" -> ["Recipe A", "Recipe B"]
+
     if (plan) {
         plan.forEach(day => {
             Object.values(day.meals).forEach(meal => {
@@ -17,6 +19,14 @@ export default function ShoppingListView({ plan }) {
                     let name = typeof ing === 'string' ? ing : ing.name;
                     const key = name.trim();
                     ingredients[key] = (ingredients[key] || 0) + 1;
+
+                    // Track source
+                    if (!ingredientSources[key]) {
+                        ingredientSources[key] = [];
+                    }
+                    if (!ingredientSources[key].includes(meal.name)) {
+                        ingredientSources[key].push(meal.name);
+                    }
                 });
             });
         });
@@ -44,23 +54,36 @@ export default function ShoppingListView({ plan }) {
         }
     };
 
+    const showUsage = (item) => {
+        const sources = ingredientSources[item] || [];
+        alert(`Used in:\n• ${sources.join('\n• ')}`);
+    };
+
     const renderItem = ({ item }) => {
         const isChecked = checkedItems[item];
         const count = ingredients[item];
 
         return (
-            <TouchableOpacity
-                style={[styles.itemRow, isChecked && styles.itemRowChecked]}
-                onPress={() => toggleItem(item)}
-                activeOpacity={0.7}
-            >
-                <View style={[styles.checkbox, isChecked && styles.checkboxChecked]}>
-                    {isChecked && <Text style={styles.checkmark}>✓</Text>}
-                </View>
-                <Text style={[styles.itemText, isChecked && styles.itemTextChecked]}>
-                    {item} {count > 1 && <Text style={styles.count}>({count}x)</Text>}
-                </Text>
-            </TouchableOpacity>
+            <View style={[styles.itemRow, isChecked && styles.itemRowChecked]}>
+                <TouchableOpacity
+                    style={styles.mainClickableArea}
+                    onPress={() => toggleItem(item)}
+                    activeOpacity={0.7}
+                >
+                    <View style={[styles.checkbox, isChecked && styles.checkboxChecked]}>
+                        {isChecked && <Text style={styles.checkmark}>✓</Text>}
+                    </View>
+                    <Text style={[styles.itemText, isChecked && styles.itemTextChecked]}>
+                        {item}
+                    </Text>
+                </TouchableOpacity>
+
+                {count > 1 && (
+                    <TouchableOpacity onPress={() => showUsage(item)}>
+                        <Text style={styles.count}>({count}x)</Text>
+                    </TouchableOpacity>
+                )}
+            </View>
         );
     };
 
@@ -102,6 +125,12 @@ const styles = StyleSheet.create({
         paddingVertical: 14,
         borderBottomWidth: 1,
         borderBottomColor: '#2A2A35',
+        justifyContent: 'space-between', // Push count to the right
+    },
+    mainClickableArea: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex: 1, // Take up remaining space
     },
     itemRowChecked: {
         opacity: 0.4,
