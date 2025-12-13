@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 export default function HistoryScreen() {
     const router = useRouter();
-    const { setPlan, setPlanId, setPlanName, setDays, setSelectedPrefs, setMeatFreeDays } = usePlan();
+    const { setPlan, setPlanId, setPlanName, setDays, setSelectedPrefs, setMeatFreeDays, setCheckedItems } = usePlan();
     const [userId, setUserId] = useState(null);
 
     useEffect(() => {
@@ -21,6 +21,7 @@ export default function HistoryScreen() {
         setPlan(historyItem.plan_data);
         setPlanId(historyItem.id);
         setPlanName(historyItem.name);
+        setCheckedItems(historyItem.checked_items || {});
         // Note: Saved plan doesn't currently store days/prefs/meatFreeDays separately,
         // so we can't fully restore "input state", but we restore the "Result".
         router.push('/results');

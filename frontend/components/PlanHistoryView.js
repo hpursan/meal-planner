@@ -16,7 +16,7 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
         setLoading(true);
         const { data, error } = await supabase
             .from('saved_plans')
-            .select('id, name, created_at, plan_data')
+            .select('id, name, created_at, plan_data, checked_items')
             .eq('user_id', userId)
             .order('created_at', { ascending: false });
 

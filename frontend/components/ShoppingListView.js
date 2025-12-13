@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { usePlan } from '../context/PlanContext';
+import { supabase } from '../services/supabase';
 
 export default function ShoppingListView({ plan }) {
-    const [checkedItems, setCheckedItems] = useState({});
+    // Use Global Context instead of local state
+    const { checkedItems, setCheckedItems, planId } = usePlan();
 
     // 1. Consolidate Ingredients
     const ingredients = {};
@@ -19,11 +22,24 @@ export default function ShoppingListView({ plan }) {
 
     const listData = Object.keys(ingredients).sort();
 
-    const toggleItem = (item) => {
-        setCheckedItems(prev => ({
-            ...prev,
-            [item]: !prev[item]
-        }));
+    const toggleItem = async (item) => {
+        const newCheckedState = {
+            ...checkedItems,
+            [item]: !checkedItems[item]
+        };
+
+        // 1. Optimistic Update (Immediate Feedback)
+        setCheckedItems(newCheckedState);
+
+        // 2. Persist to Supabase
+        if (planId) {
+            const { error } = await supabase
+                .from('saved_plans')
+                .update({ checked_items: newCheckedState })
+                .eq('id', planId);
+
+            if (error) console.error("Failed to save shopping list:", error);
+        }
     };
 
     const renderItem = ({ item }) => {
@@ -72,7 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#1E1E2E',
         borderRadius: 16,
-        overflow: 'hidden', // Ensures scroll lists stay inside rounded corners
+        overflow: 'hidden',
     },
     listContent: {
         padding: 20,
@@ -81,7 +97,7 @@ const styles = StyleSheet.create({
     itemRow: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingVertical: 14, // Tappable area
+        paddingVertical: 14,
         borderBottomWidth: 1,
         borderBottomColor: '#2A2A35',
     },
@@ -109,7 +125,7 @@ const styles = StyleSheet.create({
     itemText: {
         fontSize: 16,
         color: '#FFF',
-        flex: 1, // Allow text to wrap
+        flex: 1,
     },
     itemTextChecked: {
         textDecorationLine: 'line-through',
