@@ -57,7 +57,10 @@ export default function HomeScreen() {
                     .select()
                     .single();
 
-                if (savedData) newPlanId = savedData.id;
+                if (savedData) {
+                    newPlanId = savedData.id;
+                    setPlanId(savedData.id); // <--- THIS WAS MISSING
+                }
             }
 
             setPlan(data.plan);
