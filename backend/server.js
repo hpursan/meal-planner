@@ -9,6 +9,21 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+// Serve static images from the "public" directory
+app.use('/images', express.static('public/images'));
+
+// Helper to determine base URL
+const getBaseUrl = (req) => {
+    return `${req.protocol}://${req.get('host')}`;
+};
+
+// Helper: Prepend base URL to image path if it's local
+const formatImage = (imagePath, baseUrl) => {
+    if (!imagePath) return imagePath;
+    if (imagePath.startsWith('http')) return imagePath;
+    return `${baseUrl}${imagePath}`;
+};
+
 app.post('/api/plan', (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
@@ -16,7 +31,19 @@ app.post('/api/plan', (req, res) => {
         return res.status(400).json({ error: "Invalid days parameter" });
     }
 
-    const plan = generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
+    let plan = generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
+
+    // Transform image paths in the plan
+    const baseUrl = getBaseUrl(req);
+    plan = plan.map(day => ({
+        ...day,
+        meals: {
+            breakfast: { ...day.meals.breakfast, image: formatImage(day.meals.breakfast.image, baseUrl) },
+            lunch: { ...day.meals.lunch, image: formatImage(day.meals.lunch.image, baseUrl) },
+            dinner: { ...day.meals.dinner, image: formatImage(day.meals.dinner.image, baseUrl) }
+        }
+    }));
+
     res.json({ plan });
 });
 
@@ -28,7 +55,14 @@ app.post('/api/swap', (req, res) => {
         return res.status(404).json({ error: "No alternative found" });
     }
 
-    res.json({ meal: newMeal });
+    // Transform image path
+    const baseUrl = getBaseUrl(req);
+    const mealWithUrl = {
+        ...newMeal,
+        image: formatImage(newMeal.image, baseUrl)
+    };
+
+    res.json({ meal: mealWithUrl });
 });
 
 if (require.main === module) {
@@ -37,4 +71,4 @@ if (require.main === module) {
     });
 }
 
-module.exports = app; // For testing
+module.exports = app;
