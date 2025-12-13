@@ -13,7 +13,9 @@ export default function ShoppingListView({ plan }) {
         plan.forEach(day => {
             Object.values(day.meals).forEach(meal => {
                 meal.ingredients.forEach(ing => {
-                    const key = ing.trim();
+                    // Handle both string (legacy) and object (new) formats
+                    let name = typeof ing === 'string' ? ing : ing.name;
+                    const key = name.trim();
                     ingredients[key] = (ingredients[key] || 0) + 1;
                 });
             });

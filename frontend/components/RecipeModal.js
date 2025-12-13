@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 
 export default function RecipeModal({ selectedMeal, onClose }) {
     if (!selectedMeal) return null;
@@ -13,6 +13,9 @@ export default function RecipeModal({ selectedMeal, onClose }) {
         >
             <View style={styles.modalOverlay}>
                 <View style={styles.modalContent}>
+                    {selectedMeal.image && (
+                        <Image source={{ uri: selectedMeal.image }} style={styles.heroImage} />
+                    )}
                     <View style={styles.modalHeader}>
                         <Text style={styles.modalTitle}>{selectedMeal.name}</Text>
                         <TouchableOpacity onPress={onClose} style={styles.closeButton}>
@@ -35,7 +38,9 @@ export default function RecipeModal({ selectedMeal, onClose }) {
                         <Text style={styles.sectionHeader}>Ingredients</Text>
                         <View style={styles.ingredientList}>
                             {selectedMeal.ingredients ? selectedMeal.ingredients.map((ing, i) => (
-                                <Text key={i} style={styles.ingredientText}>• {ing}</Text>
+                                <Text key={i} style={styles.ingredientText}>
+                                    • {typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`}
+                                </Text>
                             )) : <Text style={styles.ingredientText}>No ingredients listed.</Text>}
                         </View>
 
@@ -74,6 +79,12 @@ const styles = StyleSheet.create({
         elevation: 10,
         borderWidth: 1,
         borderColor: '#333',
+        overflow: 'hidden',
+    },
+    heroImage: {
+        width: '100%',
+        height: 200,
+        resizeMode: 'cover',
     },
     modalHeader: {
         flexDirection: 'row',
