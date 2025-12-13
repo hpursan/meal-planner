@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
+import { useFocusEffect } from 'expo-router';
 import { supabase } from '../services/supabase';
 import CustomAlert from './CustomAlert';
 
@@ -8,9 +9,11 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
     const [loading, setLoading] = useState(true);
     const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
 
-    useEffect(() => {
-        fetchHistory();
-    }, []);
+    useFocusEffect(
+        useCallback(() => {
+            fetchHistory();
+        }, [])
+    );
 
     const fetchHistory = async () => {
         setLoading(true);
