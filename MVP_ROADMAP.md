@@ -64,7 +64,8 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [x] **Ingredient Quantities**: Update backend data to include precise measurements (e.g., "1/2 cup").
 - [x] **Recipe Card Polish**: Hero image in modal and better formatting.
 - [x] **Data QA**: Audit and fix all missing or incorrect images/data.
-- [x] **Local Image Hosting**: Implemented custom AI-generated images served locally to replace unstable external links for key recipes (`Egg Roll in a Bowl`, `Cauliflower Stir Fry`) and generic fallbacks.
+- [x] **Local Image Hosting**: Transitioned ALL recipes to self-hosted images (downloaded Unsplash assets + custom AI images) to eliminate external dependencies/broken links.
+- [x] **Shopping List UX**: Enhanced usage details with inline accordion expansion and "Smart Fallback" for images.
 
 ## 🚀 Phase 5: Production Readiness
 - [x] **Cloud Deployment**: Backend on Render (Node), Frontend on Render (Web Static).
