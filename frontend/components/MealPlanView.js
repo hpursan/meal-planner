@@ -1,5 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+
+const SmartImage = ({ uri, style }) => {
+    const [error, setError] = useState(false);
+
+    if (error || !uri) {
+        return (
+            <View style={[style, styles.placeholderImage]}>
+                <Text style={styles.placeholderText}>🍽️</Text>
+            </View>
+        );
+    }
+
+    return (
+        <Image
+            source={{ uri }}
+            style={style}
+            onError={() => setError(true)}
+        />
+    );
+};
 
 export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
     if (!plan) return null;
@@ -20,9 +40,7 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
                                 <View style={styles.mealContent}>
                                     <TouchableOpacity onPress={() => onSelectMeal(meal)} style={styles.mealTouchable}>
                                         <View style={styles.mealInfoContainer}>
-                                            {meal.image && (
-                                                <Image source={{ uri: meal.image }} style={styles.mealImage} />
-                                            )}
+                                            <SmartImage uri={meal.image} style={styles.mealImage} />
                                             <Text style={styles.mealName}>{meal.name}</Text>
                                         </View>
                                     </TouchableOpacity>
@@ -100,6 +118,14 @@ const styles = StyleSheet.create({
         borderRadius: 8,
         marginRight: 12,
         backgroundColor: '#2A2A35',
+    },
+    placeholderImage: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#333',
+    },
+    placeholderText: {
+        fontSize: 24,
     },
     mealTouchable: {
         flex: 1,

@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 
 export default function RecipeModal({ selectedMeal, onClose }) {
+    const [imageError, setImageError] = useState(false);
+
+    // Reset error state when meal changes
+    useEffect(() => {
+        setImageError(false);
+    }, [selectedMeal]);
+
     if (!selectedMeal) return null;
 
     return (
@@ -13,8 +20,16 @@ export default function RecipeModal({ selectedMeal, onClose }) {
         >
             <View style={styles.modalOverlay}>
                 <View style={styles.modalContent}>
-                    {selectedMeal.image && (
-                        <Image source={{ uri: selectedMeal.image }} style={styles.heroImage} />
+                    {!imageError && selectedMeal.image ? (
+                        <Image
+                            source={{ uri: selectedMeal.image }}
+                            style={styles.heroImage}
+                            onError={() => setImageError(true)}
+                        />
+                    ) : (
+                        <View style={[styles.heroImage, styles.heroPlaceholder]}>
+                            <Text style={{ fontSize: 40 }}>🍽️</Text>
+                        </View>
                     )}
                     <View style={styles.modalHeader}>
                         <Text style={styles.modalTitle}>{selectedMeal.name}</Text>
@@ -85,6 +100,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 200,
         resizeMode: 'cover',
+    },
+    heroPlaceholder: {
+        backgroundColor: '#333',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     modalHeader: {
         flexDirection: 'row',
