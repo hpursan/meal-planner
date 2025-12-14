@@ -6,11 +6,13 @@ const { generateMealPlan, getSwapMeal } = require('./planner');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const path = require('path');
+
 app.use(cors());
 app.use(bodyParser.json());
 
 // Serve static images from the "public" directory
-app.use('/images', express.static('public/images'));
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Helper to determine base URL
 const getBaseUrl = (req) => {
