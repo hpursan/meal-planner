@@ -18,6 +18,10 @@ const path = require('path');
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+    res.status(200).json({ status: 'healthy', service: 'Meal Planner API' });
+});
+
 // Serve static images from the "public" directory
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
