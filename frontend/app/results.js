@@ -11,7 +11,7 @@ import RecipeModal from '../components/RecipeModal';
 
 export default function ResultsScreen() {
     const router = useRouter();
-    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan } = usePlan();
+    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode } = usePlan();
     const [resultsTab, setResultsTab] = useState('PLAN');
     const [selectedMeal, setSelectedMeal] = useState(null);
 
@@ -72,6 +72,12 @@ export default function ResultsScreen() {
                 <TouchableOpacity onPress={() => router.back()} style={{ marginBottom: 10 }}>
                     <Text style={{ color: '#AAA' }}>← Back</Text>
                 </TouchableOpacity>
+
+                {isOfflineMode && (
+                    <View style={styles.offlineBanner}>
+                        <Text style={styles.offlineText}>⚠️ Offline Mode - Showing cached plan</Text>
+                    </View>
+                )}
 
                 <View style={styles.headerRow}>
                     <Text style={styles.title}>{planName || "Your Plan"}</Text>
@@ -173,5 +179,17 @@ const styles = StyleSheet.create({
     },
     tabTextActive: {
         color: '#000',
+    },
+    offlineBanner: {
+        backgroundColor: '#FFCF44',
+        padding: 8,
+        borderRadius: 8,
+        marginBottom: 10,
+        alignItems: 'center',
+    },
+    offlineText: {
+        color: '#000',
+        fontWeight: 'bold',
+        fontSize: 12,
     },
 });

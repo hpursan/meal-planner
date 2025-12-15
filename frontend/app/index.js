@@ -3,8 +3,9 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import InputForm from '../components/InputForm';
 import { usePlan } from '../context/PlanContext';
-import { generatePlan } from '../services/api'; // Make sure path is correct
+import { generatePlan } from '../services/api';
 import { supabase } from '../services/supabase';
+import { useEffect } from 'react';
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -13,8 +14,15 @@ export default function HomeScreen() {
         planName, setPlanName,
         selectedPrefs, setSelectedPrefs,
         meatFreeDays, setMeatFreeDays,
-        setPlan, setPlanId, setLoading, loading
+        setPlan, setPlanId, setLoading, loading,
+        loadFromCache, plan
     } = usePlan();
+
+    useEffect(() => {
+        if (plan.length === 0) {
+            loadFromCache();
+        }
+    }, [plan.length, loadFromCache]);
 
     const togglePref = (pref) => {
         if (selectedPrefs.includes(pref)) {
@@ -52,7 +60,7 @@ export default function HomeScreen() {
                     .insert([{
                         user_id: session.user.id,
                         plan_data: data.plan,
-                        name: planName || `Plan ${new Date().toLocaleDateString()}`
+                        name: planName || `Plan ${new Date().toLocaleDateString()} `
                     }])
                     .select()
                     .single();

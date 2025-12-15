@@ -1,6 +1,10 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PlanContext = createContext();
+
+const CACHE_KEY_PLAN = 'cached_plan_data';
+const CACHE_KEY_CHECKED = 'cached_checked_items';
 
 export function PlanProvider({ children }) {
     const [plan, setPlan] = useState([]);
@@ -11,9 +15,64 @@ export function PlanProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [planId, setPlanId] = useState(null);
     const [checkedItems, setCheckedItems] = useState({});
+    const [isOfflineMode, setIsOfflineMode] = useState(false);
+
+    // Persistence Effect: Save to Cache whenever critical data changes
+    useEffect(() => {
+        const cacheData = async () => {
+            try {
+                if (plan.length > 0) {
+                    await AsyncStorage.setItem(CACHE_KEY_PLAN, JSON.stringify({
+                        plan,
+                        days,
+                        planName,
+                        selectedPrefs,
+                        meatFreeDays,
+                        planId // We cache ID too, though it might not sync if offline
+                    }));
+                }
+                if (Object.keys(checkedItems).length > 0) {
+                    await AsyncStorage.setItem(CACHE_KEY_CHECKED, JSON.stringify(checkedItems));
+                }
+            } catch (e) {
+                console.log('Failed to cache plan data', e);
+            }
+        };
+        cacheData();
+    }, [plan, checkedItems, planId]);
+
+    // Function to attempt loading from cache (used on startup or error)
+    const loadFromCache = async () => {
+        try {
+            const cachedPlan = await AsyncStorage.getItem(CACHE_KEY_PLAN);
+            const cachedChecked = await AsyncStorage.getItem(CACHE_KEY_CHECKED);
+
+            if (cachedPlan) {
+                const data = JSON.parse(cachedPlan);
+                setPlan(data.plan || []);
+                setDays(data.days || '7');
+                setPlanName(data.planName || '');
+                setSelectedPrefs(data.selectedPrefs || []);
+                setMeatFreeDays(data.meatFreeDays || []);
+                setPlanId(data.planId || null);
+            }
+
+            if (cachedChecked) {
+                setCheckedItems(JSON.parse(cachedChecked));
+            }
+
+            if (cachedPlan) {
+                setIsOfflineMode(true);
+                return true; // Success finding cache
+            }
+        } catch (e) {
+            console.error("Failed to load cache", e);
+        }
+        return false;
+    };
 
     // Helper to clear plan
-    const clearPlan = () => {
+    const clearPlan = async () => {
         setPlan([]);
         setPlanId(null);
         setCheckedItems({});
@@ -21,6 +80,11 @@ export function PlanProvider({ children }) {
         setPlanName('');
         setSelectedPrefs([]);
         setMeatFreeDays([]);
+        setIsOfflineMode(false);
+        try {
+            await AsyncStorage.removeItem(CACHE_KEY_PLAN);
+            await AsyncStorage.removeItem(CACHE_KEY_CHECKED);
+        } catch (e) { }
     };
 
     return (
@@ -33,7 +97,9 @@ export function PlanProvider({ children }) {
             selectedPrefs, setSelectedPrefs,
             meatFreeDays, setMeatFreeDays,
             loading, setLoading,
-            clearPlan
+            clearPlan,
+            loadFromCache,
+            isOfflineMode, setIsOfflineMode
         }}>
             {children}
         </PlanContext.Provider>
