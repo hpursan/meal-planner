@@ -27,7 +27,7 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
             {plan.map((day, index) => (
-                <View key={day.day} style={styles.dayCard}>
+                <View key={day.day} style={styles.dayCard} accessibilityRole="header" accessibilityLabel={`Day ${day.day}, ${day.dayName}`}>
                     <View style={styles.dayHeaderRow}>
                         <Text style={styles.dayHeader}>Day {day.day}</Text>
                         <Text style={styles.daySubHeader}>{day.dayName}</Text>
@@ -36,9 +36,15 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
                         const meal = day.meals[type];
                         return (
                             <View key={type} style={styles.mealRow}>
-                                <Text style={styles.mealType}>{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+                                <Text style={styles.mealType} accessibilityRole="text">{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
                                 <View style={styles.mealContent}>
-                                    <TouchableOpacity onPress={() => onSelectMeal(meal)} style={styles.mealTouchable}>
+                                    <TouchableOpacity
+                                        onPress={() => onSelectMeal(meal)}
+                                        style={styles.mealTouchable}
+                                        accessibilityRole="button"
+                                        accessibilityLabel={`${type} meal: ${meal.name}`}
+                                        accessibilityHint="Double tap to view recipe details"
+                                    >
                                         <View style={styles.mealInfoContainer}>
                                             <SmartImage uri={meal.image} style={styles.mealImage} />
                                             <Text style={styles.mealName}>{meal.name}</Text>
@@ -47,6 +53,9 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
                                     <TouchableOpacity
                                         onPress={() => onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)}
                                         style={styles.swapButton}
+                                        accessibilityRole="button"
+                                        accessibilityLabel={`Swap ${type} meal`}
+                                        accessibilityHint={`Replaces ${meal.name} with an alternative`}
                                     >
                                         <Text style={styles.swapIcon}>⟳</Text>
                                     </TouchableOpacity>
