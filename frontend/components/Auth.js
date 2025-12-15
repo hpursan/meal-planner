@@ -57,6 +57,10 @@ export default function Auth({ onLoginSuccess }) {
             provider: 'google',
             options: {
                 redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your Render URL
+                queryParams: {
+                    access_type: 'offline',
+                    prompt: 'consent',
+                }
             },
         });
         setLoading(false);
