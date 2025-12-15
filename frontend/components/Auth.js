@@ -1,3 +1,8 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import { supabase } from '../services/supabase';
+import CustomAlert from './CustomAlert';
+
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri } from 'expo-auth-session';
 
