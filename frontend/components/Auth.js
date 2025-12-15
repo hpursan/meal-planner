@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, ActivityIndicator } from 'react-native';
-import { supabase } from '../services/supabase';
-import CustomAlert from './CustomAlert';
+import * as WebBrowser from 'expo-web-browser';
+import { makeRedirectUri } from 'expo-auth-session';
+
+WebBrowser.maybeCompleteAuthSession(); // Handle redirect on web
 
 export default function Auth({ onLoginSuccess }) {
+    // ... existing state ...
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
 
+    // ... existing alerts ... 
     const showAlert = (title, message) => {
         setAlertConfig({ visible: true, title, message, buttons: [] });
     };
@@ -17,6 +19,7 @@ export default function Auth({ onLoginSuccess }) {
         setAlertConfig(prev => ({ ...prev, visible: false }));
     };
 
+    // ... existing email methods ...
     const signInWithEmail = async () => {
         if (!email || !password) return showAlert("Error", "Please fill in all fields");
         setLoading(true);
@@ -44,7 +47,7 @@ export default function Auth({ onLoginSuccess }) {
         if (!email) return showAlert("Error", "Please enter your email address first.");
         setLoading(true);
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
-            redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your deployed URL
+            redirectTo: 'https://meal-planner-web-b2ff.onrender.com',
         });
         setLoading(false);
         if (error) showAlert("Error", error.message);
@@ -53,18 +56,49 @@ export default function Auth({ onLoginSuccess }) {
 
     const signInWithGoogle = async () => {
         setLoading(true);
-        const { error } = await supabase.auth.signInWithOAuth({
-            provider: 'google',
-            options: {
-                redirectTo: 'https://meal-planner-web-b2ff.onrender.com', // Your Render URL
-                queryParams: {
-                    access_type: 'offline',
-                    prompt: 'consent',
+        try {
+            const redirectUrl = makeRedirectUri({
+                path: 'auth/callback',
+            });
+
+            const { data, error } = await supabase.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: redirectUrl,
+                    skipBrowserRedirect: true,
+                    queryParams: {
+                        access_type: 'offline',
+                        prompt: 'consent',
+                    }
+                },
+            });
+
+            if (error) throw error;
+
+            if (data?.url) {
+                const result = await WebBrowser.openAuthSessionAsync(data.url, redirectUrl);
+
+                if (result.type === 'success' && result.url) {
+                    // Start session from the URL params returned
+                    const { error: sessionError } = await supabase.auth.setSession({
+                        access_token: extractParam(result.url, 'access_token'),
+                        refresh_token: extractParam(result.url, 'refresh_token'),
+                    });
+                    if (sessionError) throw sessionError;
                 }
-            },
-        });
-        setLoading(false);
-        if (error) showAlert("Error", error.message);
+            }
+        } catch (err) {
+            showAlert("Error", err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Helper to extract params from URL hash or query
+    const extractParam = (url, param) => {
+        const regex = new RegExp(`[?&#]${param}=([^&]+)`);
+        const match = url.match(regex);
+        return match ? match[1] : null;
     };
 
     return (
