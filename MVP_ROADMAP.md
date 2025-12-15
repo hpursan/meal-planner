@@ -40,7 +40,8 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [x] **Backend Auth API**:
     - [x] Use Supabase Auth (SaaS) instead of custom Node.js.
 - [ ] **Securing Endpoints**: 
-    - [ ] Add Middleware to protect `/api/plan` (Node.js backend is still public).
+- [x] **Securing Endpoints**: 
+    - [x] Add Middleware to protect `/api/plan` (Node.js backend is still public).
     - [ ] Implement Rate Limiting to prevent API abuse.
     - [ ] Add Input Validation (e.g., using `Joi` or `Zod`) to prevent bad data injection.
 - [x] **Frontend Auth Flow**:
@@ -72,8 +73,15 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [x] **Environment Variables**: Move `API_HOST` and DB credentials to `.env` files.
 - [ ] **Error Handling**: Add global error boundaries to prevent "White/Red Screen of Death".
 - [ ] **Assets**: Generate proper App Icon and Splash Screen.
+- [ ] **Domain Registration**: Register a custom domain (e.g., getmealplanner.com) and configure SSL/DNS correctly.
+- [ ] **Native Mobile Apps**: Build and release `.ipa` (iOS) and `.apk` (Android) binaries using EAS Build.
 
 ## 📣 Phase 6: User Feedback & Analytics
 - [ ] **Feedback Mechanism**: Add a "Send Feedback" form or button within the app settings.
 - [ ] **Analytics**: Integrate a privacy-friendly analytics tool (e.g., PostHog or Amplitude) to track feature usage (e.g., "Do users actually use the Swap button?").
 - [ ] **Beta Testing Group**: Establish a small group of test users to validate the "MVP" value proposition.
+
+## 💰 Phase 7: Monetization
+- [ ] **Strategy**: Define Freemium vs Pro tiers.
+- [ ] **Payments**: Integrate RevenueCat/Stripe for subscription handling.
+- [ ] **Gate Features**: Lock advanced features (e.g., >3 day plans, offline mode) behind the Paywall.
