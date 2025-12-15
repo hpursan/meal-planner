@@ -63,8 +63,11 @@ export default function Auth({ onLoginSuccess }) {
         setLoading(true);
         try {
             const redirectUrl = makeRedirectUri({
+                scheme: 'mealplanner',
                 path: 'auth/callback',
+                preferLocalhost: false, // Force non-localhost
             });
+            console.log("Redirect URL:", redirectUrl); // Helps debugging if you can see logs
 
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
