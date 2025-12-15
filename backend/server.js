@@ -2,9 +2,16 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
+require('dotenv').config();
+const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Initialize Supabase Client for Auth Verification
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
+const supabaseKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 const path = require('path');
 
@@ -26,7 +33,39 @@ const formatImage = (imagePath, baseUrl) => {
     return `${baseUrl}${imagePath}`;
 };
 
-app.post('/api/plan', (req, res) => {
+// Middleware: Verify Supabase JWT
+const requireAuth = async (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).json({ error: "Missing Authorization header" });
+    }
+
+    const token = authHeader.split(' ')[1]; // Bearer <token>
+
+    if (!token) {
+        return res.status(401).json({ error: "Invalid token format" });
+    }
+
+    try {
+        const { data: { user }, error } = await supabase.auth.getUser(token);
+
+        if (error || !user) {
+            console.error("Auth Error:", error);
+            return res.status(401).json({ error: "Invalid or expired token" });
+        }
+
+        // Attach user to request object for downstream use
+        req.user = user;
+        next();
+    } catch (err) {
+        console.error("Auth Exception:", err);
+        return res.status(500).json({ error: "Internal Server Error during auth" });
+    }
+};
+
+// Protect the Generate Plan endpoint
+app.post('/api/plan', requireAuth, (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
     if (!days || isNaN(days)) {
@@ -49,7 +88,8 @@ app.post('/api/plan', (req, res) => {
     res.json({ plan });
 });
 
-app.post('/api/swap', (req, res) => {
+// Protect the Swap Meal endpoint
+app.post('/api/swap', requireAuth, (req, res) => {
     const { currentId, type, preferences } = req.body;
     const newMeal = getSwapMeal(currentId, type, preferences);
 
