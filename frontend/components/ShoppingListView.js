@@ -75,6 +75,10 @@ export default function ShoppingListView({ plan }) {
                         style={styles.mainClickableArea}
                         onPress={() => toggleItem(item)}
                         activeOpacity={0.7}
+                        accessibilityRole="checkbox"
+                        accessibilityState={{ checked: !!isChecked }}
+                        accessibilityLabel={`${item}`}
+                        accessibilityHint="Double tap to toggle item status"
                     >
                         <View style={[styles.checkbox, isChecked && styles.checkboxChecked]}>
                             {isChecked && <Text style={styles.checkmark}>✓</Text>}
@@ -85,7 +89,13 @@ export default function ShoppingListView({ plan }) {
                     </TouchableOpacity>
 
                     {count > 1 && (
-                        <TouchableOpacity onPress={() => toggleExpanded(item)} style={styles.countBadge}>
+                        <TouchableOpacity
+                            onPress={() => toggleExpanded(item)}
+                            style={styles.countBadge}
+                            accessibilityRole="button"
+                            accessibilityLabel={`View recipes for ${item}`}
+                            accessibilityHint={isExpanded ? "Collapse recipe list" : "Expand to see which recipes use this ingredient"}
+                        >
                             <Text style={styles.count}>{count}x {isExpanded ? '▲' : '▼'}</Text>
                         </TouchableOpacity>
                     )}
