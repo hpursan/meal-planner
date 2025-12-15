@@ -62,12 +62,9 @@ export default function Auth({ onLoginSuccess }) {
     const signInWithGoogle = async () => {
         setLoading(true);
         try {
-            const redirectUrl = makeRedirectUri({
-                scheme: 'mealplanner',
-                path: 'auth/callback',
-                preferLocalhost: false, // Force non-localhost
-            });
-            console.log("Redirect URL:", redirectUrl); // Helps debugging if you can see logs
+            // Fallback to production URL for reliable testing in Expo Go Tunnel
+            const redirectUrl = 'https://meal-planner-dtkf.onrender.com';
+            console.log("Redirect URL:", redirectUrl);
 
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
