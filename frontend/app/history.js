@@ -32,9 +32,7 @@ export default function HistoryScreen() {
             <StatusBar barStyle="light-content" />
             <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
             <View style={{ flex: 1, padding: 20, paddingTop: 60 }}>
-                <TouchableOpacity onPress={() => router.back()} style={{ marginBottom: 10 }}>
-                    <Text style={{ color: '#AAA' }}>← Back</Text>
-                </TouchableOpacity>
+
 
                 {userId ? (
                     <PlanHistoryView

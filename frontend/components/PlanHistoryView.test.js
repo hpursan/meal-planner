@@ -3,6 +3,21 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react-nativ
 import PlanHistoryView from './PlanHistoryView';
 import { supabase } from '../services/supabase';
 
+jest.mock('../context/PlanContext', () => ({
+    usePlan: () => ({ isOnline: true })
+}));
+
+jest.mock('expo-router', () => {
+    const React = require('react');
+    return {
+        useFocusEffect: (cb) => React.useEffect(cb, []),
+        useRouter: () => ({
+            push: jest.fn(),
+            back: jest.fn(),
+        }),
+    };
+});
+
 describe('PlanHistoryView', () => {
     const mockOnLoad = jest.fn();
     const mockOnBack = jest.fn();
