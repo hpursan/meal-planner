@@ -32,8 +32,16 @@ export default function InputForm({
     meatFreeDays,
     toggleMeatFreeDay,
     onGenerate,
-    loading
+    loading,
+    isOnline = true
 }) {
+    const handleGeneratePress = () => {
+        if (!isOnline) {
+            alert("No internet connection.\nPlease connect to generate a new plan.");
+            return;
+        }
+        onGenerate();
+    };
     return (
         <View style={styles.mainContainer}>
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
@@ -122,13 +130,13 @@ export default function InputForm({
                 </View>
 
                 <TouchableOpacity
-                    style={styles.generateButton}
-                    onPress={onGenerate}
+                    style={[styles.generateButton, !isOnline && styles.disabledButton]}
+                    onPress={handleGeneratePress}
                     disabled={loading}
                     activeOpacity={0.8}
                 >
                     <LinearGradient
-                        colors={['#BB86FC', '#7F5AF0']}
+                        colors={isOnline ? ['#BB86FC', '#7F5AF0'] : ['#444', '#555']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         style={styles.gradientButton}
@@ -141,10 +149,17 @@ export default function InputForm({
                                 </Text>
                             </View>
                         ) : (
-                            <Text style={styles.buttonText}>✨ Generate Magic Plan</Text>
+                            <Text style={[styles.buttonText, !isOnline && { color: '#AAA' }]}>
+                                {isOnline ? "✨ Generate Magic Plan" : "🚫 Offline Mode"}
+                            </Text>
                         )}
                     </LinearGradient>
                 </TouchableOpacity>
+                {!isOnline && (
+                    <Text style={{ color: '#666', textAlign: 'center', marginTop: 10, fontSize: 12 }}>
+                        Connect to the internet to create new plans.
+                    </Text>
+                )}
 
                 <View style={{ height: 40 }} />
             </ScrollView>
@@ -323,4 +338,8 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
         letterSpacing: 1,
     },
+    disabledButton: {
+        shadowOpacity: 0,
+        elevation: 0,
+    }
 });

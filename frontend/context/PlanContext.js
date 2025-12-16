@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import NetInfo from '@react-native-community/netinfo';
 
 const PlanContext = createContext();
 
@@ -15,7 +16,16 @@ export function PlanProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [planId, setPlanId] = useState(null);
     const [checkedItems, setCheckedItems] = useState({});
-    const [isOfflineMode, setIsOfflineMode] = useState(false);
+    const [isOfflineMode, setIsOfflineMode] = useState(false); // "Cached Mode"
+    const [isOnline, setIsOnline] = useState(true); // "Network State"
+
+    // Network Status Listener
+    useEffect(() => {
+        const unsubscribe = NetInfo.addEventListener(state => {
+            setIsOnline(!!state.isConnected);
+        });
+        return () => unsubscribe();
+    }, []);
 
     // Persistence Effect: Save to Cache whenever critical data changes
     useEffect(() => {
@@ -99,7 +109,8 @@ export function PlanProvider({ children }) {
             loading, setLoading,
             clearPlan,
             loadFromCache,
-            isOfflineMode, setIsOfflineMode
+            isOfflineMode, setIsOfflineMode,
+            isOnline, setIsOnline
         }}>
             {children}
         </PlanContext.Provider>

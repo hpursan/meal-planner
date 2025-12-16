@@ -15,7 +15,8 @@ export default function HomeScreen() {
         selectedPrefs, setSelectedPrefs,
         meatFreeDays, setMeatFreeDays,
         setPlan, setPlanId, setLoading, loading,
-        loadFromCache, plan, setIsOfflineMode
+        loadFromCache, plan, setIsOfflineMode,
+        isOnline
     } = usePlan();
 
     useEffect(() => {
@@ -116,6 +117,7 @@ export default function HomeScreen() {
                 toggleMeatFreeDay={toggleMeatFreeDay}
                 onGenerate={handleGeneratePlan}
                 loading={loading}
+                isOnline={isOnline}
             />
         </View>
     );

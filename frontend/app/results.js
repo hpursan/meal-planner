@@ -11,7 +11,7 @@ import RecipeModal from '../components/RecipeModal';
 
 export default function ResultsScreen() {
     const router = useRouter();
-    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode } = usePlan();
+    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode, isOnline } = usePlan();
     const [resultsTab, setResultsTab] = useState('PLAN');
     const [selectedMeal, setSelectedMeal] = useState(null);
 
@@ -107,6 +107,7 @@ export default function ResultsScreen() {
                         plan={plan}
                         onSelectMeal={setSelectedMeal}
                         onSwapMeal={handleSwapMeal}
+                        isOnline={isOnline}
                     />
                 ) : (
                     <ShoppingListView plan={plan} />

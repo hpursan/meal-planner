@@ -21,7 +21,7 @@ const SmartImage = ({ uri, style }) => {
     );
 };
 
-export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
+export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline = true }) {
     if (!plan) return null;
 
     return (
@@ -51,11 +51,12 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal }) {
                                         </View>
                                     </TouchableOpacity>
                                     <TouchableOpacity
-                                        onPress={() => onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)}
-                                        style={styles.swapButton}
+                                        onPress={() => isOnline ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal) : alert("Cannot swap meals while offline.")}
+                                        style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}
                                         accessibilityRole="button"
                                         accessibilityLabel={`Swap ${type} meal`}
                                         accessibilityHint={`Replaces ${meal.name} with an alternative`}
+                                        disabled={!isOnline}
                                     >
                                         <Text style={styles.swapIcon}>⟳</Text>
                                     </TouchableOpacity>
