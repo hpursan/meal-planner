@@ -15,7 +15,7 @@ export default function HomeScreen() {
         selectedPrefs, setSelectedPrefs,
         meatFreeDays, setMeatFreeDays,
         setPlan, setPlanId, setLoading, loading,
-        loadFromCache, plan
+        loadFromCache, plan, setIsOfflineMode
     } = usePlan();
 
     useEffect(() => {
@@ -72,6 +72,7 @@ export default function HomeScreen() {
             }
 
             setPlan(data.plan);
+            setIsOfflineMode(false); // We just fetched fresh data successfully
             // setPlanId is missing from my Context definition! I need to add it to PlanContext later.
             // For now, I'll assume we might not need it immediately or fix context.
             // Actually, context needs planId state.
