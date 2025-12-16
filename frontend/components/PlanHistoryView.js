@@ -24,7 +24,16 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
             .order('created_at', { ascending: false });
 
         if (error) {
-            showAlert("Error", error.message);
+            // Check for network error likely causes
+            console.log("History fetch error:", error);
+            // Don't show Alert for network errors, just empty state with message
+            setPlans([]);
+            // Ideally we'd have a specific UI for "Offline", basically just suppress alert if it's 'Load failed'
+            if (error.message && (error.message.includes('Load failed') || error.message.includes('Network request failed'))) {
+                // Silent fail or toast
+            } else {
+                showAlert("Error", error.message);
+            }
         } else {
             setPlans(data || []);
         }
@@ -105,7 +114,7 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
                     renderItem={renderItem}
                     keyExtractor={item => item.id}
                     contentContainerStyle={styles.listContent}
-                    ListEmptyComponent={<Text style={styles.emptyText}>No saved plans yet.</Text>}
+                    ListEmptyComponent={<Text style={styles.emptyText}>No saved plans found (are you offline?).</Text>}
                 />
             )}
 
