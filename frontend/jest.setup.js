@@ -4,6 +4,10 @@ import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/asy
 
 jest.mock('@react-native-async-storage/async-storage', () => mockAsyncStorage);
 
+// Mock NetInfo
+import mockRNCNetInfo from '@react-native-community/netinfo/jest/netinfo-mock.js';
+jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
+
 // Mock Expo Linear Gradient
 jest.mock('expo-linear-gradient', () => ({
     LinearGradient: 'LinearGradient'
