@@ -64,7 +64,13 @@ function RootLayoutNav() {
     );
 }
 
+import { initTelemetry } from '../services/telemetry';
+
 export default function Layout() {
+    useEffect(() => {
+        initTelemetry();
+    }, []);
+
     return (
         <PlanProvider>
             <RootLayoutNav />
