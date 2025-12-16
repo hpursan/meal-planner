@@ -2,18 +2,27 @@ import React, { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { useFocusEffect } from 'expo-router';
 import { supabase } from '../services/supabase';
+import { usePlan } from '../context/PlanContext';
 import CustomAlert from './CustomAlert';
 
 export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
     const [plans, setPlans] = useState([]);
     const [loading, setLoading] = useState(true);
     const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
+    const { isOnline } = usePlan();
 
     useFocusEffect(
         useCallback(() => {
             fetchHistory();
         }, [])
     );
+
+    // Auto-retry when coming online
+    React.useEffect(() => {
+        if (isOnline) {
+            fetchHistory();
+        }
+    }, [isOnline]);
 
     const fetchHistory = async () => {
         setLoading(true);

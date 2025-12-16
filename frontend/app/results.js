@@ -73,7 +73,7 @@ export default function ResultsScreen() {
                     <Text style={{ color: '#AAA' }}>← Back</Text>
                 </TouchableOpacity>
 
-                {isOfflineMode && (
+                {isOfflineMode && !isOnline && (
                     <View style={styles.offlineBanner}>
                         <Text style={styles.offlineText}>⚠️ Offline Mode - Showing cached plan</Text>
                     </View>
