@@ -52,8 +52,14 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [x] **Save Plan Feature**: Allow users to "Save" a generated plan to their profile.
 - [x] **Load Plan Feature**: Restore the user's active plan when the app launches.
 - [x] **Persistent Shopping List**: Save checked items to database so state persists across reloads.
-- [ ] **Offline Mode**: Cache the current plan locally (`AsyncStorage`) so the app works without internet (optional but good).
+- [x] **Offline Mode**: Cache the current plan locally (`AsyncStorage`) so the app works without internet.
 - [x] **Reset Password API**: Basic account recovery flow (Supabase integration).
+
+## 🎨 Phase 4.7: Frontend Modernization & Standards (Completed)
+- [x] **Design System**: Implemented `Colors`, `Typography`, and `Spacing` tokens for consistency.
+- [x] **UI Polish**: Removed duplicate buttons, fixed layout issues (safe area padding), and improved touch targets.
+- [x] **Frontend Tests**: Fixed flaky integration tests (`AppRNTL.test.js`) and Mocked native modules.
+
 
 ## 📚 Phase 4.5: Plan Management (Completed)
 - [x] **Plan History UI**: Create a "My Plans" screen to list all saved plans.
@@ -81,7 +87,13 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [ ] **Analytics**: Integrate a privacy-friendly analytics tool (e.g., PostHog or Amplitude) to track feature usage (e.g., "Do users actually use the Swap button?").
 - [ ] **Beta Testing Group**: Establish a small group of test users to validate the "MVP" value proposition.
 
-## 💰 Phase 7: Monetization
+## � Phase 6.5: Observability Infrastructure (In Progress)
+- [x] **Framework Definition**: Updated App Launch Framework to include OpenTelemetry standards.
+- [x] **Scaffolding**: Created `infrastructure/` with OTel Collector and Docker Compose.
+- [x] **Client SDK**: Implemented `telemetry.js` service for React Native (in `feature/observability` branch).
+- [ ] **Integration**: Connect app instrumentation to collector and visualize in Jaeger.
+
+## �💰 Phase 7: Monetization
 - [ ] **Strategy**: Define Freemium vs Pro tiers.
 - [ ] **Payments**: Integrate RevenueCat/Stripe for subscription handling.
 - [ ] **Gate Features**: Lock advanced features (e.g., >3 day plans, offline mode) behind the Paywall.
