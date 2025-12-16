@@ -1,6 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Colors } from '../constants/Colors';
+import { Typography } from '../constants/Typography';
+import { Spacing } from '../constants/Spacing';
 
 const PREFERENCES = [
     { id: "Vegan", icon: "🌿", label: "Vegan" },
@@ -64,7 +67,7 @@ export default function InputForm({
                             value={planName}
                             onChangeText={setPlanName}
                             placeholder="e.g. Summer Shred"
-                            placeholderTextColor="#666"
+                            placeholderTextColor={Colors.text.hint}
                             returnKeyType="done"
                         />
                     </View>
@@ -136,7 +139,7 @@ export default function InputForm({
                     activeOpacity={0.8}
                 >
                     <LinearGradient
-                        colors={isOnline ? ['#BB86FC', '#7F5AF0'] : ['#444', '#555']}
+                        colors={isOnline ? [Colors.action.primary, Colors.action.primaryDark] : [Colors.background.elevated, '#555']}
                         start={{ x: 0, y: 0 }}
                         end={{ x: 1, y: 1 }}
                         style={styles.gradientButton}
@@ -149,14 +152,14 @@ export default function InputForm({
                                 </Text>
                             </View>
                         ) : (
-                            <Text style={[styles.buttonText, !isOnline && { color: '#AAA' }]}>
+                            <Text style={[styles.buttonText, !isOnline && { color: Colors.text.muted }]}>
                                 {isOnline ? "✨ Generate Magic Plan" : "🚫 Offline Mode"}
                             </Text>
                         )}
                     </LinearGradient>
                 </TouchableOpacity>
                 {!isOnline && (
-                    <Text style={{ color: '#666', textAlign: 'center', marginTop: 10, fontSize: 12 }}>
+                    <Text style={{ color: Colors.text.hint, textAlign: 'center', marginTop: 10, fontSize: 12 }}>
                         Connect to the internet to create new plans.
                     </Text>
                 )}
@@ -175,32 +178,32 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     scrollContent: {
-        paddingHorizontal: 20,
-        paddingTop: 20,
+        paddingHorizontal: Spacing.layout.screenPadding,
+        paddingTop: Spacing.xl,
         paddingBottom: 150,
     },
     header: {
-        marginBottom: 30,
+        marginBottom: Spacing.xxl,
         alignItems: 'center',
     },
     title: {
-        fontSize: 32,
-        fontWeight: '800',
-        color: '#FFF',
-        marginBottom: 8,
-        letterSpacing: 0.5,
+        fontSize: Typography.sizes.xxxl,
+        fontWeight: Typography.weights.heavy,
+        color: Colors.text.primary,
+        marginBottom: Spacing.sm,
+        letterSpacing: Typography.spacing.titleLetterSpacing,
     },
     subtitle: {
-        fontSize: 16,
-        color: '#AAA',
+        fontSize: Typography.sizes.md,
+        color: Colors.text.muted,
     },
     card: {
-        backgroundColor: '#1E1E2E',
-        borderRadius: 20,
-        padding: 20,
-        marginBottom: 20,
+        backgroundColor: Colors.background.secondary,
+        borderRadius: Spacing.layout.cardRadius,
+        padding: Spacing.xl,
+        marginBottom: Spacing.xl,
         borderWidth: 1,
-        borderColor: '#333',
+        borderColor: Colors.border.default,
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
@@ -210,50 +213,50 @@ const styles = StyleSheet.create({
     cardHeader: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginBottom: 16,
+        marginBottom: Spacing.lg,
     },
     stepNumber: {
-        backgroundColor: '#333',
+        backgroundColor: Colors.background.elevated,
         width: 28,
         height: 28,
         borderRadius: 14,
         textAlign: 'center',
         lineHeight: 28,
-        color: '#BB86FC',
-        fontWeight: 'bold',
-        marginRight: 12,
+        color: Colors.action.primary,
+        fontWeight: Typography.weights.bold,
+        marginRight: Spacing.md,
         overflow: 'hidden',
     },
     cardTitle: {
-        fontSize: 20,
-        fontWeight: '700',
-        color: '#FFF',
+        fontSize: Typography.sizes.xl,
+        fontWeight: Typography.weights.bold,
+        color: Colors.text.primary,
     },
     inputGroup: {
-        marginBottom: 16,
+        marginBottom: Spacing.lg,
     },
     label: {
-        fontSize: 14,
-        color: '#CCC',
-        marginBottom: 8,
-        fontWeight: '600',
+        fontSize: Typography.sizes.sm,
+        color: Colors.text.secondary,
+        marginBottom: Spacing.sm,
+        fontWeight: Typography.weights.semibold,
         textTransform: 'uppercase',
-        letterSpacing: 1,
+        letterSpacing: Typography.spacing.labelLetterSpacing,
     },
     input: {
-        backgroundColor: '#2A2A35',
-        color: '#FFF',
-        padding: 16,
-        borderRadius: 12,
-        fontSize: 16,
+        backgroundColor: Colors.background.tertiary,
+        color: Colors.text.primary,
+        padding: Spacing.lg,
+        borderRadius: Spacing.layout.inputRadius,
+        fontSize: Typography.sizes.md,
         borderWidth: 1,
-        borderColor: '#444',
+        borderColor: Colors.border.focused,
     },
     helperText: {
-        fontSize: 14,
-        color: '#888',
-        marginBottom: 16,
-        marginTop: -8,
+        fontSize: Typography.sizes.sm,
+        color: Colors.text.hint,
+        marginBottom: Spacing.lg,
+        marginTop: -Spacing.sm,
         fontStyle: 'italic',
     },
     gridContainer: {
@@ -264,33 +267,33 @@ const styles = StyleSheet.create({
     gridItem: {
         width: '30%',
         flexGrow: 1,
-        backgroundColor: '#2A2A35',
+        backgroundColor: Colors.background.tertiary,
         paddingVertical: 15,
-        borderRadius: 12,
+        borderRadius: Spacing.layout.inputRadius,
         alignItems: 'center',
         borderWidth: 1,
         borderColor: 'transparent',
     },
     gridItemSelected: {
-        backgroundColor: '#2A2A35',
-        borderColor: '#BB86FC',
-        shadowColor: "#BB86FC",
+        backgroundColor: Colors.background.tertiary,
+        borderColor: Colors.border.accent,
+        shadowColor: Colors.action.primary,
         shadowOffset: { width: 0, height: 0 },
         shadowOpacity: 0.5,
         shadowRadius: 8,
     },
     gridIcon: {
         fontSize: 24,
-        marginBottom: 8,
+        marginBottom: Spacing.sm,
     },
     gridLabel: {
-        color: '#CCC',
-        fontSize: 12,
-        fontWeight: '600',
+        color: Colors.text.secondary,
+        fontSize: Typography.sizes.xs,
+        fontWeight: Typography.weights.semibold,
     },
     gridLabelSelected: {
-        color: '#FFF',
-        fontWeight: 'bold',
+        color: Colors.text.primary,
+        fontWeight: Typography.weights.bold,
     },
     daysContainer: {
         flexDirection: 'row',
@@ -301,41 +304,41 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 20,
-        backgroundColor: '#2A2A35',
+        backgroundColor: Colors.background.tertiary,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 8,
+        marginBottom: Spacing.sm,
     },
     dayCircleSelected: {
-        backgroundColor: '#BB86FC',
+        backgroundColor: Colors.action.primary,
     },
     dayText: {
-        color: '#BBB',
-        fontWeight: '600',
-        fontSize: 14,
+        color: '#BBB', // Kept slightly different from muted for visibility on dark
+        fontWeight: Typography.weights.semibold,
+        fontSize: Typography.sizes.sm,
     },
     dayTextSelected: {
-        color: '#000',
-        fontWeight: 'bold',
+        color: Colors.text.inverse,
+        fontWeight: Typography.weights.bold,
     },
     generateButton: {
         marginTop: 10,
-        borderRadius: 16,
+        borderRadius: Spacing.layout.buttonRadius,
         overflow: 'hidden',
-        shadowColor: '#BB86FC',
+        shadowColor: Colors.action.primary,
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
         elevation: 5,
     },
     gradientButton: {
-        paddingVertical: 20,
+        paddingVertical: Spacing.xl,
         alignItems: 'center',
     },
     buttonText: {
-        color: '#FFF',
-        fontSize: 18,
-        fontWeight: 'bold',
+        color: Colors.text.primary,
+        fontSize: Typography.sizes.lg,
+        fontWeight: Typography.weights.bold,
         textTransform: 'uppercase',
         letterSpacing: 1,
     },
