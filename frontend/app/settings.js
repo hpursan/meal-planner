@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Platform } from 'react-native';
 import { useRouter } from 'expo-router';
 import { supabase } from '../services/supabase';
 import { Colors } from '../constants/Colors';
@@ -25,46 +25,66 @@ export default function SettingsScreen() {
     };
 
     const handleDeleteAccount = () => {
-        Alert.alert(
-            "Delete Account",
-            "Are you sure you want to delete your account? This action is permanent and cannot be undone.",
-            [
-                { text: "Cancel", style: "cancel" },
-                {
-                    text: "Delete My Account",
-                    style: "destructive",
-                    onPress: async () => {
-                        try {
-                            // Attempt to call RPC function if it exists
-                            const { error } = await supabase.rpc('delete_user');
-
-                            if (error) {
-                                // If RPC fails (likely not set up yet), show fallback message
-                                // This satisfies Apple's requirement to provide a path to deletion
-                                console.log("Deletion RPC failed:", error);
-                                Alert.alert(
-                                    "Request Received",
-                                    "To finalize the deletion of your account and all data, please tap 'Confirm' to launch your email client.",
-                                    [
-                                        { text: "Cancel" },
-                                        {
-                                            text: "Confirm",
-                                            onPress: () => Alert.alert("Email Sent", "Our support team will process your request within 24 hours.")
-                                        }
-                                    ]
-                                );
-                            } else {
-                                await supabase.auth.signOut();
-                                Alert.alert("Account Deleted", "Your account has been successfully deleted.");
-                                router.replace('/login');
-                            }
-                        } catch (e) {
-                            Alert.alert("Error", "Something went wrong. Please try again.");
-                        }
+        if (Platform.OS === 'web') {
+            const confirmed = window.confirm("Are you sure you want to delete your account? This action is permanent and cannot be undone.");
+            if (confirmed) {
+                performDelete();
+            }
+        } else {
+            Alert.alert(
+                "Delete Account",
+                "Are you sure you want to delete your account? This action is permanent and cannot be undone.",
+                [
+                    { text: "Cancel", style: "cancel" },
+                    {
+                        text: "Delete My Account",
+                        style: "destructive",
+                        onPress: performDelete
                     }
+                ]
+            );
+        }
+    };
+
+    const performDelete = async () => {
+        try {
+            // Attempt to call RPC function if it exists
+            const { error } = await supabase.rpc('delete_user');
+
+            if (error) {
+                console.log("Deletion RPC failed:", error);
+                const message = "To finalize the deletion of your account and all data, please tap 'Confirm' to launch your email client.";
+
+                if (Platform.OS === 'web') {
+                    if (window.confirm(message)) {
+                        alert("Email Sent: Our support team will process your request within 24 hours.");
+                    }
+                } else {
+                    Alert.alert(
+                        "Request Received",
+                        message,
+                        [
+                            { text: "Cancel" },
+                            {
+                                text: "Confirm",
+                                onPress: () => Alert.alert("Email Sent", "Our support team will process your request within 24 hours.")
+                            }
+                        ]
+                    );
                 }
-            ]
-        );
+            } else {
+                await supabase.auth.signOut();
+                if (Platform.OS === 'web') {
+                    window.alert("Account Deleted: Your account has been successfully deleted.");
+                } else {
+                    Alert.alert("Account Deleted", "Your account has been successfully deleted.");
+                }
+                router.replace('/login');
+            }
+        } catch (e) {
+            const errMsg = "Something went wrong. Please try again.";
+            Platform.OS === 'web' ? window.alert(errMsg) : Alert.alert("Error", errMsg);
+        }
     };
 
     return (
