@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Platform } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Platform, Linking } from 'react-native';
 import { useRouter } from 'expo-router';
 import { supabase } from '../services/supabase';
 import { Colors } from '../constants/Colors';
@@ -106,6 +106,37 @@ export default function SettingsScreen() {
                         <Text style={styles.label}>Email</Text>
                         <Text style={styles.value}>{userEmail}</Text>
                     </View>
+                </View>
+
+                <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Legal & Support</Text>
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={() => Linking.openURL('https://meal-planner-dtkf.onrender.com/privacy.html')}
+                    >
+                        <Text style={styles.label}>Privacy Policy</Text>
+                        <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
+
+                    <View style={{ height: 1, backgroundColor: Colors.border.default, opacity: 0.5 }} />
+
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={() => Linking.openURL('https://www.apple.com/legal/internet-services/itunes/dev/stdeula/')}
+                    >
+                        <Text style={styles.label}>Terms of Use (EULA)</Text>
+                        <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
+
+                    <View style={{ height: 1, backgroundColor: Colors.border.default, opacity: 0.5 }} />
+
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={() => Linking.openURL('mailto:helpme.mealplanner@gmail.com?subject=Meal Planner Support')}
+                    >
+                        <Text style={styles.label}>Contact Support</Text>
+                        <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
