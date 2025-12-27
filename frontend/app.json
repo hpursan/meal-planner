@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Meal Planner",
+    "slug": "meal-planner",
     "version": "1.0.0",
     "scheme": "mealplanner",
     "orientation": "portrait",
@@ -11,10 +11,11 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#121212"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pursan.mealplanner"
     },
     "android": {
       "adaptiveIcon": {
