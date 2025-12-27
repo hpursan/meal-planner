@@ -5,9 +5,9 @@ This document outlines the steps required to launch, ordered from **strict submi
 ## 🚨 1. Submission Blockers (CRITICAL)
 **Status: Mandatory.** Apple will reject the app binary or metadata without these.
 
-- [ ] **App Icon**: 
+- [x] **App Icon**: 
     - Requirement: 1024x1024px PNG. No transparency.
-    - *Psychology*: Must stand out on a cluttered home screen. Avoid generic food clipart. Use vibrant colors (e.g., Orange/Green).
+    - *Action Taken*: Used `appstore.png` from generated assets.
 - [ ] **Privacy Policy URL**: 
     - Requirement: A publicly accessible URL (e.g., Notion page or simple HTML on Render) stating data usage.
     - *Note*: You CANNOT submit without this.
@@ -15,9 +15,9 @@ This document outlines the steps required to launch, ordered from **strict submi
     - A way for users to contact you (Email link or Form).
 - [ ] **EULA (End User License Agreement)**: 
     - Standard Apple EULA covering usage rights. Can be a text link in the Settings page.
-- [ ] **Splash Screen**: 
+- [x] **Splash Screen**: 
     - Requirement: `splash.png` configuration in `app.json`.
-    - Must match the app's background color (`#121212`) to preventing jarring "white flashes" on startup.
+    - *Action Taken*: Updated `app.json` to use dark background `#121212` and new icon.
 
 ## 🛡 2. App Quality & Stability (HIGH)
 **Status: Highly Recommended.** Prevents "broken" experiences that lead to immediate 1-star reviews.

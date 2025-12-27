@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
@@ -47,125 +47,136 @@ export default function InputForm({
     };
     return (
         <View style={styles.mainContainer}>
-            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scrollContent}>
-                <View style={styles.header}>
-                    <Text style={styles.title}>Design Your Plan</Text>
-                    <Text style={styles.subtitle}>Let's create a menu tailored just for you.</Text>
-                </View>
-
-                {/* Section 1: The Basics */}
-                <View style={styles.card}>
-                    <View style={styles.cardHeader}>
-                        <Text style={styles.stepNumber}>1</Text>
-                        <Text style={styles.cardTitle}>The Basics</Text>
-                    </View>
-
-                    <View style={styles.inputGroup}>
-                        <Text style={styles.label}>Plan Name</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={planName}
-                            onChangeText={setPlanName}
-                            placeholder="e.g. Summer Shred"
-                            placeholderTextColor={Colors.text.hint}
-                            returnKeyType="done"
-                        />
-                    </View>
-
-                    <View style={styles.inputGroup}>
-                        <Text style={styles.label}>Duration (Days)</Text>
-                        <TextInput
-                            style={styles.input}
-                            value={days}
-                            onChangeText={setDays}
-                            keyboardType="numeric"
-                            maxLength={2}
-                            returnKeyType="done"
-                        />
-                    </View>
-                </View>
-
-                {/* Section 2: Diet Style */}
-                <View style={styles.card}>
-                    <View style={styles.cardHeader}>
-                        <Text style={styles.stepNumber}>2</Text>
-                        <Text style={styles.cardTitle}>Dietary Style</Text>
-                    </View>
-                    <Text style={styles.helperText}>Tap all that apply</Text>
-
-                    <View style={styles.gridContainer}>
-                        {PREFERENCES.map(pref => (
-                            <TouchableOpacity
-                                key={pref.id}
-                                style={[styles.gridItem, selectedPrefs.includes(pref.id) && styles.gridItemSelected]}
-                                onPress={() => togglePref(pref.id)}
-                            >
-                                <Text style={styles.gridIcon}>{pref.icon}</Text>
-                                <Text style={[styles.gridLabel, selectedPrefs.includes(pref.id) && styles.gridLabelSelected]}>
-                                    {pref.label}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                </View>
-
-                {/* Section 3: Schedule */}
-                <View style={styles.card}>
-                    <View style={styles.cardHeader}>
-                        <Text style={styles.stepNumber}>3</Text>
-                        <Text style={styles.cardTitle}>Meat-Free Days</Text>
-                    </View>
-                    <Text style={styles.helperText}>Select days to go veggie (optional)</Text>
-
-                    <View style={styles.daysContainer}>
-                        {DAYS_OF_WEEK.map(day => (
-                            <TouchableOpacity
-                                key={day.id}
-                                style={[styles.dayCircle, meatFreeDays.includes(day.id) && styles.dayCircleSelected]}
-                                onPress={() => toggleMeatFreeDay(day.id)}
-                            >
-                                <Text style={[styles.dayText, meatFreeDays.includes(day.id) && styles.dayTextSelected]}>
-                                    {day.label}
-                                </Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                </View>
-
-                <TouchableOpacity
-                    style={[styles.generateButton, !isOnline && styles.disabledButton]}
-                    onPress={handleGeneratePress}
-                    disabled={loading}
-                    activeOpacity={0.8}
+            <KeyboardAvoidingView
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+                style={{ flex: 1 }}
+                keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
+            >
+                <ScrollView
+                    style={{ flex: 1 }}
+                    contentContainerStyle={[styles.scrollContent, { flexGrow: 1 }]}
+                    showsVerticalScrollIndicator={false}
+                    alwaysBounceVertical={true}
                 >
-                    <LinearGradient
-                        colors={isOnline ? [Colors.action.primary, Colors.action.primaryDark] : [Colors.background.elevated, '#555']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 1 }}
-                        style={styles.gradientButton}
-                    >
-                        {loading ? (
-                            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                                <ActivityIndicator color="#FFF" />
-                                <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>
-                                    (Server waking up...)
-                                </Text>
-                            </View>
-                        ) : (
-                            <Text style={[styles.buttonText, !isOnline && { color: Colors.text.muted }]}>
-                                {isOnline ? "✨ Generate Magic Plan" : "🚫 Offline Mode"}
-                            </Text>
-                        )}
-                    </LinearGradient>
-                </TouchableOpacity>
-                {!isOnline && (
-                    <Text style={{ color: Colors.text.hint, textAlign: 'center', marginTop: 10, fontSize: 12 }}>
-                        Connect to the internet to create new plans.
-                    </Text>
-                )}
+                    <View style={styles.header}>
+                        <Text style={styles.title}>Design Your Plan</Text>
+                        <Text style={styles.subtitle}>Let's create a menu tailored just for you.</Text>
+                    </View>
 
-                <View style={{ height: 40 }} />
-            </ScrollView>
+                    {/* Section 1: The Basics */}
+                    <View style={styles.card}>
+                        <View style={styles.cardHeader}>
+                            <Text style={styles.stepNumber}>1</Text>
+                            <Text style={styles.cardTitle}>The Basics</Text>
+                        </View>
+
+                        <View style={styles.inputGroup}>
+                            <Text style={styles.label}>Plan Name</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={planName}
+                                onChangeText={setPlanName}
+                                placeholder="e.g. Summer Shred"
+                                placeholderTextColor={Colors.text.hint}
+                                returnKeyType="done"
+                            />
+                        </View>
+
+                        <View style={styles.inputGroup}>
+                            <Text style={styles.label}>Duration (Days)</Text>
+                            <TextInput
+                                style={styles.input}
+                                value={days}
+                                onChangeText={setDays}
+                                keyboardType="numeric"
+                                maxLength={2}
+                                returnKeyType="done"
+                            />
+                        </View>
+                    </View>
+
+                    {/* Section 2: Diet Style */}
+                    <View style={styles.card}>
+                        <View style={styles.cardHeader}>
+                            <Text style={styles.stepNumber}>2</Text>
+                            <Text style={styles.cardTitle}>Dietary Style</Text>
+                        </View>
+                        <Text style={styles.helperText}>Tap all that apply</Text>
+
+                        <View style={styles.gridContainer}>
+                            {PREFERENCES.map(pref => (
+                                <TouchableOpacity
+                                    key={pref.id}
+                                    style={[styles.gridItem, selectedPrefs.includes(pref.id) && styles.gridItemSelected]}
+                                    onPress={() => togglePref(pref.id)}
+                                >
+                                    <Text style={styles.gridIcon}>{pref.icon}</Text>
+                                    <Text style={[styles.gridLabel, selectedPrefs.includes(pref.id) && styles.gridLabelSelected]}>
+                                        {pref.label}
+                                    </Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+
+                    {/* Section 3: Schedule */}
+                    <View style={styles.card}>
+                        <View style={styles.cardHeader}>
+                            <Text style={styles.stepNumber}>3</Text>
+                            <Text style={styles.cardTitle}>Meat-Free Days</Text>
+                        </View>
+                        <Text style={styles.helperText}>Select days to go veggie (optional)</Text>
+
+                        <View style={styles.daysContainer}>
+                            {DAYS_OF_WEEK.map(day => (
+                                <TouchableOpacity
+                                    key={day.id}
+                                    style={[styles.dayCircle, meatFreeDays.includes(day.id) && styles.dayCircleSelected]}
+                                    onPress={() => toggleMeatFreeDay(day.id)}
+                                >
+                                    <Text style={[styles.dayText, meatFreeDays.includes(day.id) && styles.dayTextSelected]}>
+                                        {day.label}
+                                    </Text>
+                                </TouchableOpacity>
+                            ))}
+                        </View>
+                    </View>
+
+                    <TouchableOpacity
+                        style={[styles.generateButton, !isOnline && styles.disabledButton]}
+                        onPress={handleGeneratePress}
+                        disabled={loading}
+                        activeOpacity={0.8}
+                    >
+                        <LinearGradient
+                            colors={isOnline ? [Colors.action.primary, Colors.action.primaryDark] : [Colors.background.elevated, '#555']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={styles.gradientButton}
+                        >
+                            {loading ? (
+                                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+                                    <ActivityIndicator color="#FFF" />
+                                    <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>
+                                        (Server waking up...)
+                                    </Text>
+                                </View>
+                            ) : (
+                                <Text style={[styles.buttonText, !isOnline && { color: Colors.text.muted }]}>
+                                    {isOnline ? "✨ Generate Magic Plan" : "🚫 Offline Mode"}
+                                </Text>
+                            )}
+                        </LinearGradient>
+                    </TouchableOpacity>
+                    {!isOnline && (
+                        <Text style={{ color: Colors.text.hint, textAlign: 'center', marginTop: 10, fontSize: 12 }}>
+                            Connect to the internet to create new plans.
+                        </Text>
+                    )}
+
+                    <View style={{ height: 40 }} />
+                </ScrollView>
+            </KeyboardAvoidingView>
         </View>
     );
 }

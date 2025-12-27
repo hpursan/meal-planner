@@ -78,9 +78,10 @@ Moving from a "toy app" to a real product requires User Accounts.
 - [x] **Cloud Deployment**: Backend on Render (Node), Frontend on Render (Web Static).
 - [x] **Environment Variables**: Move `API_HOST` and DB credentials to `.env` files.
 - [ ] **Error Handling**: Add global error boundaries to prevent "White/Red Screen of Death".
-- [ ] **Assets**: Generate proper App Icon and Splash Screen.
+- [x] **Assets**: Generate proper App Icon and Splash Screen.
 - [ ] **Domain Registration**: Register a custom domain (e.g., getmealplanner.com) and configure SSL/DNS correctly.
 - [ ] **Native Mobile Apps**: Build and release `.ipa` (iOS) and `.apk` (Android) binaries using EAS Build.
+- [ ] **App Store Launch**: (See `APP_STORE_LAUNCH.md` for detailed checklist)
 
 ## 📣 Phase 6: User Feedback & Analytics
 - [ ] **Feedback Mechanism**: Add a "Send Feedback" form or button within the app settings.
