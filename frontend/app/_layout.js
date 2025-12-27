@@ -4,6 +4,14 @@ import { PlanProvider } from '../context/PlanContext';
 import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { View, ActivityIndicator } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen';
+
+// Keep the splash screen visible while we fetch resources
+try {
+    SplashScreen.preventAutoHideAsync();
+} catch (e) {
+    console.warn('SplashScreen.preventAutoHideAsync error:', e);
+}
 
 function RootLayoutNav() {
     const [session, setSession] = useState(null);
@@ -30,6 +38,15 @@ function RootLayoutNav() {
     }, []);
 
     useEffect(() => {
+        if (initialized) {
+            // Hide splash screen after a short delay to ensure smooth transition
+            setTimeout(async () => {
+                await SplashScreen.hideAsync();
+            }, 1000);
+        }
+    }, [initialized]);
+
+    useEffect(() => {
         if (!initialized) return;
 
         const inAuthGroup = segments[0] === 'login' || segments[0] === 'reset-password';
@@ -44,11 +61,7 @@ function RootLayoutNav() {
     }, [session, initialized, segments]);
 
     if (!initialized) {
-        return (
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#121212' }}>
-                <ActivityIndicator size="large" color="#BB86FC" />
-            </View>
-        );
+        return null; // Return null because Splash Screen is still visible natively
     }
 
     return (
@@ -64,10 +77,16 @@ function RootLayoutNav() {
     );
 }
 
+import { ErrorBoundary } from '../components/ErrorBoundary';
+
+// ... (existing imports)
+
 export default function Layout() {
     return (
-        <PlanProvider>
-            <RootLayoutNav />
-        </PlanProvider>
+        <ErrorBoundary>
+            <PlanProvider>
+                <RootLayoutNav />
+            </PlanProvider>
+        </ErrorBoundary>
     );
 }
