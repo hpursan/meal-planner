@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import { View, ActivityIndicator } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
+import { ErrorBoundary } from '../components/ErrorBoundary';
 
 // Keep the splash screen visible while we fetch resources
 try {
@@ -25,26 +26,16 @@ function RootLayoutNav() {
             setSession(session);
             setInitialized(true);
 
-            // Initial Navigation Decision
-            const inAuthGroup = segments[0] === 'login' || segments[0] === 'reset-password';
-            if (session && inAuthGroup) {
-                router.replace('/');
-            } else if (!session && !inAuthGroup) {
-                router.replace('/login');
-            }
+            // NOTE: We REMOVED automatic redirect logic here.
+            // This prevents "Redirect Loop" when app resumes from background (e.g. Closing Safari).
+            // User must manually log in if session is lost.
         });
 
         // Listen for changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
             setSession(session);
-
-            if (event === 'SIGNED_IN') {
-                router.replace('/');
-            } else if (event === 'SIGNED_OUT') {
-                router.replace('/login');
-            } else if (event === 'PASSWORD_RECOVERY') {
-                router.push('/reset-password');
-            }
+            // We only log events now, no forced redirects.
+            console.log("Auth Event:", event);
         });
 
         return () => subscription.unsubscribe();
@@ -59,9 +50,6 @@ function RootLayoutNav() {
         }
     }, [initialized]);
 
-    // Removed the aggressive reactive useEffect that was monitoring [session, segments]
-    // This prevents redirects when the app resumes or segments change temporarily.
-
     if (!initialized) {
         return null; // Return null because Splash Screen is still visible natively
     }
@@ -75,14 +63,11 @@ function RootLayoutNav() {
                 <Stack.Screen name="results" />
                 <Stack.Screen name="reset-password" />
                 <Stack.Screen name="settings" />
+                <Stack.Screen name="support" />
             </Stack>
         </SafeAreaProvider>
     );
 }
-
-import { ErrorBoundary } from '../components/ErrorBoundary';
-
-// ... (existing imports)
 
 export default function Layout() {
     return (
