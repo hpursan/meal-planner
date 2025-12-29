@@ -90,15 +90,27 @@ export default function SettingsScreen() {
         }
     };
 
-    const handleContactSupport = async () => {
-        const url = 'mailto:helpme.mealplanner@gmail.com?subject=Meal Planner Support';
-        // Simple attempt, fallback handled by user system if no mail client
-        try {
-            await Linking.openURL(url);
-        } catch (e) {
-            Alert.alert("Support Email", "Please email us at:\nhelpme.mealplanner@gmail.com");
-            // Copy to clipboard would be nice here too
-        }
+    const handleContactSupport = () => {
+        const email = 'helpme.mealplanner@gmail.com';
+        const url = `mailto:${email}?subject=Meal Planner Support`;
+
+        Alert.alert(
+            "Contact Support",
+            `Please email us at:\n${email}`,
+            [
+                { text: "Cancel", style: "cancel" },
+                {
+                    text: "Open Mail App",
+                    onPress: async () => {
+                        try {
+                            await Linking.openURL(url);
+                        } catch (e) {
+                            console.log("Could not open mail app:", e);
+                        }
+                    }
+                }
+            ]
+        );
     };
 
     return (
