@@ -24,12 +24,25 @@ function RootLayoutNav() {
         supabase.auth.getSession().then(({ data: { session } }) => {
             setSession(session);
             setInitialized(true);
+
+            // Initial Navigation Decision
+            const inAuthGroup = segments[0] === 'login' || segments[0] === 'reset-password';
+            if (session && inAuthGroup) {
+                router.replace('/');
+            } else if (!session && !inAuthGroup) {
+                router.replace('/login');
+            }
         });
 
         // Listen for changes
         const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
             setSession(session);
-            if (event === 'PASSWORD_RECOVERY') {
+
+            if (event === 'SIGNED_IN') {
+                router.replace('/');
+            } else if (event === 'SIGNED_OUT') {
+                router.replace('/login');
+            } else if (event === 'PASSWORD_RECOVERY') {
                 router.push('/reset-password');
             }
         });
@@ -46,19 +59,8 @@ function RootLayoutNav() {
         }
     }, [initialized]);
 
-    useEffect(() => {
-        if (!initialized) return;
-
-        const inAuthGroup = segments[0] === 'login' || segments[0] === 'reset-password';
-
-        if (session && inAuthGroup) {
-            // If logged in and trying to access auth pages, go to home
-            router.replace('/');
-        } else if (!session && !inAuthGroup) {
-            // If not logged in and not in auth pages, go to login
-            router.replace('/login');
-        }
-    }, [session, initialized, segments]);
+    // Removed the aggressive reactive useEffect that was monitoring [session, segments]
+    // This prevents redirects when the app resumes or segments change temporarily.
 
     if (!initialized) {
         return null; // Return null because Splash Screen is still visible natively
