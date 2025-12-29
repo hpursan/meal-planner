@@ -6,10 +6,12 @@ import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useState } from 'react';
+import FeedbackModal from '../components/FeedbackModal';
 
 export default function SettingsScreen() {
     const router = useRouter();
     const [userEmail, setUserEmail] = useState('');
+    const [feedbackVisible, setFeedbackVisible] = useState(false);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -52,6 +54,7 @@ export default function SettingsScreen() {
             const { error } = await supabase.rpc('delete_user');
 
             if (error) {
+                // Fallback if RPC fails, inform user
                 console.log("Deletion RPC failed:", error);
                 const message = "To finalize the deletion of your account and all data, please tap 'Confirm' to launch your email client.";
 
@@ -87,12 +90,23 @@ export default function SettingsScreen() {
         }
     };
 
+    const handleContactSupport = async () => {
+        const url = 'mailto:helpme.mealplanner@gmail.com?subject=Meal Planner Support';
+        // Simple attempt, fallback handled by user system if no mail client
+        try {
+            await Linking.openURL(url);
+        } catch (e) {
+            Alert.alert("Support Email", "Please email us at:\nhelpme.mealplanner@gmail.com");
+            // Copy to clipboard would be nice here too
+        }
+    };
+
     return (
         <View style={styles.container}>
             <LinearGradient colors={[Colors.background.primary, Colors.background.secondary]} style={styles.background} />
 
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => router.back()}>
+                <TouchableOpacity onPress={() => router.replace('/')}>
                     <Text style={styles.backText}>← Back</Text>
                 </TouchableOpacity>
                 <Text style={styles.title}>Settings</Text>
@@ -100,6 +114,7 @@ export default function SettingsScreen() {
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>
+
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Account</Text>
                     <View style={styles.row}>
@@ -132,7 +147,17 @@ export default function SettingsScreen() {
 
                     <TouchableOpacity
                         style={[styles.row, { paddingVertical: 12 }]}
-                        onPress={() => Linking.openURL('mailto:helpme.mealplanner@gmail.com?subject=Meal Planner Support')}
+                        onPress={() => setFeedbackVisible(true)}
+                    >
+                        <Text style={styles.label}>Send Feedback</Text>
+                        <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
+
+                    <View style={{ height: 1, backgroundColor: Colors.border.default, opacity: 0.5 }} />
+
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={handleContactSupport}
                     >
                         <Text style={styles.label}>Contact Support</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
@@ -157,6 +182,11 @@ export default function SettingsScreen() {
                     <Text style={styles.version}>Version 1.0.0-rc2</Text>
                 </View>
             </ScrollView>
+
+            <FeedbackModal
+                visible={feedbackVisible}
+                onClose={() => setFeedbackVisible(false)}
+            />
         </View>
     );
 }

@@ -22,8 +22,8 @@ app.get('/', (req, res) => {
     res.status(200).json({ status: 'healthy', service: 'Meal Planner API' });
 });
 
-// Serve static images from the "public" directory
-app.use('/images', express.static(path.join(__dirname, 'public/images')));
+// Serve static files (images, privacy policy, etc.) from the "public" directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Helper to determine base URL
 const getBaseUrl = (req) => {
