@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'rea
 
 const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
+    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
     if (error || !uri) {
         return (
@@ -12,9 +13,11 @@ const SmartImage = ({ uri, style }) => {
         );
     }
 
+    const fullUri = uri.startsWith('http') ? uri : `${API_URL}${uri}`;
+
     return (
         <Image
-            source={{ uri }}
+            source={{ uri: fullUri }}
             style={style}
             onError={() => setError(true)}
         />

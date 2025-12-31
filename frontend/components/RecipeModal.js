@@ -22,7 +22,7 @@ export default function RecipeModal({ selectedMeal, onClose }) {
                 <View style={styles.modalContent}>
                     {!imageError && selectedMeal.image ? (
                         <Image
-                            source={{ uri: selectedMeal.image }}
+                            source={{ uri: selectedMeal.image.startsWith('http') ? selectedMeal.image : `${process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'}${selectedMeal.image}` }}
                             style={styles.heroImage}
                             onError={() => setImageError(true)}
                         />
