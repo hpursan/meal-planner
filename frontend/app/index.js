@@ -55,7 +55,6 @@ export default function HomeScreen() {
             const data = await generatePlan(parseInt(days), selectedPrefs, meatFreeDays);
 
             // Get session to save (optional logic, could verify first)
-            const { data: { session } } = await supabase.auth.getSession();
             let newPlanId = null;
 
             if (session && session.user) {
