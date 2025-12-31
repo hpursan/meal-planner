@@ -13,10 +13,23 @@ export default function HistoryScreen() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // Initial check
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session) setUserId(session.user.id);
             setLoading(false);
         });
+
+        // Listen for changes (e.g. login happening just as we mount)
+        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+            if (session) {
+                setUserId(session.user.id);
+            } else {
+                setUserId(null);
+            }
+            setLoading(false);
+        });
+
+        return () => subscription.unsubscribe();
     }, []);
 
     const handleLoadPlan = (historyItem) => {

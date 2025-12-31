@@ -96,7 +96,9 @@ export default function Auth({ onLoginSuccess }) {
                     });
                     if (sessionError) throw sessionError;
 
-                    if (onLoginSuccess) onLoginSuccess();
+                    // Verify session is active before navigating
+                    const { data: { user } } = await supabase.auth.getUser();
+                    if (user && onLoginSuccess) onLoginSuccess();
                 }
             }
         } catch (err) {
@@ -123,7 +125,9 @@ export default function Auth({ onLoginSuccess }) {
                 if (error) {
                     showAlert("Error", error.message);
                 } else {
-                    if (onLoginSuccess) onLoginSuccess();
+                    // Verify
+                    const { data: { user } } = await supabase.auth.getUser();
+                    if (user && onLoginSuccess) onLoginSuccess();
                 }
             }
         } catch (e) {
