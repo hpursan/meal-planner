@@ -10,10 +10,12 @@ export default function HistoryScreen() {
     const router = useRouter();
     const { setPlan, setPlanId, setPlanName, setDays, setSelectedPrefs, setMeatFreeDays, setCheckedItems } = usePlan();
     const [userId, setUserId] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
             if (session) setUserId(session.user.id);
+            setLoading(false);
         });
     }, []);
 
@@ -33,15 +35,28 @@ export default function HistoryScreen() {
             <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
             <View style={{ flex: 1, padding: 20, paddingTop: 60 }}>
 
-
-                {userId ? (
+                {loading ? (
+                    <Text style={{ color: 'white' }}>Loading...</Text>
+                ) : userId ? (
                     <PlanHistoryView
                         userId={userId}
                         onLoadPlan={handleLoadPlan}
                         onBack={() => router.back()}
                     />
                 ) : (
-                    <Text style={{ color: 'white' }}>Loading...</Text>
+                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ color: 'white', marginBottom: 20 }}>Please sign in to view your plans.</Text>
+                        <TouchableOpacity
+                            onPress={() => router.push('/login')}
+                            style={{ backgroundColor: '#FF6B6B', padding: 12, borderRadius: 8 }}
+                        >
+                            <Text style={{ color: 'white', fontWeight: 'bold' }}>Sign In</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 20 }}>
+                            <Text style={{ color: '#888' }}>Go Back</Text>
+                        </TouchableOpacity>
+                    </View>
                 )}
             </View>
         </View>
