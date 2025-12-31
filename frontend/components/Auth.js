@@ -5,6 +5,8 @@ import CustomAlert from './CustomAlert';
 
 import * as WebBrowser from 'expo-web-browser';
 import { makeRedirectUri } from 'expo-auth-session';
+import * as AppleAuthentication from 'expo-apple-authentication';
+import { Platform } from 'react-native';
 
 WebBrowser.maybeCompleteAuthSession(); // Handle redirect on web
 
@@ -93,12 +95,43 @@ export default function Auth({ onLoginSuccess }) {
                         refresh_token: extractParam(result.url, 'refresh_token'),
                     });
                     if (sessionError) throw sessionError;
+
+                    if (onLoginSuccess) onLoginSuccess();
                 }
             }
         } catch (err) {
             showAlert("Error", err.message);
         } finally {
             setLoading(false);
+        }
+    };
+
+    const signInWithApple = async () => {
+        try {
+            const credential = await AppleAuthentication.signInAsync({
+                requestedScopes: [
+                    AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+                    AppleAuthentication.AppleAuthenticationScope.EMAIL,
+                ],
+            });
+
+            if (credential.identityToken) {
+                const { error, data } = await supabase.auth.signInWithIdToken({
+                    provider: 'apple',
+                    token: credential.identityToken,
+                });
+                if (error) {
+                    showAlert("Error", error.message);
+                } else {
+                    if (onLoginSuccess) onLoginSuccess();
+                }
+            }
+        } catch (e) {
+            if (e.code === 'ERR_REQUEST_CANCELED') {
+                // User canceled, do nothing
+            } else {
+                showAlert("Error", e.message);
+            }
         }
     };
 
@@ -121,6 +154,16 @@ export default function Auth({ onLoginSuccess }) {
             >
                 <Text style={styles.googleButtonText}>🔵  Sign in with Google</Text>
             </TouchableOpacity>
+
+            {Platform.OS === 'ios' && (
+                <AppleAuthentication.AppleAuthenticationButton
+                    buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+                    buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.WHITE}
+                    cornerRadius={12}
+                    style={{ width: '100%', height: 50, marginBottom: 24 }}
+                    onPress={signInWithApple}
+                />
+            )}
 
             <View style={styles.divider}>
                 <View style={styles.line} />

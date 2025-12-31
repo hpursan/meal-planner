@@ -1,13 +1,25 @@
 import Auth from '../components/Auth';
 import { View, StyleSheet, StatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useRouter } from 'expo-router';
 
 export default function LoginScreen() {
+    const router = useRouter();
+
+    const handleLoginSuccess = () => {
+        // Navigate to home logic
+        if (router.canGoBack()) {
+            router.back();
+        } else {
+            router.replace('/');
+        }
+    };
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" />
             <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
-            <Auth />
+            <Auth onLoginSuccess={handleLoginSuccess} />
         </View>
     );
 }
