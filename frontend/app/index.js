@@ -6,9 +6,6 @@ import { usePlan } from '../context/PlanContext';
 import { generatePlan } from '../services/api';
 import { supabase } from '../services/supabase';
 import { useEffect } from 'react';
-import { Colors } from '../constants/Colors';
-import { Typography } from '../constants/Typography';
-import { Spacing } from '../constants/Spacing';
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -50,11 +47,17 @@ export default function HomeScreen() {
             return;
         }
 
+        if (parseInt(days) > 14) {
+            Alert.alert("Limit Reached", "Plans are currently limited to a maximum of 14 days.");
+            return;
+        }
+
         setLoading(true);
         try {
             const data = await generatePlan(parseInt(days), selectedPrefs, meatFreeDays);
 
             // Get session to save (optional logic, could verify first)
+            const { data: { session } } = await supabase.auth.getSession();
             let newPlanId = null;
 
             if (session && session.user) {
@@ -89,22 +92,26 @@ export default function HomeScreen() {
         }
     };
 
+    const handleLogout = async () => {
+        await supabase.auth.signOut();
+        router.replace('/login');
+    };
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <LinearGradient colors={[Colors.background.primary, Colors.background.secondary]} style={styles.background} />
+            <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
 
             <View style={styles.topBar}>
-                <TouchableOpacity onPress={() => router.push('/history')} style={{ marginRight: Spacing.xl }}>
+                <TouchableOpacity onPress={() => router.push('/history')} style={{ marginRight: 20 }}>
                     <Text style={styles.historyText}>My Plans</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => router.push('/settings')}>
-                    <Text style={styles.settingsText}>Settings</Text>
+                <TouchableOpacity onPress={handleLogout}>
+                    <Text style={styles.logoutText}>Sign Out</Text>
                 </TouchableOpacity>
             </View>
 
             <InputForm
-                // ... props
                 days={days}
                 setDays={setDays}
                 planName={planName}
@@ -124,28 +131,28 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Colors.background.primary,
+        backgroundColor: '#121212',
     },
     background: {
         position: 'absolute',
         left: 0, right: 0, top: 0, bottom: 0,
     },
     topBar: {
-        paddingHorizontal: Spacing.layout.screenPadding,
-        paddingTop: 50,
+        paddingHorizontal: 20,
+        paddingTop: 50, // More padding for Safe Area
         flexDirection: 'row',
         justifyContent: 'flex-end',
         width: '100%',
         zIndex: 10,
     },
     historyText: {
-        color: Colors.action.primary,
-        fontWeight: Typography.weights.bold,
-        fontSize: Typography.sizes.sm,
+        color: '#BB86FC',
+        fontWeight: 'bold',
+        fontSize: 14,
     },
-    settingsText: {
-        color: Colors.text.secondary,
-        fontWeight: Typography.weights.bold,
-        fontSize: Typography.sizes.sm,
+    logoutText: {
+        color: '#FF6B6B',
+        fontWeight: 'bold',
+        fontSize: 14,
     },
 });
