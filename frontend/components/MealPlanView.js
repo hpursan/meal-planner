@@ -5,6 +5,10 @@ const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
     const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
 
+    React.useEffect(() => {
+        setError(false);
+    }, [uri]);
+
     if (error || !uri) {
         return (
             <View style={[style, styles.placeholderImage]}>
