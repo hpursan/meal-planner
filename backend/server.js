@@ -68,8 +68,8 @@ const requireAuth = async (req, res, next) => {
     }
 };
 
-// Protect the Generate Plan endpoint
-app.post('/api/plan', requireAuth, (req, res) => {
+// Public: Generate Plan endpoint (No auth required for trial)
+app.post('/api/plan', (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
     if (!days || isNaN(days)) {
@@ -82,8 +82,8 @@ app.post('/api/plan', requireAuth, (req, res) => {
     res.json({ plan });
 });
 
-// Protect the Swap Meal endpoint
-app.post('/api/swap', requireAuth, (req, res) => {
+// Public: Swap Meal endpoint
+app.post('/api/swap', (req, res) => {
     const { currentId, type, preferences } = req.body;
     const newMeal = getSwapMeal(currentId, type, preferences);
 
