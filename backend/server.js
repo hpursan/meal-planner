@@ -78,17 +78,7 @@ app.post('/api/plan', requireAuth, (req, res) => {
 
     let plan = generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
 
-    // Transform image paths in the plan
-    const baseUrl = getBaseUrl(req);
-    plan = plan.map(day => ({
-        ...day,
-        meals: {
-            breakfast: { ...day.meals.breakfast, image: formatImage(day.meals.breakfast.image, baseUrl) },
-            lunch: { ...day.meals.lunch, image: formatImage(day.meals.lunch.image, baseUrl) },
-            dinner: { ...day.meals.dinner, image: formatImage(day.meals.dinner.image, baseUrl) }
-        }
-    }));
-
+    // Return plan with relative image paths (Frontend handles base URL)
     res.json({ plan });
 });
 
@@ -101,14 +91,8 @@ app.post('/api/swap', requireAuth, (req, res) => {
         return res.status(404).json({ error: "No alternative found" });
     }
 
-    // Transform image path
-    const baseUrl = getBaseUrl(req);
-    const mealWithUrl = {
-        ...newMeal,
-        image: formatImage(newMeal.image, baseUrl)
-    };
-
-    res.json({ meal: mealWithUrl });
+    // Return meal with relative image path
+    res.json({ meal: newMeal });
 });
 
 if (require.main === module) {
