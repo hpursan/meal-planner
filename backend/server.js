@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
 require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
+const rateLimit = require('express-rate-limit'); // Middleware to rate limit requests
+const { MAX_PLAN_DAYS, GENERATION_WINDOW_MS, GENERATION_MAX_REQUESTS } = require('./config/limits');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +20,13 @@ const path = require('path');
 app.use(cors());
 app.use(bodyParser.json());
 
+// Rate Limiter for Generation Endpoint
+const generationLimiter = rateLimit({
+    windowMs: GENERATION_WINDOW_MS,
+    max: GENERATION_MAX_REQUESTS,
+    message: { error: "Too many plan generation requests, please try again later." }
+});
+
 app.get('/', (req, res) => {
     res.status(200).json({ status: 'healthy', service: 'Meal Planner API' });
 });
@@ -30,12 +39,7 @@ const getBaseUrl = (req) => {
     return `${req.protocol}://${req.get('host')}`;
 };
 
-// Helper: Prepend base URL to image path if it's local
-const formatImage = (imagePath, baseUrl) => {
-    if (!imagePath) return imagePath;
-    if (imagePath.startsWith('http')) return imagePath;
-    return `${baseUrl}${imagePath}`;
-};
+// ... (removed formatImage) ...
 
 // Middleware: Verify Supabase JWT
 const requireAuth = async (req, res, next) => {
@@ -69,11 +73,16 @@ const requireAuth = async (req, res, next) => {
 };
 
 // Public: Generate Plan endpoint (No auth required for trial)
-app.post('/api/plan', (req, res) => {
+app.post('/api/plan', generationLimiter, (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
     if (!days || isNaN(days)) {
         return res.status(400).json({ error: "Invalid days parameter" });
+    }
+
+    // Safety Cap using Central Config
+    if (parseInt(days) > MAX_PLAN_DAYS) {
+        return res.status(400).json({ error: `Plans are limited to ${MAX_PLAN_DAYS} days maximum.` });
     }
 
     let plan = generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
