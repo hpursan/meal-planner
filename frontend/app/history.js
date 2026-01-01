@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
 
 export default function HistoryScreen() {
     const router = useRouter();
-    const { setPlan, setPlanId, setPlanName, setDays, setSelectedPrefs, setMeatFreeDays, setCheckedItems } = usePlan();
+    const { setPlan, setPlanId, setPlanName, setCheckedItems } = usePlan();
     const [userId, setUserId] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -20,7 +20,9 @@ export default function HistoryScreen() {
         });
 
         // Listen for changes (e.g. login happening just as we mount)
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
             if (session) {
                 setUserId(session.user.id);
             } else {
@@ -47,15 +49,10 @@ export default function HistoryScreen() {
             <StatusBar barStyle="light-content" />
             <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
             <View style={{ flex: 1, padding: 20, paddingTop: 60 }}>
-
                 {loading ? (
                     <Text style={{ color: 'white' }}>Loading...</Text>
                 ) : userId ? (
-                    <PlanHistoryView
-                        userId={userId}
-                        onLoadPlan={handleLoadPlan}
-                        onBack={() => router.back()}
-                    />
+                    <PlanHistoryView userId={userId} onLoadPlan={handleLoadPlan} onBack={() => router.back()} />
                 ) : (
                     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Text style={{ color: 'white', marginBottom: 20 }}>Please sign in to view your plans.</Text>
@@ -83,6 +80,9 @@ const styles = StyleSheet.create({
     },
     background: {
         position: 'absolute',
-        left: 0, right: 0, top: 0, bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
     },
 });

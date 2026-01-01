@@ -1,9 +1,8 @@
-import { Stack, Slot, useRouter, useSegments } from 'expo-router';
+import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PlanProvider } from '../context/PlanContext';
 import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
-import { View, ActivityIndicator } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { ErrorBoundary } from '../components/ErrorBoundary';
 
@@ -15,10 +14,8 @@ try {
 }
 
 function RootLayoutNav() {
-    const [session, setSession] = useState(null);
+    const [_session, setSession] = useState(null);
     const [initialized, setInitialized] = useState(false);
-    const router = useRouter();
-    const segments = useSegments();
 
     useEffect(() => {
         // Check initial session
@@ -32,10 +29,12 @@ function RootLayoutNav() {
         });
 
         // Listen for changes
-        const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange(async (event, session) => {
             setSession(session);
             // We only log events now, no forced redirects.
-            console.log("Auth Event:", event);
+            console.log('Auth Event:', event);
         });
 
         return () => subscription.unsubscribe();

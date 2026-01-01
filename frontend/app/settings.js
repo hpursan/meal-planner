@@ -28,21 +28,23 @@ export default function SettingsScreen() {
 
     const handleDeleteAccount = () => {
         if (Platform.OS === 'web') {
-            const confirmed = window.confirm("Are you sure you want to delete your account? This action is permanent and cannot be undone.");
+            const confirmed = window.confirm(
+                'Are you sure you want to delete your account? This action is permanent and cannot be undone.'
+            );
             if (confirmed) {
                 performDelete();
             }
         } else {
             Alert.alert(
-                "Delete Account",
-                "Are you sure you want to delete your account? This action is permanent and cannot be undone.",
+                'Delete Account',
+                'Are you sure you want to delete your account? This action is permanent and cannot be undone.',
                 [
-                    { text: "Cancel", style: "cancel" },
+                    { text: 'Cancel', style: 'cancel' },
                     {
-                        text: "Delete My Account",
-                        style: "destructive",
-                        onPress: performDelete
-                    }
+                        text: 'Delete My Account',
+                        style: 'destructive',
+                        onPress: performDelete,
+                    },
                 ]
             );
         }
@@ -55,38 +57,39 @@ export default function SettingsScreen() {
 
             if (error) {
                 // Fallback if RPC fails, inform user
-                console.log("Deletion RPC failed:", error);
-                const message = "To finalize the deletion of your account and all data, please tap 'Confirm' to launch your email client.";
+                console.log('Deletion RPC failed:', error);
+                const message =
+                    "To finalize the deletion of your account and all data, please tap 'Confirm' to launch your email client.";
 
                 if (Platform.OS === 'web') {
                     if (window.confirm(message)) {
-                        alert("Email Sent: Our support team will process your request within 24 hours.");
+                        alert('Email Sent: Our support team will process your request within 24 hours.');
                     }
                 } else {
-                    Alert.alert(
-                        "Request Received",
-                        message,
-                        [
-                            { text: "Cancel" },
-                            {
-                                text: "Confirm",
-                                onPress: () => Alert.alert("Email Sent", "Our support team will process your request within 24 hours.")
-                            }
-                        ]
-                    );
+                    Alert.alert('Request Received', message, [
+                        { text: 'Cancel' },
+                        {
+                            text: 'Confirm',
+                            onPress: () =>
+                                Alert.alert(
+                                    'Email Sent',
+                                    'Our support team will process your request within 24 hours.'
+                                ),
+                        },
+                    ]);
                 }
             } else {
                 await supabase.auth.signOut();
                 if (Platform.OS === 'web') {
-                    window.alert("Account Deleted: Your account has been successfully deleted.");
+                    window.alert('Account Deleted: Your account has been successfully deleted.');
                 } else {
-                    Alert.alert("Account Deleted", "Your account has been successfully deleted.");
+                    Alert.alert('Account Deleted', 'Your account has been successfully deleted.');
                 }
                 router.replace('/login');
             }
         } catch (e) {
-            const errMsg = "Something went wrong. Please try again.";
-            Platform.OS === 'web' ? window.alert(errMsg) : Alert.alert("Error", errMsg);
+            const errMsg = 'Something went wrong. Please try again.';
+            Platform.OS === 'web' ? window.alert(errMsg) : Alert.alert('Error', errMsg);
         }
     };
 
@@ -94,28 +97,27 @@ export default function SettingsScreen() {
         const email = 'helpme.mealplanner@gmail.com';
         const url = `mailto:${email}?subject=Meal Planner Support`;
 
-        Alert.alert(
-            "Contact Support",
-            `Please email us at:\n${email}`,
-            [
-                { text: "Cancel", style: "cancel" },
-                {
-                    text: "Open Mail App",
-                    onPress: async () => {
-                        try {
-                            await Linking.openURL(url);
-                        } catch (e) {
-                            console.log("Could not open mail app:", e);
-                        }
+        Alert.alert('Contact Support', `Please email us at:\n${email}`, [
+            { text: 'Cancel', style: 'cancel' },
+            {
+                text: 'Open Mail App',
+                onPress: async () => {
+                    try {
+                        await Linking.openURL(url);
+                    } catch (e) {
+                        console.log('Could not open mail app:', e);
                     }
-                }
-            ]
-        );
+                },
+            },
+        ]);
     };
 
     return (
         <View style={styles.container}>
-            <LinearGradient colors={[Colors.background.primary, Colors.background.secondary]} style={styles.background} />
+            <LinearGradient
+                colors={[Colors.background.primary, Colors.background.secondary]}
+                style={styles.background}
+            />
 
             <View style={styles.header}>
                 <TouchableOpacity onPress={() => router.replace('/')}>
@@ -126,7 +128,6 @@ export default function SettingsScreen() {
             </View>
 
             <ScrollView contentContainerStyle={styles.content}>
-
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Account</Text>
                     <View style={styles.row}>
@@ -149,7 +150,9 @@ export default function SettingsScreen() {
 
                     <TouchableOpacity
                         style={[styles.row, { paddingVertical: 12 }]}
-                        onPress={() => Linking.openURL('https://www.apple.com/legal/internet-services/itunes/dev/stdeula/')}
+                        onPress={() =>
+                            Linking.openURL('https://www.apple.com/legal/internet-services/itunes/dev/stdeula/')
+                        }
                     >
                         <Text style={styles.label}>Terms of Use (EULA)</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
@@ -167,10 +170,7 @@ export default function SettingsScreen() {
 
                     <View style={{ height: 1, backgroundColor: Colors.border.default, opacity: 0.5 }} />
 
-                    <TouchableOpacity
-                        style={[styles.row, { paddingVertical: 12 }]}
-                        onPress={handleContactSupport}
-                    >
+                    <TouchableOpacity style={[styles.row, { paddingVertical: 12 }]} onPress={handleContactSupport}>
                         <Text style={styles.label}>Contact Support</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
                     </TouchableOpacity>
@@ -195,10 +195,7 @@ export default function SettingsScreen() {
                 </View>
             </ScrollView>
 
-            <FeedbackModal
-                visible={feedbackVisible}
-                onClose={() => setFeedbackVisible(false)}
-            />
+            <FeedbackModal visible={feedbackVisible} onClose={() => setFeedbackVisible(false)} />
         </View>
     );
 }
@@ -211,7 +208,10 @@ const styles = StyleSheet.create({
     },
     background: {
         position: 'absolute',
-        left: 0, right: 0, top: 0, bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
     },
     header: {
         flexDirection: 'row',
@@ -311,5 +311,5 @@ const styles = StyleSheet.create({
     version: {
         color: Colors.text.hint,
         fontSize: Typography.sizes.xs,
-    }
+    },
 });

@@ -16,7 +16,7 @@ export class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, errorInfo) {
         // Ideally log this to Sentry
-        console.error("Uncaught error:", error, errorInfo);
+        console.error('Uncaught error:', error, errorInfo);
     }
 
     handleReset = () => {
@@ -32,12 +32,8 @@ export class ErrorBoundary extends React.Component {
                     <ScrollView contentContainerStyle={styles.content}>
                         <Text style={styles.icon}>🤕</Text>
                         <Text style={styles.title}>Oops, something went wrong.</Text>
-                        <Text style={styles.message}>
-                            We're sorry, but the app encountered an unexpected error.
-                        </Text>
-                        <Text style={styles.code}>
-                            {this.state.error?.toString()}
-                        </Text>
+                        <Text style={styles.message}>We're sorry, but the app encountered an unexpected error.</Text>
+                        <Text style={styles.code}>{this.state.error?.toString()}</Text>
 
                         <TouchableOpacity style={styles.button} onPress={this.handleReset}>
                             <Text style={styles.buttonText}>Try Again</Text>
@@ -101,5 +97,5 @@ const styles = StyleSheet.create({
         color: '#000',
         fontWeight: 'bold',
         fontSize: Typography.sizes.md,
-    }
+    },
 });

@@ -11,13 +11,22 @@ import { useEffect } from 'react';
 export default function HomeScreen() {
     const router = useRouter();
     const {
-        days, setDays,
-        planName, setPlanName,
-        selectedPrefs, setSelectedPrefs,
-        meatFreeDays, setMeatFreeDays,
-        setPlan, setPlanId, setLoading, loading,
-        loadFromCache, plan, setIsOfflineMode,
-        isOnline
+        days,
+        setDays,
+        planName,
+        setPlanName,
+        selectedPrefs,
+        setSelectedPrefs,
+        meatFreeDays,
+        setMeatFreeDays,
+        setPlan,
+        setPlanId,
+        setLoading,
+        loading,
+        loadFromCache,
+        plan,
+        setIsOfflineMode,
+        isOnline,
     } = usePlan();
 
     useEffect(() => {
@@ -28,7 +37,7 @@ export default function HomeScreen() {
 
     const togglePref = (pref) => {
         if (selectedPrefs.includes(pref)) {
-            setSelectedPrefs(selectedPrefs.filter(p => p !== pref));
+            setSelectedPrefs(selectedPrefs.filter((p) => p !== pref));
         } else {
             setSelectedPrefs([...selectedPrefs, pref]);
         }
@@ -36,7 +45,7 @@ export default function HomeScreen() {
 
     const toggleMeatFreeDay = (day) => {
         if (meatFreeDays.includes(day)) {
-            setMeatFreeDays(meatFreeDays.filter(d => d !== day));
+            setMeatFreeDays(meatFreeDays.filter((d) => d !== day));
         } else {
             setMeatFreeDays([...meatFreeDays, day]);
         }
@@ -44,12 +53,12 @@ export default function HomeScreen() {
 
     const handleGeneratePlan = async () => {
         if (!days || isNaN(days) || parseInt(days) <= 0) {
-            Alert.alert("Invalid Input", "Please enter a valid number of days.");
+            Alert.alert('Invalid Input', 'Please enter a valid number of days.');
             return;
         }
 
         if (parseInt(days) > 14) {
-            Alert.alert("Limit Reached", "Plans are currently limited to a maximum of 14 days.");
+            Alert.alert('Limit Reached', 'Plans are currently limited to a maximum of 14 days.');
             return;
         }
 
@@ -58,19 +67,22 @@ export default function HomeScreen() {
             const data = await generatePlan(parseInt(days), selectedPrefs, meatFreeDays);
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
-
             // Get session to save (optional logic, could verify first)
-            const { data: { session } } = await supabase.auth.getSession();
+            const {
+                data: { session },
+            } = await supabase.auth.getSession();
             let newPlanId = null;
 
             if (session && session.user) {
                 const { data: savedData, error } = await supabase
                     .from('saved_plans')
-                    .insert([{
-                        user_id: session.user.id,
-                        plan_data: data.plan,
-                        name: planName || `Plan ${new Date().toLocaleDateString()} `
-                    }])
+                    .insert([
+                        {
+                            user_id: session.user.id,
+                            plan_data: data.plan,
+                            name: planName || `Plan ${new Date().toLocaleDateString()} `,
+                        },
+                    ])
                     .select()
                     .single();
 
@@ -90,7 +102,7 @@ export default function HomeScreen() {
         } catch (error) {
             console.error(error);
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
-            Alert.alert("Error", error.message || "Failed to generate plan.");
+            Alert.alert('Error', error.message || 'Failed to generate plan.');
         } finally {
             setLoading(false);
         }
@@ -139,7 +151,10 @@ const styles = StyleSheet.create({
     },
     background: {
         position: 'absolute',
-        left: 0, right: 0, top: 0, bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
     },
     topBar: {
         paddingHorizontal: 20,

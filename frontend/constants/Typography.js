@@ -18,5 +18,5 @@ export const Typography = {
     spacing: {
         titleLetterSpacing: 0.5,
         labelLetterSpacing: 1,
-    }
+    },
 };

@@ -1,5 +1,16 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, Alert, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+    Modal,
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    StyleSheet,
+    ActivityIndicator,
+    Alert,
+    KeyboardAvoidingView,
+    Platform,
+} from 'react-native';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
@@ -11,46 +22,40 @@ export default function FeedbackModal({ visible, onClose }) {
 
     const handleSubmit = async () => {
         if (!message.trim()) {
-            Alert.alert("Empty Feedback", "Please type a message before sending.");
+            Alert.alert('Empty Feedback', 'Please type a message before sending.');
             return;
         }
 
         setLoading(true);
         try {
-            const { data: { session } } = await supabase.auth.getSession();
+            const {
+                data: { session },
+            } = await supabase.auth.getSession();
             const userId = session?.user?.id || null;
 
-            const { error } = await supabase
-                .from('feedback')
-                .insert([{
+            const { error } = await supabase.from('feedback').insert([
+                {
                     message: message.trim(),
-                    user_id: userId
-                }]);
+                    user_id: userId,
+                },
+            ]);
 
             if (error) throw error;
 
-            Alert.alert("Thank You!", "Your feedback has been received.");
+            Alert.alert('Thank You!', 'Your feedback has been received.');
             setMessage('');
             onClose();
         } catch (error) {
             console.error('Feedback error:', error);
-            Alert.alert("Error", "Failed to send feedback. Please try again.");
+            Alert.alert('Error', 'Failed to send feedback. Please try again.');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <Modal
-            visible={visible}
-            animationType="slide"
-            transparent={true}
-            onRequestClose={onClose}
-        >
-            <KeyboardAvoidingView
-                behavior={Platform.OS === "ios" ? "padding" : "height"}
-                style={styles.modalOverlay}
-            >
+        <Modal visible={visible} animationType="slide" transparent={true} onRequestClose={onClose}>
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.modalOverlay}>
                 <View style={styles.modalContent}>
                     <View style={styles.header}>
                         <Text style={styles.title}>Send Feedback</Text>
@@ -59,9 +64,7 @@ export default function FeedbackModal({ visible, onClose }) {
                         </TouchableOpacity>
                     </View>
 
-                    <Text style={styles.subtitle}>
-                        Found a bug? Have a feature idea? Let us know!
-                    </Text>
+                    <Text style={styles.subtitle}>Found a bug? Have a feature idea? Let us know!</Text>
 
                     <TextInput
                         style={styles.input}
@@ -152,5 +155,5 @@ const styles = StyleSheet.create({
         color: '#000', // Black text on Primary color usually readable
         fontWeight: 'bold',
         fontSize: Typography.sizes.md,
-    }
+    },
 });

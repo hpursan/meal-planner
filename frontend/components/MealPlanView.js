@@ -19,13 +19,7 @@ const SmartImage = ({ uri, style }) => {
 
     const fullUri = uri.startsWith('http') ? uri : `${API_URL}${uri}`;
 
-    return (
-        <Image
-            source={{ uri: fullUri }}
-            style={style}
-            onError={() => setError(true)}
-        />
-    );
+    return <Image source={{ uri: fullUri }} style={style} onError={() => setError(true)} />;
 };
 
 export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline = true }) {
@@ -34,16 +28,23 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
             {plan.map((day, index) => (
-                <View key={day.day} style={styles.dayCard} accessibilityRole="header" accessibilityLabel={`Day ${day.day}, ${day.dayName}`}>
+                <View
+                    key={day.day}
+                    style={styles.dayCard}
+                    accessibilityRole="header"
+                    accessibilityLabel={`Day ${day.day}, ${day.dayName}`}
+                >
                     <View style={styles.dayHeaderRow}>
                         <Text style={styles.dayHeader}>Day {day.day}</Text>
                         <Text style={styles.daySubHeader}>{day.dayName}</Text>
                     </View>
-                    {['breakfast', 'lunch', 'dinner'].map(type => {
+                    {['breakfast', 'lunch', 'dinner'].map((type) => {
                         const meal = day.meals[type];
                         return (
                             <View key={type} style={styles.mealRow}>
-                                <Text style={styles.mealType} accessibilityRole="text">{type.charAt(0).toUpperCase() + type.slice(1)}</Text>
+                                <Text style={styles.mealType} accessibilityRole="text">
+                                    {type.charAt(0).toUpperCase() + type.slice(1)}
+                                </Text>
                                 <View style={styles.mealContent}>
                                     <TouchableOpacity
                                         onPress={() => onSelectMeal(meal)}
@@ -58,7 +59,11 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                                         </View>
                                     </TouchableOpacity>
                                     <TouchableOpacity
-                                        onPress={() => isOnline ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal) : alert("Cannot swap meals while offline.")}
+                                        onPress={() =>
+                                            isOnline
+                                                ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)
+                                                : alert('Cannot swap meals while offline.')
+                                        }
                                         style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}
                                         accessibilityRole="button"
                                         accessibilityLabel={`Swap ${type} meal`}

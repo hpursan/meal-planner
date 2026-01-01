@@ -26,5 +26,5 @@ export const Colors = {
     status: {
         success: '#00C851', // Placeholder if needed
         error: '#FF6B6B',
-    }
+    },
 };

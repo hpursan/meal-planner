@@ -21,7 +21,7 @@ export function PlanProvider({ children }) {
 
     // Network Status Listener
     useEffect(() => {
-        const unsubscribe = NetInfo.addEventListener(state => {
+        const unsubscribe = NetInfo.addEventListener((state) => {
             setIsOnline(!!state.isConnected);
         });
         return () => unsubscribe();
@@ -32,14 +32,17 @@ export function PlanProvider({ children }) {
         const cacheData = async () => {
             try {
                 if (plan.length > 0) {
-                    await AsyncStorage.setItem(CACHE_KEY_PLAN, JSON.stringify({
-                        plan,
-                        days,
-                        planName,
-                        selectedPrefs,
-                        meatFreeDays,
-                        planId // We cache ID too, though it might not sync if offline
-                    }));
+                    await AsyncStorage.setItem(
+                        CACHE_KEY_PLAN,
+                        JSON.stringify({
+                            plan,
+                            days,
+                            planName,
+                            selectedPrefs,
+                            meatFreeDays,
+                            planId, // We cache ID too, though it might not sync if offline
+                        })
+                    );
                 }
                 if (Object.keys(checkedItems).length > 0) {
                     await AsyncStorage.setItem(CACHE_KEY_CHECKED, JSON.stringify(checkedItems));
@@ -76,7 +79,7 @@ export function PlanProvider({ children }) {
                 return true; // Success finding cache
             }
         } catch (e) {
-            console.error("Failed to load cache", e);
+            console.error('Failed to load cache', e);
         }
         return false;
     };
@@ -94,24 +97,36 @@ export function PlanProvider({ children }) {
         try {
             await AsyncStorage.removeItem(CACHE_KEY_PLAN);
             await AsyncStorage.removeItem(CACHE_KEY_CHECKED);
-        } catch (e) { }
+        } catch (e) {}
     };
 
     return (
-        <PlanContext.Provider value={{
-            plan, setPlan,
-            planId, setPlanId,
-            checkedItems, setCheckedItems,
-            days, setDays,
-            planName, setPlanName,
-            selectedPrefs, setSelectedPrefs,
-            meatFreeDays, setMeatFreeDays,
-            loading, setLoading,
-            clearPlan,
-            loadFromCache,
-            isOfflineMode, setIsOfflineMode,
-            isOnline, setIsOnline
-        }}>
+        <PlanContext.Provider
+            value={{
+                plan,
+                setPlan,
+                planId,
+                setPlanId,
+                checkedItems,
+                setCheckedItems,
+                days,
+                setDays,
+                planName,
+                setPlanName,
+                selectedPrefs,
+                setSelectedPrefs,
+                meatFreeDays,
+                setMeatFreeDays,
+                loading,
+                setLoading,
+                clearPlan,
+                loadFromCache,
+                isOfflineMode,
+                setIsOfflineMode,
+                isOnline,
+                setIsOnline,
+            }}
+        >
             {children}
         </PlanContext.Provider>
     );

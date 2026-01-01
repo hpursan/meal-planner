@@ -24,8 +24,6 @@ jest.mock('expo-router', () => {
     };
 });
 
-
-
 describe('App Layout Integration', () => {
     beforeEach(() => {
         jest.clearAllMocks();
@@ -43,7 +41,7 @@ describe('App Layout Integration', () => {
 
     it('redirects to Home when logged in and on auth page', async () => {
         supabase.auth.getSession.mockResolvedValue({
-            data: { session: { user: { id: '123' } } }
+            data: { session: { user: { id: '123' } } },
         });
         mockSegments = ['login']; // Simulate being on login page
 

@@ -11,5 +11,5 @@ export const Spacing = {
         cardRadius: 20,
         inputRadius: 12,
         buttonRadius: 16,
-    }
+    },
 };

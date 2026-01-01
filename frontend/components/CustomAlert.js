@@ -5,12 +5,7 @@ export default function CustomAlert({ visible, title, message, buttons = [], onC
     if (!visible) return null;
 
     return (
-        <Modal
-            animationType="fade"
-            transparent={true}
-            visible={visible}
-            onRequestClose={onClose}
-        >
+        <Modal animationType="fade" transparent={true} visible={visible} onRequestClose={onClose}>
             <View style={styles.overlay}>
                 <View style={styles.alertBox}>
                     <Text style={styles.title}>{title}</Text>
@@ -18,10 +13,7 @@ export default function CustomAlert({ visible, title, message, buttons = [], onC
 
                     <View style={styles.buttonContainer}>
                         {buttons.length === 0 ? (
-                            <TouchableOpacity
-                                style={[styles.button, styles.primaryButton]}
-                                onPress={onClose}
-                            >
+                            <TouchableOpacity style={[styles.button, styles.primaryButton]} onPress={onClose}>
                                 <Text style={styles.primaryButtonText}>OK</Text>
                             </TouchableOpacity>
                         ) : (
@@ -30,19 +22,29 @@ export default function CustomAlert({ visible, title, message, buttons = [], onC
                                     key={index}
                                     style={[
                                         styles.button,
-                                        btn.style === 'destructive' ? styles.destructiveButton :
-                                            btn.style === 'cancel' ? styles.cancelButton : styles.primaryButton
+                                        btn.style === 'destructive'
+                                            ? styles.destructiveButton
+                                            : btn.style === 'cancel'
+                                              ? styles.cancelButton
+                                              : styles.primaryButton,
                                     ]}
                                     onPress={() => {
                                         if (btn.onPress) btn.onPress();
                                         if (btn.style === 'cancel' || !btn.onPress) onClose();
                                     }}
                                 >
-                                    <Text style={[
-                                        styles.buttonText,
-                                        btn.style === 'destructive' ? styles.destructiveText :
-                                            btn.style === 'cancel' ? styles.cancelText : styles.primaryText
-                                    ]}>{btn.text}</Text>
+                                    <Text
+                                        style={[
+                                            styles.buttonText,
+                                            btn.style === 'destructive'
+                                                ? styles.destructiveText
+                                                : btn.style === 'cancel'
+                                                  ? styles.cancelText
+                                                  : styles.primaryText,
+                                        ]}
+                                    >
+                                        {btn.text}
+                                    </Text>
                                 </TouchableOpacity>
                             ))
                         )}
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
         padding: 24,
         borderWidth: 1,
         borderColor: '#333',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.5,
         shadowRadius: 20,

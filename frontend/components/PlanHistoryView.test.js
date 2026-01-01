@@ -4,7 +4,7 @@ import PlanHistoryView from './PlanHistoryView';
 import { supabase } from '../services/supabase';
 
 jest.mock('../context/PlanContext', () => ({
-    usePlan: () => ({ isOnline: true })
+    usePlan: () => ({ isOnline: true }),
 }));
 
 jest.mock('expo-router', () => {
@@ -31,7 +31,7 @@ describe('PlanHistoryView', () => {
         // Mock Supabase response
         const mockPlans = [
             { id: '1', name: 'Keto Week 1', created_at: '2023-01-01T10:00:00Z', plan_data: {} },
-            { id: '2', name: 'Vegan Detox', created_at: '2023-01-02T10:00:00Z', plan_data: {} }
+            { id: '2', name: 'Vegan Detox', created_at: '2023-01-02T10:00:00Z', plan_data: {} },
         ];
 
         supabase.from.mockReturnValue({
@@ -52,7 +52,7 @@ describe('PlanHistoryView', () => {
 
     it('calls onLoadPlan when a plan is tapped', async () => {
         const mockPlans = [
-            { id: '1', name: 'Keto Week 1', created_at: '2023-01-01T10:00:00Z', plan_data: { foo: 'bar' } }
+            { id: '1', name: 'Keto Week 1', created_at: '2023-01-01T10:00:00Z', plan_data: { foo: 'bar' } },
         ];
 
         supabase.from.mockReturnValue({

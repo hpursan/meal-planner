@@ -12,17 +12,16 @@ export default function RecipeModal({ selectedMeal, onClose }) {
     if (!selectedMeal) return null;
 
     return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={!!selectedMeal}
-            onRequestClose={onClose}
-        >
+        <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
             <View style={styles.modalOverlay}>
                 <View style={styles.modalContent}>
                     {!imageError && selectedMeal.image ? (
                         <Image
-                            source={{ uri: selectedMeal.image.startsWith('http') ? selectedMeal.image : `${process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'}${selectedMeal.image}` }}
+                            source={{
+                                uri: selectedMeal.image.startsWith('http')
+                                    ? selectedMeal.image
+                                    : `${process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'}${selectedMeal.image}`,
+                            }}
                             style={styles.heroImage}
                             onError={() => setImageError(true)}
                         />
@@ -43,30 +42,39 @@ export default function RecipeModal({ selectedMeal, onClose }) {
                             <View style={styles.calBadge}>
                                 <Text style={styles.calText}>{selectedMeal.calories || 'N/A'} kcal</Text>
                             </View>
-                            {selectedMeal.tags && selectedMeal.tags.slice(0, 3).map((tag, i) => (
-                                <View key={i} style={styles.tagBadge}>
-                                    <Text style={styles.tagText}>{tag}</Text>
-                                </View>
-                            ))}
+                            {selectedMeal.tags &&
+                                selectedMeal.tags.slice(0, 3).map((tag, i) => (
+                                    <View key={i} style={styles.tagBadge}>
+                                        <Text style={styles.tagText}>{tag}</Text>
+                                    </View>
+                                ))}
                         </View>
 
                         <Text style={styles.sectionHeader}>Ingredients</Text>
                         <View style={styles.ingredientList}>
-                            {selectedMeal.ingredients ? selectedMeal.ingredients.map((ing, i) => (
-                                <Text key={i} style={styles.ingredientText}>
-                                    • {typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`}
-                                </Text>
-                            )) : <Text style={styles.ingredientText}>No ingredients listed.</Text>}
+                            {selectedMeal.ingredients ? (
+                                selectedMeal.ingredients.map((ing, i) => (
+                                    <Text key={i} style={styles.ingredientText}>
+                                        • {typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`}
+                                    </Text>
+                                ))
+                            ) : (
+                                <Text style={styles.ingredientText}>No ingredients listed.</Text>
+                            )}
                         </View>
 
                         <Text style={styles.sectionHeader}>Instructions</Text>
                         <View style={styles.instructionList}>
-                            {selectedMeal.instructions ? selectedMeal.instructions.map((step, i) => (
-                                <View key={i} style={styles.stepRow}>
-                                    <Text style={styles.stepNum}>{i + 1}</Text>
-                                    <Text style={styles.stepText}>{step}</Text>
-                                </View>
-                            )) : <Text style={styles.stepText}>No instructions available.</Text>}
+                            {selectedMeal.instructions ? (
+                                selectedMeal.instructions.map((step, i) => (
+                                    <View key={i} style={styles.stepRow}>
+                                        <Text style={styles.stepNum}>{i + 1}</Text>
+                                        <Text style={styles.stepText}>{step}</Text>
+                                    </View>
+                                ))
+                            ) : (
+                                <Text style={styles.stepText}>No instructions available.</Text>
+                            )}
                         </View>
                     </ScrollView>
                 </View>

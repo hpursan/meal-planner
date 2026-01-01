@@ -11,7 +11,8 @@ import RecipeModal from '../components/RecipeModal';
 
 export default function ResultsScreen() {
     const router = useRouter();
-    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode, isOnline } = usePlan();
+    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode, isOnline } =
+        usePlan();
     const [resultsTab, setResultsTab] = useState('PLAN');
     const [selectedMeal, setSelectedMeal] = useState(null);
 
@@ -20,8 +21,8 @@ export default function ResultsScreen() {
         const dayName = plan[dayIndex].dayName;
 
         if (meatFreeDays.includes(dayName)) {
-            if (!effectivePrefs.includes("Vegan") && !effectivePrefs.includes("Vegetarian")) {
-                effectivePrefs.push("Vegetarian");
+            if (!effectivePrefs.includes('Vegan') && !effectivePrefs.includes('Vegetarian')) {
+                effectivePrefs.push('Vegetarian');
             }
         }
 
@@ -34,16 +35,13 @@ export default function ResultsScreen() {
 
                 // Update Supabase
                 if (planId) {
-                    await supabase
-                        .from('saved_plans')
-                        .update({ plan_data: newPlan })
-                        .eq('id', planId);
+                    await supabase.from('saved_plans').update({ plan_data: newPlan }).eq('id', planId);
                 }
             } else {
-                Alert.alert("Info", "No other matching meals found.");
+                Alert.alert('Info', 'No other matching meals found.');
             }
         } catch (error) {
-            Alert.alert("Error", "Failed to swap meal.");
+            Alert.alert('Error', 'Failed to swap meal.');
         }
     };
 
@@ -57,7 +55,9 @@ export default function ResultsScreen() {
         return (
             <View style={styles.container}>
                 <Text style={{ color: 'white', marginTop: 100, textAlign: 'center' }}>No plan loaded.</Text>
-                <TouchableOpacity onPress={() => router.replace('/')}><Text style={{ color: '#BB86FC', textAlign: 'center', marginTop: 20 }}>Go Home</Text></TouchableOpacity>
+                <TouchableOpacity onPress={() => router.replace('/')}>
+                    <Text style={{ color: '#BB86FC', textAlign: 'center', marginTop: 20 }}>Go Home</Text>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -80,7 +80,7 @@ export default function ResultsScreen() {
                 )}
 
                 <View style={styles.headerRow}>
-                    <Text style={styles.title}>{planName || "Your Plan"}</Text>
+                    <Text style={styles.title}>{planName || 'Your Plan'}</Text>
                     <TouchableOpacity onPress={handleNewPlan} style={styles.smallButton}>
                         <Text style={styles.smallButtonText}>New</Text>
                     </TouchableOpacity>
@@ -98,7 +98,9 @@ export default function ResultsScreen() {
                         style={[styles.tab, resultsTab === 'SHOPPING' && styles.tabActive]}
                         onPress={() => setResultsTab('SHOPPING')}
                     >
-                        <Text style={[styles.tabText, resultsTab === 'SHOPPING' && styles.tabTextActive]}>Shopping List</Text>
+                        <Text style={[styles.tabText, resultsTab === 'SHOPPING' && styles.tabTextActive]}>
+                            Shopping List
+                        </Text>
                     </TouchableOpacity>
                 </View>
 
@@ -114,10 +116,7 @@ export default function ResultsScreen() {
                 )}
             </View>
 
-            <RecipeModal
-                selectedMeal={selectedMeal}
-                onClose={() => setSelectedMeal(null)}
-            />
+            <RecipeModal selectedMeal={selectedMeal} onClose={() => setSelectedMeal(null)} />
         </View>
     );
 }
@@ -129,7 +128,10 @@ const styles = StyleSheet.create({
     },
     background: {
         position: 'absolute',
-        left: 0, right: 0, top: 0, bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
     },
     resultsContainer: {
         flex: 1,

@@ -1,28 +1,40 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, TouchableWithoutFeedback, Keyboard, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    ActivityIndicator,
+    TouchableWithoutFeedback,
+    Keyboard,
+    ScrollView,
+    KeyboardAvoidingView,
+    Platform,
+} from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
 
 const PREFERENCES = [
-    { id: "Vegan", icon: "🌿", label: "Vegan" },
-    { id: "Vegetarian", icon: "🥗", label: "Vegetarian" },
-    { id: "Keto", icon: "🥑", label: "Keto" },
-    { id: "Paleo", icon: "🥩", label: "Paleo" },
-    { id: "Gluten-Free", icon: "🍞", label: "Gluten-Free" },
-    { id: "No Beef", icon: "🐄", label: "No Beef" },
-    { id: "No Pork", icon: "🐖", label: "No Pork" }
+    { id: 'Vegan', icon: '🌿', label: 'Vegan' },
+    { id: 'Vegetarian', icon: '🥗', label: 'Vegetarian' },
+    { id: 'Keto', icon: '🥑', label: 'Keto' },
+    { id: 'Paleo', icon: '🥩', label: 'Paleo' },
+    { id: 'Gluten-Free', icon: '🍞', label: 'Gluten-Free' },
+    { id: 'No Beef', icon: '🐄', label: 'No Beef' },
+    { id: 'No Pork', icon: '🐖', label: 'No Pork' },
 ];
 
 const DAYS_OF_WEEK = [
-    { id: "Monday", label: "Mn" },
-    { id: "Tuesday", label: "Tu" },
-    { id: "Wednesday", label: "Wd" },
-    { id: "Thursday", label: "Th" },
-    { id: "Friday", label: "Fr" },
-    { id: "Saturday", label: "Sa" },
-    { id: "Sunday", label: "Su" }
+    { id: 'Monday', label: 'Mn' },
+    { id: 'Tuesday', label: 'Tu' },
+    { id: 'Wednesday', label: 'Wd' },
+    { id: 'Thursday', label: 'Th' },
+    { id: 'Friday', label: 'Fr' },
+    { id: 'Saturday', label: 'Sa' },
+    { id: 'Sunday', label: 'Su' },
 ];
 
 export default function InputForm({
@@ -36,11 +48,11 @@ export default function InputForm({
     toggleMeatFreeDay,
     onGenerate,
     loading,
-    isOnline = true
+    isOnline = true,
 }) {
     const handleGeneratePress = () => {
         if (!isOnline) {
-            alert("No internet connection.\nPlease connect to generate a new plan.");
+            alert('No internet connection.\nPlease connect to generate a new plan.');
             return;
         }
         onGenerate();
@@ -104,14 +116,22 @@ export default function InputForm({
                         <Text style={styles.helperText}>Tap all that apply</Text>
 
                         <View style={styles.gridContainer}>
-                            {PREFERENCES.map(pref => (
+                            {PREFERENCES.map((pref) => (
                                 <TouchableOpacity
                                     key={pref.id}
-                                    style={[styles.gridItem, selectedPrefs.includes(pref.id) && styles.gridItemSelected]}
+                                    style={[
+                                        styles.gridItem,
+                                        selectedPrefs.includes(pref.id) && styles.gridItemSelected,
+                                    ]}
                                     onPress={() => togglePref(pref.id)}
                                 >
                                     <Text style={styles.gridIcon}>{pref.icon}</Text>
-                                    <Text style={[styles.gridLabel, selectedPrefs.includes(pref.id) && styles.gridLabelSelected]}>
+                                    <Text
+                                        style={[
+                                            styles.gridLabel,
+                                            selectedPrefs.includes(pref.id) && styles.gridLabelSelected,
+                                        ]}
+                                    >
                                         {pref.label}
                                     </Text>
                                 </TouchableOpacity>
@@ -128,13 +148,21 @@ export default function InputForm({
                         <Text style={styles.helperText}>Select days to go veggie (optional)</Text>
 
                         <View style={styles.daysContainer}>
-                            {DAYS_OF_WEEK.map(day => (
+                            {DAYS_OF_WEEK.map((day) => (
                                 <TouchableOpacity
                                     key={day.id}
-                                    style={[styles.dayCircle, meatFreeDays.includes(day.id) && styles.dayCircleSelected]}
+                                    style={[
+                                        styles.dayCircle,
+                                        meatFreeDays.includes(day.id) && styles.dayCircleSelected,
+                                    ]}
                                     onPress={() => toggleMeatFreeDay(day.id)}
                                 >
-                                    <Text style={[styles.dayText, meatFreeDays.includes(day.id) && styles.dayTextSelected]}>
+                                    <Text
+                                        style={[
+                                            styles.dayText,
+                                            meatFreeDays.includes(day.id) && styles.dayTextSelected,
+                                        ]}
+                                    >
                                         {day.label}
                                     </Text>
                                 </TouchableOpacity>
@@ -149,7 +177,11 @@ export default function InputForm({
                         activeOpacity={0.8}
                     >
                         <LinearGradient
-                            colors={isOnline ? [Colors.action.primary, Colors.action.primaryDark] : [Colors.background.elevated, '#555']}
+                            colors={
+                                isOnline
+                                    ? [Colors.action.primary, Colors.action.primaryDark]
+                                    : [Colors.background.elevated, '#555']
+                            }
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
                             style={styles.gradientButton}
@@ -163,7 +195,7 @@ export default function InputForm({
                                 </View>
                             ) : (
                                 <Text style={[styles.buttonText, !isOnline && { color: Colors.text.muted }]}>
-                                    {isOnline ? "✨ Generate Magic Plan" : "🚫 Offline Mode"}
+                                    {isOnline ? '✨ Generate Magic Plan' : '🚫 Offline Mode'}
                                 </Text>
                             )}
                         </LinearGradient>
@@ -215,7 +247,7 @@ const styles = StyleSheet.create({
         marginBottom: Spacing.xl,
         borderWidth: 1,
         borderColor: Colors.border.default,
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 0.3,
         shadowRadius: 10,
@@ -356,5 +388,5 @@ const styles = StyleSheet.create({
     disabledButton: {
         shadowOpacity: 0,
         elevation: 0,
-    }
+    },
 });

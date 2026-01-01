@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { supabase } from '../services/supabase';
 import CustomAlert from './CustomAlert';
 
@@ -17,48 +17,48 @@ export default function Auth({ onLoginSuccess }) {
     const [loading, setLoading] = useState(false);
     const [alertConfig, setAlertConfig] = useState({ visible: false, title: '', message: '', buttons: [] });
 
-    // ... existing alerts ... 
+    // ... existing alerts ...
     const showAlert = (title, message) => {
         setAlertConfig({ visible: true, title, message, buttons: [] });
     };
 
     const closeAlert = () => {
-        setAlertConfig(prev => ({ ...prev, visible: false }));
+        setAlertConfig((prev) => ({ ...prev, visible: false }));
     };
 
     // ... existing email methods ...
     const signInWithEmail = async () => {
-        if (!email || !password) return showAlert("Error", "Please fill in all fields");
+        if (!email || !password) return showAlert('Error', 'Please fill in all fields');
         setLoading(true);
         const { error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
         setLoading(false);
-        if (error) showAlert("Error", error.message);
+        if (error) showAlert('Error', error.message);
     };
 
     const signUpWithEmail = async () => {
-        if (!email || !password) return showAlert("Error", "Please fill in all fields");
+        if (!email || !password) return showAlert('Error', 'Please fill in all fields');
         setLoading(true);
         const { error } = await supabase.auth.signUp({
             email,
             password,
         });
         setLoading(false);
-        if (error) showAlert("Error", error.message);
-        else showAlert("Success", "Check your inbox for the verification email!");
+        if (error) showAlert('Error', error.message);
+        else showAlert('Success', 'Check your inbox for the verification email!');
     };
 
     const sendResetPassword = async () => {
-        if (!email) return showAlert("Error", "Please enter your email address first.");
+        if (!email) return showAlert('Error', 'Please enter your email address first.');
         setLoading(true);
         const { error } = await supabase.auth.resetPasswordForEmail(email, {
             redirectTo: 'https://meal-planner-web-b2ff.onrender.com',
         });
         setLoading(false);
-        if (error) showAlert("Error", error.message);
-        else showAlert("Success", "Password reset email sent!");
+        if (error) showAlert('Error', error.message);
+        else showAlert('Success', 'Password reset email sent!');
     };
 
     const signInWithGoogle = async () => {
@@ -67,9 +67,9 @@ export default function Auth({ onLoginSuccess }) {
             // Use the correct native scheme for standalone app
             const redirectUrl = makeRedirectUri({
                 native: 'mealplanner://login',
-                path: 'login'
+                path: 'login',
             });
-            console.log("Redirect URL:", redirectUrl);
+            console.log('Redirect URL:', redirectUrl);
 
             const { data, error } = await supabase.auth.signInWithOAuth({
                 provider: 'google',
@@ -79,7 +79,7 @@ export default function Auth({ onLoginSuccess }) {
                     queryParams: {
                         access_type: 'offline',
                         prompt: 'consent',
-                    }
+                    },
                 },
             });
 
@@ -97,12 +97,14 @@ export default function Auth({ onLoginSuccess }) {
                     if (sessionError) throw sessionError;
 
                     // Verify session is active before navigating
-                    const { data: { user } } = await supabase.auth.getUser();
+                    const {
+                        data: { user },
+                    } = await supabase.auth.getUser();
                     if (user && onLoginSuccess) onLoginSuccess();
                 }
             }
         } catch (err) {
-            showAlert("Error", err.message);
+            showAlert('Error', err.message);
         } finally {
             setLoading(false);
         }
@@ -118,15 +120,17 @@ export default function Auth({ onLoginSuccess }) {
             });
 
             if (credential.identityToken) {
-                const { error, data } = await supabase.auth.signInWithIdToken({
+                const { error } = await supabase.auth.signInWithIdToken({
                     provider: 'apple',
                     token: credential.identityToken,
                 });
                 if (error) {
-                    showAlert("Error", error.message);
+                    showAlert('Error', error.message);
                 } else {
                     // Verify
-                    const { data: { user } } = await supabase.auth.getUser();
+                    const {
+                        data: { user },
+                    } = await supabase.auth.getUser();
                     if (user && onLoginSuccess) onLoginSuccess();
                 }
             }
@@ -134,7 +138,7 @@ export default function Auth({ onLoginSuccess }) {
             if (e.code === 'ERR_REQUEST_CANCELED') {
                 // User canceled, do nothing
             } else {
-                showAlert("Error", e.message);
+                showAlert('Error', e.message);
             }
         }
     };
@@ -156,7 +160,7 @@ export default function Auth({ onLoginSuccess }) {
                 onPress={signInWithGoogle}
                 disabled={loading}
             >
-                <Text style={styles.googleButtonText}>🔵  Sign in with Google</Text>
+                <Text style={styles.googleButtonText}>🔵 Sign in with Google</Text>
             </TouchableOpacity>
 
             {Platform.OS === 'ios' && (

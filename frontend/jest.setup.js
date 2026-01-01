@@ -1,4 +1,3 @@
-
 // Mock Async Storage
 import mockAsyncStorage from '@react-native-async-storage/async-storage/jest/async-storage-mock';
 
@@ -10,7 +9,7 @@ jest.mock('@react-native-community/netinfo', () => mockRNCNetInfo);
 
 // Mock Expo Linear Gradient
 jest.mock('expo-linear-gradient', () => ({
-    LinearGradient: 'LinearGradient'
+    LinearGradient: 'LinearGradient',
 }));
 
 // Mock Supabase
@@ -32,7 +31,7 @@ jest.mock('./services/supabase', () => ({
             insert: jest.fn().mockReturnThis(),
             update: jest.fn().mockReturnThis(),
         })),
-    }
+    },
 }));
 
 // Mock API
@@ -43,4 +42,3 @@ jest.mock('./services/api', () => ({
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 // Mock removed
-

@@ -7,7 +7,7 @@ export default function UpdatePasswordForm({ onPasswordUpdated }) {
     const [loading, setLoading] = useState(false);
 
     const handleUpdate = async () => {
-        if (!password) return alert("Please enter a new password.");
+        if (!password) return alert('Please enter a new password.');
         setLoading(true);
 
         const { error } = await supabase.auth.updateUser({ password: password });
@@ -16,7 +16,7 @@ export default function UpdatePasswordForm({ onPasswordUpdated }) {
         if (error) {
             alert(error.message);
         } else {
-            alert("Password updated successfully!");
+            alert('Password updated successfully!');
             onPasswordUpdated();
         }
     };

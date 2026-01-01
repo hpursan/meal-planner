@@ -24,9 +24,7 @@ export default function SupportScreen() {
             </View>
 
             <View style={styles.content}>
-                <Text style={styles.description}>
-                    Need help? Found a bug? We are here to assist you.
-                </Text>
+                <Text style={styles.description}>Need help? Found a bug? We are here to assist you.</Text>
 
                 <View style={styles.card}>
                     <Text style={styles.label}>Email Us At</Text>
@@ -35,9 +33,7 @@ export default function SupportScreen() {
                     </TouchableOpacity>
                 </View>
 
-                <Text style={styles.note}>
-                    Tap the email above to open your mail app.
-                </Text>
+                <Text style={styles.note}>Tap the email above to open your mail app.</Text>
             </View>
         </View>
     );
@@ -101,5 +97,5 @@ const styles = StyleSheet.create({
     note: {
         color: Colors.text.muted,
         fontSize: Typography.sizes.sm,
-    }
+    },
 });

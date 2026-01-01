@@ -13,9 +13,9 @@ export default function ShoppingListView({ plan }) {
     const ingredientSources = {}; // Map: "Ingredient Name" -> ["Recipe A", "Recipe B"]
 
     if (plan) {
-        plan.forEach(day => {
-            Object.values(day.meals).forEach(meal => {
-                meal.ingredients.forEach(ing => {
+        plan.forEach((day) => {
+            Object.values(day.meals).forEach((meal) => {
+                meal.ingredients.forEach((ing) => {
                     // Handle both string (legacy) and object (new) formats
                     let name = typeof ing === 'string' ? ing : ing.name;
                     const key = name.trim();
@@ -38,7 +38,7 @@ export default function ShoppingListView({ plan }) {
     const toggleItem = async (item) => {
         const newCheckedState = {
             ...checkedItems,
-            [item]: !checkedItems[item]
+            [item]: !checkedItems[item],
         };
 
         // 1. Optimistic Update (Immediate Feedback)
@@ -51,14 +51,14 @@ export default function ShoppingListView({ plan }) {
                 .update({ checked_items: newCheckedState })
                 .eq('id', planId);
 
-            if (error) console.error("Failed to save shopping list:", error);
+            if (error) console.error('Failed to save shopping list:', error);
         }
     };
 
     const toggleExpanded = (item) => {
-        setExpandedItems(prev => ({
+        setExpandedItems((prev) => ({
             ...prev,
-            [item]: !prev[item]
+            [item]: !prev[item],
         }));
     };
 
@@ -83,9 +83,7 @@ export default function ShoppingListView({ plan }) {
                         <View style={[styles.checkbox, isChecked && styles.checkboxChecked]}>
                             {isChecked && <Text style={styles.checkmark}>✓</Text>}
                         </View>
-                        <Text style={[styles.itemText, isChecked && styles.itemTextChecked]}>
-                            {item}
-                        </Text>
+                        <Text style={[styles.itemText, isChecked && styles.itemTextChecked]}>{item}</Text>
                     </TouchableOpacity>
 
                     {count > 1 && (
@@ -94,9 +92,13 @@ export default function ShoppingListView({ plan }) {
                             style={styles.countBadge}
                             accessibilityRole="button"
                             accessibilityLabel={`View recipes for ${item}`}
-                            accessibilityHint={isExpanded ? "Collapse recipe list" : "Expand to see which recipes use this ingredient"}
+                            accessibilityHint={
+                                isExpanded ? 'Collapse recipe list' : 'Expand to see which recipes use this ingredient'
+                            }
                         >
-                            <Text style={styles.count}>{count}x {isExpanded ? '▲' : '▼'}</Text>
+                            <Text style={styles.count}>
+                                {count}x {isExpanded ? '▲' : '▼'}
+                            </Text>
                         </TouchableOpacity>
                     )}
                 </View>
@@ -105,7 +107,9 @@ export default function ShoppingListView({ plan }) {
                     <View style={styles.detailsContainer}>
                         <Text style={styles.detailsHeader}>Used in:</Text>
                         {sources.map((source, index) => (
-                            <Text key={index} style={styles.sourceText}>• {source}</Text>
+                            <Text key={index} style={styles.sourceText}>
+                                • {source}
+                            </Text>
                         ))}
                     </View>
                 )}
