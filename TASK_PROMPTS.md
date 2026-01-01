@@ -88,7 +88,7 @@ Users are limited to 3-day plans unless they are "Pro".
 
 ---
 
-## 🧼 Prompt 4: Code Quality Automation (CI Implementation)
+## 🧼 Prompt 4: Code Quality Automation (CI Implementation) (DONE)
 
 **Role**: DevOps / Lead Engineer
 **Objective**: Enforce code standards to prevent regressions.
@@ -127,3 +127,32 @@ Users are limited to 3-day plans unless they are "Pro".
 
 **Definition of Done**:
 - Events are logged to console (in debug mode).
+
+---
+
+## 🧪 Prompt 6: Test Engineering (Integration & E2E)
+
+**Role**: QA Automation Engineer
+**Objective**: Increase test coverage for critical user flows.
+
+**Context**:
+We have Unit Tests (`planner.test.js`) and basic Component Tests (`AppRNTL.test.js`).
+We need to verify the *Integration* of components (Auth -> Home).
+
+**Requirements**:
+1.  **React Native Testing Library (Integration)**:
+    - Create `frontend/app/__tests__/AuthIntegration.test.js`.
+    - Test: "Submit Login Form -> Calls Supabase -> Redirects".
+    - Test: "Validation Error -> Shows Alert".
+    - Mock: `supabase-js`, `expo-router`.
+2.  **Maestro (E2E) Setup** (Optional but Recommended):
+    - Create folder `.maestro`.
+    - Create `login_flow.yaml`:
+        - `appId: com.mealplanner.app`
+        - `tapOn: "Sign In"`
+        - `inputText: "test@example.com"`
+    - Document how to run it (`maestro test .maestro/login_flow.yaml`).
+
+**Definition of Done**:
+- `npm test` runs the new Integration tests and passes.
+- PR includes a `.maestro` flow for critical path.
