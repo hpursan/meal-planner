@@ -36,6 +36,7 @@ export default function Auth({ onLoginSuccess }) {
         });
         setLoading(false);
         if (error) showAlert('Error', error.message);
+        else if (onLoginSuccess) onLoginSuccess();
     };
 
     const signUpWithEmail = async () => {
