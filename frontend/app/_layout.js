@@ -1,3 +1,10 @@
+import * as Sentry from '@sentry/react-native';
+
+Sentry.init({
+    dsn: 'https://8b2f089a6caedcbeefb0e2613ab6048f@o4510637378371584.ingest.us.sentry.io/4510637392723968',
+    debug: false
+});
+
 import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PlanProvider } from '../context/PlanContext';
@@ -68,7 +75,7 @@ function RootLayoutNav() {
     );
 }
 
-export default function Layout() {
+function Layout() {
     return (
         <ErrorBoundary>
             <PlanProvider>
@@ -77,3 +84,5 @@ export default function Layout() {
         </ErrorBoundary>
     );
 }
+
+export default Sentry.wrap(Layout);
