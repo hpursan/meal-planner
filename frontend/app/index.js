@@ -5,6 +5,7 @@ import InputForm from '../components/InputForm';
 import { usePlan } from '../context/PlanContext';
 import { generatePlan } from '../services/api';
 import { supabase } from '../services/supabase';
+import * as Haptics from 'expo-haptics';
 import { useEffect } from 'react';
 
 export default function HomeScreen() {
@@ -55,6 +56,8 @@ export default function HomeScreen() {
         setLoading(true);
         try {
             const data = await generatePlan(parseInt(days), selectedPrefs, meatFreeDays);
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+
 
             // Get session to save (optional logic, could verify first)
             const { data: { session } } = await supabase.auth.getSession();
@@ -86,7 +89,8 @@ export default function HomeScreen() {
             router.push('/results');
         } catch (error) {
             console.error(error);
-            Alert.alert("Error", "Failed to generate plan.");
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Error);
+            Alert.alert("Error", error.message || "Failed to generate plan.");
         } finally {
             setLoading(false);
         }
