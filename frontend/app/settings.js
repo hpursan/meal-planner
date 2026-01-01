@@ -169,7 +169,7 @@ export default function SettingsScreen() {
 
                     <TouchableOpacity
                         style={[styles.row, { paddingVertical: 12 }]}
-                        onPress={() => router.push('/support')}
+                        onPress={handleContactSupport}
                     >
                         <Text style={styles.label}>Contact Support</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>

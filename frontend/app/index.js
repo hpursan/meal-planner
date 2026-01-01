@@ -110,8 +110,8 @@ export default function HomeScreen() {
                 <TouchableOpacity onPress={() => router.push('/history')} style={{ marginRight: 20 }}>
                     <Text style={styles.historyText}>My Plans</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={handleLogout}>
-                    <Text style={styles.logoutText}>Sign Out</Text>
+                <TouchableOpacity onPress={() => router.push('/settings')}>
+                    <Text style={styles.logoutText}>Settings</Text>
                 </TouchableOpacity>
             </View>
 
