@@ -176,6 +176,15 @@ export default function SettingsScreen() {
                     </TouchableOpacity>
                 </View>
 
+                <TouchableOpacity
+                    style={[styles.section, { alignItems: 'center' }]}
+                    onPress={() => {
+                        throw new Error('Test Crash: Sentry Verification');
+                    }}
+                >
+                    <Text style={{ color: '#FF9800', fontWeight: 'bold' }}>⚠️ Test Sentry Crash</Text>
+                </TouchableOpacity>
+
                 <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
                     <Text style={styles.logoutText}>Sign Out</Text>
                 </TouchableOpacity>
