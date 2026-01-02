@@ -32,15 +32,7 @@
     },
     "plugins": [
       "expo-router",
-      "expo-apple-authentication",
-      [
-        "@sentry/react-native/expo",
-        {
-          "organization": "hpursan",
-          "project": "react-native",
-          "url": "https://sentry.io/"
-        }
-      ]
+      "expo-apple-authentication"
     ],
     "extra": {
       "router": {},
