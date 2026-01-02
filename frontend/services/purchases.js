@@ -2,7 +2,7 @@ import Purchases from 'react-native-purchases';
 import { Platform } from 'react-native';
 
 const API_KEYS = {
-    ios: 'test_CkZFRhSaxEEirrVFwkIcZQBVfaZ', // TODO: Swap with prod key via ENV later
+    ios: process.env.EXPO_PUBLIC_RC_KEY_IOS,
     android: '', // Placeholder
 };
 
