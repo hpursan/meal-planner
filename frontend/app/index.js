@@ -6,7 +6,8 @@ import { usePlan } from '../context/PlanContext';
 import { generatePlan } from '../services/api';
 import { supabase } from '../services/supabase';
 import * as Haptics from 'expo-haptics';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import PaywallModal from '../components/PaywallModal';
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -27,7 +28,10 @@ export default function HomeScreen() {
         plan,
         setIsOfflineMode,
         isOnline,
+        isPro,
     } = usePlan();
+
+    const [paywallVisible, setPaywallVisible] = useState(false);
 
     useEffect(() => {
         if (plan.length === 0) {
@@ -57,8 +61,17 @@ export default function HomeScreen() {
             return;
         }
 
-        if (parseInt(days) > 14) {
-            Alert.alert('Limit Reached', 'Plans are currently limited to a maximum of 14 days.');
+        const numDays = parseInt(days);
+        const MAX_FREE_DAYS = 3;
+
+        // Paywall Gate for Free Users
+        if (!isPro && numDays > MAX_FREE_DAYS) {
+            setPaywallVisible(true);
+            return;
+        }
+
+        if (numDays > 30) { // Can increase to 30 for Pro
+            Alert.alert('Limit Reached', 'Plans are currently limited to a maximum of 30 days.');
             return;
         }
 
@@ -140,6 +153,9 @@ export default function HomeScreen() {
                 loading={loading}
                 isOnline={isOnline}
             />
+
+
+            <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
         </View>
     );
 }

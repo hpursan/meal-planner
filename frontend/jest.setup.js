@@ -42,3 +42,13 @@ jest.mock('./services/api', () => ({
 
 // Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
 // Mock removed
+
+// Mock RevenueCat
+jest.mock('react-native-purchases', () => ({
+    configure: jest.fn(),
+    getOfferings: jest.fn().mockResolvedValue({ current: { availablePackages: [] } }),
+    getCustomerInfo: jest.fn().mockResolvedValue({ entitlements: { active: {} } }),
+    purchasePackage: jest.fn(),
+    restorePurchases: jest.fn(),
+    addCustomerInfoUpdateListener: jest.fn(),
+}));

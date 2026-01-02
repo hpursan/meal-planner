@@ -7,11 +7,15 @@ import { Spacing } from '../constants/Spacing';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useEffect, useState } from 'react';
 import FeedbackModal from '../components/FeedbackModal';
+import PaywallModal from '../components/PaywallModal';
+import { usePlan } from '../context/PlanContext';
 
 export default function SettingsScreen() {
     const router = useRouter();
     const [userEmail, setUserEmail] = useState('');
     const [feedbackVisible, setFeedbackVisible] = useState(false);
+    const [paywallVisible, setPaywallVisible] = useState(false);
+    const { isPro, packages } = usePlan();
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -129,6 +133,30 @@ export default function SettingsScreen() {
 
             <ScrollView contentContainerStyle={styles.content}>
                 <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Subscription</Text>
+
+                    {isPro ? (
+                        <View style={styles.row}>
+                            <Text style={styles.label}>Status</Text>
+                            <Text style={[styles.value, { color: Colors.brand.primary, fontWeight: 'bold' }]}>
+                                Pro Active ✨
+                            </Text>
+                        </View>
+                    ) : (
+                        <TouchableOpacity
+                            style={[styles.row, { paddingVertical: 12 }]}
+                            onPress={() => setPaywallVisible(true)}
+                        >
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.brand.primary, marginRight: 8 }} />
+                                <Text style={[styles.label, { fontWeight: 'bold', color: Colors.text.primary }]}>Upgrade to Pro</Text>
+                            </View>
+                            <Text style={{ color: Colors.brand.primary, fontSize: 18 }}>→</Text>
+                        </TouchableOpacity>
+                    )}
+                </View>
+
+                <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Account</Text>
                     <View style={styles.row}>
                         <Text style={styles.label}>Email</Text>
@@ -196,6 +224,7 @@ export default function SettingsScreen() {
             </ScrollView>
 
             <FeedbackModal visible={feedbackVisible} onClose={() => setFeedbackVisible(false)} />
+            <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
         </View>
     );
 }

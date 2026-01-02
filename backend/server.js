@@ -1,8 +1,8 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
-require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const rateLimit = require('express-rate-limit'); // Middleware to rate limit requests
 const { MAX_PLAN_DAYS, GENERATION_WINDOW_MS, GENERATION_MAX_REQUESTS } = require('./config/limits');
@@ -73,7 +73,7 @@ const requireAuth = async (req, res, next) => {
 };
 
 // Public: Generate Plan endpoint (No auth required for trial)
-app.post('/api/plan', generationLimiter, (req, res) => {
+app.post('/api/plan', generationLimiter, async (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
     if (!days || isNaN(days)) {
@@ -85,23 +85,33 @@ app.post('/api/plan', generationLimiter, (req, res) => {
         return res.status(400).json({ error: `Plans are limited to ${MAX_PLAN_DAYS} days maximum.` });
     }
 
-    let plan = generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
-
-    // Return plan with relative image paths (Frontend handles base URL)
-    res.json({ plan });
+    try {
+        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
+        // Return plan with relative image paths (Frontend handles base URL)
+        res.json({ plan });
+    } catch (error) {
+        console.error("Plan Generation Error:", error);
+        res.status(500).json({ error: "Failed to generate plan." });
+    }
 });
 
 // Public: Swap Meal endpoint
-app.post('/api/swap', (req, res) => {
+app.post('/api/swap', async (req, res) => {
     const { currentId, type, preferences } = req.body;
-    const newMeal = getSwapMeal(currentId, type, preferences);
 
-    if (!newMeal) {
-        return res.status(404).json({ error: "No alternative found" });
+    try {
+        const newMeal = await getSwapMeal(currentId, type, preferences);
+
+        if (!newMeal) {
+            return res.status(404).json({ error: "No alternative found" });
+        }
+
+        // Return meal with relative image path
+        res.json({ meal: newMeal });
+    } catch (error) {
+        console.error("Swap Error:", error);
+        res.status(500).json({ error: "Failed to swap meal." });
     }
-
-    // Return meal with relative image path
-    res.json({ meal: newMeal });
 });
 
 if (require.main === module) {

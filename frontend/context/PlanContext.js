@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import NetInfo from '@react-native-community/netinfo';
+import { PurchasesService } from '../services/purchases';
 
 const PlanContext = createContext();
 
@@ -19,6 +20,11 @@ export function PlanProvider({ children }) {
     const [isOfflineMode, setIsOfflineMode] = useState(false); // "Cached Mode"
     const [isOnline, setIsOnline] = useState(true); // "Network State"
 
+    // RevenueCat State
+    const [isPro, setIsPro] = useState(false);
+    const [packages, setPackages] = useState([]);
+    const [isRestoring, setIsRestoring] = useState(false);
+
     // Network Status Listener
     useEffect(() => {
         const unsubscribe = NetInfo.addEventListener((state) => {
@@ -26,6 +32,53 @@ export function PlanProvider({ children }) {
         });
         return () => unsubscribe();
     }, []);
+
+    // Initialize RevenueCat
+    useEffect(() => {
+        const initPurchases = async () => {
+            // Only init if online, or handle offline gracefully
+            try {
+                await PurchasesService.init();
+                const info = await PurchasesService.getCustomerInfo();
+                setIsPro(PurchasesService.isPro(info));
+
+                const pkgs = await PurchasesService.getOfferings();
+                setPackages(pkgs);
+            } catch (e) {
+                console.log('RevenueCat init failed', e);
+            }
+        };
+        initPurchases();
+    }, []);
+
+    // Helper functions for UI
+    const purchasePackage = async (pkg) => {
+        setLoading(true);
+        try {
+            const info = await PurchasesService.purchasePackage(pkg);
+            if (info) {
+                setIsPro(PurchasesService.isPro(info));
+                return true;
+            }
+        } catch (e) {
+            // Already handled in service mostly
+        } finally {
+            setLoading(false);
+        }
+        return false;
+    };
+
+    const restorePurchases = async () => {
+        setIsRestoring(true);
+        try {
+            const info = await PurchasesService.restorePurchases();
+            const status = PurchasesService.isPro(info);
+            setIsPro(status);
+            return status;
+        } finally {
+            setIsRestoring(false);
+        }
+    };
 
     // Persistence Effect: Save to Cache whenever critical data changes
     useEffect(() => {
@@ -97,7 +150,7 @@ export function PlanProvider({ children }) {
         try {
             await AsyncStorage.removeItem(CACHE_KEY_PLAN);
             await AsyncStorage.removeItem(CACHE_KEY_CHECKED);
-        } catch (e) {}
+        } catch (e) { }
     };
 
     return (
@@ -125,6 +178,13 @@ export function PlanProvider({ children }) {
                 setIsOfflineMode,
                 isOnline,
                 setIsOnline,
+                setIsOnline,
+                // Pro Features
+                isPro,
+                packages,
+                purchasePackage,
+                restorePurchases,
+                isRestoring,
             }}
         >
             {children}
