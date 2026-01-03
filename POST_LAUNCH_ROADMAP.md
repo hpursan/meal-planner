@@ -5,11 +5,11 @@
 ## 🚨 Phase 1: Stability & Observability (Critical)
 *Foundational work required before aggressive user acquisition.*
 
-- [ ] **Crash Reporting (Sentry)**:
+- [x] **Crash Reporting (Sentry)**:
     - critical for catching production crashes on user devices.
-    - [ ] Install `@sentry/react-native`.
-    - [ ] Wrap Root Component (`_layout.js`).
-    - [ ] Configure Source Maps automation.
+    - [x] Install `@sentry/react-native`.
+    - [x] Wrap Root Component (`_layout.js`).
+    - [x] Configure Source Maps automation.
 - [ ] **Error Boundaries**:
     - [ ] Replace default "Red Screen" with a friendly "Something went wrong" UI.
     - [ ] Add "Report to Support" button in the Error Boundary.
@@ -21,13 +21,13 @@
 ## 💰 Phase 2: Monetization (Business Goal)
 *Turning the free tool into a business.*
 
-- [ ] **RevenueCat Integration**:
-    - [ ] Setup Project in RevenueCat.
-    - [ ] Integrate `react-native-purchases`.
-- [ ] **Paywall UI**:
-    - [ ] Design "Pro" plan features (e.g., Plans > 3 days, Unlimited Swaps).
-    - [ ] Implement Subscription Screen/Modal.
-    - [ ] Implement "Restore Purchases".
+- [x] **RevenueCat Integration**:
+    - [x] Setup Project in RevenueCat.
+    - [x] Integrate `react-native-purchases`.
+- [x] **Paywall UI**:
+    - [x] Design "Pro" plan features (e.g., Plans > 3 days, Unlimited Swaps).
+    - [x] Implement Subscription Screen/Modal.
+    - [x] Implement "Restore Purchases".
 
 ## 📈 Phase 3: Growth & Analytics
 - [ ] **Analytics (PostHog)**:

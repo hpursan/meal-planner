@@ -78,5 +78,11 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
 - [x] **Beta Testing Group**: TestFlight Internal Testing active.
 - [ ] **Analytics**: Moved to Post-Launch.
 
+## ✅ Phase 7: Monetization & Stability (Completed)
+- [x] **RevenueCat Integration**: Wired up to App Store Connect.
+- [x] **Paywall UI**: "Unlock Pro" modal with Restore functionality.
+- [x] **Sentry**: Crash reporting integrated and source maps uploaded.
+- [x] **Production Build**: v1.0.3 (4) submitted to TestFlight.
+
 ## 🔜 Post-Launch (v1.1+)
 See `POST_LAUNCH_ROADMAP.md` for Sentry, Monetization, and Analytics.
