@@ -12,6 +12,10 @@ export const Colors = {
         hint: '#888888',
         inverse: '#000000',
     },
+    brand: {
+        primary: '#BB86FC', // Same as action.primary
+        secondary: '#7F5AF0',
+    },
     action: {
         primary: '#BB86FC',
         primaryDark: '#7F5AF0',
