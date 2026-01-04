@@ -5,6 +5,7 @@ import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
 import { LinearGradient } from 'expo-linear-gradient';
+import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
 import FeedbackModal from '../components/FeedbackModal';
 import PaywallModal from '../components/PaywallModal';
@@ -219,7 +220,9 @@ export default function SettingsScreen() {
                 </View>
 
                 <View style={styles.footer}>
-                    <Text style={styles.version}>Version 1.0.0-rc2</Text>
+                    <Text style={styles.version}>
+                        Version {Constants.expoConfig?.version || Constants.manifest?.version || '1.0.0'} ({Constants.expoConfig?.ios?.buildNumber || Constants.manifest?.ios?.buildNumber || '1'})
+                    </Text>
                 </View>
             </ScrollView>
 

@@ -72,11 +72,11 @@ const generateMealPlan = async (basePreferences, days, meatFreeDays = []) => {
         plan.push({
             day: i,
             dayName: dayName,
-            meals: [
-                getRandom(breakfastOptions) || fallback("Breakfast"),
-                getRandom(lunchOptions) || fallback("Lunch"),
-                getRandom(dinnerOptions) || fallback("Dinner")
-            ]
+            meals: {
+                breakfast: getRandom(breakfastOptions) || fallback("Breakfast"),
+                lunch: getRandom(lunchOptions) || fallback("Lunch"),
+                dinner: getRandom(dinnerOptions) || fallback("Dinner")
+            }
         });
     }
     return plan;
