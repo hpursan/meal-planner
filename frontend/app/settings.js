@@ -180,10 +180,10 @@ export default function SettingsScreen() {
                     <TouchableOpacity
                         style={[styles.row, { paddingVertical: 12 }]}
                         onPress={() =>
-                            Linking.openURL('https://www.apple.com/legal/internet-services/itunes/dev/stdeula/')
+                            Linking.openURL('https://meal-planner-dtkf.onrender.com/terms.html')
                         }
                     >
-                        <Text style={styles.label}>Terms of Use (EULA)</Text>
+                        <Text style={styles.label}>Terms of Service</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
                     </TouchableOpacity>
 

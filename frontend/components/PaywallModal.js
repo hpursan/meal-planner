@@ -57,8 +57,8 @@ export default function PaywallModal({ visible, onClose }) {
         if (isPro) onClose();
     };
 
-    const openTerms = () => WebBrowser.openBrowserAsync('https://your-terms-url.com');
-    const openPrivacy = () => WebBrowser.openBrowserAsync('https://your-privacy-url.com');
+    const openTerms = () => WebBrowser.openBrowserAsync('https://meal-planner-dtkf.onrender.com/terms.html');
+    const openPrivacy = () => WebBrowser.openBrowserAsync('https://meal-planner-dtkf.onrender.com/privacy.html');
 
     return (
         <Modal visible={visible} animationType="slide" presentationStyle="pageSheet">

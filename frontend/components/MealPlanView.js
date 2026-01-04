@@ -27,8 +27,10 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     if (!plan) return null;
 
     const isIOS = Platform.OS === 'ios';
-    const blurTint = isIOS ? "systemThinMaterialDark" : "dark";
-    const blurIntensity = isIOS ? 80 : 20;
+    // Use the thinnest native material for maximum "Glass" effect
+    const blurTint = isIOS ? "systemUltraThinMaterialDark" : "dark";
+    // Keep intensity at 100 to let the native material render fully
+    const blurIntensity = isIOS ? 100 : 50;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -39,7 +41,7 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                         tint={blurTint}
                         style={[
                             styles.blurContainer,
-                            !isIOS && { backgroundColor: 'rgba(30, 30, 46, 0.9)' } // Android Fallback
+                            !isIOS && { backgroundColor: 'rgba(30, 30, 46, 0.9)' } // Keep Android fallback
                         ]}
                     >
                         <View
@@ -105,7 +107,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         overflow: 'hidden',
         borderWidth: 1,
-        borderColor: 'rgba(255,255,255,0.2)', // Stronger rim
+        borderColor: 'rgba(255,255,255,0.15)', // Glassy Rim
         backgroundColor: 'transparent',
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 10 },
@@ -115,7 +117,6 @@ const styles = StyleSheet.create({
     },
     blurContainer: {
         padding: 24,
-        // Removed backgroundColor entirely to let BlurView tint handle it
     },
     dayHeaderRow: {
         flexDirection: 'row',
