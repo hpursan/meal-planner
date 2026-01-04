@@ -129,25 +129,32 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
+            <LinearGradient colors={['#0F0C29', '#302B63', '#24243E']} style={styles.background} />
 
             <View style={styles.topBar}>
                 <TouchableOpacity onPress={() => router.push('/history')} style={{ marginRight: 20 }}>
-                    <Text style={styles.historyText}>My Plans</Text>
+                    <Text style={styles.historyText}>MY PLANS</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => router.push('/settings')}>
-                    <Text style={styles.logoutText}>Settings</Text>
+                    <Text style={styles.logoutText}>SETTINGS</Text>
                 </TouchableOpacity>
             </View>
 
             {plan.length > 0 && (
-                <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
+                <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
                     <TouchableOpacity
-                        style={styles.resumeCard}
+                        activeOpacity={0.8}
                         onPress={() => router.push('/results')}
                     >
-                        <Text style={styles.resumeTitle}>Draft Plan Found</Text>
-                        <Text style={styles.resumeDesc}>Tap to continue {planName ? `"${planName}"` : 'your active plan'}</Text>
+                        <LinearGradient
+                            colors={['#BB86FC', '#7F5AF0']}
+                            start={{ x: 0, y: 0 }}
+                            end={{ x: 1, y: 1 }}
+                            style={styles.resumeCard}
+                        >
+                            <Text style={styles.resumeTitle}>RESUME ACTIVE PLANNING</Text>
+                            <Text style={styles.resumeDesc}>{planName || 'Continue where you left off'}</Text>
+                        </LinearGradient>
                     </TouchableOpacity>
                 </View>
             )}
@@ -193,31 +200,41 @@ const styles = StyleSheet.create({
         zIndex: 10,
     },
     historyText: {
-        color: '#BB86FC',
-        fontWeight: 'bold',
-        fontSize: 14,
+        color: '#E0E0E0',
+        fontWeight: '700',
+        fontSize: 12,
+        letterSpacing: 1.5,
     },
     logoutText: {
-        color: '#FF6B6B',
-        fontWeight: 'bold',
-        fontSize: 14,
+        color: '#E0E0E0',
+        fontWeight: '700',
+        fontSize: 12,
+        letterSpacing: 1.5,
     },
     resumeCard: {
-        backgroundColor: '#2A2A35',
-        borderRadius: 12,
-        padding: 16,
-        borderWidth: 1,
-        borderColor: '#BB86FC',
+        borderRadius: 16,
+        padding: 24,
         alignItems: 'center',
+        shadowColor: "#7F5AF0",
+        shadowOffset: {
+            width: 0,
+            height: 8,
+        },
+        shadowOpacity: 0.4,
+        shadowRadius: 12,
+        elevation: 8,
     },
     resumeTitle: {
-        color: '#BB86FC',
-        fontWeight: 'bold',
+        color: '#FFF',
+        fontWeight: '900',
         fontSize: 16,
-        marginBottom: 4,
+        marginBottom: 6,
+        letterSpacing: 1,
+        textTransform: 'uppercase',
     },
     resumeDesc: {
-        color: '#CCC',
+        color: 'rgba(255,255,255,0.9)',
         fontSize: 14,
+        fontWeight: '500',
     },
 });
