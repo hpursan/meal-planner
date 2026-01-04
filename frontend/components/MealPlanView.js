@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
 
 const SmartImage = ({ uri, style }) => {
@@ -26,11 +26,22 @@ const SmartImage = ({ uri, style }) => {
 export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline = true }) {
     if (!plan) return null;
 
+    const isIOS = Platform.OS === 'ios';
+    const blurTint = isIOS ? "systemThinMaterialDark" : "dark";
+    const blurIntensity = isIOS ? 80 : 20;
+
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
             {plan.map((day, index) => (
                 <View key={day.day} style={styles.cardContainer}>
-                    <BlurView intensity={30} tint="dark" style={styles.blurContainer}>
+                    <BlurView
+                        intensity={blurIntensity}
+                        tint={blurTint}
+                        style={[
+                            styles.blurContainer,
+                            !isIOS && { backgroundColor: 'rgba(30, 30, 46, 0.9)' } // Android Fallback
+                        ]}
+                    >
                         <View
                             accessibilityRole="header"
                             accessibilityLabel={`Day ${day.day}, ${day.dayName}`}
@@ -92,10 +103,10 @@ const styles = StyleSheet.create({
     cardContainer: {
         borderRadius: 24,
         marginBottom: 20,
-        overflow: 'hidden', // Required for BlurView radius
+        overflow: 'hidden',
         borderWidth: 1,
-        borderColor: 'rgba(255,255,255,0.1)',
-        backgroundColor: 'transparent', // Let blur handle it
+        borderColor: 'rgba(255,255,255,0.2)', // Stronger rim
+        backgroundColor: 'transparent',
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.3,
@@ -104,16 +115,15 @@ const styles = StyleSheet.create({
     },
     blurContainer: {
         padding: 24,
-        backgroundColor: 'rgba(30, 30, 46, 0.4)', // Very translucent fallback
+        // Removed backgroundColor entirely to let BlurView tint handle it
     },
-    // ... rest of header styles match previous iteration ...
     dayHeaderRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         marginBottom: 20,
         borderBottomWidth: 1,
-        borderBottomColor: 'rgba(255,255,255,0.05)',
+        borderBottomColor: 'rgba(255,255,255,0.1)', // Brighter divider
         paddingBottom: 12,
     },
     dayHeader: {
