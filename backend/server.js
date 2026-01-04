@@ -8,6 +8,7 @@ const rateLimit = require('express-rate-limit'); // Middleware to rate limit req
 const { MAX_PLAN_DAYS, GENERATION_WINDOW_MS, GENERATION_MAX_REQUESTS } = require('./config/limits');
 
 const app = express();
+app.set('trust proxy', 1); // Trust Render's load balancer
 const PORT = process.env.PORT || 3000;
 
 // Initialize Supabase Client for Auth Verification
