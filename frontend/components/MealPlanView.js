@@ -27,10 +27,9 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     if (!plan) return null;
 
     const isIOS = Platform.OS === 'ios';
-    // Use the thinnest native material for maximum "Glass" effect
-    const blurTint = isIOS ? "systemUltraThinMaterialDark" : "dark";
-    // Keep intensity at 100 to let the native material render fully
-    const blurIntensity = isIOS ? 100 : 50;
+    // ChromeMaterial is "Shinier". Explicit white overlay guarantees it is lighter than background.
+    const blurTint = isIOS ? "systemChromeMaterialDark" : "dark";
+    const blurIntensity = isIOS ? 90 : 50;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -41,7 +40,8 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                         tint={blurTint}
                         style={[
                             styles.blurContainer,
-                            !isIOS && { backgroundColor: 'rgba(30, 30, 46, 0.9)' } // Keep Android fallback
+                            // CRITICAL: 10% White Overlay makes the glass look "frosted" and lighter than the deep background
+                            { backgroundColor: isIOS ? 'rgba(255, 255, 255, 0.1)' : 'rgba(30, 30, 46, 0.8)' }
                         ]}
                     >
                         <View
