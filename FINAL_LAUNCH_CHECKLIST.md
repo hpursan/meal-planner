@@ -5,8 +5,9 @@
 - [x] **Backend Code:** Deployed to Render (Auto-deploy active).
 - [x] **Monetization:** RevenueCat integrated with App Store configuration.
 - [x] **Tax/Banking:** Forms submitted to Apple (Processing).
-- [x] **Build:** Version 1.0.3 (4) submitted to TestFlight.
-- [x] **TestFlight:** Installed and Smoke-Tested.
+- [x] **Build:** Version 1.0.3 (6) submitted to TestFlight.
+- [x] **TestFlight:** Installed and Smoke-Tested. **PASSED** ✅
+- [x] **Stability:** "Draft Plan" UX verified and crashes resolved.
 
 ## 🛑 Current Blocker: Apple Banking Verification
 **Status:** "Pending User Info" / "Banking updates processing"

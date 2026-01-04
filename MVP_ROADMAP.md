@@ -82,7 +82,8 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
 - [x] **RevenueCat Integration**: Wired up to App Store Connect.
 - [x] **Paywall UI**: "Unlock Pro" modal with Restore functionality.
 - [x] **Sentry**: Crash reporting integrated and source maps uploaded.
-- [x] **Production Build**: v1.0.3 (4) submitted to TestFlight.
+- [x] **Production Build**: v1.0.3 (6) submitted to TestFlight. Stable & Tested.
+- [x] **UX Polish**: Added "Resume Plan" feature to Home Screen.
 
 ## 🔜 Post-Launch (v1.1+)
 See `POST_LAUNCH_ROADMAP.md` for Sentry, Monetization, and Analytics.
