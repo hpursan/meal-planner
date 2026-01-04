@@ -140,6 +140,18 @@ export default function HomeScreen() {
                 </TouchableOpacity>
             </View>
 
+            {plan.length > 0 && (
+                <View style={{ paddingHorizontal: 20, marginBottom: 10 }}>
+                    <TouchableOpacity
+                        style={styles.resumeCard}
+                        onPress={() => router.push('/results')}
+                    >
+                        <Text style={styles.resumeTitle}>Draft Plan Found</Text>
+                        <Text style={styles.resumeDesc}>Tap to continue {planName ? `"${planName}"` : 'your active plan'}</Text>
+                    </TouchableOpacity>
+                </View>
+            )}
+
             <InputForm
                 days={days}
                 setDays={setDays}
@@ -188,6 +200,24 @@ const styles = StyleSheet.create({
     logoutText: {
         color: '#FF6B6B',
         fontWeight: 'bold',
+        fontSize: 14,
+    },
+    resumeCard: {
+        backgroundColor: '#2A2A35',
+        borderRadius: 12,
+        padding: 16,
+        borderWidth: 1,
+        borderColor: '#BB86FC',
+        alignItems: 'center',
+    },
+    resumeTitle: {
+        color: '#BB86FC',
+        fontWeight: 'bold',
+        fontSize: 16,
+        marginBottom: 4,
+    },
+    resumeDesc: {
+        color: '#CCC',
         fontSize: 14,
     },
 });
