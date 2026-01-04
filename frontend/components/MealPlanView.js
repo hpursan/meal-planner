@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { BlurView } from 'expo-blur';
 
 const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
@@ -28,54 +29,56 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
             {plan.map((day, index) => (
-                <View
-                    key={day.day}
-                    style={styles.dayCard}
-                    accessibilityRole="header"
-                    accessibilityLabel={`Day ${day.day}, ${day.dayName}`}
-                >
-                    <View style={styles.dayHeaderRow}>
-                        <Text style={styles.dayHeader}>Day {day.day}</Text>
-                        <Text style={styles.daySubHeader}>{day.dayName}</Text>
-                    </View>
-                    {['breakfast', 'lunch', 'dinner'].map((type) => {
-                        const meal = day.meals[type];
-                        return (
-                            <View key={type} style={styles.mealRow}>
-                                <Text style={styles.mealType} accessibilityRole="text">
-                                    {type.charAt(0).toUpperCase() + type.slice(1)}
-                                </Text>
-                                <View style={styles.mealContent}>
-                                    <TouchableOpacity
-                                        onPress={() => onSelectMeal(meal)}
-                                        style={styles.mealTouchable}
-                                        accessibilityRole="button"
-                                        accessibilityLabel={`${type} meal: ${meal.name}`}
-                                        accessibilityHint="Double tap to view recipe details"
-                                    >
-                                        <View style={styles.mealInfoContainer}>
-                                            <SmartImage uri={meal.image} style={styles.mealImage} />
-                                            <Text style={styles.mealName}>{meal.name}</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        onPress={() =>
-                                            isOnline
-                                                ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)
-                                                : alert('Cannot swap meals while offline.')
-                                        }
-                                        style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}
-                                        accessibilityRole="button"
-                                        accessibilityLabel={`Swap ${type} meal`}
-                                        accessibilityHint={`Replaces ${meal.name} with an alternative`}
-                                        disabled={!isOnline}
-                                    >
-                                        <Text style={styles.swapIcon}>⟳</Text>
-                                    </TouchableOpacity>
-                                </View>
+                <View key={day.day} style={styles.cardContainer}>
+                    <BlurView intensity={30} tint="dark" style={styles.blurContainer}>
+                        <View
+                            accessibilityRole="header"
+                            accessibilityLabel={`Day ${day.day}, ${day.dayName}`}
+                        >
+                            <View style={styles.dayHeaderRow}>
+                                <Text style={styles.dayHeader}>Day {day.day}</Text>
+                                <Text style={styles.daySubHeader}>{day.dayName}</Text>
                             </View>
-                        );
-                    })}
+                            {['breakfast', 'lunch', 'dinner'].map((type) => {
+                                const meal = day.meals[type];
+                                return (
+                                    <View key={type} style={styles.mealRow}>
+                                        <Text style={styles.mealType} accessibilityRole="text">
+                                            {type.charAt(0).toUpperCase() + type.slice(1)}
+                                        </Text>
+                                        <View style={styles.mealContent}>
+                                            <TouchableOpacity
+                                                onPress={() => onSelectMeal(meal)}
+                                                style={styles.mealTouchable}
+                                                accessibilityRole="button"
+                                                accessibilityLabel={`${type} meal: ${meal.name}`}
+                                                accessibilityHint="Double tap to view recipe details"
+                                            >
+                                                <View style={styles.mealInfoContainer}>
+                                                    <SmartImage uri={meal.image} style={styles.mealImage} />
+                                                    <Text style={styles.mealName}>{meal.name}</Text>
+                                                </View>
+                                            </TouchableOpacity>
+                                            <TouchableOpacity
+                                                onPress={() =>
+                                                    isOnline
+                                                        ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)
+                                                        : alert('Cannot swap meals while offline.')
+                                                }
+                                                style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}
+                                                accessibilityRole="button"
+                                                accessibilityLabel={`Swap ${type} meal`}
+                                                accessibilityHint={`Replaces ${meal.name} with an alternative`}
+                                                disabled={!isOnline}
+                                            >
+                                                <Text style={styles.swapIcon}>⟳</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                    </View>
+                                );
+                            })}
+                        </View>
+                    </BlurView>
                 </View>
             ))}
         </ScrollView>
@@ -86,22 +89,24 @@ const styles = StyleSheet.create({
     scrollContent: {
         paddingBottom: 40,
     },
-    dayCard: {
-        backgroundColor: 'rgba(30, 30, 46, 0.85)', // slightly transparent
+    cardContainer: {
         borderRadius: 24,
-        padding: 24,
         marginBottom: 20,
+        overflow: 'hidden', // Required for BlurView radius
         borderWidth: 1,
-        borderColor: 'rgba(255,255,255,0.08)',
+        borderColor: 'rgba(255,255,255,0.1)',
+        backgroundColor: 'transparent', // Let blur handle it
         shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 10,
-        },
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.3,
         shadowRadius: 20,
         elevation: 10,
     },
+    blurContainer: {
+        padding: 24,
+        backgroundColor: 'rgba(30, 30, 46, 0.4)', // Very translucent fallback
+    },
+    // ... rest of header styles match previous iteration ...
     dayHeaderRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',

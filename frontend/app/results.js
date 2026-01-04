@@ -65,7 +65,7 @@ export default function ResultsScreen() {
     return (
         <View style={styles.container}>
             <StatusBar barStyle="light-content" />
-            <LinearGradient colors={['#121212', '#1E1E2E']} style={styles.background} />
+            <LinearGradient colors={['#0F0C29', '#302B63', '#24243E']} style={styles.background} />
 
             {/* Header */}
             <View style={styles.resultsContainer}>

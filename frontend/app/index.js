@@ -2,6 +2,7 @@ import { View, StyleSheet, StatusBar, TouchableOpacity, Text, Alert } from 'reac
 import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 import InputForm from '../components/InputForm';
+import { Ionicons } from '@expo/vector-icons';
 import { usePlan } from '../context/PlanContext';
 import { generatePlan } from '../services/api';
 import { supabase } from '../services/supabase';
@@ -132,11 +133,22 @@ export default function HomeScreen() {
             <LinearGradient colors={['#0F0C29', '#302B63', '#24243E']} style={styles.background} />
 
             <View style={styles.topBar}>
-                <TouchableOpacity onPress={() => router.push('/history')} style={{ marginRight: 20 }}>
-                    <Text style={styles.historyText}>MY PLANS</Text>
+                <TouchableOpacity
+                    onPress={() => router.push('/history')}
+                    style={styles.iconButton}
+                    accessibilityLabel="My Plans History"
+                >
+                    <Ionicons name="receipt-outline" size={24} color="#FFF" />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => router.push('/settings')}>
-                    <Text style={styles.logoutText}>SETTINGS</Text>
+
+                <Text style={styles.appTitle}>👨‍🍳</Text>
+
+                <TouchableOpacity
+                    onPress={() => router.push('/settings')}
+                    style={styles.iconButton}
+                    accessibilityLabel="Settings"
+                >
+                    <Ionicons name="settings-outline" size={24} color="#FFF" />
                 </TouchableOpacity>
             </View>
 
@@ -192,24 +204,28 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     topBar: {
-        paddingHorizontal: 20,
-        paddingTop: 50, // More padding for Safe Area
+        paddingHorizontal: 24,
+        paddingTop: 60,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         width: '100%',
         zIndex: 10,
+        marginBottom: 20,
     },
-    historyText: {
-        color: '#E0E0E0',
-        fontWeight: '700',
-        fontSize: 12,
-        letterSpacing: 1.5,
+    iconButton: {
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255,0.1)',
+        backdropFilter: 'blur(10px)', // For web support mostly
     },
-    logoutText: {
-        color: '#E0E0E0',
-        fontWeight: '700',
-        fontSize: 12,
-        letterSpacing: 1.5,
+    appTitle: {
+        fontSize: 32,
     },
     resumeCard: {
         borderRadius: 16,
