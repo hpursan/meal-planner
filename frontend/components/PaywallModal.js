@@ -70,16 +70,16 @@ export default function PaywallModal({ visible, onClose }) {
                         <Text style={styles.emoji}>✨</Text>
                         <Text style={styles.title}>Unlock Full Access</Text>
                         <Text style={styles.subtitle}>
-                            Remove limits. Plan for 30 days. No Ad interruptions.
+                            Remove limits. Plan Full Weeks. Support Development.
                         </Text>
                     </View>
 
                     {/* Features List */}
                     <View style={styles.features}>
-                        <FeatureRow icon="📅" text="Plan up to 30 Days" />
-                        <FeatureRow icon="🍲" text="Unlimited Meal Swaps" />
-                        <FeatureRow icon="🧠" text="Advanced AI Customization" />
-                        <FeatureRow icon="☁️" text="Cloud Sync & Backup" />
+                        <FeatureRow icon="📅" text="Plan Full Weeks (7 Days)" />
+                        <FeatureRow icon="✨" text="Ad-Free Experience" />
+                        <FeatureRow icon="🚀" text="Priority Support & Updates" />
+                        <FeatureRow icon="❤️" text="Support Independent Dev" />
                     </View>
 
                     {/* Products */}
