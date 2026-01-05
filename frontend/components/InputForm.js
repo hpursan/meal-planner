@@ -13,6 +13,7 @@ import {
     Platform,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { BlurView } from 'expo-blur';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
@@ -36,6 +37,21 @@ const DAYS_OF_WEEK = [
     { id: 'Saturday', label: 'Sa' },
     { id: 'Sunday', label: 'Su' },
 ];
+
+const GlassCard = ({ children }) => {
+    const isIOS = Platform.OS === 'ios';
+    return (
+        <View style={styles.card}>
+            <BlurView
+                intensity={isIOS ? 30 : 0}
+                tint={isIOS ? "systemMaterialDark" : "dark"}
+                style={styles.glassContainer}
+            >
+                {children}
+            </BlurView>
+        </View>
+    );
+};
 
 export default function InputForm({
     days,
@@ -76,7 +92,7 @@ export default function InputForm({
                     </View>
 
                     {/* Section 1: The Basics */}
-                    <View style={styles.card}>
+                    <GlassCard>
                         <View style={styles.cardHeader}>
                             <Text style={styles.stepNumber}>1</Text>
                             <Text style={styles.cardTitle}>The Basics</Text>
@@ -105,10 +121,10 @@ export default function InputForm({
                                 returnKeyType="done"
                             />
                         </View>
-                    </View>
+                    </GlassCard>
 
                     {/* Section 2: Diet Style */}
-                    <View style={styles.card}>
+                    <GlassCard>
                         <View style={styles.cardHeader}>
                             <Text style={styles.stepNumber}>2</Text>
                             <Text style={styles.cardTitle}>Dietary Style</Text>
@@ -137,10 +153,10 @@ export default function InputForm({
                                 </TouchableOpacity>
                             ))}
                         </View>
-                    </View>
+                    </GlassCard>
 
                     {/* Section 3: Schedule */}
-                    <View style={styles.card}>
+                    <GlassCard>
                         <View style={styles.cardHeader}>
                             <Text style={styles.stepNumber}>3</Text>
                             <Text style={styles.cardTitle}>Meat-Free Days</Text>
@@ -168,7 +184,7 @@ export default function InputForm({
                                 </TouchableOpacity>
                             ))}
                         </View>
-                    </View>
+                    </GlassCard>
 
                     <TouchableOpacity
                         style={[styles.generateButton, !isOnline && styles.disabledButton]}
@@ -241,17 +257,21 @@ const styles = StyleSheet.create({
         color: Colors.text.muted,
     },
     card: {
-        backgroundColor: Colors.background.secondary,
+        backgroundColor: 'transparent', // Glass wrapper
         borderRadius: Spacing.layout.cardRadius,
-        padding: Spacing.xl,
         marginBottom: Spacing.xl,
         borderWidth: 1,
-        borderColor: Colors.border.default,
+        borderColor: 'rgba(255,255,255,0.25)', // Glassy Rim
         shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
+        shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.3,
-        shadowRadius: 10,
+        shadowRadius: 15,
         elevation: 5,
+        overflow: 'hidden', // Clip BlurView
+    },
+    glassContainer: {
+        padding: Spacing.xl,
+        backgroundColor: Platform.OS === 'ios' ? 'rgba(255,255,255,0.08)' : 'rgba(30, 30, 46, 0.9)',
     },
     cardHeader: {
         flexDirection: 'row',
