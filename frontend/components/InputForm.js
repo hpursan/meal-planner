@@ -99,6 +99,13 @@ export default function InputForm({
     isPro,
     onProFeature,
 }) {
+    React.useEffect(() => {
+        // Enforce Pro Limit on mount/update if locked feature is selected
+        if (!isPro && parseInt(days) > 3) {
+            setDays('3');
+        }
+    }, [isPro, days, setDays]);
+
     const handleGeneratePress = () => {
         if (!isOnline) {
             alert('No internet connection.\nPlease connect to generate a new plan.');
