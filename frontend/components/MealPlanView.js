@@ -4,7 +4,7 @@ import { BlurView } from 'expo-blur';
 
 const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
-    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
+    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com';
 
     React.useEffect(() => {
         setError(false);
