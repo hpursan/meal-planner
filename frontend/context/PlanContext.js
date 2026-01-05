@@ -105,7 +105,7 @@ export function PlanProvider({ children }) {
             }
         };
         cacheData();
-    }, [plan, checkedItems, planId]);
+    }, [plan, checkedItems, planId, planName]);
 
     // Function to attempt loading from cache (used on startup or error)
     const loadFromCache = async () => {

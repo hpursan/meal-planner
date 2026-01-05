@@ -30,6 +30,7 @@ export default function HomeScreen() {
         setIsOfflineMode,
         isOnline,
         isPro,
+        clearPlan, // <--- Add this
     } = usePlan();
 
     const [paywallVisible, setPaywallVisible] = useState(false);
@@ -38,7 +39,29 @@ export default function HomeScreen() {
         if (plan.length === 0) {
             loadFromCache();
         }
+        if (!planName) {
+            const adjectives = [
+                'Zesty', 'Spicy', 'Fresh', 'Crispy', 'Savory', 'Sweet', 'Tangy', 'Hearty', 'Healthy', 'Epic',
+                'Green', 'Vital', 'Lean', 'Strong', 'Mega', 'Super', 'Power', 'Happy', 'Quick', 'Easy',
+                'Fit', 'Smart', 'Daily', 'Weekly', 'Bright', 'Bold', 'Smooth', 'Crunchy', 'Juicy', 'Golden',
+                'Roasted', 'Baked', 'Grilled', 'Raw', 'Glazed', 'Seasoned', 'Ultimate', 'Prime', 'Elite', 'Simple',
+                'Pure', 'Wild', 'Urban', 'Home', 'Chef', 'Tasty', 'Yummy', 'Wholesome', 'Nutty', 'Balanced'
+            ];
+            const nouns = [
+                'Fiesta', 'Feast', 'Bowl', 'Plate', 'Week', 'Plan', 'Menu', 'Table', 'Bites', 'Delight',
+                'Gains', 'Fuel', 'Boost', 'Mix', 'Prep', 'Guide', 'Chart', 'List', 'Goal', 'Shred',
+                'Bulk', 'Lifestyle', 'Habit', 'Routine', 'Journey', 'Path', 'Track', 'Way', 'Style', 'Taste',
+                'Flavor', 'Kitchen', 'Pantry', 'Fridge', 'Basket', 'Box', 'Bundle', 'Pack', 'Set', 'Series',
+                'Cycle', 'Flow', 'Wave', 'Spark', 'Energy', 'Inspo', 'Creation', 'Masterpiece', 'Symphony', 'Medley'
+            ];
+            const randomName = `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
+            setPlanName(randomName);
+        }
     }, [plan.length, loadFromCache]);
+
+    const handleDismissResume = () => {
+        clearPlan();
+    };
 
     const togglePref = (pref) => {
         if (selectedPrefs.includes(pref)) {
@@ -154,20 +177,29 @@ export default function HomeScreen() {
 
             {plan.length > 0 && (
                 <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
-                    <TouchableOpacity
-                        activeOpacity={0.8}
-                        onPress={() => router.push('/results')}
-                    >
-                        <LinearGradient
-                            colors={['#BB86FC', '#7F5AF0']}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 1 }}
-                            style={styles.resumeCard}
+                    <View style={{ position: 'relative' }}>
+                        <TouchableOpacity
+                            activeOpacity={0.8}
+                            onPress={() => router.push('/results')}
                         >
-                            <Text style={styles.resumeTitle}>RESUME ACTIVE PLANNING</Text>
-                            <Text style={styles.resumeDesc}>{planName || 'Continue where you left off'}</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                            <LinearGradient
+                                colors={['#BB86FC', '#7F5AF0']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                style={styles.resumeCard}
+                            >
+                                <Text style={styles.resumeTitle}>RESUME ACTIVE PLANNING</Text>
+                                <Text style={styles.resumeDesc}>{planName || 'Continue where you left off'}</Text>
+                            </LinearGradient>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.dismissButton}
+                            onPress={handleDismissResume}
+                            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+                        >
+                            <Ionicons name="close-circle" size={24} color="rgba(255,255,255,0.8)" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
             )}
 
@@ -254,5 +286,13 @@ const styles = StyleSheet.create({
         color: 'rgba(255,255,255,0.9)',
         fontSize: 14,
         fontWeight: '500',
+    },
+    dismissButton: {
+        position: 'absolute',
+        top: 8,
+        right: 8,
+        zIndex: 10,
+        backgroundColor: 'rgba(0,0,0,0.2)',
+        borderRadius: 12,
     },
 });
