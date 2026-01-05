@@ -183,6 +183,8 @@ export default function HomeScreen() {
                 onGenerate={handleGeneratePlan}
                 loading={loading}
                 isOnline={isOnline}
+                isPro={isPro}
+                onProFeature={() => setPaywallVisible(true)}
             />
 
 

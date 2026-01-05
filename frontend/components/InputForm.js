@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
+import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
@@ -64,7 +65,9 @@ export default function InputForm({
     toggleMeatFreeDay,
     onGenerate,
     loading,
-    isOnline = true,
+    isOnline,
+    isPro,
+    onProFeature,
 }) {
     const handleGeneratePress = () => {
         if (!isOnline) {
@@ -112,14 +115,40 @@ export default function InputForm({
 
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Duration (Days)</Text>
-                            <TextInput
-                                style={styles.input}
-                                value={days}
-                                onChangeText={setDays}
-                                keyboardType="numeric"
-                                maxLength={2}
-                                returnKeyType="done"
-                            />
+                            <View style={styles.pillContainer}>
+                                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
+                                    {[1, 2, 3, 4, 5, 6, 7].map((val) => {
+                                        const isLocked = val > 3 && !isPro;
+                                        const isActive = days.toString() === val.toString();
+                                        return (
+                                            <TouchableOpacity
+                                                key={val}
+                                                style={[
+                                                    styles.durationPill,
+                                                    isActive && styles.durationPillActive,
+                                                ]}
+                                                onPress={() => {
+                                                    if (isLocked) {
+                                                        onProFeature && onProFeature();
+                                                    } else {
+                                                        setDays(val.toString());
+                                                    }
+                                                }}
+                                                activeOpacity={0.7}
+                                            >
+                                                {isLocked && !isActive ? (
+                                                    <Ionicons name="lock-closed" size={16} color="#AAA" />
+                                                ) : (
+                                                    <Text style={[
+                                                        styles.durationText,
+                                                        isActive && styles.durationTextActive
+                                                    ]}>{val}</Text>
+                                                )}
+                                            </TouchableOpacity>
+                                        );
+                                    })}
+                                </ScrollView>
+                            </View>
                         </View>
                     </GlassCard>
 
@@ -307,13 +336,40 @@ const styles = StyleSheet.create({
         letterSpacing: Typography.spacing.labelLetterSpacing,
     },
     input: {
-        backgroundColor: Colors.background.tertiary,
-        color: Colors.text.primary,
-        padding: Spacing.lg,
+        backgroundColor: Colors.background.elevated,
         borderRadius: Spacing.layout.inputRadius,
+        padding: Spacing.md,
+        color: Colors.text.primary,
         fontSize: Typography.sizes.md,
         borderWidth: 1,
-        borderColor: Colors.border.focused,
+        borderColor: 'transparent',
+    },
+    pillContainer: {
+        flexDirection: 'row',
+        marginTop: 8,
+    },
+    durationPill: {
+        width: 44,
+        height: 44,
+        borderRadius: 22,
+        backgroundColor: Colors.background.elevated,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: 'rgba(255,255,255,0.05)',
+    },
+    durationPillActive: {
+        backgroundColor: Colors.brand.primary,
+        borderColor: Colors.brand.primary,
+    },
+    durationText: {
+        color: Colors.text.secondary,
+        fontWeight: '600',
+        fontSize: 16,
+    },
+    durationTextActive: {
+        color: '#FFF',
+        fontWeight: 'bold',
     },
     helperText: {
         fontSize: Typography.sizes.sm,
