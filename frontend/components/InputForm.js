@@ -54,6 +54,36 @@ const GlassCard = ({ children }) => {
     );
 };
 
+const DurationPill = ({ val, days, setDays, isPro, onProFeature }) => {
+    const isLocked = val > 3 && !isPro;
+    const isActive = days.toString() === val.toString();
+    return (
+        <TouchableOpacity
+            style={[
+                styles.durationPill,
+                isActive && styles.durationPillActive,
+            ]}
+            onPress={() => {
+                if (isLocked) {
+                    onProFeature && onProFeature();
+                } else {
+                    setDays(val.toString());
+                }
+            }}
+            activeOpacity={0.7}
+        >
+            {isLocked && !isActive ? (
+                <Ionicons name="lock-closed" size={16} color="#AAA" />
+            ) : (
+                <Text style={[
+                    styles.durationText,
+                    isActive && styles.durationTextActive
+                ]}>{val}</Text>
+            )}
+        </TouchableOpacity>
+    );
+};
+
 export default function InputForm({
     days,
     setDays,
@@ -116,38 +146,32 @@ export default function InputForm({
                         <View style={styles.inputGroup}>
                             <Text style={styles.label}>Duration (Days)</Text>
                             <View style={styles.pillContainer}>
-                                <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8 }}>
-                                    {[1, 2, 3, 4, 5, 6, 7].map((val) => {
-                                        const isLocked = val > 3 && !isPro;
-                                        const isActive = days.toString() === val.toString();
-                                        return (
-                                            <TouchableOpacity
-                                                key={val}
-                                                style={[
-                                                    styles.durationPill,
-                                                    isActive && styles.durationPillActive,
-                                                ]}
-                                                onPress={() => {
-                                                    if (isLocked) {
-                                                        onProFeature && onProFeature();
-                                                    } else {
-                                                        setDays(val.toString());
-                                                    }
-                                                }}
-                                                activeOpacity={0.7}
-                                            >
-                                                {isLocked && !isActive ? (
-                                                    <Ionicons name="lock-closed" size={16} color="#AAA" />
-                                                ) : (
-                                                    <Text style={[
-                                                        styles.durationText,
-                                                        isActive && styles.durationTextActive
-                                                    ]}>{val}</Text>
-                                                )}
-                                            </TouchableOpacity>
-                                        );
-                                    })}
-                                </ScrollView>
+                                {/* Row 1: Free/Short */}
+                                <View style={styles.pillRow}>
+                                    {[1, 2, 3].map((val) => (
+                                        <DurationPill
+                                            key={val}
+                                            val={val}
+                                            days={days}
+                                            setDays={setDays}
+                                            isPro={isPro}
+                                            onProFeature={onProFeature}
+                                        />
+                                    ))}
+                                </View>
+                                {/* Row 2: Pro/Long */}
+                                <View style={styles.pillRow}>
+                                    {[4, 5, 6, 7].map((val) => (
+                                        <DurationPill
+                                            key={val}
+                                            val={val}
+                                            days={days}
+                                            setDays={setDays}
+                                            isPro={isPro}
+                                            onProFeature={onProFeature}
+                                        />
+                                    ))}
+                                </View>
                             </View>
                         </View>
                     </GlassCard>
@@ -345,13 +369,18 @@ const styles = StyleSheet.create({
         borderColor: 'transparent',
     },
     pillContainer: {
-        flexDirection: 'row',
         marginTop: 8,
+        gap: 12,
+    },
+    pillRow: {
+        flexDirection: 'row',
+        gap: 8, // Tighter gap
+        justifyContent: 'center', // Center the pills (especially Row 1)
     },
     durationPill: {
-        width: 44,
-        height: 44,
-        borderRadius: 22,
+        width: '23%', // 4 items fit perfectly
+        height: 48,
+        borderRadius: 30, // Fully Rounded
         backgroundColor: Colors.background.elevated,
         justifyContent: 'center',
         alignItems: 'center',
@@ -361,10 +390,14 @@ const styles = StyleSheet.create({
     durationPillActive: {
         backgroundColor: Colors.brand.primary,
         borderColor: Colors.brand.primary,
+        shadowColor: Colors.brand.primary,
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
     },
     durationText: {
         color: Colors.text.secondary,
-        fontWeight: '600',
+        fontWeight: 'bold',
         fontSize: 16,
     },
     durationTextActive: {
