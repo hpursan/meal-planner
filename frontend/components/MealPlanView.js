@@ -27,9 +27,10 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     if (!plan) return null;
 
     const isIOS = Platform.OS === 'ios';
-    // ChromeMaterial is "Shinier". Explicit white overlay guarantees it is lighter than background.
-    const blurTint = isIOS ? "systemChromeMaterialDark" : "dark";
-    const blurIntensity = isIOS ? 90 : 50;
+
+    // Back to Standard Dark, but with LOWER intensity to avoid "Solid Paint" look
+    const blurTint = isIOS ? "systemMaterialDark" : "dark";
+    const blurIntensity = isIOS ? 30 : 20;
 
     return (
         <ScrollView contentContainerStyle={styles.scrollContent}>
@@ -40,8 +41,8 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                         tint={blurTint}
                         style={[
                             styles.blurContainer,
-                            // CRITICAL: 10% White Overlay makes the glass look "frosted" and lighter than the deep background
-                            { backgroundColor: isIOS ? 'rgba(255, 255, 255, 0.1)' : 'rgba(30, 30, 46, 0.8)' }
+                            // Balanced White Overlay for "Frosting" without washing out
+                            { backgroundColor: isIOS ? 'rgba(255, 255, 255, 0.08)' : 'rgba(30, 30, 46, 0.8)' }
                         ]}
                     >
                         <View
@@ -107,7 +108,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         overflow: 'hidden',
         borderWidth: 1,
-        borderColor: 'rgba(255,255,255,0.15)', // Glassy Rim
+        borderColor: 'rgba(255,255,255,0.25)', // Crisp Glassy Rim
         backgroundColor: 'transparent',
         shadowColor: "#000",
         shadowOffset: { width: 0, height: 10 },
