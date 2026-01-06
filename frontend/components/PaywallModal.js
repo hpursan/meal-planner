@@ -11,7 +11,7 @@ const MOCK_PACKAGES = [
         identifier: '$rc_monthly',
         product: {
             title: 'Monthly Subscription',
-            description: 'Unlock unlimited plans',
+            description: 'Unlock 7-Day Plans',
             priceString: '$4.99',
             period: 'P1M',
         },
@@ -20,18 +20,9 @@ const MOCK_PACKAGES = [
         identifier: '$rc_annual',
         product: {
             title: 'Yearly Subscription',
-            description: 'Save 50%',
-            priceString: '$29.99', // Best Value
+            description: 'Best Value',
+            priceString: '$29.99',
             period: 'P1Y',
-        },
-    },
-    {
-        identifier: '$rc_lifetime',
-        product: {
-            title: 'Lifetime Access',
-            description: 'One-time payment',
-            priceString: '$99.99',
-            period: 'LIFETIME',
         },
     }
 ];
