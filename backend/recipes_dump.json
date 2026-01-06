@@ -1657,6 +1657,13 @@
     "created_at": "2026-01-06T09:22:38.088Z"
   },
   {
+    "name": "Greek Yogurt with Honey",
+    "type": "Breakfast",
+    "calories": 200,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free"
+    ],
     "ingredients": [
       {
         "name": "Greek Yogurt",
@@ -3167,6 +3174,14 @@
     "created_at": "2026-01-06T09:42:41.944Z"
   },
   {
+    "name": "Breakfast Quinoa Bowl",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
     "ingredients": [
       {
         "name": "Cooked Quinoa",

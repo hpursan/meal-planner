@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-nati
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
+import * as Sentry from '@sentry/react-native';
 
 export class ErrorBoundary extends React.Component {
     constructor(props) {
@@ -15,8 +16,10 @@ export class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        // Ideally log this to Sentry
         console.error('Uncaught error:', error, errorInfo);
+        Sentry.captureException(error, {
+            extra: errorInfo,
+        });
     }
 
     handleReset = () => {

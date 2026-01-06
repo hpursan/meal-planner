@@ -11,12 +11,6 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 const localRecipes = require('../recipes_dump.json');
 
 async function getRecipes() {
-    // For V2 Content Testing (Build 21), we prefer the expanded local dataset 
-    // until we upload it to Supabase.
-    console.log('NOTICE: Using local recipes (V2 Content) for testing.');
-    return localRecipes;
-
-    /* REVERT BEFORE PROD MIGRATION
     try {
         const { data, error } = await supabase
             .from('recipes')
@@ -38,7 +32,6 @@ async function getRecipes() {
         console.error('DB Connection Failed. Fallback to local JSON.', err);
         return localRecipes;
     }
-    */
 }
 
 module.exports = {

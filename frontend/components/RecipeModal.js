@@ -26,8 +26,8 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
 
     const imageUrl = selectedMeal.image.startsWith('http')
         ? selectedMeal.image
-        : `${process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000'}${selectedMeal.image}`;
-    const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000'}/images/generic_fallback_meal.png`;
+        : `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}${selectedMeal.image}`;
+    const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}/images/generic_fallback_meal.png`;
 
     return (
         <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
@@ -38,8 +38,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                             source={{ uri: imageUrl }}
                             style={styles.heroImage}
                             onError={(e) => {
-                                console.log(`FAILED IMAGE: ${imageUrl}`);
-                                // console.log('ERROR:', e.nativeEvent.error);
+                                // Fallback silently or track in analytics
                                 setImageError(true);
                             }}
                         />
@@ -74,11 +73,8 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                             <TouchableOpacity
                                 activeOpacity={0.7}
                                 onPress={() => {
-                                    console.log('Unlock Macros Pressed. isPro:', isPro);
                                     if (!isPro && onUnlockPro) {
                                         onUnlockPro();
-                                    } else {
-                                        console.log('Unlock action skipped. onUnlockPro:', !!onUnlockPro);
                                     }
                                 }}
                                 style={styles.macrosContainer}

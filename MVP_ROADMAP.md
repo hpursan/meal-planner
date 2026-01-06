@@ -90,10 +90,10 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
 
 ## 🚧 Phase 7.5: Content & Nutrition Sprint (Completed)
 - [x] **Data Extraction**: Dump Supabase recipes to local JSON.
-- [x] **Enrichment**: Add Macros (Calories, Protein, Carbs) to all recipes.
-- [x] **Expansion**: Generate 30+ new recipes (Total ~60).
+- [x] **Enrichment**: Add Macros (Calories, Protein, Carbs) and "Action-First" Instructions to all recipes.
+- [x] **Expansion**: Generate 30+ new recipes (Total ~90).
 - [x] **UI Update**: Show Macros in RecipeDetail (Blur/Lock for Non-Pro).
-- [x] **Final Build**: Build 21 Configured.
+- [x] **Verification**: Verified enhanced V2 recipes in local app.
 
 ## 🚀 Phase 8: Post-Launch (Live Ops)
 - [ ] **Monitor Review Status**: Respond to Apple rejections/questions.

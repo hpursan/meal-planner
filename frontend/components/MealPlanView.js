@@ -5,7 +5,7 @@ import { BlurView } from 'expo-blur';
 const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
     // Align with RecipeModal fallback
-    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000';
+    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com';
 
     React.useEffect(() => {
         setError(false);
@@ -27,7 +27,6 @@ const SmartImage = ({ uri, style }) => {
             source={{ uri: fullUri }}
             style={style}
             onError={(e) => {
-                console.log(`SmartImage Error (MealPlanView) for: ${fullUri}`);
                 setError(true);
             }}
         />
