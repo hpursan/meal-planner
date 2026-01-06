@@ -84,15 +84,15 @@ const newRecipes = [
         macros: { calories: 250, protein: "14g", carbs: "5g", fats: "18g" }
     },
     {
-        name: "Greek Yogurt with Honey",
+        name: "Greek Yogurt Bowl",
         type: "Breakfast",
-        calories: 200,
+        calories: 300,
         tags: ["Vegetarian", "Gluten-Free"],
-        ingredients: [{ name: "Greek Yogurt", quantity: "1 cup" }, { name: "Honey", quantity: "1 tbsp" }],
-        instructions: ["Scoop yogurt.", "Drizzle honey."],
+        ingredients: [{ name: "Greek Yogurt", quantity: "1 cup" }, { name: "Honey", quantity: "1 tbsp" }, { name: "Walnuts", quantity: "2 tbsp" }],
+        instructions: ["Scoop yogurt.", "Top with walnuts.", "Drizzle honey."],
         image: "/images/greek_yogurt_honey.png",
         is_premium: false,
-        macros: { calories: 200, protein: "20g", carbs: "18g", fats: "0g" }
+        macros: { calories: 300, protein: "22g", carbs: "20g", fats: "12g" }
     },
     {
         name: "Vegan Pancakes",
@@ -147,7 +147,7 @@ const newRecipes = [
     { name: "Tuna Salad", type: "Lunch", calories: 350, tags: ["Fish", "Meat", "Gluten-Free"], ingredients: [{ name: "Canned Tuna", quantity: "1 can" }, { name: "Mayo", quantity: "1 tbsp" }], instructions: ["Mix tuna and mayo."], image: "/images/tuna_salad.png", is_premium: false, macros: { calories: 350, protein: "30g", carbs: "2g", fats: "20g" } },
     { name: "Falafel Pita", type: "Lunch", calories: 550, tags: ["Vegan", "Vegetarian"], ingredients: [{ name: "Pita", quantity: "1" }, { name: "Falafel", quantity: "4" }, { name: "Tahini", quantity: "1 tbsp" }], instructions: ["Stuff pita.", "Drizzle tahini."], image: "/images/falafel_pita.png", is_premium: false, macros: { calories: 550, protein: "18g", carbs: "70g", fats: "22g" } },
     { name: "Cobb Salad", type: "Lunch", calories: 600, tags: ["Keto", "Gluten-Free", "Chicken", "Meat", "Egg"], ingredients: [{ name: "Lettuce", quantity: "2 cups" }, { name: "Chicken", quantity: "4 oz" }, { name: "Egg", quantity: "1" }], instructions: ["Assemble salad."], image: "/images/cobb_salad.png", is_premium: false, macros: { calories: 600, protein: "40g", carbs: "10g", fats: "35g" } },
-    { name: "Vegetable Soup", type: "Lunch", calories: 200, tags: ["Vegan", "Vegetarian", "Gluten-Free"], ingredients: [{ name: "Carrots", quantity: "2" }, { name: "Celery", quantity: "2" }, { name: "Broth", quantity: "2 cups" }], instructions: ["Simmer veggies."], image: "/images/vegetable_soup.png", is_premium: false, macros: { calories: 200, protein: "4g", carbs: "30g", fats: "2g" } },
+    { name: "Hearty Vegetable Soup", type: "Lunch", calories: 300, tags: ["Vegan", "Vegetarian", "Gluten-Free"], ingredients: [{ name: "Bean Mix", quantity: "1 cup" }, { name: "Carrots", quantity: "2" }, { name: "Broth", quantity: "2 cups" }], instructions: ["Simmer veggies and beans."], image: "/images/vegetable_soup.png", is_premium: false, macros: { calories: 300, protein: "12g", carbs: "40g", fats: "3g" } },
     { name: "Turkey Burger", type: "Lunch", calories: 450, tags: ["Meat", "Turkey"], ingredients: [{ name: "Turkey Patty", quantity: "1" }, { name: "Bun", quantity: "1" }], instructions: ["Grill burger.", "Serve on bun."], image: "/images/turkey_burger.png", is_premium: false, macros: { calories: 450, protein: "30g", carbs: "35g", fats: "15g" } },
     { name: "Spinach Pasta", type: "Lunch", calories: 500, tags: ["Vegetarian"], ingredients: [{ name: "Pasta", quantity: "1 cup" }, { name: "Spinach", quantity: "2 cups" }], instructions: ["Cook pasta.", "Sauté spinach.", "Mix."], image: "/images/spinach_pasta.png", is_premium: false, macros: { calories: 500, protein: "15g", carbs: "75g", fats: "8g" } },
     { name: "Shrimp Taco Bowl", type: "Lunch", calories: 400, tags: ["Fish", "Meat", "Gluten-Free"], ingredients: [{ name: "Shrimp", quantity: "4 oz" }, { name: "Rice", quantity: "1/2 cup" }, { name: "Corn", quantity: "1/4 cup" }], instructions: ["Cook shrimp.", "Simmer corn.", "Serve over rice."], image: "/images/shrimp_taco_bowl.png", is_premium: false, macros: { calories: 400, protein: "25g", carbs: "45g", fats: "10g" } },
@@ -187,7 +187,7 @@ const newRecipes = [
     },
     { name: "Pesto Pasta", type: "Dinner", calories: 550, tags: ["Vegetarian"], ingredients: [{ name: "Pasta", quantity: "1 cup" }, { name: "Pesto", quantity: "2 tbsp" }], instructions: ["Cook pasta.", "Toss with pesto."], image: "/images/pesto_pasta.png", is_premium: false, macros: { calories: 550, protein: "12g", carbs: "70g", fats: "25g" } },
     { name: "Chicken Curry", type: "Dinner", calories: 600, tags: ["Chicken", "Meat", "Gluten-Free"], ingredients: [{ name: "Chicken", quantity: "4 oz" }, { name: "Coconut Milk", quantity: "1 cup" }, { name: "Curry Paste", quantity: "1 tbsp" }], instructions: ["Simmer chicken in sauce."], image: "/images/chicken_curry.png", is_premium: false, macros: { calories: 600, protein: "35g", carbs: "15g", fats: "40g" } },
-    { name: "Portobello Mushroom Burger", type: "Dinner", calories: 350, tags: ["Vegan", "Vegetarian", "Gluten-Free"], ingredients: [{ name: "Portobello Mushroom", quantity: "2" }, { name: "Lettuce", quantity: "2 leaves" }], instructions: ["Grill mushrooms.", "Use as buns."], image: "/images/mushroom_burger.png", is_premium: false, macros: { calories: 350, protein: "8g", carbs: "15g", fats: "10g" } },
+    { name: "Portobello & Swiss Burger", type: "Dinner", calories: 500, tags: ["Vegetarian", "Gluten-Free"], ingredients: [{ name: "Portobello Mushroom", quantity: "2" }, { name: "Swiss Cheese", quantity: "1 slice" }, { name: "Bun", quantity: "1" }], instructions: ["Grill mushrooms.", "Melt cheese.", "Place on bun."], image: "/images/mushroom_burger.png", is_premium: false, macros: { calories: 500, protein: "20g", carbs: "40g", fats: "25g" } },
     { name: "Fish Tacos", type: "Dinner", calories: 450, tags: ["Fish", "Meat"], ingredients: [{ name: "White Fish", quantity: "4 oz" }, { name: "Tortilla", quantity: "2" }, { name: "Cabbage", quantity: "1/2 cup" }], instructions: ["Fry fish.", "Fill tacos."], image: "/images/fish_tacos.png", is_premium: false, macros: { calories: 450, protein: "25g", carbs: "40g", fats: "18g" } },
     { name: "Spaghetti Bolognese", type: "Dinner", calories: 700, tags: ["Beef", "Meat"], ingredients: [{ name: "Spaghetti", quantity: "1 cup" }, { name: "Ground Beef", quantity: "4 oz" }, { name: "Tomato Sauce", quantity: "1/2 cup" }], instructions: ["Cook sauce with beef.", "Serve over pasta."], image: "/images/spaghetti_bolognese.png", is_premium: false, macros: { calories: 700, protein: "35g", carbs: "80g", fats: "25g" } },
     { name: "Eggplant Parmesan", type: "Dinner", calories: 550, tags: ["Vegetarian"], ingredients: [{ name: "Eggplant", quantity: "1" }, { name: "Marinara", quantity: "1 cup" }, { name: "Mozzarella", quantity: "1/2 cup" }], instructions: ["Bread eggplant.", "Bake with sauce and cheese."], image: "/images/eggplant_parm.png", is_premium: false, macros: { calories: 550, protein: "20g", carbs: "45g", fats: "30g" } },
