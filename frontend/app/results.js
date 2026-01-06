@@ -8,13 +8,15 @@ import { supabase } from '../services/supabase';
 import MealPlanView from '../components/MealPlanView';
 import ShoppingListView from '../components/ShoppingListView';
 import RecipeModal from '../components/RecipeModal';
+import PaywallModal from '../components/PaywallModal';
 
 export default function ResultsScreen() {
     const router = useRouter();
-    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode, isOnline } =
+    const { plan, setPlan, planId, planName, selectedPrefs, meatFreeDays, clearPlan, isOfflineMode, isOnline, isPro } =
         usePlan();
     const [resultsTab, setResultsTab] = useState('PLAN');
     const [selectedMeal, setSelectedMeal] = useState(null);
+    const [paywallVisible, setPaywallVisible] = useState(false);
 
     const handleSwapMeal = async (dayIndex, type, currentMeal) => {
         let effectivePrefs = [...selectedPrefs];
@@ -116,7 +118,13 @@ export default function ResultsScreen() {
                 )}
             </View>
 
-            <RecipeModal selectedMeal={selectedMeal} onClose={() => setSelectedMeal(null)} />
+            <RecipeModal
+                selectedMeal={selectedMeal}
+                onClose={() => setSelectedMeal(null)}
+                isPro={isPro}
+                onUnlockPro={() => setPaywallVisible(true)}
+            />
+            <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
         </View>
     );
 }

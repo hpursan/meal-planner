@@ -1,1 +1,2394 @@
-[]
+[
+  {
+    "id": 1,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Vegan Buddha Bowl",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Chickpeas",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Sweet Potato",
+        "quantity": "1 small"
+      },
+      {
+        "name": "Tahini",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Cook quinoa.",
+      "Roast chickpeas and sweet potato.",
+      "Slice avocado.",
+      "Assemble bowl and drizzle with tahini."
+    ],
+    "image": "/images/vegan_buddha_bowl.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 2,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Steak and Asparagus",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Sirloin Steak",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Asparagus",
+        "quantity": "1 bunch"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Rosemary",
+        "quantity": "1 sprig"
+      }
+    ],
+    "instructions": [
+      "Season steak with salt and pepper.",
+      "Sear steak in butter and garlic.",
+      "Sauté asparagus pan.",
+      "Rest steak before slicing."
+    ],
+    "image": "/images/steak_and_asparagus.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 600,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 3,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Chicken Alfredo Pasta",
+    "type": "Dinner",
+    "calories": 800,
+    "tags": [
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Fettuccine",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Chicken Breast",
+        "quantity": "1"
+      },
+      {
+        "name": "Heavy Cream",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Parmesan Cheese",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      }
+    ],
+    "instructions": [
+      "Boil pasta.",
+      "Cook chicken in a pan.",
+      "Simmer cream and garlic.",
+      "Whisk in parmesan.",
+      "Toss pasta and chicken in sauce."
+    ],
+    "image": "/images/chicken_alfredo_pasta.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 800,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 4,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Tofu Scramble",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Firm Tofu",
+        "quantity": "1/2 block"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Turmeric",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Nutritional Yeast",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1/4"
+      }
+    ],
+    "instructions": [
+      "Crumble tofu.",
+      "Sauté onion.",
+      "Add tofu and seasonings.",
+      "Stir in spinach until wilted."
+    ],
+    "image": "/images/tofu_scramble.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 5,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Salmon Salad",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Paleo",
+      "Keto",
+      "Gluten-Free",
+      "Fish",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Salmon Fillet",
+        "quantity": "1"
+      },
+      {
+        "name": "Mixed Greens",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1/2"
+      }
+    ],
+    "instructions": [
+      "Pan-sear salmon.",
+      "Chop veggies.",
+      "Whisk olive oil and lemon juice.",
+      "Toss greens and top with salmon."
+    ],
+    "image": "/images/salmon_salad.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 6,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Blueberry Pancakes",
+    "type": "Breakfast",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Milk",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Blueberries",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Whisk batter ingredients.",
+      "Fold in blueberries.",
+      "Cook on griddle until bubbly.",
+      "Serve with maple syrup."
+    ],
+    "image": "/images/blueberry_pancakes.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 7,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Oatmeal with Berries",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Rolled Oats",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Strawberries",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Chia Seeds",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Simmer oats in milk.",
+      "Top with berries and chia seeds."
+    ],
+    "image": "/images/oatmeal_berries.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 300,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 8,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Grilled Chicken Caesar",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Breast",
+        "quantity": "1"
+      },
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Caesar Dressing",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Croutons",
+        "quantity": "1/4 cup"
+      }
+    ],
+    "instructions": [
+      "Grill chicken breast.",
+      "Chop lettuce.",
+      "Toss with dressing and cheese.",
+      "Top with sliced chicken."
+    ],
+    "image": "/images/grilled_chicken_caesar.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 9,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Lentil Soup",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Lentils",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Carrots",
+        "quantity": "2"
+      },
+      {
+        "name": "Celery",
+        "quantity": "1 stalk"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Vegetable Broth",
+        "quantity": "4 cups"
+      }
+    ],
+    "instructions": [
+      "Sauté aromatics.",
+      "Add lentils and broth.",
+      "Simmer for 20 mins.",
+      "Blend partially for texture."
+    ],
+    "image": "/images/lentil_soup.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 10,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Bacon and Eggs",
+    "type": "Breakfast",
+    "calories": 500,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Pork",
+      "Meat",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Bacon",
+        "quantity": "3 slices"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Toast",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Fry bacon until crispy.",
+      "Fry eggs in bacon fat.",
+      "Toast bread.",
+      "Serve with butter."
+    ],
+    "image": "/images/bacon_and_eggs.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 11,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Vegetable Stir Fry",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Broccoli",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "1"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1 cup cooked"
+      }
+    ],
+    "instructions": [
+      "Cook rice.",
+      "Sit-fry veggies with ginger.",
+      "Add soy sauce.",
+      "Serve over rice."
+    ],
+    "image": "/images/vegetable_stir_fry.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 12,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Turkey Sandwich",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Turkey",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Turkey Breast",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Whole Wheat Bread",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "1 leaf"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Mayo",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Toast bread.",
+      "Assemble sandwich with turkey and veggies.",
+      "Slice in half."
+    ],
+    "image": "/images/turkey_sandwich.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 13,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Greek Yogurt Parfait",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy"
+    ],
+    "ingredients": [
+      {
+        "name": "Greek Yogurt",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Honey",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Granola",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Mixed Berries",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Layer yogurt, granola, and berries.",
+      "Drizzle with honey."
+    ],
+    "image": "/images/greek_yogurt_parfait.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 14,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Beef Tacos",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Gluten-Free",
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Beef",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Corn Tortillas",
+        "quantity": "3"
+      },
+      {
+        "name": "Salsa",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/4"
+      },
+      {
+        "name": "Lime",
+        "quantity": "1 wedge"
+      }
+    ],
+    "instructions": [
+      "Brown beef with spices.",
+      "Warm tortillas.",
+      "Assemble tacos with salsa and avocado."
+    ],
+    "image": "/images/beef_tacos.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 600,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 15,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Quinoa Salad",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Feta Cheese",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Cook quinoa and cool.",
+      "Chop veggies.",
+      "Mix everything with olive oil and feta."
+    ],
+    "image": "/images/quinoa_salad.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 16,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Zucchini Noodles with Pesto",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo"
+    ],
+    "ingredients": [
+      {
+        "name": "Zucchini",
+        "quantity": "2"
+      },
+      {
+        "name": "Basil Pesto",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Pine Nuts",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Spiralize zucchini.",
+      "Sauté briefly.",
+      "Toss with pesto and tomatoes."
+    ],
+    "image": "/images/zucchini_noodles_pesto.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 17,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Chia Seed Pudding",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo"
+    ],
+    "ingredients": [
+      {
+        "name": "Chia Seeds",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Vanilla Extract",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Stevia",
+        "quantity": "to taste"
+      }
+    ],
+    "instructions": [
+      "Mix chia seeds and milk.",
+      "Refrigerate overnight.",
+      "Top with berries."
+    ],
+    "image": "/images/chia_seed_pudding.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 300,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 18,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Cauliflower Rice Stir Fry",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo"
+    ],
+    "ingredients": [
+      {
+        "name": "Cauliflower Rice",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Sugar Snap Peas",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Soy Sauce (Tamari)",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Sesame Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Tofu",
+        "quantity": "1/2 block"
+      }
+    ],
+    "instructions": [
+      "Sauté tofu.",
+      "Add veggies and cauliflower rice.",
+      "Stir fry with sauce."
+    ],
+    "image": "/images/cauliflower_rice_stir_fry.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 19,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Egg Roll in a Bowl",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Pork",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Pork",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Cabbage Coleslaw Mix",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "1 clove"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Brown pork.",
+      "Add cabbage and aromatics.",
+      "Cook until wilted."
+    ],
+    "image": "/images/egg_roll_bowl.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 20,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Spinach & Mushroom Omelet",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Whisk eggs.",
+      "Sauté veggies.",
+      "Cook omelet with cheese."
+    ],
+    "image": "/images/spinach_mushroom_omelet.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 21,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Avocado Cucumber Salad",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo"
+    ],
+    "ingredients": [
+      {
+        "name": "Avocado",
+        "quantity": "1"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Cilantro",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Chop avocado and cucumber.",
+      "Drizzle with oil and lemon.",
+      "Season with salt."
+    ],
+    "image": "/images/avocado_cucumber_salad.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 22,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Coconut Curry Lentils",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Red Lentils",
+        "quantity": "1 cup dry"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Curry Powder",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1/2"
+      }
+    ],
+    "instructions": [
+      "Sauté onion and spices.",
+      "Simmer lentils in coconut milk.",
+      "Stir in spinach."
+    ],
+    "image": "/images/coconut_curry_lentils.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 23,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Grilled Shrimp Skewers",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Fish",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Shrimp",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "1"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Garlic Powder",
+        "quantity": "1/2 tsp"
+      }
+    ],
+    "instructions": [
+      "Marinate shrimp.",
+      "Thread onto skewers with peppers.",
+      "Grill 3 mins per side."
+    ],
+    "image": "/images/grilled_shrimp_skewers.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 24,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Almond Flour Pancakes",
+    "type": "Breakfast",
+    "calories": 500,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo"
+    ],
+    "ingredients": [
+      {
+        "name": "Almond Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Vanilla",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Mix batter.",
+      "Cook on low heat.",
+      "Serve with sugar-free syrup."
+    ],
+    "image": "/images/almond_flour_pancakes.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 25,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Stuffed Bell Peppers",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Gluten-Free",
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Bell Peppers",
+        "quantity": "2"
+      },
+      {
+        "name": "Ground Beef",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1/2 cup cooked"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Hollow peppers.",
+      "Stuff with beef and rice mix.",
+      "Bake at 375°F for 30 mins."
+    ],
+    "image": "/images/stuffed_bell_peppers.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 26,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Miso Glazed Cod",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Fish",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Cod Fillet",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Miso Paste",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Sake",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Marinate cod.",
+      "Broil for 8-10 mins."
+    ],
+    "image": "/images/miso_glazed_cod.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 27,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Shakshuka",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Simmer sauce with veggies.",
+      "Crack eggs into sauce.",
+      "Cover and cook until set."
+    ],
+    "image": "/images/shakshuka.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "name": "Avocado Toast with Poached Egg",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Sourdough Bread",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Toast bread.",
+      "Mash avocado.",
+      "Poach egg.",
+      "Assemble."
+    ],
+    "image": "/images/avocado_toast_egg.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "12g",
+      "carbs": "30g",
+      "fats": "18g"
+    },
+    "id": 28,
+    "created_at": "2026-01-06T09:22:38.087Z"
+  },
+  {
+    "name": "Berry Smoothie Bowl",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Frozen Berries",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Blend all ingredients.",
+      "Pour into bowl.",
+      "Top with granola."
+    ],
+    "image": "/images/berry_smoothie_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "5g",
+      "carbs": "50g",
+      "fats": "4g"
+    },
+    "id": 29,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetable Omelette",
+    "type": "Breakfast",
+    "calories": 250,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Onion",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Whisk eggs.",
+      "Sauté veggies.",
+      "Cook omelette."
+    ],
+    "image": "/images/vegetable_omelette.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 250,
+      "protein": "14g",
+      "carbs": "5g",
+      "fats": "18g"
+    },
+    "id": 30,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Greek Yogurt with Honey",
+    "type": "Breakfast",
+    "calories": 200,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Greek Yogurt",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Honey",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Scoop yogurt.",
+      "Drizzle honey."
+    ],
+    "image": "/images/greek_yogurt_honey.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 200,
+      "protein": "20g",
+      "carbs": "18g",
+      "fats": "0g"
+    },
+    "id": 31,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegan Pancakes",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Mix ingredients.",
+      "Cook on griddle."
+    ],
+    "image": "/images/vegan_pancakes.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "8g",
+      "carbs": "70g",
+      "fats": "6g"
+    },
+    "id": 32,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Scrambled Tofu Burrito",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Tofu",
+        "quantity": "1/2 block"
+      },
+      {
+        "name": "Tortilla",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Scramble tofu.",
+      "Wrap in tortilla."
+    ],
+    "image": "/images/scrambled_tofu_burrito.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "18g",
+      "carbs": "45g",
+      "fats": "15g"
+    },
+    "id": 33,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Peanut Butter Banana Toast",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Bread",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Peanut Butter",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Toast bread.",
+      "Spread PB.",
+      "Slice banana."
+    ],
+    "image": "/images/pb_banana_toast.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "10g",
+      "carbs": "40g",
+      "fats": "14g"
+    },
+    "id": 34,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Breakfast Quinoa Bowl",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Cook quinoa.",
+      "Add milk."
+    ],
+    "image": "/images/breakfast_quinoa.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "12g",
+      "carbs": "55g",
+      "fats": "8g"
+    },
+    "id": 35,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Mushroom Spinach Frittata",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Sauté veg.",
+      "Add eggs.",
+      "Bake."
+    ],
+    "image": "/images/mushroom_frittata.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "18g",
+      "carbs": "6g",
+      "fats": "20g"
+    },
+    "id": 36,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Smoked Salmon Bagel",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Bagel",
+        "quantity": "1"
+      },
+      {
+        "name": "Cream Cheese",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Smoked Salmon",
+        "quantity": "2 oz"
+      }
+    ],
+    "instructions": [
+      "Slice bagel.",
+      "Spread cheese.",
+      "Top with salmon."
+    ],
+    "image": "/images/salmon_bagel.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "50g",
+      "fats": "15g"
+    },
+    "id": 37,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Caprese Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Tomato",
+        "quantity": "2"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Basil",
+        "quantity": "Fresh"
+      }
+    ],
+    "instructions": [
+      "Slice tomatoes and cheese.",
+      "Layer with basil.",
+      "Drizzle balsamic."
+    ],
+    "image": "/images/caprese_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "20g",
+      "carbs": "8g",
+      "fats": "25g"
+    },
+    "id": 38,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Chicken Wrap",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Tortilla",
+        "quantity": "1"
+      },
+      {
+        "name": "Chicken Breast",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "1 cup"
+      }
+    ],
+    "instructions": [
+      "Cook chicken.",
+      "Wrap with lettuce."
+    ],
+    "image": "/images/chicken_wrap.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "35g",
+      "carbs": "40g",
+      "fats": "18g"
+    },
+    "id": 39,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Lentil Salad",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Lentils",
+        "quantity": "1 cup cooked"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Mix lentils and veggies.",
+      "Dress with lemon."
+    ],
+    "image": "/images/lentil_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "50g",
+      "fats": "5g"
+    },
+    "id": 40,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Tuna Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Canned Tuna",
+        "quantity": "1 can"
+      },
+      {
+        "name": "Mayo",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Mix tuna and mayo."
+    ],
+    "image": "/images/tuna_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "30g",
+      "carbs": "2g",
+      "fats": "20g"
+    },
+    "id": 41,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Falafel Pita",
+    "type": "Lunch",
+    "calories": 550,
+    "tags": [
+      "Vegan",
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pita",
+        "quantity": "1"
+      },
+      {
+        "name": "Falafel",
+        "quantity": "4"
+      },
+      {
+        "name": "Tahini",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Stuff pita.",
+      "Drizzle tahini."
+    ],
+    "image": "/images/falafel_pita.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "18g",
+      "carbs": "70g",
+      "fats": "22g"
+    },
+    "id": 42,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Cobb Salad",
+    "type": "Lunch",
+    "calories": 600,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Chicken",
+      "Meat",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Lettuce",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Chicken",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Assemble salad."
+    ],
+    "image": "/images/cobb_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "40g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 43,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetable Soup",
+    "type": "Lunch",
+    "calories": 200,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "quantity": "2"
+      },
+      {
+        "name": "Celery",
+        "quantity": "2"
+      },
+      {
+        "name": "Broth",
+        "quantity": "2 cups"
+      }
+    ],
+    "instructions": [
+      "Simmer veggies."
+    ],
+    "image": "/images/vegetable_soup.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 200,
+      "protein": "4g",
+      "carbs": "30g",
+      "fats": "2g"
+    },
+    "id": 44,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Turkey Burger",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Meat",
+      "Turkey"
+    ],
+    "ingredients": [
+      {
+        "name": "Turkey Patty",
+        "quantity": "1"
+      },
+      {
+        "name": "Bun",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Grill burger.",
+      "Serve on bun."
+    ],
+    "image": "/images/turkey_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "35g",
+      "fats": "15g"
+    },
+    "id": 45,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Spinach Pasta",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "2 cups"
+      }
+    ],
+    "instructions": [
+      "Cook pasta.",
+      "Sauté spinach.",
+      "Mix."
+    ],
+    "image": "/images/spinach_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "15g",
+      "carbs": "75g",
+      "fats": "8g"
+    },
+    "id": 46,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Shrimp Taco Bowl",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Shrimp",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Corn",
+        "quantity": "1/4 cup"
+      }
+    ],
+    "instructions": [
+      "Cook shrimp.",
+      "Simmer corn.",
+      "Serve over rice."
+    ],
+    "image": "/images/shrimp_taco_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "45g",
+      "fats": "10g"
+    },
+    "id": 47,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Beef Stir Fry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Beef",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Beef Strips",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Broccoli",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Stir fry beef.",
+      "Add broccoli."
+    ],
+    "image": "/images/beef_stir_fry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "45g",
+      "carbs": "20g",
+      "fats": "30g"
+    },
+    "id": 48,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Baked Salmon with Asparagus",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Keto",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Salmon",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Asparagus",
+        "quantity": "1 bunch"
+      }
+    ],
+    "instructions": [
+      "Bake salmon and asparagus."
+    ],
+    "image": "/images/baked_salmon.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "40g",
+      "carbs": "5g",
+      "fats": "28g"
+    },
+    "id": 49,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetarian Chili",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Beans",
+        "quantity": "2 cans"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1 can"
+      },
+      {
+        "name": "Chili Powder",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Simmer everything."
+    ],
+    "image": "/images/vegetarian_chili.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "18g",
+      "carbs": "60g",
+      "fats": "5g"
+    },
+    "id": 50,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Pesto Pasta",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Pesto",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Cook pasta.",
+      "Toss with pesto."
+    ],
+    "image": "/images/pesto_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "12g",
+      "carbs": "70g",
+      "fats": "25g"
+    },
+    "id": 51,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Chicken Curry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Curry Paste",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Simmer chicken in sauce."
+    ],
+    "image": "/images/chicken_curry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "35g",
+      "carbs": "15g",
+      "fats": "40g"
+    },
+    "id": 52,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Portobello Mushroom Burger",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Portobello Mushroom",
+        "quantity": "2"
+      },
+      {
+        "name": "Lettuce",
+        "quantity": "2 leaves"
+      }
+    ],
+    "instructions": [
+      "Grill mushrooms.",
+      "Use as buns."
+    ],
+    "image": "/images/mushroom_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "8g",
+      "carbs": "15g",
+      "fats": "10g"
+    },
+    "id": 53,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Fish Tacos",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "White Fish",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Tortilla",
+        "quantity": "2"
+      },
+      {
+        "name": "Cabbage",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Fry fish.",
+      "Fill tacos."
+    ],
+    "image": "/images/fish_tacos.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "40g",
+      "fats": "18g"
+    },
+    "id": 54,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Spaghetti Bolognese",
+    "type": "Dinner",
+    "calories": 700,
+    "tags": [
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Ground Beef",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Cook sauce with beef.",
+      "Serve over pasta."
+    ],
+    "image": "/images/spaghetti_bolognese.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 700,
+      "protein": "35g",
+      "carbs": "80g",
+      "fats": "25g"
+    },
+    "id": 55,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Eggplant Parmesan",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggplant",
+        "quantity": "1"
+      },
+      {
+        "name": "Marinara",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Bread eggplant.",
+      "Bake with sauce and cheese."
+    ],
+    "image": "/images/eggplant_parm.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "45g",
+      "fats": "30g"
+    },
+    "id": 56,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Lemon Herb Chicken",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Thighs",
+        "quantity": "2"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Herbs",
+        "quantity": "Mix"
+      }
+    ],
+    "instructions": [
+      "Roast chicken with herbs."
+    ],
+    "image": "/images/lemon_chicken.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "2g",
+      "fats": "35g"
+    },
+    "id": 57,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  }
+]

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
 
-export default function RecipeModal({ selectedMeal, onClose }) {
+export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
     const [imageError, setImageError] = useState(false);
 
     // Reset error state when meal changes
@@ -10,6 +10,20 @@ export default function RecipeModal({ selectedMeal, onClose }) {
     }, [selectedMeal]);
 
     if (!selectedMeal) return null;
+
+    const renderMacro = (label, value) => (
+        <View style={styles.macroItem}>
+            <Text style={styles.macroLabel}>{label}</Text>
+            {isPro ? (
+                <Text style={styles.macroValue}>{value || '-'}</Text>
+            ) : (
+                <View style={styles.lockedContainer}>
+                    <Text style={styles.blurredText}>XXX</Text>
+                    <Text style={styles.lockIcon}>🔒</Text>
+                </View>
+            )}
+        </View>
+    );
 
     return (
         <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
@@ -49,6 +63,30 @@ export default function RecipeModal({ selectedMeal, onClose }) {
                                     </View>
                                 ))}
                         </View>
+
+                        {/* MACROS SECTION - NEW */}
+                        {selectedMeal.macros && (
+                            <TouchableOpacity
+                                activeOpacity={isPro ? 1 : 0.7}
+                                onPress={!isPro ? onUnlockPro : null}
+                                style={styles.macrosContainer}
+                            >
+                                <View style={styles.macroRow}>
+                                    <View style={styles.macroItem}>
+                                        <Text style={styles.macroLabel}>Calories</Text>
+                                        <Text style={styles.macroValue}>{selectedMeal.macros.calories}</Text>
+                                    </View>
+                                    {renderMacro('Protein', selectedMeal.macros.protein)}
+                                    {renderMacro('Carbs', selectedMeal.macros.carbs)}
+                                    {renderMacro('Fats', selectedMeal.macros.fats)}
+                                </View>
+                                {!isPro && (
+                                    <View style={styles.unlockOverlay}>
+                                        <Text style={styles.unlockText}>Tap to Unlock Macros</Text>
+                                    </View>
+                                )}
+                            </TouchableOpacity>
+                        )}
 
                         <Text style={styles.sectionHeader}>Ingredients</Text>
                         <View style={styles.ingredientList}>
@@ -206,4 +244,59 @@ const styles = StyleSheet.create({
         lineHeight: 24,
         flex: 1,
     },
+    macrosContainer: {
+        backgroundColor: '#2A2A35',
+        borderRadius: 12,
+        padding: 16,
+        marginBottom: 24,
+        borderWidth: 1,
+        borderColor: '#444',
+        position: 'relative',
+    },
+    macroRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    macroItem: {
+        alignItems: 'center',
+        flex: 1,
+    },
+    macroLabel: {
+        color: '#888',
+        fontSize: 12,
+        marginBottom: 4,
+        textTransform: 'uppercase',
+    },
+    macroValue: {
+        color: '#FFF',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    lockedContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 4,
+    },
+    blurredText: {
+        color: 'rgba(255,255,255,0.2)',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    lockIcon: {
+        fontSize: 12,
+    },
+    unlockOverlay: {
+        position: 'absolute',
+        bottom: 8,
+        left: 0,
+        right: 0,
+        alignItems: 'center',
+    },
+    unlockText: {
+        color: '#BB86FC',
+        fontSize: 10,
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+    }
 });
