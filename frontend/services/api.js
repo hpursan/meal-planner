@@ -2,7 +2,7 @@ import { supabase } from './supabase';
 
 // Host handling for Android Emulator vs iOS Simulator vs Web vs Physical Device
 // Using specific LAN IP to allow physical device testing via Expo Go
-const API_HOST = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000';
+const API_HOST = process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000';
 
 const getAuthHeaders = async () => {
     const {

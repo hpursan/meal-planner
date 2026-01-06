@@ -122,7 +122,10 @@ export default function ResultsScreen() {
                 selectedMeal={selectedMeal}
                 onClose={() => setSelectedMeal(null)}
                 isPro={isPro}
-                onUnlockPro={() => setPaywallVisible(true)}
+                onUnlockPro={() => {
+                    setSelectedMeal(null);
+                    setTimeout(() => setPaywallVisible(true), 300); // Small delay for smooth transition
+                }}
             />
             <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
         </View>

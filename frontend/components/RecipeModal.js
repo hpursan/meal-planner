@@ -18,12 +18,16 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                 <Text style={styles.macroValue}>{value || '-'}</Text>
             ) : (
                 <View style={styles.lockedContainer}>
-                    <Text style={styles.blurredText}>XXX</Text>
-                    <Text style={styles.lockIcon}>🔒</Text>
+                    <Text style={[styles.lockIcon, { fontSize: 20 }]}>🔒</Text>
                 </View>
             )}
         </View>
     );
+
+    const imageUrl = selectedMeal.image.startsWith('http')
+        ? selectedMeal.image
+        : `${process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000'}${selectedMeal.image}`;
+    const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'http://192.168.68.100:3000'}/images/generic_fallback_meal.png`;
 
     return (
         <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
@@ -31,18 +35,19 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                 <View style={styles.modalContent}>
                     {!imageError && selectedMeal.image ? (
                         <Image
-                            source={{
-                                uri: selectedMeal.image.startsWith('http')
-                                    ? selectedMeal.image
-                                    : `${process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000'}${selectedMeal.image}`,
-                            }}
+                            source={{ uri: imageUrl }}
                             style={styles.heroImage}
-                            onError={() => setImageError(true)}
+                            onError={(e) => {
+                                console.log(`FAILED IMAGE: ${imageUrl}`);
+                                // console.log('ERROR:', e.nativeEvent.error);
+                                setImageError(true);
+                            }}
                         />
                     ) : (
-                        <View style={[styles.heroImage, styles.heroPlaceholder]}>
-                            <Text style={{ fontSize: 40 }}>🍽️</Text>
-                        </View>
+                        <Image
+                            source={{ uri: fallbackUrl }}
+                            style={[styles.heroImage]}
+                        />
                     )}
                     <View style={styles.modalHeader}>
                         <Text style={styles.modalTitle}>{selectedMeal.name}</Text>
@@ -67,8 +72,15 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                         {/* MACROS SECTION - NEW */}
                         {selectedMeal.macros && (
                             <TouchableOpacity
-                                activeOpacity={isPro ? 1 : 0.7}
-                                onPress={!isPro ? onUnlockPro : null}
+                                activeOpacity={0.7}
+                                onPress={() => {
+                                    console.log('Unlock Macros Pressed. isPro:', isPro);
+                                    if (!isPro && onUnlockPro) {
+                                        onUnlockPro();
+                                    } else {
+                                        console.log('Unlock action skipped. onUnlockPro:', !!onUnlockPro);
+                                    }
+                                }}
                                 style={styles.macrosContainer}
                             >
                                 <View style={styles.macroRow}>
