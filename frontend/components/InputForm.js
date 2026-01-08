@@ -84,6 +84,37 @@ const DurationPill = ({ val, days, setDays, isPro, onProFeature }) => {
     );
 };
 
+const CookingLoader = () => {
+    const [frame, setFrame] = React.useState(0);
+    const frames = [
+        { icon: '👨‍🍳', text: 'Prepping ingredients...' },
+        { icon: '🔪', text: 'Chopping veggies...' },
+        { icon: '🍳', text: 'Sautéing onions...' },
+        { icon: '🥘', text: 'Simmering sauce...' },
+        { icon: '🧂', text: 'Seasoning to taste...' },
+        { icon: '🥗', text: 'Plating up...' },
+        { icon: '✨', text: 'Almost ready...' },
+    ];
+
+    React.useEffect(() => {
+        const interval = setInterval(() => {
+            setFrame((prev) => (prev + 1) % frames.length);
+        }, 800); // 800ms per frame
+        return () => clearInterval(interval);
+    }, []);
+
+    const current = frames[frame];
+
+    return (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Text style={{ fontSize: 20 }}>{current.icon}</Text>
+            <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: 14, fontWeight: '600', width: 160 }}>
+                {current.text}
+            </Text>
+        </View>
+    );
+};
+
 export default function InputForm({
     days,
     setDays,
@@ -263,12 +294,7 @@ export default function InputForm({
                             style={styles.gradientButton}
                         >
                             {loading ? (
-                                <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-                                    <ActivityIndicator color="#FFF" />
-                                    <Text style={{ color: 'rgba(255,255,255,0.7)', fontSize: 12 }}>
-                                        (Server waking up...)
-                                    </Text>
-                                </View>
+                                <CookingLoader />
                             ) : (
                                 <Text style={[styles.buttonText, !isOnline && { color: Colors.text.muted }]}>
                                     {isOnline ? '✨ Generate Magic Plan' : '🚫 Offline Mode'}
@@ -276,6 +302,16 @@ export default function InputForm({
                             )}
                         </LinearGradient>
                     </TouchableOpacity>
+
+                    <Text style={{
+                        color: 'rgba(255,255,255,0.4)',
+                        fontSize: 11,
+                        textAlign: 'center',
+                        marginTop: 15,
+                        fontStyle: 'italic'
+                    }}>
+                        Not Medical Advice: Plans are generated for convenience. Consult a doctor before starting any new diet.
+                    </Text>
                     {!isOnline && (
                         <Text style={{ color: Colors.text.hint, textAlign: 'center', marginTop: 10, fontSize: 12 }}>
                             Connect to the internet to create new plans.

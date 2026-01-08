@@ -137,11 +137,20 @@ export default function SettingsScreen() {
                     <Text style={styles.sectionTitle}>Subscription</Text>
 
                     {isPro ? (
-                        <View style={styles.row}>
-                            <Text style={styles.label}>Status</Text>
-                            <Text style={[styles.value, { color: Colors.brand.primary, fontWeight: 'bold' }]}>
-                                Pro Active ✨
-                            </Text>
+                        <View>
+                            <View style={styles.row}>
+                                <Text style={styles.label}>Status</Text>
+                                <Text style={[styles.value, { color: Colors.brand.primary, fontWeight: 'bold' }]}>
+                                    Pro Active ✨
+                                </Text>
+                            </View>
+                            <TouchableOpacity
+                                style={[styles.row, { paddingVertical: 12, marginTop: 12, borderTopWidth: 1, borderTopColor: Colors.border.default, paddingTop: 16 }]}
+                                onPress={() => Linking.openURL('https://apps.apple.com/account/subscriptions')}
+                            >
+                                <Text style={styles.label}>Manage Subscription</Text>
+                                <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                            </TouchableOpacity>
                         </View>
                     ) : (
                         <TouchableOpacity

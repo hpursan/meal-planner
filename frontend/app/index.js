@@ -110,7 +110,7 @@ export default function HomeScreen() {
             } = await supabase.auth.getSession();
             let newPlanId = null;
 
-            if (session && session.user) {
+            if (session && session.user && isPro) {
                 const { data: savedData, error } = await supabase
                     .from('saved_plans')
                     .insert([
@@ -125,7 +125,7 @@ export default function HomeScreen() {
 
                 if (savedData) {
                     newPlanId = savedData.id;
-                    setPlanId(savedData.id); // <--- THIS WAS MISSING
+                    setPlanId(savedData.id);
                 }
             }
 
@@ -157,11 +157,17 @@ export default function HomeScreen() {
 
             <View style={styles.topBar}>
                 <TouchableOpacity
-                    onPress={() => router.push('/history')}
+                    onPress={() => {
+                        if (isPro) {
+                            router.push('/history');
+                        } else {
+                            setPaywallVisible(true);
+                        }
+                    }}
                     style={styles.iconButton}
                     accessibilityLabel="My Plans History"
                 >
-                    <Ionicons name="receipt-outline" size={24} color="#FFF" />
+                    <Ionicons name="receipt-outline" size={24} color={isPro ? "#FFF" : "#777"} />
                 </TouchableOpacity>
 
                 <Text style={styles.appTitle}>👨‍🍳</Text>
