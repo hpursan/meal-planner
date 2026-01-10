@@ -96,6 +96,10 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
 
 ## 🚀 Phase 8: Post-Launch (Live Ops - ACTIVE)
 - [x] **Monitor Review Status**: APPROVED! ✅
+- [x] **Build 34/35 Features**:
+    - [x] **Cooking Mode**: Screen awake logic.
+    - [x] **AI Recipe Import**: URL scraping + OpenAI Parsing.
+    - [x] **Content Update**: Added Turkey/Pork presets.
 - [ ] **First Sale**: Verify IAP flow in Production.
 - [ ] **Marketing**: ASO Optimization, Social Media.
 - [ ] **V1.1 Planning**:
@@ -103,6 +107,6 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
         - [ ] **Data Gen**: Pre-create 12+ months of recipes (Text + Images) using AI.
         - [ ] **Schema**: Add `release_date` or `month_index` to Recipe DB.
         - [ ] **Logic**: Update `planner.js` to filter available recipes based on `Current Date >= Release Date`.
-    - [ ] Cloud Sync (Optional).
-    - [ ] Nutritional Tracking.
+    - [ ] **"My Recipes" Library**: A dedicated tab to view/edit imported recipes.
+    - [ ] **Social Sharing**: Share plans as text/image.
     - [ ] Android Release.
