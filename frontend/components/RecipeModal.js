@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
+import { useKeepAwake } from 'expo-keep-awake';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
+    useKeepAwake(); // Keeps screen on while this modal is open
     const [imageError, setImageError] = useState(false);
 
     // Reset error state when meal changes
@@ -43,10 +45,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                             }}
                         />
                     ) : (
-                        <Image
-                            source={{ uri: fallbackUrl }}
-                            style={[styles.heroImage]}
-                        />
+                        <Image source={{ uri: fallbackUrl }} style={[styles.heroImage]} />
                     )}
                     <View style={styles.modalHeader}>
                         <Text style={styles.modalTitle}>{selectedMeal.name}</Text>
@@ -306,5 +305,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: 1,
-    }
+    },
 });
