@@ -102,11 +102,18 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
     - [x] **Content Update**: Added Turkey/Pork presets.
 - [ ] **First Sale**: Verify IAP flow in Production.
 - [ ] **Marketing**: ASO Optimization, Social Media.
-- [ ] **V1.1 Planning**:
-    - [ ] **Automated Content Drip System**:
-        - [ ] **Data Gen**: Pre-create 12+ months of recipes (Text + Images) using AI.
-        - [ ] **Schema**: Add `release_date` or `month_index` to Recipe DB.
-        - [ ] **Logic**: Update `planner.js` to filter available recipes based on `Current Date >= Release Date`.
-    - [ ] **"My Recipes" Library**: A dedicated tab to view/edit imported recipes.
-    - [ ] **Social Sharing**: Share plans as text/image.
+- [ ] **V1.1 Planning (The "Smart Kitchen" Update)**:
+    - [ ] **"My Recipes" Library** (Priority 1):
+        - [ ] **Schema**: Private `user_recipes` table for user-imported content.
+        - [ ] **Hybrid Planner**: Merge Global + Private recipes during plan generation.
+        - [ ] **Safe Images**: Use category-based "Smart Placeholders" for imports (No user uploads).
+    - [ ] **"Fridge-First" Planning** (Priority 2):
+        - [ ] **Input**: "Use Up Ingredients" field in generation flow.
+        - [ ] **Logic**: Weighted algorithm to prioritize recipes containing user's pantry items.
+    - [ ] **Automated Content Drip System** (Priority 3):
+        - [ ] **Data Gen**: Pre-create 12+ months of recipes (Text + Custom AI Images).
+        - [ ] **Logic**: Unlock based on `release_date`.
+    - [ ] **Future Concepts (Backlog)**:
+        - [ ] **AI Sous-Chef**: Chatbot for substitutions/scaling.
+        - [ ] **Macro Summaries**: Daily calorie/protein totals.
     - [ ] Android Release.
