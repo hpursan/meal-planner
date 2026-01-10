@@ -44,17 +44,17 @@ async function fetchUrlContent(url) {
         });
         const $ = cheerio.load(data);
 
+        // Get structured data if available (JSON-LD) - CHECK FIRST
+        const jsonLd = $('script[type="application/ld+json"]').html();
+        if (jsonLd) {
+            return "JSON-LD Found: " + jsonLd;
+        }
+
         // Remove noise
         $('script').remove();
         $('style').remove();
         $('nav').remove();
         $('footer').remove();
-
-        // Get structured data if available (JSON-LD)
-        const jsonLd = $('script[type="application/ld+json"]').html();
-        if (jsonLd) {
-            return "JSON-LD Found: " + jsonLd;
-        }
 
         // Fallback to body text
         return $('body').text().replace(/\s+/g, ' ').substring(0, 15000); // Limit to 15k chars to save tokens
