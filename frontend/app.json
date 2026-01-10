@@ -2,7 +2,7 @@
     "expo": {
         "name": "Meal Planner",
         "slug": "meal-planner",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "scheme": "mealplanner",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -16,7 +16,7 @@
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.pursan.mealplanner",
-            "buildNumber": "33",
+            "buildNumber": "34",
             "infoPlist": {
                 "ITSAppUsesNonExemptEncryption": false
             }
