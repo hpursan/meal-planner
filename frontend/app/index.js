@@ -10,6 +10,7 @@ import * as Haptics from 'expo-haptics';
 import { useEffect, useState } from 'react';
 import PaywallModal from '../components/PaywallModal';
 import ImportRecipeModal from '../components/ImportRecipeModal'; // <--- New Import
+import RecipeModal from '../components/RecipeModal';
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -36,6 +37,7 @@ export default function HomeScreen() {
 
     const [paywallVisible, setPaywallVisible] = useState(false);
     const [importVisible, setImportVisible] = useState(false);
+    const [importedMeal, setImportedMeal] = useState(null);
 
     useEffect(() => {
         if (plan.length === 0) {
@@ -334,11 +336,15 @@ export default function HomeScreen() {
                 isVisible={importVisible}
                 onClose={() => setImportVisible(false)}
                 onImportSuccess={(meal) => {
-                    // For V1, we just alert success. In V1.1 we will add to "My Recipes"
-                    // But to make it immediately useful, let's inject it into the current plan if possible, 
-                    // or just acknowledge it.
-                    // Ideally: router.push({ pathname: '/recipe-editor', params: { ...meal } })
+                    setImportedMeal(meal);
                 }}
+            />
+
+            <RecipeModal
+                selectedMeal={importedMeal}
+                onClose={() => setImportedMeal(null)}
+                isPro={isPro}
+                onUnlockPro={() => setPaywallVisible(true)}
             />
         </View>
     );
