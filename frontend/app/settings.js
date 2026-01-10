@@ -145,7 +145,16 @@ export default function SettingsScreen() {
                                 </Text>
                             </View>
                             <TouchableOpacity
-                                style={[styles.row, { paddingVertical: 12, marginTop: 12, borderTopWidth: 1, borderTopColor: Colors.border.default, paddingTop: 16 }]}
+                                style={[
+                                    styles.row,
+                                    {
+                                        paddingVertical: 12,
+                                        marginTop: 12,
+                                        borderTopWidth: 1,
+                                        borderTopColor: Colors.border.default,
+                                        paddingTop: 16,
+                                    },
+                                ]}
                                 onPress={() => Linking.openURL('https://apps.apple.com/account/subscriptions')}
                             >
                                 <Text style={styles.label}>Manage Subscription</Text>
@@ -158,8 +167,18 @@ export default function SettingsScreen() {
                             onPress={() => setPaywallVisible(true)}
                         >
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <View style={{ width: 8, height: 8, borderRadius: 4, backgroundColor: Colors.brand.primary, marginRight: 8 }} />
-                                <Text style={[styles.label, { fontWeight: 'bold', color: Colors.text.primary }]}>Upgrade to Pro</Text>
+                                <View
+                                    style={{
+                                        width: 8,
+                                        height: 8,
+                                        borderRadius: 4,
+                                        backgroundColor: Colors.brand.primary,
+                                        marginRight: 8,
+                                    }}
+                                />
+                                <Text style={[styles.label, { fontWeight: 'bold', color: Colors.text.primary }]}>
+                                    Upgrade to Pro
+                                </Text>
                             </View>
                             <Text style={{ color: Colors.brand.primary, fontSize: 18 }}>→</Text>
                         </TouchableOpacity>
@@ -188,9 +207,7 @@ export default function SettingsScreen() {
 
                     <TouchableOpacity
                         style={[styles.row, { paddingVertical: 12 }]}
-                        onPress={() =>
-                            Linking.openURL('https://meal-planner-dtkf.onrender.com/terms.html')
-                        }
+                        onPress={() => Linking.openURL('https://meal-planner-dtkf.onrender.com/terms.html')}
                     >
                         <Text style={styles.label}>Terms of Service</Text>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
@@ -230,7 +247,8 @@ export default function SettingsScreen() {
 
                 <View style={styles.footer}>
                     <Text style={styles.version}>
-                        Version {Constants.expoConfig?.version || Constants.manifest?.version || '1.0.0'} ({Constants.expoConfig?.ios?.buildNumber || Constants.manifest?.ios?.buildNumber || '1'})
+                        Version {Constants.expoConfig?.version || Constants.manifest?.version || '1.0.0'} (
+                        {Constants.expoConfig?.ios?.buildNumber || Constants.manifest?.ios?.buildNumber || '1'})
                     </Text>
                 </View>
             </ScrollView>

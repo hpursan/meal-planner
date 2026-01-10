@@ -40,6 +40,11 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
     - [x] Apple Sign-In Integration.
     - [x] Secure Storage.
 
+## 🛠 Technical Debt / Post-Launch Cleanup
+- [ ] **Remove Hardcoded Env Vars**: We temporarily hardcoded fallbacks for API_URL, Supabase Keys, and RevenueCat Keys in `api.js`, `supabase.js`, and `purchases.js` to bypass a build injection issue. These MUST be removed and the build pipeline fixed to use `.env` properly.
+- [ ] **Restore Animations**: Re-enable `CookingLoader` in `InputForm.js` once stability is confirmed.
+- [ ] **Sentry Refinement**: Verify source maps are uploaded so stack traces are readable.
+
 ## ✅ Phase 4: Persistence & Features (Completed)
 - [x] **Save Plan Feature**: Save to profile.
 - [x] **Load Plan Feature**: Restore active plan.
@@ -85,18 +90,12 @@ This document tracks the progress towards the Minimum Viable Product (MVP).
 - [x] **UX Polish**: Added "Resume Plan" feature.
 - [x] **Final Polish**: Pricing Strategy ($4.99/$29.99), Privacy Policy, Screenshots.
 - [x] **App Store Submission**:
-    - [x] Version 1.0 (Build 20) Submitted for Review.
-    - [x] In-App Purchases (Monthly/Yearly) Submitted.
+    - [x] Version 1.0 (Build 31) **APPROVED** by Apple.
+    - [x] In-App Purchases Live.
+    - [x] **Content Update**: Shipped w/ 90 Enhanced Recipes (Macros + Instructions).
 
-## 🚧 Phase 7.5: Content & Nutrition Sprint (Completed)
-- [x] **Data Extraction**: Dump Supabase recipes to local JSON.
-- [x] **Enrichment**: Add Macros (Calories, Protein, Carbs) and "Action-First" Instructions to all recipes.
-- [x] **Expansion**: Generate 30+ new recipes (Total ~90).
-- [x] **UI Update**: Show Macros in RecipeDetail (Blur/Lock for Non-Pro).
-- [x] **Verification**: Verified enhanced V2 recipes in local app.
-
-## 🚀 Phase 8: Post-Launch (Live Ops)
-- [ ] **Monitor Review Status**: Respond to Apple rejections/questions.
+## 🚀 Phase 8: Post-Launch (Live Ops - ACTIVE)
+- [x] **Monitor Review Status**: APPROVED! ✅
 - [ ] **First Sale**: Verify IAP flow in Production.
 - [ ] **Marketing**: ASO Optimization, Social Media.
 - [ ] **V1.1 Planning**:

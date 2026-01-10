@@ -105,7 +105,7 @@ export function PlanProvider({ children }) {
             }
         };
         cacheData();
-    }, [plan, checkedItems, planId, planName]);
+    }, [plan, checkedItems, planId, planName, days, selectedPrefs, meatFreeDays]);
 
     // Function to attempt loading from cache (used on startup or error)
     const loadFromCache = async () => {
@@ -150,7 +150,7 @@ export function PlanProvider({ children }) {
         try {
             await AsyncStorage.removeItem(CACHE_KEY_PLAN);
             await AsyncStorage.removeItem(CACHE_KEY_CHECKED);
-        } catch (e) { }
+        } catch (e) {}
     };
 
     return (
@@ -177,7 +177,6 @@ export function PlanProvider({ children }) {
                 isOfflineMode,
                 setIsOfflineMode,
                 isOnline,
-                setIsOnline,
                 setIsOnline,
                 // Pro Features
                 isPro,

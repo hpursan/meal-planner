@@ -1,19 +1,21 @@
 import Purchases from 'react-native-purchases';
 import { Platform } from 'react-native';
+import * as Sentry from '@sentry/react-native';
 
 const API_KEYS = {
-    ios: process.env.EXPO_PUBLIC_RC_KEY_IOS,
+    ios: process.env.EXPO_PUBLIC_RC_KEY_IOS || 'appl_jHlXOVmnbFquXCvaIQbAFzszaNO',
     android: '', // Placeholder
 };
 
-const ENTITLEMENT_ID = 'pro'; // Must match RevenueCat Entitlement Name (lowercase check recommended)
-
 export const PurchasesService = {
     async init() {
-        if (Platform.OS === 'ios') {
-            await Purchases.configure({ apiKey: API_KEYS.ios });
-        } else if (Platform.OS === 'android') {
-            // await Purchases.configure({ apiKey: API_KEYS.android });
+        try {
+            if (Platform.OS === 'ios') {
+                await Purchases.configure({ apiKey: API_KEYS.ios });
+            }
+        } catch (e) {
+            console.error('RC Init Error', e);
+            Sentry.captureException(e);
         }
     },
 
@@ -25,6 +27,7 @@ export const PurchasesService = {
             }
         } catch (e) {
             console.error('Error fetching offerings', e);
+            Sentry.captureException(e);
         }
         return [];
     },
@@ -72,5 +75,5 @@ export const PurchasesService = {
         // Note: The Dashboard showed "MealPlanner Pro" as NAME. The Identifier might be different.
         // Usually safe to check if Object.keys(active).length > 0 if we only have 1 entitlement.
         return Object.keys(customerInfo.entitlements.active).length > 0;
-    }
+    },
 };

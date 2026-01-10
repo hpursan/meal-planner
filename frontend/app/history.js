@@ -22,7 +22,9 @@ export default function HistoryScreen() {
         });
 
         // Listen for changes
-        const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        const {
+            data: { subscription },
+        } = supabase.auth.onAuthStateChange((_event, session) => {
             if (session) setUserId(session.user.id);
             else setUserId(null);
             setLoading(false);
@@ -49,10 +51,7 @@ export default function HistoryScreen() {
                 ) : !userId ? (
                     <View style={styles.centerContent}>
                         <Text style={styles.messageText}>Please sign in to view your plans.</Text>
-                        <TouchableOpacity
-                            onPress={() => router.push('/login')}
-                            style={styles.actionButton}
-                        >
+                        <TouchableOpacity onPress={() => router.push('/login')} style={styles.actionButton}>
                             <Text style={styles.buttonText}>Sign In</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => router.back()} style={{ marginTop: 20 }}>

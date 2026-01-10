@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, Modal, TouchableOpacity, ScrollView, ActivityIndicator } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
 import { usePlan } from '../context/PlanContext';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -10,7 +9,7 @@ const MOCK_PACKAGES = [
     {
         identifier: '$rc_monthly',
         product: {
-            title: 'Monthly Subscription',
+            title: 'MOCK Monthly',
             description: 'Unlock 7-Day Plans',
             priceString: '$4.99',
             period: 'P1M',
@@ -24,7 +23,7 @@ const MOCK_PACKAGES = [
             priceString: '$29.99',
             period: 'P1Y',
         },
-    }
+    },
 ];
 
 export default function PaywallModal({ visible, onClose }) {
@@ -55,14 +54,11 @@ export default function PaywallModal({ visible, onClose }) {
         <Modal visible={visible} animationType="slide" presentationStyle="pageSheet">
             <LinearGradient colors={['#1E1E2E', '#121212']} style={styles.container}>
                 <ScrollView contentContainerStyle={styles.scroll}>
-
                     {/* Header */}
                     <View style={styles.header}>
                         <Text style={styles.emoji}>✨</Text>
                         <Text style={styles.title}>Unlock Full Access</Text>
-                        <Text style={styles.subtitle}>
-                            Remove limits. Plan Full Weeks. Support Development.
-                        </Text>
+                        <Text style={styles.subtitle}>Remove limits. Plan Full Weeks. Support Development.</Text>
                     </View>
 
                     {/* Features List */}
@@ -84,14 +80,22 @@ export default function PaywallModal({ visible, onClose }) {
                                     onPress={() => handlePurchase(pkg)}
                                     disabled={!!purchasing}
                                 >
-                                    {isAnnual && <View style={styles.badge}><Text style={styles.badgeText}>BEST VALUE</Text></View>}
+                                    {isAnnual && (
+                                        <View style={styles.badge}>
+                                            <Text style={styles.badgeText}>BEST VALUE</Text>
+                                        </View>
+                                    )}
                                     <View style={styles.productInfo}>
-                                        <Text style={styles.productTitle}>{pkg.product.title.replace(/\s*\(.*\)/, '') || 'Subscription'}</Text>
+                                        <Text style={styles.productTitle}>
+                                            {pkg.product.title.replace(/\s*\(.*\)/, '') || 'Subscription'}
+                                        </Text>
                                         <Text style={styles.productPrice}>{pkg.product.priceString}</Text>
                                     </View>
                                     <Text style={styles.productDesc}>{pkg.product.description}</Text>
 
-                                    {purchasing === pkg.identifier && <ActivityIndicator style={{ marginTop: 10 }} color="#FFF" />}
+                                    {purchasing === pkg.identifier && (
+                                        <ActivityIndicator style={{ marginTop: 10 }} color="#FFF" />
+                                    )}
                                 </TouchableOpacity>
                             );
                         })}
@@ -103,16 +107,19 @@ export default function PaywallModal({ visible, onClose }) {
                     </TouchableOpacity>
 
                     <View style={styles.legalRow}>
-                        <TouchableOpacity onPress={openTerms}><Text style={styles.legalText}>Terms</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={openTerms}>
+                            <Text style={styles.legalText}>Terms</Text>
+                        </TouchableOpacity>
                         <Text style={styles.legalText}> • </Text>
-                        <TouchableOpacity onPress={openPrivacy}><Text style={styles.legalText}>Privacy</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={openPrivacy}>
+                            <Text style={styles.legalText}>Privacy</Text>
+                        </TouchableOpacity>
                     </View>
 
                     {/* Close (X) */}
                     <TouchableOpacity style={styles.closeButton} onPress={onClose}>
                         <Text style={styles.closeText}>Maybe Later</Text>
                     </TouchableOpacity>
-
                 </ScrollView>
             </LinearGradient>
         </Modal>
@@ -122,7 +129,9 @@ export default function PaywallModal({ visible, onClose }) {
 function FeatureRow({ icon, text }) {
     return (
         <View style={styles.featureRow}>
-            <View style={styles.iconContainer}><Text style={{ fontSize: 20 }}>{icon}</Text></View>
+            <View style={styles.iconContainer}>
+                <Text style={{ fontSize: 20 }}>{icon}</Text>
+            </View>
             <Text style={styles.featureText}>{text}</Text>
         </View>
     );
@@ -139,22 +148,38 @@ const styles = StyleSheet.create({
     features: { width: '100%', marginBottom: 40 },
     featureRow: { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },
     iconContainer: {
-        width: 40, height: 40, borderRadius: 20, backgroundColor: 'rgba(255,255,255,0.1)',
-        justifyContent: 'center', alignItems: 'center', marginRight: 16
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginRight: 16,
     },
     featureText: { color: '#EEE', fontSize: 16, fontWeight: '500' },
 
     products: { width: '100%', marginBottom: 24 },
     productCard: {
-        backgroundColor: '#2A2A35', borderRadius: 16, padding: 20, marginBottom: 16,
-        borderWidth: 1, borderColor: '#333',
+        backgroundColor: '#2A2A35',
+        borderRadius: 16,
+        padding: 20,
+        marginBottom: 16,
+        borderWidth: 1,
+        borderColor: '#333',
     },
     bestValueCard: {
-        borderColor: '#BB86FC', borderWidth: 2, backgroundColor: '#32283E',
+        borderColor: '#BB86FC',
+        borderWidth: 2,
+        backgroundColor: '#32283E',
     },
     badge: {
-        position: 'absolute', top: -12, right: 16, backgroundColor: '#BB86FC',
-        paddingHorizontal: 10, paddingVertical: 4, borderRadius: 12,
+        position: 'absolute',
+        top: -12,
+        right: 16,
+        backgroundColor: '#BB86FC',
+        paddingHorizontal: 10,
+        paddingVertical: 4,
+        borderRadius: 12,
     },
     badgeText: { color: '#000', fontSize: 10, fontWeight: 'bold' },
     productInfo: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 },

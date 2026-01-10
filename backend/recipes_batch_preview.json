@@ -1,0 +1,458 @@
+[
+    {
+        "name": "Paleo Turkey Meatballs",
+        "type": "Dinner",
+        "calories": 480,
+        "tags": [
+            "Turkey",
+            "Paleo"
+        ],
+        "ingredients": [
+            {
+                "name": "Ground Turkey",
+                "quantity": "1 lb"
+            },
+            {
+                "name": "Almond Flour",
+                "quantity": "1/2 cup"
+            },
+            {
+                "name": "Egg",
+                "quantity": "1"
+            },
+            {
+                "name": "Parsley",
+                "quantity": "2 tbsp"
+            },
+            {
+                "name": "Garlic Powder",
+                "quantity": "1 tsp"
+            }
+        ],
+        "instructions": [
+            "Prep: Preheat oven to 400°F (200°C).",
+            "Mix: Combine turkey, almond flour, egg, and spices in a bowl.",
+            "Form: Roll into 12 balls.",
+            "Bake: Cook for 20-25 minutes until browned and cooked through."
+        ],
+        "image": "/images/turkey_meatballs.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 480,
+            "protein": "35g",
+            "carbs": "8g",
+            "fats": "30g"
+        }
+    },
+    {
+        "name": "Slow Cooker Carnitas",
+        "type": "Dinner",
+        "calories": 600,
+        "tags": [
+            "Pork",
+            "Keto",
+            "Paleo"
+        ],
+        "ingredients": [
+            {
+                "name": "Pork Shoulder",
+                "quantity": "2 lbs"
+            },
+            {
+                "name": "Orange Juice",
+                "quantity": "1/2 cup"
+            },
+            {
+                "name": "Lime Juice",
+                "quantity": "2 tbsp"
+            },
+            {
+                "name": "Cumin",
+                "quantity": "1 tbsp"
+            },
+            {
+                "name": "Oregano",
+                "quantity": "1 tsp"
+            }
+        ],
+        "instructions": [
+            "Rub: Season pork with salt, pepper, cumin, and oregano.",
+            "Slow Cook: Place in pot with juices. Cook High 4h or Low 8h.",
+            "Shred: Remove and shred with forks.",
+            "Crisp: Broil meat on a baking sheet for 5 mins to crisp edges."
+        ],
+        "image": "/images/pork_carnitas.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 600,
+            "protein": "45g",
+            "carbs": "5g",
+            "fats": "40g"
+        }
+    },
+    {
+        "name": "Sheet Pan Sausage & Peppers",
+        "type": "Dinner",
+        "calories": 550,
+        "tags": [
+            "Pork",
+            "Keto",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            {
+                "name": "Italian Sausage",
+                "quantity": "4 links"
+            },
+            {
+                "name": "Bell Peppers",
+                "quantity": "3 sliced"
+            },
+            {
+                "name": "Onion",
+                "quantity": "1 sliced"
+            },
+            {
+                "name": "Olive Oil",
+                "quantity": "2 tbsp"
+            },
+            {
+                "name": "Italian Seasoning",
+                "quantity": "1 tbsp"
+            }
+        ],
+        "instructions": [
+            "Prep: Preheat oven to 400°F. Slice sausages and veggies.",
+            "Toss: Coat everything in olive oil and seasoning on a sheet pan.",
+            "Roast: Bake for 25-30 mins, tossing halfway through."
+        ],
+        "image": "/images/sausage_and_peppers.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 550,
+            "protein": "25g",
+            "carbs": "12g",
+            "fats": "45g"
+        }
+    },
+    {
+        "name": "Turkey Stuffed Peppers",
+        "type": "Lunch",
+        "calories": 400,
+        "tags": [
+            "Turkey",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            {
+                "name": "Bell Peppers",
+                "quantity": "4"
+            },
+            {
+                "name": "Ground Turkey",
+                "quantity": "1 lb"
+            },
+            {
+                "name": "Rice (Cooked)",
+                "quantity": "1 cup"
+            },
+            {
+                "name": "Tomato Sauce",
+                "quantity": "1 cup"
+            },
+            {
+                "name": "Cheese",
+                "quantity": "1/2 cup"
+            }
+        ],
+        "instructions": [
+            "Prep: Cut tops off peppers and remove seeds.",
+            "Filling: Mix raw turkey, cooked rice, and sauce.",
+            "Stuff: Fill peppers with mixture.",
+            "Bake: Cover with foil. Bake at 375°F for 45 mins. Top with cheese; bake 5 more mins."
+        ],
+        "image": "/images/turkey_stuffed_peppers.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 400,
+            "protein": "30g",
+            "carbs": "35g",
+            "fats": "15g"
+        }
+    },
+    {
+        "name": "Paleo BBQ Ribs",
+        "type": "Dinner",
+        "calories": 700,
+        "tags": [
+            "Pork",
+            "Paleo",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            {
+                "name": "Pork Ribs",
+                "quantity": "1 rack"
+            },
+            {
+                "name": "Paprika",
+                "quantity": "1 tbsp"
+            },
+            {
+                "name": "Garlic Powder",
+                "quantity": "1 tsp"
+            },
+            {
+                "name": "Apple Cider Vinegar",
+                "quantity": "2 tbsp"
+            },
+            {
+                "name": "Sugar-Free BBQ Sauce",
+                "quantity": "1/2 cup"
+            }
+        ],
+        "instructions": [
+            "Rub: Coat ribs in dry spices.",
+            "Bake: Wrap tightly in foil. Bake at 300°F (150°C) for 3 hours.",
+            "Sauce: Remove foil. Brush with BBQ sauce.",
+            "Broil: Broil for 3-5 mins until sticky and charred."
+        ],
+        "image": "/images/bbq_ribs.jpg",
+        "is_premium": true,
+        "macros": {
+            "calories": 700,
+            "protein": "50g",
+            "carbs": "8g",
+            "fats": "50g"
+        }
+    },
+    {
+        "name": "Lemon Garlic Pork Tenderloin",
+        "type": "Dinner",
+        "calories": 350,
+        "tags": [
+            "Pork",
+            "Keto",
+            "Paleo"
+        ],
+        "ingredients": [
+            {
+                "name": "Pork Tenderloin",
+                "quantity": "1 lb"
+            },
+            {
+                "name": "Lemon",
+                "quantity": "1"
+            },
+            {
+                "name": "Garlic",
+                "quantity": "3 cloves"
+            },
+            {
+                "name": "Rosemary",
+                "quantity": "1 sprig"
+            },
+            {
+                "name": "Olive Oil",
+                "quantity": "2 tbsp"
+            }
+        ],
+        "instructions": [
+            "Marinate: Mix lemon juice, minced garlic, oil, and rosemary. Coat pork for 30 mins.",
+            "Sear: Brown pork on all sides in a hot skillet.",
+            "Finish: Transfer to 400°F oven. Roast for 15-20 mins (internal temp 145°F)."
+        ],
+        "image": "/images/pork_tenderloin.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 350,
+            "protein": "40g",
+            "carbs": "2g",
+            "fats": "15g"
+        }
+    },
+    {
+        "name": "Turkey Burger Salad Bowl",
+        "type": "Lunch",
+        "calories": 450,
+        "tags": [
+            "Turkey",
+            "Keto",
+            "Paleo"
+        ],
+        "ingredients": [
+            {
+                "name": "Ground Turkey",
+                "quantity": "4 oz"
+            },
+            {
+                "name": "Mixed Greens",
+                "quantity": "2 cups"
+            },
+            {
+                "name": "Pickles",
+                "quantity": "2 spears"
+            },
+            {
+                "name": "Tomato",
+                "quantity": "1 sliced"
+            },
+            {
+                "name": "Mustard Dressing",
+                "quantity": "2 tbsp"
+            }
+        ],
+        "instructions": [
+            "Burger: Form turkey into a patty. Pan-fry for 4-5 mins per side.",
+            "Bowl: Fill bowl with greens.",
+            "Top: Slice burger and place on greens.",
+            "Garnish: Add pickles, tomato, and drizzle with dressing."
+        ],
+        "image": "/images/turkey_burger_bowl.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 450,
+            "protein": "30g",
+            "carbs": "10g",
+            "fats": "25g"
+        }
+    },
+    {
+        "name": "Zucchini Noodle Bolognese",
+        "type": "Dinner",
+        "calories": 400,
+        "tags": [
+            "Beef",
+            "Paleo",
+            "Keto"
+        ],
+        "ingredients": [
+            {
+                "name": "Ground Beef",
+                "quantity": "4 oz"
+            },
+            {
+                "name": "Zucchini",
+                "quantity": "2 medium"
+            },
+            {
+                "name": "Marinara Sauce",
+                "quantity": "1/2 cup (sugar-free)"
+            },
+            {
+                "name": "Onion",
+                "quantity": "1/4 diced"
+            },
+            {
+                "name": "Basil",
+                "quantity": "Fresh"
+            }
+        ],
+        "instructions": [
+            "Sauce: Brown beef and onion. Drain fat. Add marinara and simmer.",
+            "Noodles: Spiralize zucchini.",
+            "Soft: Sauté noodles in a separate pan for 2 mins (don't overcook!).",
+            "Serve: Top noodles with thick meat sauce."
+        ],
+        "image": "/images/zucchini_bolognese.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 400,
+            "protein": "25g",
+            "carbs": "15g",
+            "fats": "22g"
+        }
+    },
+    {
+        "name": "Egg Roll in a Bowl",
+        "type": "Dinner",
+        "calories": 400,
+        "tags": [
+            "Pork",
+            "Keto",
+            "Paleo"
+        ],
+        "ingredients": [
+            {
+                "name": "Ground Pork",
+                "quantity": "1 lb"
+            },
+            {
+                "name": "Coleslaw Mix",
+                "quantity": "1 bag"
+            },
+            {
+                "name": "Soy Sauce (or Aminos)",
+                "quantity": "3 tbsp"
+            },
+            {
+                "name": "Ginger",
+                "quantity": "1 tbsp minced"
+            },
+            {
+                "name": "Sesame Oil",
+                "quantity": "1 tsp"
+            }
+        ],
+        "instructions": [
+            "Brown: Cook ground pork with ginger in a large skillet. Don't drain fat.",
+            "Wilt: Add coleslaw mix. Stir fry for 5 mins until cabbage wilts.",
+            "Season: Stir in soy sauce and sesame oil.",
+            "Serve: Top with green onions or sriracha mayo."
+        ],
+        "image": "/images/egg_roll_bowl.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 400,
+            "protein": "25g",
+            "carbs": "10g",
+            "fats": "28g"
+        }
+    },
+    {
+        "name": "Garlic Butter Shrimp",
+        "type": "Dinner",
+        "calories": 350,
+        "tags": [
+            "Shrimp",
+            "Keto",
+            "Gluten-Free"
+        ],
+        "ingredients": [
+            {
+                "name": "Shrimp",
+                "quantity": "1 lb peeled"
+            },
+            {
+                "name": "Butter",
+                "quantity": "3 tbsp"
+            },
+            {
+                "name": "Garlic",
+                "quantity": "4 cloves"
+            },
+            {
+                "name": "Lemon Juice",
+                "quantity": "1 tbsp"
+            },
+            {
+                "name": "Parsley",
+                "quantity": "2 tbsp"
+            }
+        ],
+        "instructions": [
+            "Melt: Heat butter in a skillet over medium heat.",
+            "Sauté: Add garlic and cook for 1 min.",
+            "Shrimp: Add shrimp. Cook 2-3 mins per side until pink and opaque.",
+            "Finish: Stir in lemon juice and parsley."
+        ],
+        "image": "/images/garlic_shrimp.jpg",
+        "is_premium": false,
+        "macros": {
+            "calories": 350,
+            "protein": "25g",
+            "carbs": "2g",
+            "fats": "25g"
+        }
+    }
+]

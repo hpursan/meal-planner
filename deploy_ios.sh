@@ -2,12 +2,15 @@
 
 # Load Environment Variables
 if [ -f .env ]; then
-    export $(cat .env | xargs)
+    export $(grep -v '^#' .env | xargs)
+fi
+if [ -f frontend/.env ]; then
+    export $(grep -v '^#' frontend/.env | xargs)
 fi
 
 # Configuration
 APP_JSON="frontend/app.json"
-APPLE_ID="himaschal@gmail.com" # Replace if different
+APPLE_ID="hpursan@gmail.com" # Replace if different
 PROJECT_ROOT=$(pwd)
 
 # Colors

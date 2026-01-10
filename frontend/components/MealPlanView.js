@@ -12,12 +12,7 @@ const SmartImage = ({ uri, style }) => {
     }, [uri]);
 
     if (error || !uri) {
-        return (
-            <Image
-                source={{ uri: `${API_URL}/images/generic_fallback_meal.png` }}
-                style={style}
-            />
-        );
+        return <Image source={{ uri: `${API_URL}/images/generic_fallback_meal.png` }} style={style} />;
     }
 
     const fullUri = uri.startsWith('http') ? uri : `${API_URL}${uri}`;
@@ -39,7 +34,7 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
     const isIOS = Platform.OS === 'ios';
 
     // Back to Standard Dark, but with LOWER intensity to avoid "Solid Paint" look
-    const blurTint = isIOS ? "systemMaterialDark" : "dark";
+    const blurTint = isIOS ? 'systemMaterialDark' : 'dark';
     const blurIntensity = isIOS ? 30 : 20;
 
     return (
@@ -52,13 +47,10 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                         style={[
                             styles.blurContainer,
                             // Balanced White Overlay for "Frosting" without washing out
-                            { backgroundColor: isIOS ? 'rgba(255, 255, 255, 0.08)' : 'rgba(30, 30, 46, 0.8)' }
+                            { backgroundColor: isIOS ? 'rgba(255, 255, 255, 0.08)' : 'rgba(30, 30, 46, 0.8)' },
                         ]}
                     >
-                        <View
-                            accessibilityRole="header"
-                            accessibilityLabel={`Day ${day.day}, ${day.dayName}`}
-                        >
+                        <View accessibilityRole="header" accessibilityLabel={`Day ${day.day}, ${day.dayName}`}>
                             <View style={styles.dayHeaderRow}>
                                 <Text style={styles.dayHeader}>Day {day.day}</Text>
                                 <Text style={styles.daySubHeader}>{day.dayName}</Text>
@@ -86,7 +78,11 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                                             <TouchableOpacity
                                                 onPress={() =>
                                                     isOnline
-                                                        ? onSwapMeal(index, type.charAt(0).toUpperCase() + type.slice(1), meal)
+                                                        ? onSwapMeal(
+                                                              index,
+                                                              type.charAt(0).toUpperCase() + type.slice(1),
+                                                              meal
+                                                          )
                                                         : alert('Cannot swap meals while offline.')
                                                 }
                                                 style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}
@@ -120,7 +116,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'rgba(255,255,255,0.25)', // Crisp Glassy Rim
         backgroundColor: 'transparent',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: { width: 0, height: 10 },
         shadowOpacity: 0.3,
         shadowRadius: 20,

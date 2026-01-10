@@ -1,10 +1,5 @@
 import * as Sentry from '@sentry/react-native';
 
-Sentry.init({
-    dsn: 'https://8b2f089a6caedcbeefb0e2613ab6048f@o4510637378371584.ingest.us.sentry.io/4510637392723968',
-    debug: false
-});
-
 import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { PlanProvider } from '../context/PlanContext';
@@ -12,6 +7,11 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import * as SplashScreen from 'expo-splash-screen';
 import { ErrorBoundary } from '../components/ErrorBoundary';
+
+Sentry.init({
+    dsn: 'https://8b2f089a6caedcbeefb0e2613ab6048f@o4510637378371584.ingest.us.sentry.io/4510637392723968',
+    debug: false,
+});
 
 // Keep the splash screen visible while we fetch resources
 try {

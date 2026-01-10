@@ -9,6 +9,7 @@ import { supabase } from '../services/supabase';
 import * as Haptics from 'expo-haptics';
 import { useEffect, useState } from 'react';
 import PaywallModal from '../components/PaywallModal';
+import ImportRecipeModal from '../components/ImportRecipeModal'; // <--- New Import
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -34,6 +35,7 @@ export default function HomeScreen() {
     } = usePlan();
 
     const [paywallVisible, setPaywallVisible] = useState(false);
+    const [importVisible, setImportVisible] = useState(false);
 
     useEffect(() => {
         if (plan.length === 0) {
@@ -41,18 +43,108 @@ export default function HomeScreen() {
         }
         if (!planName) {
             const adjectives = [
-                'Zesty', 'Spicy', 'Fresh', 'Crispy', 'Savory', 'Sweet', 'Tangy', 'Hearty', 'Healthy', 'Epic',
-                'Green', 'Vital', 'Lean', 'Strong', 'Mega', 'Super', 'Power', 'Happy', 'Quick', 'Easy',
-                'Fit', 'Smart', 'Daily', 'Weekly', 'Bright', 'Bold', 'Smooth', 'Crunchy', 'Juicy', 'Golden',
-                'Roasted', 'Baked', 'Grilled', 'Raw', 'Glazed', 'Seasoned', 'Ultimate', 'Prime', 'Elite', 'Simple',
-                'Pure', 'Wild', 'Urban', 'Home', 'Chef', 'Tasty', 'Yummy', 'Wholesome', 'Nutty', 'Balanced'
+                'Zesty',
+                'Spicy',
+                'Fresh',
+                'Crispy',
+                'Savory',
+                'Sweet',
+                'Tangy',
+                'Hearty',
+                'Healthy',
+                'Epic',
+                'Green',
+                'Vital',
+                'Lean',
+                'Strong',
+                'Mega',
+                'Super',
+                'Power',
+                'Happy',
+                'Quick',
+                'Easy',
+                'Fit',
+                'Smart',
+                'Daily',
+                'Weekly',
+                'Bright',
+                'Bold',
+                'Smooth',
+                'Crunchy',
+                'Juicy',
+                'Golden',
+                'Roasted',
+                'Baked',
+                'Grilled',
+                'Raw',
+                'Glazed',
+                'Seasoned',
+                'Ultimate',
+                'Prime',
+                'Elite',
+                'Simple',
+                'Pure',
+                'Wild',
+                'Urban',
+                'Home',
+                'Chef',
+                'Tasty',
+                'Yummy',
+                'Wholesome',
+                'Nutty',
+                'Balanced',
             ];
             const nouns = [
-                'Fiesta', 'Feast', 'Bowl', 'Plate', 'Week', 'Plan', 'Menu', 'Table', 'Bites', 'Delight',
-                'Gains', 'Fuel', 'Boost', 'Mix', 'Prep', 'Guide', 'Chart', 'List', 'Goal', 'Shred',
-                'Bulk', 'Lifestyle', 'Habit', 'Routine', 'Journey', 'Path', 'Track', 'Way', 'Style', 'Taste',
-                'Flavor', 'Kitchen', 'Pantry', 'Fridge', 'Basket', 'Box', 'Bundle', 'Pack', 'Set', 'Series',
-                'Cycle', 'Flow', 'Wave', 'Spark', 'Energy', 'Inspo', 'Creation', 'Masterpiece', 'Symphony', 'Medley'
+                'Fiesta',
+                'Feast',
+                'Bowl',
+                'Plate',
+                'Week',
+                'Plan',
+                'Menu',
+                'Table',
+                'Bites',
+                'Delight',
+                'Gains',
+                'Fuel',
+                'Boost',
+                'Mix',
+                'Prep',
+                'Guide',
+                'Chart',
+                'List',
+                'Goal',
+                'Shred',
+                'Bulk',
+                'Lifestyle',
+                'Habit',
+                'Routine',
+                'Journey',
+                'Path',
+                'Track',
+                'Way',
+                'Style',
+                'Taste',
+                'Flavor',
+                'Kitchen',
+                'Pantry',
+                'Fridge',
+                'Basket',
+                'Box',
+                'Bundle',
+                'Pack',
+                'Set',
+                'Series',
+                'Cycle',
+                'Flow',
+                'Wave',
+                'Spark',
+                'Energy',
+                'Inspo',
+                'Creation',
+                'Masterpiece',
+                'Symphony',
+                'Medley',
             ];
             const randomName = `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
             setPlanName(randomName);
@@ -94,7 +186,8 @@ export default function HomeScreen() {
             return;
         }
 
-        if (numDays > 30) { // Can increase to 30 for Pro
+        if (numDays > 30) {
+            // Can increase to 30 for Pro
             Alert.alert('Limit Reached', 'Plans are currently limited to a maximum of 30 days.');
             return;
         }
@@ -167,7 +260,20 @@ export default function HomeScreen() {
                     style={styles.iconButton}
                     accessibilityLabel="My Plans History"
                 >
-                    <Ionicons name="receipt-outline" size={24} color={isPro ? "#FFF" : "#777"} />
+                    <Ionicons name="receipt-outline" size={24} color={isPro ? '#FFF' : '#777'} />
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        if (isPro) {
+                            setImportVisible(true);
+                        } else {
+                            setPaywallVisible(true);
+                        }
+                    }}
+                    style={styles.iconButton}
+                >
+                    <Ionicons name="add-circle-outline" size={24} color={isPro ? "#BB86FC" : "#777"} />
                 </TouchableOpacity>
 
                 <Text style={styles.appTitle}>👨‍🍳</Text>
@@ -184,10 +290,7 @@ export default function HomeScreen() {
             {plan.length > 0 && (
                 <View style={{ paddingHorizontal: 20, marginBottom: 20 }}>
                     <View style={{ position: 'relative' }}>
-                        <TouchableOpacity
-                            activeOpacity={0.8}
-                            onPress={() => router.push('/results')}
-                        >
+                        <TouchableOpacity activeOpacity={0.8} onPress={() => router.push('/results')}>
                             <LinearGradient
                                 colors={['#BB86FC', '#7F5AF0']}
                                 start={{ x: 0, y: 0 }}
@@ -225,8 +328,18 @@ export default function HomeScreen() {
                 onProFeature={() => setPaywallVisible(true)}
             />
 
-
             <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
+
+            <ImportRecipeModal
+                isVisible={importVisible}
+                onClose={() => setImportVisible(false)}
+                onImportSuccess={(meal) => {
+                    // For V1, we just alert success. In V1.1 we will add to "My Recipes"
+                    // But to make it immediately useful, let's inject it into the current plan if possible, 
+                    // or just acknowledge it.
+                    // Ideally: router.push({ pathname: '/recipe-editor', params: { ...meal } })
+                }}
+            />
         </View>
     );
 }
@@ -271,7 +384,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         padding: 24,
         alignItems: 'center',
-        shadowColor: "#7F5AF0",
+        shadowColor: '#7F5AF0',
         shadowOffset: {
             width: 0,
             height: 8,

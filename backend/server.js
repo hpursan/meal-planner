@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
+const { parseRecipeFromText } = require('./services/aiParser');
 const { createClient } = require('@supabase/supabase-js');
 const rateLimit = require('express-rate-limit'); // Middleware to rate limit requests
 const { MAX_PLAN_DAYS, GENERATION_WINDOW_MS, GENERATION_MAX_REQUESTS } = require('./config/limits');
@@ -112,6 +113,31 @@ app.post('/api/swap', async (req, res) => {
     } catch (error) {
         console.error("Swap Error:", error);
         res.status(500).json({ error: "Failed to swap meal." });
+    }
+});
+
+// Public: Import Recipe (AI)
+app.post('/api/import', generationLimiter, async (req, res) => {
+    const { text } = req.body;
+
+    if (!text || text.length < 10) {
+        return res.status(400).json({ error: "Please provide recipe text or URL." });
+    }
+
+    try {
+        const recipeData = await parseRecipeFromText(text);
+
+        const previewMeal = {
+            id: 'temp_' + Date.now(),
+            ...recipeData,
+            image: '/images/generic_fallback_meal.png',
+            is_premium: false
+        };
+
+        res.json({ meal: previewMeal });
+    } catch (error) {
+        console.error("Import Error:", error.message);
+        res.status(500).json({ error: error.message || "Failed to import recipe." });
     }
 });
 
