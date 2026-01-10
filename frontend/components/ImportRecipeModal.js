@@ -46,13 +46,13 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                         </View>
 
                         <Text style={styles.subtitle}>
-                            Paste any recipe text, list of ingredients, or a messy blog post. Our AI will clean it up for you.
+                            Paste a URL to a recipe blog, or paste the raw ingredients/instructions text. Our AI will handle the rest.
                         </Text>
 
                         <TextInput
                             style={styles.input}
                             multiline
-                            placeholder="Paste recipe here..."
+                            placeholder="Paste recipe URL or text here..."
                             placeholderTextColor="#666"
                             value={text}
                             onChangeText={setText}
