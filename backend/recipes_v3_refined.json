@@ -1,0 +1,4891 @@
+[
+  {
+    "id": 1,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Vegan Buddha Bowl",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Chickpeas",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Sweet Potato",
+        "quantity": "1 small"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/2"
+      },
+      {
+        "name": "Tahini",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Prep: Preheat oven to 400°F (200°C). Toss chickpeas and sweet potato cubes with olive oil, cumin, salt, and pepper.",
+      "Roast: Bake for 20-25 minutes until chickpeas are crispy and potatoes are tender.",
+      "Grains: Rinse quinoa. Simmer in 1 cup water for 15 mins. Fluff with a fork.",
+      "Sauce: Whisk tahini with lemon juice and a splash of warm water until creamy.",
+      "Assemble: Arrange quinoa, roast veg, and sliced avocado in a bowl. Drizzle with sauce."
+    ],
+    "image": "/images/vegan_buddha_bowl.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 2,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Steak and Asparagus",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Beef",
+      "Meat",
+      "Dairy-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Sirloin Steak",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Asparagus",
+        "quantity": "1 bunch"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Rosemary",
+        "quantity": "1 sprig"
+      }
+    ],
+    "instructions": [
+      "Prep: Pat steak dry. Season liberally with salt and pepper. Snap woody ends off asparagus.",
+      "Sear: Heat olive oil in a skillet over high heat. Sear steak 3-4 mins per side for medium-rare.",
+      "Baste: Lower heat. Add butter, crushed garlic, and rosemary. Spoon foaming butter over steak for 1 min.",
+      "Rest: Remove steak and rest for 5-10 mins.",
+      "Veg: In the same pan, sauté asparagus for 4-5 mins until tender-crisp."
+    ],
+    "image": "/images/steak_and_asparagus.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 600,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 3,
+    "created_at": "2026-01-02T18:08:09.553895+00:00",
+    "name": "Chicken Alfredo Pasta",
+    "type": "Dinner",
+    "calories": 800,
+    "tags": [
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Fettuccine",
+        "quantity": "8 oz"
+      },
+      {
+        "name": "Chicken Breast",
+        "quantity": "2"
+      },
+      {
+        "name": "Heavy Cream",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Parmesan Cheese",
+        "quantity": "1 cup grated"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "3 cloves"
+      },
+      {
+        "name": "Butter",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Pasta: Boil salted water. Cook fettuccine al dente (approx 10-12 mins). Reserve 1/2 cup pasta water.",
+      "Chicken: Season breast with salt. Pan-sear in butter for 6 mins per side until golden. Slice.",
+      "Sauce: In the same pan, sauté minced garlic. Pour in heavy cream and simmer for 5 mins until slightly reduced.",
+      "Combine: Whisk in parmesan until melted. Toss pasta and chicken in the sauce. Add pasta water if too thick.",
+      "Serve: Garnish with fresh parsley."
+    ],
+    "image": "/images/chicken_alfredo_pasta.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 800,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 4,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Tofu Scramble",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Firm Tofu",
+        "quantity": "1 block"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Turmeric",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Nutritional Yeast",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 small"
+      },
+      {
+        "name": "Black Salt (Kala Namak)",
+        "quantity": "1/2 tsp"
+      }
+    ],
+    "instructions": [
+      "Prep: Drain and press tofu to remove water. Crumble into bite-sized chunks.",
+      "Sauté: Heat oil in a non-stick pan. Sauté diced onion for 3-4 mins until translucent.",
+      "Scramble: Add tofu, turmeric, nutritional yeast, and black salt. Cook for 5-7 mins until yellow and firm.",
+      "Finish: Fold in spinach and cook until just wilted. Serve hot."
+    ],
+    "image": "/images/tofu_scramble.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 5,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Salmon Salad",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Paleo",
+      "Keto",
+      "Gluten-Free",
+      "Fish",
+      "Meat",
+      "Dairy-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Salmon Fillet",
+        "quantity": "2 (6oz each)"
+      },
+      {
+        "name": "Mixed Greens",
+        "quantity": "4 cups"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Dill",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Salmon: Season with salt, pepper, and dill. Sear skin-side down in a hot pan for 4 mins. Flip and cook 2 more mins.",
+      "Dressing: Whisk olive oil, juice of half a lemon, salt, and pepper.",
+      "Salad: Toss greens and cucumber with half the dressing.",
+      "Plate: Top salad with warm salmon. Drizzle remaining dressing over the fish."
+    ],
+    "image": "/images/salmon_salad.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 6,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Blueberry Pancakes",
+    "type": "Breakfast",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "All-Purpose Flour",
+        "quantity": "1.5 cups"
+      },
+      {
+        "name": "Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "3.5 tsp"
+      },
+      {
+        "name": "Blueberries",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Butter",
+        "quantity": "3 tbsp melted"
+      }
+    ],
+    "instructions": [
+      "Batter: Whisk flour, sugar, and baking powder. In a separate bowl, mix milk, egg, and melted butter.",
+      "Combine: Stir wet into dry ingredients until just mixed (lumps are okay!). Gently fold in blueberries.",
+      "Cook: Heat a buttered griddle or pan. Pour 1/4 cup batter. Flip when bubbles form on surface (approx 2-3 mins).",
+      "Serve: Stack high and serve with warm maple syrup."
+    ],
+    "image": "/images/blueberry_pancakes.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 7,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Oatmeal with Berries",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Rolled Oats",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Strawberries",
+        "quantity": "1/2 cup sliced"
+      },
+      {
+        "name": "Chia Seeds",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "1 pinch"
+      }
+    ],
+    "instructions": [
+      "Simmer: Bring almond milk to a gentle boil. Add oats and cinnamon. Reduce heat to low.",
+      "Cook: Simmer for 10-15 minutes, stirring occasionally, until oats are creamy and liquid is absorbed.",
+      "Serve: Remove from heat. Stir in half the strawberries. Top with remaining berries and chia seeds."
+    ],
+    "image": "/images/oatmeal_berries.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 300,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 8,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Grilled Chicken Caesar",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Breast",
+        "quantity": "2"
+      },
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "1 head chopped"
+      },
+      {
+        "name": "Parmesan Shavings",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Caesar Dressing",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Croutons",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1/2"
+      }
+    ],
+    "instructions": [
+      "Grill: Season chicken with salt and pepper. Grill or pan-sear for 6-8 mins per side until fully cooked (165°F). Let rest.",
+      "Base: In a large bowl, toss chopped romaine with caesar dressing until evenly coated.",
+      "Assemble: Slice chicken into strips. Arrange over salad.",
+      "Garnish: Top generously with parmesan shavings, croutons, and a squeeze of fresh lemon."
+    ],
+    "image": "/images/grilled_chicken_caesar.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 9,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Lentil Soup",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Dried Lentils",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Carrots",
+        "quantity": "2 diced"
+      },
+      {
+        "name": "Celery",
+        "quantity": "2 stalks diced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Vegetable Broth",
+        "quantity": "4 cups"
+      },
+      {
+        "name": "Thyme",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      }
+    ],
+    "instructions": [
+      "Sauté: Heat oil in a heavy pot. Cook onion, carrots, and celery for 5-7 mins until soft. Add garlic and thyme for 1 min.",
+      "Simmer: Add rinsed lentils and vegetable broth. Bring to boil, then reduce heat to low.",
+      "Cook: Cover and simmer for 25-30 minutes until lentils are tender but not mushy.",
+      "Texture: Use an immersion blender to pulse the soup 2-3 times (or mash some lentils) for a creamy texture."
+    ],
+    "image": "/images/lentil_soup.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 10,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Bacon and Eggs",
+    "type": "Breakfast",
+    "calories": 500,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Pork",
+      "Meat",
+      "Egg",
+      "Dairy-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Bacon",
+        "quantity": "4 slices"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2 large"
+      },
+      {
+        "name": "Toast",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Chives",
+        "quantity": "1 tsp chopped"
+      }
+    ],
+    "instructions": [
+      "Bacon: Place bacon in a cold pan. Turn heat to medium. Cook 8-10 mins, flipping occasionally, until crispy. Remove to paper towel.",
+      "Eggs: Drain most fat (leave 1 tbsp). Crack eggs into the pan. Fry for 3 mins (sunny side) or flip for over-easy.",
+      "Toast: Butter your toast while warm.",
+      "Plate: Serve eggs alongside bacon. Garnish eggs with fresh chives and pepper."
+    ],
+    "image": "/images/bacon_and_eggs.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 11,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Vegetable Stir Fry",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Broccoli Florets",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Carrot",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tbsp minced"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves minced"
+      },
+      {
+        "name": "Sesame Oil",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1 cup cooked"
+      }
+    ],
+    "instructions": [
+      "Prep: Cook rice according to package. Chop all vegetables into uniform bite-sized pieces.",
+      "Sauce: Whisk soy sauce, minced ginger, garlic, sesame oil, and a splash of water.",
+      "Stir Fry: Heat oil in a wok/pan over high heat. Toss in veggies. Stir fry for 5-7 mins until tender-crisp.",
+      "Combine: Pour sauce over veggies. Cook for 1 min until sauce bubbles and coats everything. Serve over rice."
+    ],
+    "image": "/images/vegetable_stir_fry.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 12,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Turkey Sandwich",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Turkey",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Turkey Breast",
+        "quantity": "4 oz sliced"
+      },
+      {
+        "name": "Whole Wheat Bread",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "1 leaf"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "4 slices"
+      },
+      {
+        "name": "Mayo or Mustard",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Provolone Cheese",
+        "quantity": "1 slice"
+      }
+    ],
+    "instructions": [
+      "Toast: Lightly toast the bread slices.",
+      "Spread: Apply mayo or mustard to one or both slices.",
+      "Layer: Place lettuce first (keeps bread dry), then turkey folded for volume, cheese, tomato, and cucumber.",
+      "Serve: Close sandwich. Slice diagonally. Season tomato with a pinch of salt if desired."
+    ],
+    "image": "/images/turkey_sandwich.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 13,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Greek Yogurt Parfait",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy"
+    ],
+    "ingredients": [
+      {
+        "name": "Greek Yogurt",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Honey",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Granola",
+        "quantity": "1/3 cup"
+      },
+      {
+        "name": "Mixed Berries",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Chia Seeds",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Base: Spoon half the yogurt into a glass or bowl.",
+      "Layer: Add a layer of granola and half the berries.",
+      "Repeat: Top with remaining yogurt, granola, and berries.",
+      "Finish: Drizzle generously with honey and sprinkle with chia seeds."
+    ],
+    "image": "/images/greek_yogurt_parfait.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 14,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Beef Tacos",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Gluten-Free",
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Beef (Lean)",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Corn Tortillas",
+        "quantity": "3"
+      },
+      {
+        "name": "Salsa",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/4 sliced"
+      },
+      {
+        "name": "Lime",
+        "quantity": "1 wedge"
+      },
+      {
+        "name": "Taco Seasoning",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Cilantro",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Beef: Brown ground beef in a skillet over medium-high heat. Drain fat. Stir in taco seasoning and a splash of water. Simmer 2 mins.",
+      "Tortillas: Warm tortillas in a dry pan for 30 seconds per side until pliable.",
+      "Assemble: Fill tortillas with beef. Top with salsa, avocado slices, and cilantro.",
+      "Serve: Squeeze fresh lime juice over tacos before eating."
+    ],
+    "image": "/images/beef_tacos.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 600,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 15,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Quinoa Salad",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Quinoa",
+        "quantity": "1/2 cup dry"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1/2 cup halved"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "2 tbsp minced"
+      },
+      {
+        "name": "Feta Cheese",
+        "quantity": "2 tbsp crumbled"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Quinoa: Rinse quinoa. Boil with 1 cup water. Simmer 15 mins. Let cool completely (spread on a plate to speed up).",
+      "Veggies: Dice cucumber, halve tomatoes, and mince onion.",
+      "Dressing: Whisk olive oil, lemon juice, salt, and pepper.",
+      "Toss: Combine cold quinoa, veggies, and feta. Pour dressing over and toss well."
+    ],
+    "image": "/images/quinoa_salad.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 16,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Zucchini Noodles with Pesto",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Zucchini",
+        "quantity": "2 medium"
+      },
+      {
+        "name": "Basil Pesto",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1/2 cup halved"
+      },
+      {
+        "name": "Pine Nuts",
+        "quantity": "1 tbsp toasted"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Noodles: Spiralize zucchini into noodles. (Or use a peeler for ribbons).",
+      "Cook: Heat oil in a large pan. Sauté zoodles for just 2-3 minutes. Do not overcook or they will get watery.",
+      "Sauce: Remove from heat immediately. Toss with pesto.",
+      "Serve: Fold in cherry tomatoes. Top with pine nuts and parmesan."
+    ],
+    "image": "/images/zucchini_noodles_pesto.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 17,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Chia Seed Pudding",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Chia Seeds",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Vanilla Extract",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Fresh Berries",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Mix: In a mason jar or bowl, whisk chia seeds, milk, vanilla, and syrup vigorously to prevent clumping.",
+      "Set: Let sit for 5 mins, then whisk again. (Crucial step!).",
+      "Chill: Cover and refrigerate for at least 2 hours (or overnight) until thick and pudding-like.",
+      "Serve: Top with fresh berries before eating."
+    ],
+    "image": "/images/chia_seed_pudding.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 300,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 18,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Cauliflower Rice Stir Fry",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Cauliflower Rice",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Sugar Snap Peas",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Soy Sauce (Tamari)",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Sesame Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Firm Tofu",
+        "quantity": "1/2 block cubed"
+      },
+      {
+        "name": "Sriracha",
+        "quantity": "1 tsp (opt)"
+      }
+    ],
+    "instructions": [
+      "Tofu: Pan-fry tofu cubes in a little oil until golden brown on all sides. Remove from pan.",
+      "Veggies: Add sesame oil to pan. Sauté snap peas for 2 mins.",
+      "Rice: Add cauliflower rice. Stir fry for 3-4 mins until tender but not mushy.",
+      "Combine: Return tofu to pan. Drizzle soy sauce (and sriracha). Toss to coat."
+    ],
+    "image": "/images/cauliflower_rice_stir_fry.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 19,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Egg Roll in a Bowl",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Pork",
+      "Meat",
+      "Dairy-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Pork",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Cabbage Coleslaw Mix",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tsp grated"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves minced"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Sesame Oil",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Green Onions",
+        "quantity": "1 tbsp sliced"
+      }
+    ],
+    "instructions": [
+      "Pork: Brown ground pork in a skillet. Break into small crumbles. Drain half the fat.",
+      "Aromatics: Add ginger and garlic. Cook for 1 min until fragrant.",
+      "Veggies: Dump in the coleslaw mix. Pour soy sauce over. Stir fry for 3-4 mins until cabbage is wilted but still slightly crunchy.",
+      "Finish: Drizzle with sesame oil and top with green onions."
+    ],
+    "image": "/images/egg_roll_bowl.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 20,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Spinach & Mushroom Omelet",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "2 large"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup fresh"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "1/2 cup sliced"
+      },
+      {
+        "name": "Cheddar Cheese",
+        "quantity": "2 tbsp shredded"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Salt & Pepper",
+        "quantity": "to taste"
+      }
+    ],
+    "instructions": [
+      "Fillings: Sauté mushrooms in a small pan until browned (3-4 mins). Add spinach and cook until wilted. Remove from pan.",
+      "Eggs: Whisk eggs with salt and pepper in a bowl.",
+      "Cook: Melt butter in pan. Pour in eggs. Tilt pan to spread. Lift edges to let raw egg run underneath.",
+      "Fold: When eggs are set but slightly wet on top, sprinkle cheese and veggie mix on one half. Fold over. Cook 1 more min."
+    ],
+    "image": "/images/spinach_mushroom_omelet.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 21,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Avocado Cucumber Salad",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Avocados",
+        "quantity": "2 ripe"
+      },
+      {
+        "name": "English Cucumber",
+        "quantity": "1"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1 cup halved"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "1/4 cup minced"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cilantro",
+        "quantity": "1/4 cup chopped"
+      }
+    ],
+    "instructions": [
+      "Prep: Dice avocados and cucumber into uniform chunks. Slice cherry tomatoes in half.",
+      "Dressing: In a small bowl, whisk olive oil, lemon juice, salt, and pepper.",
+      "Combine: Gently toss vegetables in a large bowl. Add chopped cilantro.",
+      "Finish: Pour dressing over salad right before serving to keep avocado fresh. Toss gently."
+    ],
+    "image": "/images/avocado_cucumber_salad.jpg",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 22,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Coconut Curry Lentils",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Red Lentils",
+        "quantity": "1 cup dry"
+      },
+      {
+        "name": "Coconut Milk (Full Fat)",
+        "quantity": "1 can (13.5 oz)"
+      },
+      {
+        "name": "Vegetable Broth",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Curry Powder",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Turmeric",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook onion in a splash of oil until soft (5 mins). Add garlic, curry powder, and turmeric. Toast spices for 1 min.",
+      "Simmer: Add dry lentils, vegetable broth, and coconut milk. Stir well.",
+      "Cook: Cover and simmer on low for 15-20 minutes until lentils are soft and creamy.",
+      "Finish: Stir in fresh spinach until wilted. Season with salt and a squeeze of lime."
+    ],
+    "image": "/images/coconut_curry_lentils.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    }
+  },
+  {
+    "id": 23,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Grilled Shrimp Skewers",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Keto",
+      "Paleo",
+      "Gluten-Free",
+      "Fish",
+      "Meat",
+      "Dairy-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Large Shrimp",
+        "quantity": "1 lb peeled/deveined"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "2 cut into chunks"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "1 cut into chunks"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Garlic Powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Paprika",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Oregano",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Marinate: Toss shrimp with olive oil, lemon juice, garlic powder, paprika, oatregno, salt, and pepper. Let sit for 15 mins.",
+      "Assemble: Thread shrimp, peppers, and onion chunks alternating onto skewers.",
+      "Cook: Grill or pan-sear on high heat for 2-3 mins per side until shrimp are opaque and pink. Do not overcook.",
+      "Serve: Garnish with fresh parsley and lemon wedges."
+    ],
+    "image": "/images/grilled_shrimp_skewers.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 24,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Almond Flour Pancakes",
+    "type": "Breakfast",
+    "calories": 500,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Almond Flour",
+        "quantity": "1.5 cups"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "3 large"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/3 cup"
+      },
+      {
+        "name": "Vanilla Extract",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Coconut Oil",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Batter: Whisk eggs, milk, and vanilla. Stir in almond flour, baking powder, and cinnamon until smooth.",
+      "Pan: Heat coconut oil in a non-stick pan over LOW heat (almond flour burns easily).",
+      "Cook: Pour small circles of batter. Cover pan with a lid to help set the center. Cook 3-4 mins until bubbles appear.",
+      "Flip: Carefully flip and cook 2 mins on other side. Serve with berries."
+    ],
+    "image": "/images/almond_flour_pancakes.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 25,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Stuffed Bell Peppers",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Gluten-Free",
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Bell Peppers",
+        "quantity": "4 large"
+      },
+      {
+        "name": "Ground Beef",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1 cup cooked"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Italian Seasoning",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Mozzarella Cheese",
+        "quantity": "1/2 cup shredded"
+      }
+    ],
+    "instructions": [
+      "Prep: Preheat oven to 375°F (190°C). Cut tops off peppers and remove seeds. Par-boil peppers for 3 mins if you like them softer.",
+      "Filling: Brown beef with onion. Drain fat. Mix in cooked rice, half the tomato sauce, and Italian seasoning.",
+      "Stuff: Spoon mixture into peppers. Stand peppers upright in a baking dish.",
+      "Bake: Pour remaining sauce around peppers. Cover with foil. Bake 30 mins. Uncover, top with cheese, bake 5 mins."
+    ],
+    "image": "/images/stuffed_bell_peppers.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 550,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    }
+  },
+  {
+    "id": 26,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Miso Glazed Cod",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Fish",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Cod Fillets",
+        "quantity": "2 (6oz each)"
+      },
+      {
+        "name": "Miso Paste (White)",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Sake or Rice Vinegar",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tsp grated"
+      }
+    ],
+    "instructions": [
+      "Marinade: Whisk miso, sake, soy sauce, maple syrup, and ginger until smooth.",
+      "Prep: Pat cod dry. Brush marinade generously over fish. Let sit for 20 mins (or up to 24 hrs for depth).",
+      "Cook: Preheat broiler. Place fish on a foil-lined sheet. Broil on high for 6-8 minutes.",
+      "Watch: Keep a close eye! The miso sugar should caramelize and char slightly, but not burn."
+    ],
+    "image": "/images/miso_glazed_cod.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    }
+  },
+  {
+    "id": 27,
+    "created_at": "2026-01-02T18:11:52.700929+00:00",
+    "name": "Shakshuka",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "4"
+      },
+      {
+        "name": "Crushed Tomatoes",
+        "quantity": "1 can (14oz)"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Paprika",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Base: Sauté onion and bell pepper in oil until soft (5 mins). Add garlic and spices.",
+      "Simmer: Pour in tomatoes. Bring to a simmer and cook for 10 mins to thicken sauce.",
+      "Eggs: Make 4 small wells in the sauce. Gently crack an egg into each well.",
+      "Steam: Cover pan with a lid. Cook 5-7 mins until whites are set but yolks are runny. Serve with crusty bread."
+    ],
+    "image": "/images/shakshuka.png",
+    "is_premium": false,
+    "description": null,
+    "macros": {
+      "calories": 450,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    }
+  },
+  {
+    "name": "Avocado Toast with Poached Egg",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Sourdough Bread",
+        "quantity": "2 thick slices"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1 ripe"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2 large"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Chili Flakes",
+        "quantity": "pinch"
+      }
+    ],
+    "instructions": [
+      "Toast: Toast the sourdough until golden and crisp.",
+      "Mash: In a bowl, mash avocado with lemon juice, salt, and pepper. Spread thickly onto toast.",
+      "Poach: Bring water to a gentle simmer with a splash of vinegar. Whirl water to create a vortex. Drop egg in. Cook 3 mins.",
+      "Assemble: Lift egg with slotted spoon. Drain. Place on toast. Top with chili flakes."
+    ],
+    "image": "/images/avocado_toast_egg.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    },
+    "id": 28,
+    "created_at": "2026-01-06T09:22:38.087Z"
+  },
+  {
+    "name": "Berry Smoothie Bowl",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Frozen Mixed Berries",
+        "quantity": "1.5 cups"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1 frozen"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/3 cup"
+      },
+      {
+        "name": "Protein Powder",
+        "quantity": "1 scoop (optional)"
+      },
+      {
+        "name": "Toppings",
+        "quantity": "Granola, Chia, Fresh Fruit"
+      }
+    ],
+    "instructions": [
+      "Blend: Combine frozen berries, frozen banana, and a *small* amount of milk in a blender.",
+      "Pulse: Pulse or blend on low, scraping down sides often.",
+      "Texture: Use the tamper if you have one. Goal is thick soft-serve texture, not drinkable liquid.",
+      "Serve: Scoop into a bowl immediately. Arrange toppings artistically."
+    ],
+    "image": "/images/berry_smoothie_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 29,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetable Omelette",
+    "type": "Breakfast",
+    "calories": 250,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3 large"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1/4 cup diced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "2 tbsp diced"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 handful"
+      },
+      {
+        "name": "Butter or Oil",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "2 tbsp (optional)"
+      }
+    ],
+    "instructions": [
+      "Prep: Beat eggs in a bowl with a fork until yolk and white are fully combined. Season with salt.",
+      "Sauté: Heat butter in non-stick pan. Cook peppers and onion for 2 mins.",
+      "Cook: Pour in eggs. Let sit for 30s. Pull cooked edges toward center, letting liquid flow out.",
+      "Fold: When surface is almost dry, add cheese and spinach. Fold in half. Slide onto plate."
+    ],
+    "image": "/images/vegetable_omelette.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 250,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 30,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Greek Yogurt with Honey",
+    "type": "Breakfast",
+    "calories": 200,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Greek Yogurt",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Honey",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Walnuts",
+        "quantity": "1 tbsp chopped"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "pinch"
+      }
+    ],
+    "instructions": [
+      "Scoop: Place thick Greek yogurt into a bowl.",
+      "Drizzle: Pour honey over the yogurt generously.",
+      "Crunch: Top with chopped walnuts and a dusting of cinnamon for warmth."
+    ],
+    "image": "/images/greek_yogurt_honey.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 200,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    },
+    "id": 31,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegan Pancakes",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Sugar",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Vanilla",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Batter: Whisk dry ingredients. Slowly add milk, oil, and vanilla. Whisk until smooth.",
+      "Rest: Let batter sit for 5 mins to activate baking powder.",
+      "Cook: Pour onto hot oiled griddle. Flip when bubbles pop. Cook until golden brown."
+    ],
+    "image": "/images/vegan_pancakes.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 32,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Scrambled Tofu Burrito",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Firm Tofu",
+        "quantity": "1/2 block crumbled"
+      },
+      {
+        "name": "Large Tortilla",
+        "quantity": "1"
+      },
+      {
+        "name": "Black Beans",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Salsa",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Turmeric",
+        "quantity": "1/2 tsp"
+      }
+    ],
+    "instructions": [
+      "Scramble: Sauté crumbled tofu with turmeric, salt, and pepper for 5 mins.",
+      "Mix: Stir in black beans and salsa. Cook until heated through.",
+      "Wrap: Spoon onto tortilla. Fold sides in and roll tight. Toast in pan for crunch."
+    ],
+    "image": "/images/scrambled_tofu_burrito.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 33,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Peanut Butter Banana Toast",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Whole Grain Bread",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Peanut Butter",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Chia Seeds",
+        "quantity": "1 tsp (opt)"
+      }
+    ],
+    "instructions": [
+      "Toast: Toast bread until golden.",
+      "Spread: Apply a thick layer of peanut butter while toast is warm.",
+      "Top: Layer banana slices. Sprinkle with chia seeds for crunch."
+    ],
+    "image": "/images/pb_banana_toast.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 34,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Breakfast Quinoa Bowl",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Cooked Quinoa",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/2 cup warm"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Nuts/Seeds",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Warm: Stir warm milk into cooked quinoa.",
+      "Flavor: Mix in maple syrup and cinnamon.",
+      "Top: Add nuts or seeds. Eat warm like oatmeal."
+    ],
+    "image": "/images/breakfast_quinoa.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 35,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Mushroom Spinach Frittata",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "1/2 cup sliced"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Feta",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Brown mushrooms in oven-safe pan. Add spinach until wilted.",
+      "Pour: Beat eggs with salt. Pour over veggies.",
+      "Bake: Top with feta. Bake at 350°F for 10-12 mins until set."
+    ],
+    "image": "/images/mushroom_frittata.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 36,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Smoked Salmon Bagel",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Everything Bagel",
+        "quantity": "1"
+      },
+      {
+        "name": "Cream Cheese",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Smoked Salmon",
+        "quantity": "3 oz"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "thin slices"
+      },
+      {
+        "name": "Capers",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Toast: Slice and toast bagel halves.",
+      "Spread: Apply generous cream cheese.",
+      "Layer: Top with ribbons of smoked salmon, red onion, and capers."
+    ],
+    "image": "/images/salmon_bagel.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 37,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Caprese Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Ripe Tomatoes",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Fresh Mozzarella",
+        "quantity": "4 oz sliced"
+      },
+      {
+        "name": "Fresh Basil",
+        "quantity": "10 leaves"
+      },
+      {
+        "name": "Balsamic Glaze",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Assemble: Alternate slices of tomato and mozzarella on a plate.",
+      "Garnish: Tuck basil leaves between layers.",
+      "Finish: Drizzle with olive oil and balsamic. Sprinkle sea salt."
+    ],
+    "image": "/images/caprese_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 38,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Chicken Wrap",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Large Tortilla",
+        "quantity": "1"
+      },
+      {
+        "name": "Cooked Chicken",
+        "quantity": "4 oz sliced"
+      },
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Ranch/Mayo",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Layer: Lay tortilla flat. Add sauce, then lettuce (to prevent sogginess).",
+      "Fill: Add chicken and tomatoes.",
+      "Roll: Fold sides in and roll tightly. Slice on diagonal."
+    ],
+    "image": "/images/chicken_wrap.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 39,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Lentil Salad",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Cooked Lentils",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lemon Vinaigrette",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Combine: Mix lentils, cucumber, pepper, and parsley in a bowl.",
+      "Dress: Toss with vinaigrette.",
+      "Rest: Let sit 10 mins for flavors to meld."
+    ],
+    "image": "/images/lentil_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 40,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Tuna Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Canned Tuna",
+        "quantity": "1 can drained"
+      },
+      {
+        "name": "Mayo",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Celery",
+        "quantity": "1 stalk diced"
+      },
+      {
+        "name": "Relish/Pickles",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Mix: Flake tuna in a bowl.",
+      "Combine: Add mayo, celery, relish, and mustard. Mix well.",
+      "Serve: Eat with crackers or on greens."
+    ],
+    "image": "/images/tuna_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 41,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Falafel Pita",
+    "type": "Lunch",
+    "calories": 550,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pita Bread",
+        "quantity": "1 pocket"
+      },
+      {
+        "name": "Falafel Balls",
+        "quantity": "4 cooked"
+      },
+      {
+        "name": "Hummus",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cucumber/Tomato",
+        "quantity": "1/2 cup diced"
+      },
+      {
+        "name": "Tahini",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Warm: Heat pita slightly to prevent tearing.",
+      "Fill: Spread hummus inside. Stuff with falafel and veggies.",
+      "Drizzle: Top with runny tahini sauce."
+    ],
+    "image": "/images/falafel_pita.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 42,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Cobb Salad",
+    "type": "Lunch",
+    "calories": 600,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Chicken",
+      "Meat",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Grilled Chicken",
+        "quantity": "4 oz cubed"
+      },
+      {
+        "name": "Hard Boiled Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Bacon Bits",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Blue Cheese",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/4 sliced"
+      }
+    ],
+    "instructions": [
+      "Base: Place lettuce in a large bowl.",
+      "Arrange: Place toppings in rows (chicken, egg, bacon, avocado, cheese).",
+      "Serve: Drizzle with ranch or vinaigrette."
+    ],
+    "image": "/images/cobb_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 43,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetable Soup",
+    "type": "Lunch",
+    "calories": 200,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Celery",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Vegetable Broth",
+        "quantity": "4 cups"
+      },
+      {
+        "name": "Herbs",
+        "quantity": "1 tsp thyme"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook aromatics in pot.",
+      "Simmer: Add broth and herbs. Cook 20 mins until veggies are tender.",
+      "Season: Salt and pepper to taste."
+    ],
+    "image": "/images/vegetable_soup.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 200,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 44,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Turkey Burger",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Meat",
+      "Turkey"
+    ],
+    "ingredients": [
+      {
+        "name": "Turkey Patty",
+        "quantity": "1"
+      },
+      {
+        "name": "Whole Wheat Bun",
+        "quantity": "1"
+      },
+      {
+        "name": "Lettuce/Tomato",
+        "quantity": "slices"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Cook: Grill or pan-fry patty for 4-5 mins per side (ensure fully cooked).",
+      "Assembl: Toast bun. Stack lettuce, tomato, patty, and mustard."
+    ],
+    "image": "/images/turkey_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 45,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Spinach Pasta",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "1 cup dry"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "3 cups fresh"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Boil: Cook pasta in salted water. Reserve 1/4 cup water.",
+      "Sauté: Cook garlic in oil. Add spinach until wilted.",
+      "Toss: Add drained pasta and pasta water. Toss with parmesan."
+    ],
+    "image": "/images/spinach_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    },
+    "id": 46,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Shrimp Taco Bowl",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Shrimp",
+        "quantity": "4 oz spiced"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Black Beans",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Corn",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Salsa",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook seasoned shrimp for 3 mins.",
+      "Warm: Heat corn and beans.",
+      "Bowl: Layer rice, beans, corn, and shrimp. Top with salsa."
+    ],
+    "image": "/images/shrimp_taco_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 47,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Beef Stir Fry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Beef",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Beef Strips",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Broccoli Florets",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Ginger/Garlic",
+        "quantity": "1 tbsp minced"
+      },
+      {
+        "name": "Oil",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sear: Cook beef in hot oil for 2 mins. Remove.",
+      "Steam: Add broccoli and a splash of water to pan. Cover for 2 mins.",
+      "Combine: Add beef back with soy sauce and aromatics. Toss to coat."
+    ],
+    "image": "/images/beef_stir_fry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 48,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Baked Salmon with Asparagus",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Keto",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Salmon Fillet",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Asparagus",
+        "quantity": "1 bunch trimmed"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "slices"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Dill",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Toss: Coat asparagus in oil, salt, and pepper.",
+      "Sheet Pan: Place salmon and asparagus on baking sheet. Top fish with lemon and dill.",
+      "Bake: 400°F (200°C) for 12-15 minutes until fish flakes easily."
+    ],
+    "image": "/images/baked_salmon.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 49,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Vegetarian Chili",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Kidney Beans",
+        "quantity": "2 cans rinsed"
+      },
+      {
+        "name": "Black Beans",
+        "quantity": "1 can rinsed"
+      },
+      {
+        "name": "Diced Tomatoes",
+        "quantity": "1 can (14oz)"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Chili Powder",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook onion and pepper in a large pot until soft.",
+      "Spices: Add chili powder and cumin. Stir for 1 min.",
+      "Simmer: Add tomatoes and beans. Simmer for 30 mins. Serve hot."
+    ],
+    "image": "/images/vegetarian_chili.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 50,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Pesto Pasta",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "8 oz dry"
+      },
+      {
+        "name": "Basil Pesto",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1 cup halved"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "1/4 cup"
+      }
+    ],
+    "instructions": [
+      "Boil: Cook pasta in salted water until al dente.",
+      "Reserve: Save 1/2 cup pasta water before draining.",
+      "Toss: Mix pasta, pesto, and splash of water vigorously. Top with tomatoes/cheese."
+    ],
+    "image": "/images/pesto_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    },
+    "id": 51,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Chicken Curry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Thighs",
+        "quantity": "1 lb diced"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 can"
+      },
+      {
+        "name": "Red Curry Paste",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Bamboo Shoots",
+        "quantity": "1 can (opt)"
+      }
+    ],
+    "instructions": [
+      "Fry: Cook curry paste in oil for 1 min until fragrant.",
+      "Meat: Add chicken. Stir fry to coat.",
+      "Simmer: Add coconut milk and veggies. Simmer 15 mins until chicken is cooked."
+    ],
+    "image": "/images/chicken_curry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 52,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Portobello Mushroom Burger",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Portobello Caps",
+        "quantity": "2 large"
+      },
+      {
+        "name": "Balsamic Vinegar",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lettuce/Bun",
+        "quantity": "for serving"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/2 sliced"
+      }
+    ],
+    "instructions": [
+      "Marinate: Brush mushrooms with balsamic and oil.",
+      "Grill: Grill caps for 4-5 mins per side.",
+      "Assemble: Place on bun or lettuce wrap. Top with avocado."
+    ],
+    "image": "/images/mushroom_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "15g",
+      "carbs": "60g",
+      "fats": "12g"
+    },
+    "id": 53,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Fish Tacos",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "White Fish (Tilapia/Cod)",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Corn Tortillas",
+        "quantity": "8"
+      },
+      {
+        "name": "Cabbage Slaw",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Lime Crema",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Cilantro",
+        "quantity": "1/4 cup"
+      }
+    ],
+    "instructions": [
+      "Season: Coat fish in taco seasoning/cumin.",
+      "Pan-Fry: Cook in skillet for 3 mins/side until flaky.",
+      "Assemble: Warm tortillas. Fill with fish, slaw, and crema."
+    ],
+    "image": "/images/fish_tacos.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 54,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Spaghetti Bolognese",
+    "type": "Dinner",
+    "calories": 700,
+    "tags": [
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": "8 oz dry"
+      },
+      {
+        "name": "Ground Beef",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Marinara Sauce",
+        "quantity": "1 jar (24oz)"
+      },
+      {
+        "name": "Onion/Garlic",
+        "quantity": "chopped"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "for topping"
+      }
+    ],
+    "instructions": [
+      "Sauce: Brown beef with onion. Drain fat. Add sauce and simmer 20 mins.",
+      "Pasta: Boil spaghetti.",
+      "Serve: Ladle sauce over pasta. Top with cheese."
+    ],
+    "image": "/images/spaghetti_bolognese.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 700,
+      "protein": "30g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "id": 55,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Eggplant Parmesan",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggplant",
+        "quantity": "1 large sliced"
+      },
+      {
+        "name": "Breadcrumbs",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Marinara",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "1.5 cups"
+      },
+      {
+        "name": "Egg",
+        "quantity": "2 beaten"
+      }
+    ],
+    "instructions": [
+      "Bread: Dip eggplant slices in egg, then breadcrumbs.",
+      "Bake: Roast slices at 400°F (200°C) for 20 mins.",
+      "Layer: Top roast slices with sauce and cheese. Bake 10 more mins."
+    ],
+    "image": "/images/eggplant_parm.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "15g"
+    },
+    "id": 56,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Lemon Herb Chicken",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Thighs",
+        "quantity": "4 bone-in"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Rosemary/Thyme",
+        "quantity": "4 sprigs"
+      },
+      {
+        "name": "Garlic Powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Season: Rub chicken with spices and butter.",
+      "Roast: Place in baking dish with lemon slices. Roast at 400°F (200°C) for 35-40 mins.",
+      "Rest: Let rest 5 mins before serving."
+    ],
+    "image": "/images/lemon_chicken.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 57,
+    "created_at": "2026-01-06T09:22:38.088Z"
+  },
+  {
+    "name": "Avocado Toast with Poached Egg",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Sourdough",
+        "quantity": "2 slices"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1 mashed"
+      },
+      {
+        "name": "Eggs",
+        "quantity": "2"
+      }
+    ],
+    "instructions": [
+      "Toast: Toast bread.",
+      "Poach: Poach eggs in simmering water for 3 mins.",
+      "Assemble: Spread avocado, top with egg, salt, and pepper."
+    ],
+    "image": "/images/avocado_toast_egg.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "12g",
+      "carbs": "30g",
+      "fats": "18g"
+    },
+    "id": 58,
+    "created_at": "2026-01-06T09:42:41.943Z"
+  },
+  {
+    "name": "Berry Smoothie Bowl",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Frozen Berries",
+        "quantity": "1.5 cups"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/3 cup"
+      }
+    ],
+    "instructions": [
+      "Blend: Blend frozen fruit and milk until thick.",
+      "Serve: Pour into bowl. Top with granola or seeds."
+    ],
+    "image": "/images/berry_smoothie_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "5g",
+      "carbs": "50g",
+      "fats": "4g"
+    },
+    "id": 59,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Vegetable Omelette",
+    "type": "Breakfast",
+    "calories": 250,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3"
+      },
+      {
+        "name": "Mixed Veggies",
+        "quantity": "1/2 cup diced"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook veggies in pan.",
+      "Cook: Add beaten eggs. Cook until set.",
+      "Fold: Add cheese and fold."
+    ],
+    "image": "/images/vegetable_omelette.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 250,
+      "protein": "14g",
+      "carbs": "5g",
+      "fats": "18g"
+    },
+    "id": 60,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Greek Yogurt Bowl",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Greek Yogurt",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Honey",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Walnuts",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Assemble: Bowl of yogurt.",
+      "Top: Add honey and nuts."
+    ],
+    "image": "/images/greek_yogurt_honey.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "22g",
+      "carbs": "20g",
+      "fats": "12g"
+    },
+    "id": 61,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Vegan Pancakes",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Flour",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Plant Milk",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Baking Powder",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Mix: Combine all ingredients.",
+      "Cook: Fry on skillet until golden."
+    ],
+    "image": "/images/vegan_pancakes.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "8g",
+      "carbs": "70g",
+      "fats": "6g"
+    },
+    "id": 62,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Scrambled Tofu Burrito",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Tofu",
+        "quantity": "1/2 block"
+      },
+      {
+        "name": "Tortilla",
+        "quantity": "1"
+      },
+      {
+        "name": "Spices",
+        "quantity": "Turmeric/Cumin"
+      }
+    ],
+    "instructions": [
+      "Scramble: Cook tofu with spices.",
+      "Wrap: Place in tortilla."
+    ],
+    "image": "/images/scrambled_tofu_burrito.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "18g",
+      "carbs": "45g",
+      "fats": "15g"
+    },
+    "id": 63,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Peanut Butter Banana Toast",
+    "type": "Breakfast",
+    "calories": 350,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Bread",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Peanut Butter",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Banana",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Toast: Toast the bread.",
+      "Spread: Add peanut butter and banana."
+    ],
+    "image": "/images/pb_banana_toast.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "10g",
+      "carbs": "40g",
+      "fats": "14g"
+    },
+    "id": 64,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Breakfast Quinoa Bowl",
+    "type": "Breakfast",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Cooked Quinoa",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Almond Milk",
+        "quantity": "1/2 cup warm"
+      },
+      {
+        "name": "Maple Syrup",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Cinnamon",
+        "quantity": "1/2 tsp"
+      },
+      {
+        "name": "Nuts/Seeds",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Warm: Stir warm milk into cooked quinoa.",
+      "Flavor: Mix in maple syrup and cinnamon.",
+      "Top: Add nuts or seeds. Eat warm like oatmeal."
+    ],
+    "image": "/images/breakfast_quinoa.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "12g",
+      "carbs": "55g",
+      "fats": "8g"
+    },
+    "id": 65,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Mushroom Spinach Frittata",
+    "type": "Breakfast",
+    "calories": 300,
+    "tags": [
+      "Vegetarian",
+      "Keto",
+      "Gluten-Free",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggs",
+        "quantity": "3"
+      },
+      {
+        "name": "Mushrooms",
+        "quantity": "1/2 cup sliced"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Feta",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Brown mushrooms in oven-safe pan. Add spinach until wilted.",
+      "Pour: Beat eggs with salt. Pour over veggies.",
+      "Bake: Top with feta. Bake at 350°F for 10-12 mins until set."
+    ],
+    "image": "/images/mushroom_frittata.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "18g",
+      "carbs": "6g",
+      "fats": "20g"
+    },
+    "id": 66,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Smoked Salmon Bagel",
+    "type": "Breakfast",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Everything Bagel",
+        "quantity": "1"
+      },
+      {
+        "name": "Cream Cheese",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Smoked Salmon",
+        "quantity": "3 oz"
+      },
+      {
+        "name": "Red Onion",
+        "quantity": "thin slices"
+      },
+      {
+        "name": "Capers",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Toast: Slice and toast bagel halves.",
+      "Spread: Apply generous cream cheese.",
+      "Layer: Top with ribbons of smoked salmon, red onion, and capers."
+    ],
+    "image": "/images/salmon_bagel.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "50g",
+      "fats": "15g"
+    },
+    "id": 67,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Caprese Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Ripe Tomatoes",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Fresh Mozzarella",
+        "quantity": "4 oz sliced"
+      },
+      {
+        "name": "Fresh Basil",
+        "quantity": "10 leaves"
+      },
+      {
+        "name": "Balsamic Glaze",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Assemble: Alternate slices of tomato and mozzarella on a plate.",
+      "Garnish: Tuck basil leaves between layers.",
+      "Finish: Drizzle with olive oil and balsamic. Sprinkle sea salt."
+    ],
+    "image": "/images/caprese_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "20g",
+      "carbs": "8g",
+      "fats": "25g"
+    },
+    "id": 68,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Chicken Wrap",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Chicken",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Large Tortilla",
+        "quantity": "1"
+      },
+      {
+        "name": "Cooked Chicken",
+        "quantity": "4 oz sliced"
+      },
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Ranch/Mayo",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Layer: Lay tortilla flat. Add sauce, then lettuce (to prevent sogginess).",
+      "Fill: Add chicken and tomatoes.",
+      "Roll: Fold sides in and roll tightly. Slice on diagonal."
+    ],
+    "image": "/images/chicken_wrap.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "35g",
+      "carbs": "40g",
+      "fats": "18g"
+    },
+    "id": 69,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Lentil Salad",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Cooked Lentils",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Cucumber",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1/2 diced"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Lemon Vinaigrette",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Combine: Mix lentils, cucumber, pepper, and parsley in a bowl.",
+      "Dress: Toss with vinaigrette.",
+      "Rest: Let sit 10 mins for flavors to meld."
+    ],
+    "image": "/images/lentil_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "15g",
+      "carbs": "50g",
+      "fats": "5g"
+    },
+    "id": 70,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Tuna Salad",
+    "type": "Lunch",
+    "calories": 350,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Canned Tuna",
+        "quantity": "1 can drained"
+      },
+      {
+        "name": "Mayo",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Celery",
+        "quantity": "1 stalk diced"
+      },
+      {
+        "name": "Relish/Pickles",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Mix: Flake tuna in a bowl.",
+      "Combine: Add mayo, celery, relish, and mustard. Mix well.",
+      "Serve: Eat with crackers or on greens."
+    ],
+    "image": "/images/tuna_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "30g",
+      "carbs": "2g",
+      "fats": "20g"
+    },
+    "id": 71,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Falafel Pita",
+    "type": "Lunch",
+    "calories": 550,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pita Bread",
+        "quantity": "1 pocket"
+      },
+      {
+        "name": "Falafel Balls",
+        "quantity": "4 cooked"
+      },
+      {
+        "name": "Hummus",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cucumber/Tomato",
+        "quantity": "1/2 cup diced"
+      },
+      {
+        "name": "Tahini",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Warm: Heat pita slightly to prevent tearing.",
+      "Fill: Spread hummus inside. Stuff with falafel and veggies.",
+      "Drizzle: Top with runny tahini sauce."
+    ],
+    "image": "/images/falafel_pita.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "18g",
+      "carbs": "70g",
+      "fats": "22g"
+    },
+    "id": 72,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Cobb Salad",
+    "type": "Lunch",
+    "calories": 600,
+    "tags": [
+      "Keto",
+      "Gluten-Free",
+      "Chicken",
+      "Meat",
+      "Egg"
+    ],
+    "ingredients": [
+      {
+        "name": "Romaine Lettuce",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Grilled Chicken",
+        "quantity": "4 oz cubed"
+      },
+      {
+        "name": "Hard Boiled Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Bacon Bits",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Blue Cheese",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Avocado",
+        "quantity": "1/4 sliced"
+      }
+    ],
+    "instructions": [
+      "Base: Place lettuce in a large bowl.",
+      "Arrange: Place toppings in rows (chicken, egg, bacon, avocado, cheese).",
+      "Serve: Drizzle with ranch or vinaigrette."
+    ],
+    "image": "/images/cobb_salad.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "40g",
+      "carbs": "10g",
+      "fats": "35g"
+    },
+    "id": 73,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Hearty Vegetable Soup",
+    "type": "Lunch",
+    "calories": 300,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Carrots",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Celery",
+        "quantity": "2 sliced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Vegetable Broth",
+        "quantity": "4 cups"
+      },
+      {
+        "name": "Bean Mix",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Herbs",
+        "quantity": "1 tsp thyme"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook aromatics in pot.",
+      "Simmer: Add broth, beans, and herbs. Cook 20 mins until veggies are tender.",
+      "Season: Salt and pepper to taste."
+    ],
+    "image": "/images/vegetable_soup.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 300,
+      "protein": "12g",
+      "carbs": "40g",
+      "fats": "3g"
+    },
+    "id": 74,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Turkey Burger",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Meat",
+      "Turkey"
+    ],
+    "ingredients": [
+      {
+        "name": "Turkey Patty",
+        "quantity": "1"
+      },
+      {
+        "name": "Whole Wheat Bun",
+        "quantity": "1"
+      },
+      {
+        "name": "Lettuce/Tomato",
+        "quantity": "slices"
+      },
+      {
+        "name": "Mustard",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Cook: Grill or pan-fry patty for 4-5 mins per side (ensure fully cooked).",
+      "Assembl: Toast bun. Stack lettuce, tomato, patty, and mustard."
+    ],
+    "image": "/images/turkey_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "35g",
+      "fats": "15g"
+    },
+    "id": 75,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Spinach Pasta",
+    "type": "Lunch",
+    "calories": 500,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "1 cup dry"
+      },
+      {
+        "name": "Spinach",
+        "quantity": "3 cups fresh"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "2 cloves"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Boil: Cook pasta in salted water. Reserve 1/4 cup water.",
+      "Sauté: Cook garlic in oil. Add spinach until wilted.",
+      "Toss: Add drained pasta and pasta water. Toss with parmesan."
+    ],
+    "image": "/images/spinach_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "15g",
+      "carbs": "75g",
+      "fats": "8g"
+    },
+    "id": 76,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Shrimp Taco Bowl",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Shrimp",
+        "quantity": "4 oz spiced"
+      },
+      {
+        "name": "Rice",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Black Beans",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Corn",
+        "quantity": "1/4 cup"
+      },
+      {
+        "name": "Salsa",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook seasoned shrimp for 3 mins.",
+      "Warm: Heat corn and beans.",
+      "Bowl: Layer rice, beans, corn, and shrimp. Top with salsa."
+    ],
+    "image": "/images/shrimp_taco_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "45g",
+      "fats": "10g"
+    },
+    "id": 77,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Beef Stir Fry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Beef",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Beef Strips",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Broccoli Florets",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Soy Sauce",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Ginger/Garlic",
+        "quantity": "1 tbsp minced"
+      },
+      {
+        "name": "Oil",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sear: Cook beef in hot oil for 2 mins. Remove.",
+      "Steam: Add broccoli and a splash of water to pan. Cover for 2 mins.",
+      "Combine: Add beef back with soy sauce and aromatics. Toss to coat."
+    ],
+    "image": "/images/beef_stir_fry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "45g",
+      "carbs": "20g",
+      "fats": "30g"
+    },
+    "id": 78,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Baked Salmon with Asparagus",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Keto",
+      "Gluten-Free",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Salmon Fillet",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Asparagus",
+        "quantity": "1 bunch trimmed"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "slices"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Dill",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Toss: Coat asparagus in oil, salt, and pepper.",
+      "Sheet Pan: Place salmon and asparagus on baking sheet. Top fish with lemon and dill.",
+      "Bake: 400°F (200°C) for 12-15 minutes until fish flakes easily."
+    ],
+    "image": "/images/baked_salmon.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "40g",
+      "carbs": "5g",
+      "fats": "28g"
+    },
+    "id": 79,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Vegetarian Chili",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Vegan",
+      "Vegetarian",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Egg-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Kidney Beans",
+        "quantity": "2 cans rinsed"
+      },
+      {
+        "name": "Black Beans",
+        "quantity": "1 can rinsed"
+      },
+      {
+        "name": "Diced Tomatoes",
+        "quantity": "1 can (14oz)"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 diced"
+      },
+      {
+        "name": "Chili Powder",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Sauté: Cook onion and pepper in a large pot until soft.",
+      "Spices: Add chili powder and cumin. Stir for 1 min.",
+      "Simmer: Add tomatoes and beans. Simmer for 30 mins. Serve hot."
+    ],
+    "image": "/images/vegetarian_chili.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "18g",
+      "carbs": "60g",
+      "fats": "5g"
+    },
+    "id": 80,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Pesto Pasta",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Pasta",
+        "quantity": "8 oz dry"
+      },
+      {
+        "name": "Basil Pesto",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Cherry Tomatoes",
+        "quantity": "1 cup halved"
+      },
+      {
+        "name": "Parmesan",
+        "quantity": "1/4 cup"
+      }
+    ],
+    "instructions": [
+      "Boil: Cook pasta in salted water until al dente.",
+      "Reserve: Save 1/2 cup pasta water before draining.",
+      "Toss: Mix pasta, pesto, and splash of water vigorously. Top with tomatoes/cheese."
+    ],
+    "image": "/images/pesto_pasta.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "12g",
+      "carbs": "70g",
+      "fats": "25g"
+    },
+    "id": 81,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Chicken Curry",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Thighs",
+        "quantity": "1 lb diced"
+      },
+      {
+        "name": "Coconut Milk",
+        "quantity": "1 can"
+      },
+      {
+        "name": "Red Curry Paste",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Bell Pepper",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Bamboo Shoots",
+        "quantity": "1 can (opt)"
+      }
+    ],
+    "instructions": [
+      "Fry: Cook curry paste in oil for 1 min until fragrant.",
+      "Meat: Add chicken. Stir fry to coat.",
+      "Simmer: Add coconut milk and veggies. Simmer 15 mins until chicken is cooked."
+    ],
+    "image": "/images/chicken_curry.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "35g",
+      "carbs": "15g",
+      "fats": "40g"
+    },
+    "id": 82,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Portobello & Swiss Burger",
+    "type": "Dinner",
+    "calories": 500,
+    "tags": [
+      "Vegetarian",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Portobello Mushroom",
+        "quantity": "2"
+      },
+      {
+        "name": "Swiss Cheese",
+        "quantity": "1 slice"
+      },
+      {
+        "name": "Bun",
+        "quantity": "1"
+      }
+    ],
+    "instructions": [
+      "Grill mushrooms.",
+      "Melt cheese.",
+      "Place on bun."
+    ],
+    "image": "/images/mushroom_burger.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 500,
+      "protein": "20g",
+      "carbs": "40g",
+      "fats": "25g"
+    },
+    "id": 83,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Fish Tacos",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Fish",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "White Fish",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Tortilla",
+        "quantity": "2"
+      },
+      {
+        "name": "Cabbage",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Fry fish.",
+      "Fill tacos."
+    ],
+    "image": "/images/fish_tacos.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "25g",
+      "carbs": "40g",
+      "fats": "18g"
+    },
+    "id": 84,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Spaghetti Bolognese",
+    "type": "Dinner",
+    "calories": 700,
+    "tags": [
+      "Beef",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Spaghetti",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Ground Beef",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Cook sauce with beef.",
+      "Serve over pasta."
+    ],
+    "image": "/images/spaghetti_bolognese.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 700,
+      "protein": "35g",
+      "carbs": "80g",
+      "fats": "25g"
+    },
+    "id": 85,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Eggplant Parmesan",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Vegetarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Eggplant",
+        "quantity": "1"
+      },
+      {
+        "name": "Marinara",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Mozzarella",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Bread eggplant.",
+      "Bake with sauce and cheese."
+    ],
+    "image": "/images/eggplant_parm.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "20g",
+      "carbs": "45g",
+      "fats": "30g"
+    },
+    "id": 86,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "name": "Lemon Herb Chicken",
+    "type": "Dinner",
+    "calories": 450,
+    "tags": [
+      "Chicken",
+      "Meat",
+      "Gluten-Free",
+      "Keto"
+    ],
+    "ingredients": [
+      {
+        "name": "Chicken Thighs",
+        "quantity": "2"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Herbs",
+        "quantity": "Mix"
+      }
+    ],
+    "instructions": [
+      "Roast chicken with herbs."
+    ],
+    "image": "/images/lemon_chicken.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "2g",
+      "fats": "35g"
+    },
+    "id": 87,
+    "created_at": "2026-01-06T09:42:41.944Z"
+  },
+  {
+    "id": 88,
+    "created_at": "2026-01-10T08:22:55.252Z",
+    "name": "Seared Pork Chops with Apples",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Pork",
+      "Meat",
+      "Gluten-Free",
+      "Paleo",
+      "Dairy-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pork Chops",
+        "quantity": "2"
+      },
+      {
+        "name": "Apple",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Thyme",
+        "quantity": "1 sprig"
+      },
+      {
+        "name": "Butter",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Season chops with salt/pepper.",
+      "Sear in hot pan 4 mins/side.",
+      "Add apples and butter; cook until apples are soft.",
+      "Serve chops topped with apples."
+    ],
+    "image": "/images/pork_chops_with_apples.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "35g",
+      "carbs": "15g",
+      "fats": "25g"
+    }
+  },
+  {
+    "id": 89,
+    "created_at": "2026-01-10T08:22:55.257Z",
+    "name": "Turkey Chili Bowl",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Turkey",
+      "Meat",
+      "Gluten-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Turkey",
+        "quantity": "6 oz"
+      },
+      {
+        "name": "Kidney Beans",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Chili Powder",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Cheddar Cheese",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Brown turkey in pot.",
+      "Add beans, sauce, and spices.",
+      "Simmer for 20 mins.",
+      "Serve topped with cheese."
+    ],
+    "image": "/images/turkey_chili_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "35g",
+      "carbs": "30g",
+      "fats": "12g"
+    }
+  },
+  {
+    "name": "Paleo Turkey Meatballs",
+    "type": "Dinner",
+    "calories": 480,
+    "tags": [
+      "Turkey",
+      "Paleo",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Turkey",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Almond Flour",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Egg",
+        "quantity": "1"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Garlic Powder",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Prep: Preheat oven to 400°F (200°C).",
+      "Mix: Combine turkey, almond flour, egg, and spices in a bowl.",
+      "Form: Roll into 12 balls.",
+      "Bake: Cook for 20-25 minutes until browned and cooked through."
+    ],
+    "image": "/images/turkey_meatballs.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 480,
+      "protein": "35g",
+      "carbs": "8g",
+      "fats": "30g"
+    },
+    "id": 90,
+    "created_at": "2026-01-10T15:01:09.637Z"
+  },
+  {
+    "name": "Slow Cooker Carnitas",
+    "type": "Dinner",
+    "calories": 600,
+    "tags": [
+      "Pork",
+      "Keto",
+      "Paleo",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pork Shoulder",
+        "quantity": "2 lbs"
+      },
+      {
+        "name": "Orange Juice",
+        "quantity": "1/2 cup"
+      },
+      {
+        "name": "Lime Juice",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Cumin",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Oregano",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Rub: Season pork with salt, pepper, cumin, and oregano.",
+      "Slow Cook: Place in pot with juices. Cook High 4h or Low 8h.",
+      "Shred: Remove and shred with forks.",
+      "Crisp: Broil meat on a baking sheet for 5 mins to crisp edges."
+    ],
+    "image": "/images/pork_carnitas.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 600,
+      "protein": "45g",
+      "carbs": "5g",
+      "fats": "40g"
+    },
+    "id": 91,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Sheet Pan Sausage & Peppers",
+    "type": "Dinner",
+    "calories": 550,
+    "tags": [
+      "Pork",
+      "Keto",
+      "Gluten-Free",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Italian Sausage",
+        "quantity": "4 links"
+      },
+      {
+        "name": "Bell Peppers",
+        "quantity": "3 sliced"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Italian Seasoning",
+        "quantity": "1 tbsp"
+      }
+    ],
+    "instructions": [
+      "Prep: Preheat oven to 400°F. Slice sausages and veggies.",
+      "Toss: Coat everything in olive oil and seasoning on a sheet pan.",
+      "Roast: Bake for 25-30 mins, tossing halfway through."
+    ],
+    "image": "/images/sausage_and_peppers.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 550,
+      "protein": "25g",
+      "carbs": "12g",
+      "fats": "45g"
+    },
+    "id": 92,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Turkey Stuffed Peppers",
+    "type": "Lunch",
+    "calories": 400,
+    "tags": [
+      "Turkey",
+      "Gluten-Free",
+      "Meat"
+    ],
+    "ingredients": [
+      {
+        "name": "Bell Peppers",
+        "quantity": "4"
+      },
+      {
+        "name": "Ground Turkey",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Rice (Cooked)",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Tomato Sauce",
+        "quantity": "1 cup"
+      },
+      {
+        "name": "Cheese",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Prep: Cut tops off peppers and remove seeds.",
+      "Filling: Mix raw turkey, cooked rice, and sauce.",
+      "Stuff: Fill peppers with mixture.",
+      "Bake: Cover with foil. Bake at 375°F for 45 mins. Top with cheese; bake 5 more mins."
+    ],
+    "image": "/images/turkey_stuffed_peppers.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "30g",
+      "carbs": "35g",
+      "fats": "15g"
+    },
+    "id": 93,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Paleo BBQ Ribs",
+    "type": "Dinner",
+    "calories": 700,
+    "tags": [
+      "Pork",
+      "Paleo",
+      "Gluten-Free",
+      "Meat",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pork Ribs",
+        "quantity": "1 rack"
+      },
+      {
+        "name": "Paprika",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Garlic Powder",
+        "quantity": "1 tsp"
+      },
+      {
+        "name": "Apple Cider Vinegar",
+        "quantity": "2 tbsp"
+      },
+      {
+        "name": "Sugar-Free BBQ Sauce",
+        "quantity": "1/2 cup"
+      }
+    ],
+    "instructions": [
+      "Rub: Coat ribs in dry spices.",
+      "Bake: Wrap tightly in foil. Bake at 300°F (150°C) for 3 hours.",
+      "Sauce: Remove foil. Brush with BBQ sauce.",
+      "Broil: Broil for 3-5 mins until sticky and charred."
+    ],
+    "image": "/images/bbq_ribs.png",
+    "is_premium": true,
+    "macros": {
+      "calories": 700,
+      "protein": "50g",
+      "carbs": "8g",
+      "fats": "50g"
+    },
+    "id": 94,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Lemon Garlic Pork Tenderloin",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Pork",
+      "Keto",
+      "Paleo",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Pork Tenderloin",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Lemon",
+        "quantity": "1"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "3 cloves"
+      },
+      {
+        "name": "Rosemary",
+        "quantity": "1 sprig"
+      },
+      {
+        "name": "Olive Oil",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Marinate: Mix lemon juice, minced garlic, oil, and rosemary. Coat pork for 30 mins.",
+      "Sear: Brown pork on all sides in a hot skillet.",
+      "Finish: Transfer to 400°F oven. Roast for 15-20 mins (internal temp 145°F)."
+    ],
+    "image": "/images/pork_tenderloin.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "40g",
+      "carbs": "2g",
+      "fats": "15g"
+    },
+    "id": 95,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Turkey Burger Salad Bowl",
+    "type": "Lunch",
+    "calories": 450,
+    "tags": [
+      "Turkey",
+      "Keto",
+      "Paleo",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Turkey",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Mixed Greens",
+        "quantity": "2 cups"
+      },
+      {
+        "name": "Pickles",
+        "quantity": "2 spears"
+      },
+      {
+        "name": "Tomato",
+        "quantity": "1 sliced"
+      },
+      {
+        "name": "Mustard Dressing",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Burger: Form turkey into a patty. Pan-fry for 4-5 mins per side.",
+      "Bowl: Fill bowl with greens.",
+      "Top: Slice burger and place on greens.",
+      "Garnish: Add pickles, tomato, and drizzle with dressing."
+    ],
+    "image": "/images/turkey_burger_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 450,
+      "protein": "30g",
+      "carbs": "10g",
+      "fats": "25g"
+    },
+    "id": 96,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Zucchini Noodle Bolognese",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Beef",
+      "Paleo",
+      "Keto",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Beef",
+        "quantity": "4 oz"
+      },
+      {
+        "name": "Zucchini",
+        "quantity": "2 medium"
+      },
+      {
+        "name": "Marinara Sauce",
+        "quantity": "1/2 cup (sugar-free)"
+      },
+      {
+        "name": "Onion",
+        "quantity": "1/4 diced"
+      },
+      {
+        "name": "Basil",
+        "quantity": "Fresh"
+      }
+    ],
+    "instructions": [
+      "Sauce: Brown beef and onion. Drain fat. Add marinara and simmer.",
+      "Noodles: Spiralize zucchini.",
+      "Soft: Sauté noodles in a separate pan for 2 mins (don't overcook!).",
+      "Serve: Top noodles with thick meat sauce."
+    ],
+    "image": "/images/zucchini_bolognese.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "15g",
+      "fats": "22g"
+    },
+    "id": 97,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Egg Roll in a Bowl",
+    "type": "Dinner",
+    "calories": 400,
+    "tags": [
+      "Pork",
+      "Keto",
+      "Paleo",
+      "Meat",
+      "Gluten-Free",
+      "Dairy-Free",
+      "Grain-Free"
+    ],
+    "ingredients": [
+      {
+        "name": "Ground Pork",
+        "quantity": "1 lb"
+      },
+      {
+        "name": "Coleslaw Mix",
+        "quantity": "1 bag"
+      },
+      {
+        "name": "Soy Sauce (or Aminos)",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Ginger",
+        "quantity": "1 tbsp minced"
+      },
+      {
+        "name": "Sesame Oil",
+        "quantity": "1 tsp"
+      }
+    ],
+    "instructions": [
+      "Brown: Cook ground pork with ginger in a large skillet. Don't drain fat.",
+      "Wilt: Add coleslaw mix. Stir fry for 5 mins until cabbage wilts.",
+      "Season: Stir in soy sauce and sesame oil.",
+      "Serve: Top with green onions or sriracha mayo."
+    ],
+    "image": "/images/egg_roll_bowl.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 400,
+      "protein": "25g",
+      "carbs": "10g",
+      "fats": "28g"
+    },
+    "id": 98,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  },
+  {
+    "name": "Garlic Butter Shrimp",
+    "type": "Dinner",
+    "calories": 350,
+    "tags": [
+      "Shrimp",
+      "Keto",
+      "Gluten-Free",
+      "Meat",
+      "Pescatarian"
+    ],
+    "ingredients": [
+      {
+        "name": "Shrimp",
+        "quantity": "1 lb peeled"
+      },
+      {
+        "name": "Butter",
+        "quantity": "3 tbsp"
+      },
+      {
+        "name": "Garlic",
+        "quantity": "4 cloves"
+      },
+      {
+        "name": "Lemon Juice",
+        "quantity": "1 tbsp"
+      },
+      {
+        "name": "Parsley",
+        "quantity": "2 tbsp"
+      }
+    ],
+    "instructions": [
+      "Melt: Heat butter in a skillet over medium heat.",
+      "Sauté: Add garlic and cook for 1 min.",
+      "Shrimp: Add shrimp. Cook 2-3 mins per side until pink and opaque.",
+      "Finish: Stir in lemon juice and parsley."
+    ],
+    "image": "/images/garlic_shrimp.png",
+    "is_premium": false,
+    "macros": {
+      "calories": 350,
+      "protein": "25g",
+      "carbs": "2g",
+      "fats": "25g"
+    },
+    "id": 99,
+    "created_at": "2026-01-10T15:01:09.640Z"
+  }
+]
