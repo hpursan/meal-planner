@@ -1,5 +1,7 @@
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image, Alert } from 'react-native';
+import { useKeepAwake } from 'expo-keep-awake';
 import { saveRecipe } from '../services/api';
-import { Alert } from 'react-native';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
     useKeepAwake();
