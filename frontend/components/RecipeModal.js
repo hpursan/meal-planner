@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image } from 'react-native';
-import { useKeepAwake } from 'expo-keep-awake';
+import { saveRecipe } from '../services/api';
+import { Alert } from 'react-native';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
-    useKeepAwake(); // Keeps screen on while this modal is open
+    useKeepAwake();
     const [imageError, setImageError] = useState(false);
+    const [saving, setSaving] = useState(false);
+
+    // Check if this is a temporary imported meal (starts with 'temp_')
+    const isImportedTemp = selectedMeal?.id?.toString().startsWith('temp_');
 
     // Reset error state when meal changes
     useEffect(() => {
@@ -31,6 +34,20 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         : `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}${selectedMeal.image}`;
     const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}/images/generic_fallback_meal.png`;
 
+    const handleSave = async () => {
+        if (saving) return;
+        setSaving(true);
+        try {
+            await saveRecipe(selectedMeal);
+            Alert.alert("Saved!", "Recipe added to your personal library.");
+            onClose(); // Close modal on success
+        } catch (error) {
+            Alert.alert("Error", "Failed to save recipe. Please try again.");
+        } finally {
+            setSaving(false);
+        }
+    };
+
     return (
         <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
             <View style={styles.modalOverlay}>
@@ -48,7 +65,20 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                         <Image source={{ uri: fallbackUrl }} style={[styles.heroImage]} />
                     )}
                     <View style={styles.modalHeader}>
-                        <Text style={styles.modalTitle}>{selectedMeal.name}</Text>
+                        <View style={{ flex: 1 }}>
+                            <Text style={styles.modalTitle} numberOfLines={1}>{selectedMeal.name}</Text>
+                        </View>
+
+                        {isImportedTemp && (
+                            <TouchableOpacity
+                                onPress={handleSave}
+                                style={[styles.saveButton, saving && { opacity: 0.7 }]}
+                                disabled={saving}
+                            >
+                                <Text style={styles.saveButtonText}>{saving ? "Saving..." : "Save"}</Text>
+                            </TouchableOpacity>
+                        )}
+
                         <TouchableOpacity onPress={onClose} style={styles.closeButton}>
                             <Text style={styles.closeButtonText}>✕</Text>
                         </TouchableOpacity>
@@ -305,5 +335,17 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textTransform: 'uppercase',
         letterSpacing: 1,
+    },
+    saveButton: {
+        backgroundColor: '#4CAF50',
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        borderRadius: 20,
+        marginRight: 12,
+    },
+    saveButtonText: {
+        color: '#FFF',
+        fontWeight: 'bold',
+        fontSize: 14,
     },
 });

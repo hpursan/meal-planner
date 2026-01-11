@@ -101,3 +101,47 @@ export const importRecipe = async (text) => {
         throw error;
     }
 };
+
+export const saveRecipe = async (recipe) => {
+    try {
+        const headers = await getAuthHeaders();
+        const response = await fetch(`${API_HOST}/api/recipes/save`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({ recipe }),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Save Failed: ${errorText}`);
+        }
+
+        const data = await response.json();
+        return data.recipe;
+    } catch (error) {
+        console.error('API Error (saveRecipe):', error);
+        Sentry.captureException(error);
+        throw error;
+    }
+};
+
+export const getMyRecipes = async () => {
+    try {
+        const headers = await getAuthHeaders();
+        const response = await fetch(`${API_HOST}/api/recipes/mine`, {
+            method: 'GET',
+            headers,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Fetch Failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.recipes;
+    } catch (error) {
+        console.error('API Error (getMyRecipes):', error);
+        Sentry.captureException(error);
+        throw error;
+    }
+};

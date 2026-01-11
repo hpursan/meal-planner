@@ -34,6 +34,52 @@ async function getRecipes() {
     }
 }
 
+async function getUserRecipes(userId) {
+    if (!userId) return [];
+    try {
+        const { data, error } = await supabase
+            .from('user_recipes')
+            .select('*')
+            .eq('user_id', userId);
+
+        if (error) throw error;
+        return data || [];
+    } catch (err) {
+        console.error('Error fetching user recipes:', err);
+        return [];
+    }
+}
+
+async function saveUserRecipe(userId, recipeData) {
+    try {
+        const payload = {
+            user_id: userId,
+            name: recipeData.name,
+            ingredients: recipeData.ingredients,
+            instructions: recipeData.instructions,
+            type: recipeData.type,
+            calories: recipeData.calories,
+            macros: recipeData.macros,
+            image: recipeData.image || "generic_fallback_meal.png", // Use fallback if not provided
+            original_url: recipeData.original_url
+        };
+
+        const { data, error } = await supabase
+            .from('user_recipes')
+            .insert([payload])
+            .select()
+            .single();
+
+        if (error) throw error;
+        return data;
+    } catch (err) {
+        console.error('Error saving user recipe:', err);
+        throw err;
+    }
+}
+
 module.exports = {
-    getRecipes
+    getRecipes,
+    getUserRecipes,
+    saveUserRecipe
 };

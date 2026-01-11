@@ -186,6 +186,20 @@ export default function SettingsScreen() {
                 </View>
 
                 <View style={styles.section}>
+                    <Text style={styles.sectionTitle}>Library</Text>
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={() => router.push('/my-recipes')}
+                    >
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 18, marginRight: 10 }}>📖</Text>
+                            <Text style={styles.label}>My Saved Recipes</Text>
+                        </View>
+                        <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Account</Text>
                     <View style={styles.row}>
                         <Text style={styles.label}>Email</Text>

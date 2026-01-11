@@ -4,6 +4,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { generateMealPlan, getSwapMeal } = require('./planner');
 const { parseRecipeFromText } = require('./services/aiParser');
+const { saveUserRecipe, getUserRecipes } = require('./services/recipeService');
 const { createClient } = require('@supabase/supabase-js');
 const rateLimit = require('express-rate-limit'); // Middleware to rate limit requests
 const { MAX_PLAN_DAYS, GENERATION_WINDOW_MS, GENERATION_MAX_REQUESTS } = require('./config/limits');
@@ -74,7 +75,27 @@ const requireAuth = async (req, res, next) => {
     }
 };
 
-// Public: Generate Plan endpoint (No auth required for trial)
+// Helper to get user recipes if token provided
+const fetchUserRecipesIfAuth = async (req) => {
+    const authHeader = req.headers.authorization;
+    if (!authHeader) return [];
+
+    const token = authHeader.split(' ')[1];
+    if (!token) return [];
+
+    try {
+        const { data: { user }, error } = await supabase.auth.getUser(token);
+        if (error || !user) return [];
+
+        console.log(`Fetching private recipes for user: ${user.id}`);
+        return await getUserRecipes(user.id);
+    } catch (err) {
+        console.warn("Optional Auth Check Failed:", err.message);
+        return [];
+    }
+};
+
+// Public: Generate Plan endpoint (Optional Auth for Custom Recipes)
 app.post('/api/plan', generationLimiter, async (req, res) => {
     const { preferences, days, meatFreeDays } = req.body;
 
@@ -82,14 +103,15 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
         return res.status(400).json({ error: "Invalid days parameter" });
     }
 
-    // Safety Cap using Central Config
     if (parseInt(days) > MAX_PLAN_DAYS) {
         return res.status(400).json({ error: `Plans are limited to ${MAX_PLAN_DAYS} days maximum.` });
     }
 
     try {
-        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || []);
-        // Return plan with relative image paths (Frontend handles base URL)
+        // Try to get user recipes if they are logged in
+        const userRecipes = await fetchUserRecipesIfAuth(req);
+
+        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes);
         res.json({ plan });
     } catch (error) {
         console.error("Plan Generation Error:", error);
@@ -97,18 +119,18 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
     }
 });
 
-// Public: Swap Meal endpoint
+// Public: Swap Meal endpoint (Optional Auth)
 app.post('/api/swap', async (req, res) => {
     const { currentId, type, preferences } = req.body;
 
     try {
-        const newMeal = await getSwapMeal(currentId, type, preferences);
+        const userRecipes = await fetchUserRecipesIfAuth(req);
+        const newMeal = await getSwapMeal(currentId, type, preferences, userRecipes);
 
         if (!newMeal) {
             return res.status(404).json({ error: "No alternative found" });
         }
 
-        // Return meal with relative image path
         res.json({ meal: newMeal });
     } catch (error) {
         console.error("Swap Error:", error);
@@ -138,6 +160,36 @@ app.post('/api/import', generationLimiter, async (req, res) => {
     } catch (error) {
         console.error("Import Error:", error.message);
         res.status(500).json({ error: error.message || "Failed to import recipe." });
+    }
+});
+
+// Authenticated: Save Imported Recipe
+app.post('/api/recipes/save', requireAuth, async (req, res) => {
+    const { recipe } = req.body;
+    const userId = req.user.id;
+
+    if (!recipe || !recipe.name) {
+        return res.status(400).json({ error: "Invalid recipe data." });
+    }
+
+    try {
+        const savedRecipe = await saveUserRecipe(userId, recipe);
+        res.json({ recipe: savedRecipe });
+    } catch (error) {
+        console.error("Save Recipe Error:", error);
+        res.status(500).json({ error: "Failed to save recipe." });
+    }
+});
+
+// Authenticated: Get My Recipes
+app.get('/api/recipes/mine', requireAuth, async (req, res) => {
+    const userId = req.user.id;
+    try {
+        const recipes = await getUserRecipes(userId);
+        res.json({ recipes });
+    } catch (error) {
+        console.error("Get Recipes Error:", error);
+        res.status(500).json({ error: "Failed to fetch recipes." });
     }
 });
 
