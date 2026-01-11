@@ -74,6 +74,9 @@ async function saveUserRecipe(userId, recipeData) {
         return data;
     } catch (err) {
         console.error('Error saving user recipe:', err.message, err.details, err.hint);
+        if (err.message && err.message.includes('row-level security')) {
+            throw new Error('Permission denied: Unable to save to your account. Please contact support.');
+        }
         throw err;
     }
 }
