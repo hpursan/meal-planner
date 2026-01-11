@@ -40,23 +40,25 @@ export default function HomeScreen() {
     const [paywallVisible, setPaywallVisible] = useState(false);
     const [importVisible, setImportVisible] = useState(false);
     const [importedMeal, setImportedMeal] = useState(null);
-    const [onboardingVisible, setOnboardingVisible] = useState(false);
-
-    useEffect(() => {
-        checkOnboarding();
-    }, []);
-
-    const checkOnboarding = async () => {
-        try {
-            const hasViewed = await AsyncStorage.getItem('has_viewed_onboarding_v2');
-            if (!hasViewed) {
-                // Small delay to ensure app is loaded
-                setTimeout(() => setOnboardingVisible(true), 500);
+    /*
+        const [onboardingVisible, setOnboardingVisible] = useState(false);
+    
+        useEffect(() => {
+            checkOnboarding();
+        }, []);
+    
+        const checkOnboarding = async () => {
+            try {
+                const hasViewed = await AsyncStorage.getItem('has_viewed_onboarding_v2');
+                if (!hasViewed) {
+                    // Small delay to ensure app is loaded
+                    setTimeout(() => setOnboardingVisible(true), 500);
+                }
+            } catch (e) {
+                console.error('Failed to check onboarding status');
             }
-        } catch (e) {
-            console.error('Failed to check onboarding status');
-        }
-    };
+        };
+    */
 
     useEffect(() => {
         if (plan.length === 0) {
@@ -373,10 +375,10 @@ export default function HomeScreen() {
                 onUnlockPro={() => setPaywallVisible(true)}
             />
 
-            <OnboardingModal
+            {/* <OnboardingModal
                 visible={onboardingVisible}
                 onClose={() => setOnboardingVisible(false)}
-            />
+            /> */}
         </View>
     );
 }
