@@ -105,6 +105,11 @@ export const importRecipe = async (text) => {
 export const saveRecipe = async (recipe) => {
     try {
         const headers = await getAuthHeaders();
+
+        if (!headers['Authorization']) {
+            throw new Error("You must be logged in to save recipes.");
+        }
+
         const response = await fetch(`${API_HOST}/api/recipes/save`, {
             method: 'POST',
             headers,
