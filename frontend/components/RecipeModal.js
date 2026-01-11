@@ -7,6 +7,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     useKeepAwake();
     const [imageError, setImageError] = useState(false);
     const [saving, setSaving] = useState(false);
+    const [saveError, setSaveError] = useState(null);
 
     // Check if this is a temporary imported meal (starts with 'temp_')
     const isImportedTemp = selectedMeal?.id?.toString().startsWith('temp_');
@@ -14,6 +15,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     // Reset error state when meal changes
     useEffect(() => {
         setImageError(false);
+        setSaveError(null);
     }, [selectedMeal]);
 
     if (!selectedMeal) return null;
@@ -39,12 +41,13 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     const handleSave = async () => {
         if (saving) return;
         setSaving(true);
+        setSaveError(null);
         try {
             await saveRecipe(selectedMeal);
             Alert.alert("Saved!", "Recipe added to your personal library.");
             onClose(); // Close modal on success
         } catch (error) {
-            Alert.alert("Error", error.message || "Failed to save recipe");
+            setSaveError(error.message || "Failed to save recipe");
         } finally {
             setSaving(false);
         }
@@ -86,7 +89,14 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                         </TouchableOpacity>
                     </View>
 
+                    {saveError && (
+                        <View style={styles.errorBanner}>
+                            <Text style={styles.errorText}>⚠️ {saveError}</Text>
+                        </View>
+                    )}
+
                     <ScrollView style={styles.modalScroll}>
+
                         <View style={styles.tagRow}>
                             <View style={styles.calBadge}>
                                 <Text style={styles.calText}>{selectedMeal.calories || 'N/A'} kcal</Text>
@@ -349,5 +359,19 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontWeight: 'bold',
         fontSize: 14,
+    },
+    errorBanner: {
+        margin: 20,
+        backgroundColor: 'rgba(255, 82, 82, 0.1)',
+        borderWidth: 1,
+        borderColor: 'rgba(255, 82, 82, 0.3)',
+        borderRadius: 8,
+        padding: 12,
+    },
+    errorText: {
+        color: '#FF5252',
+        fontSize: 14,
+        fontWeight: '600',
+        textAlign: 'center',
     },
 });

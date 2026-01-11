@@ -36,10 +36,12 @@ const MagicLoader = () => {
 export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess }) {
     const [text, setText] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleImport = async () => {
+        setError(null);
         if (!text.trim() || text.length < 10) {
-            Alert.alert("Invalid Input", "Please paste a recipe or URL.");
+            setError("Please paste a valid recipe URL or text (min 10 chars).");
             return;
         }
 
@@ -51,7 +53,7 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
             setText('');
             onClose();
         } catch (error) {
-            Alert.alert("Import Failed", error.message);
+            setError(error.message);
         } finally {
             setLoading(false);
         }
@@ -79,13 +81,22 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                             Paste a URL to a recipe blog, or paste the raw ingredients/instructions text. Our AI will handle the rest.
                         </Text>
 
+                        {error && (
+                            <View style={styles.errorContainer}>
+                                <Text style={styles.errorText}>⚠️ {error}</Text>
+                            </View>
+                        )}
+
                         <TextInput
                             style={styles.input}
                             multiline
                             placeholder="Paste recipe URL or text here..."
                             placeholderTextColor="#666"
                             value={text}
-                            onChangeText={setText}
+                            onChangeText={(val) => {
+                                setText(val);
+                                if (error) setError(null);
+                            }}
                             autoFocus
                         />
 
@@ -159,6 +170,19 @@ const styles = StyleSheet.create({
         marginBottom: 16,
         fontSize: 14,
         lineHeight: 20,
+    },
+    errorContainer: {
+        backgroundColor: 'rgba(255, 82, 82, 0.1)',
+        borderWidth: 1,
+        borderColor: 'rgba(255, 82, 82, 0.3)',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 16,
+    },
+    errorText: {
+        color: '#FF5252',
+        fontSize: 14,
+        fontWeight: '600',
     },
     input: {
         backgroundColor: '#121218',
