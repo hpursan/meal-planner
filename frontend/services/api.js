@@ -89,8 +89,17 @@ export const importRecipe = async (text) => {
         });
 
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Import Failed: ${errorText}`);
+            let errorText = await response.text();
+            try {
+                // Try to parse JSON error message from backend
+                const errorJson = JSON.parse(errorText);
+                if (errorJson.error) {
+                    errorText = errorJson.error;
+                }
+            } catch (e) {
+                // Not JSON, use raw text
+            }
+            throw new Error(errorText);
         }
 
         const data = await response.json();

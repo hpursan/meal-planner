@@ -1,7 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ActivityIndicator, Modal, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { BlurView } from 'expo-blur';
+import { LinearGradient } from 'expo-linear-gradient';
 import { importRecipe } from '../services/api';
+
+const LOADING_FRAMES = [
+    { icon: '🔮', text: 'Scanning content...' },
+    { icon: '📝', text: 'Extracting ingredients...' },
+    { icon: '🍳', text: 'Identifying logic...' },
+    { icon: '✨', text: 'Finalizing recipe...' },
+];
+
+const MagicLoader = () => {
+    const [frame, setFrame] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setFrame((prev) => (prev + 1) % LOADING_FRAMES.length);
+        }, 800);
+        return () => clearInterval(interval);
+    }, []);
+
+    const current = LOADING_FRAMES[frame];
+
+    return (
+        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+            <Text style={{ fontSize: 20 }}>{current.icon}</Text>
+            <Text style={{ color: '#FFF', fontSize: 16, fontWeight: 'bold' }}>
+                {current.text}
+            </Text>
+        </View>
+    );
+};
 
 export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess }) {
     const [text, setText] = useState('');
@@ -60,15 +90,22 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                         />
 
                         <TouchableOpacity
-                            style={[styles.importButton, loading && styles.disabledButton]}
+                            style={[styles.importButtonWrapper, loading && styles.disabledButton]}
                             onPress={handleImport}
                             disabled={loading}
                         >
-                            {loading ? (
-                                <ActivityIndicator color="#FFF" />
-                            ) : (
-                                <Text style={styles.buttonText}>✨ Magic Import</Text>
-                            )}
+                            <LinearGradient
+                                colors={loading ? ['#333', '#444'] : ['#BB86FC', '#7F5AF0']}
+                                start={{ x: 0, y: 0 }}
+                                end={{ x: 1, y: 1 }}
+                                style={styles.gradientButton}
+                            >
+                                {loading ? (
+                                    <MagicLoader />
+                                ) : (
+                                    <Text style={styles.buttonText}>✨ Magic Import</Text>
+                                )}
+                            </LinearGradient>
                         </TouchableOpacity>
                     </View>
                 </KeyboardAvoidingView>
@@ -134,18 +171,23 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#333',
     },
-    importButton: {
-        backgroundColor: '#BB86FC',
-        paddingVertical: 14,
+    importButtonWrapper: {
         borderRadius: 12,
+        overflow: 'hidden',
+    },
+    gradientButton: {
+        paddingVertical: 14,
         alignItems: 'center',
+        justifyContent: 'center',
     },
     disabledButton: {
-        opacity: 0.7,
+        opacity: 0.9,
     },
     buttonText: {
-        color: '#000',
+        color: '#FFF',
         fontSize: 16,
         fontWeight: 'bold',
+        textTransform: 'uppercase',
+        letterSpacing: 1,
     },
 });
