@@ -70,6 +70,7 @@ function RootLayoutNav() {
                 <Stack.Screen name="reset-password" />
                 <Stack.Screen name="settings" />
                 <Stack.Screen name="support" />
+                <Stack.Screen name="my-recipes" />
             </Stack>
         </SafeAreaProvider>
     );
