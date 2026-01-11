@@ -173,7 +173,8 @@ app.post('/api/recipes/save', requireAuth, async (req, res) => {
     }
 
     try {
-        const savedRecipe = await saveUserRecipe(userId, recipe);
+        const token = req.headers.authorization.split(' ')[1];
+        const savedRecipe = await saveUserRecipe(userId, recipe, token);
         res.json({ recipe: savedRecipe });
     } catch (error) {
         console.error("Save Recipe Error:", error);

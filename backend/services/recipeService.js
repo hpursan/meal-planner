@@ -50,7 +50,7 @@ async function getUserRecipes(userId) {
     }
 }
 
-async function saveUserRecipe(userId, recipeData) {
+async function saveUserRecipe(userId, recipeData, token) {
     try {
         const payload = {
             user_id: userId,
@@ -60,11 +60,22 @@ async function saveUserRecipe(userId, recipeData) {
             type: recipeData.type,
             calories: recipeData.calories,
             macros: recipeData.macros,
-            image: recipeData.image || "generic_fallback_meal.png", // Use fallback if not provided
+            image: recipeData.image || "generic_fallback_meal.png",
             original_url: recipeData.original_url
         };
 
-        const { data, error } = await supabase
+        // Create a scoped client for this request to respect RLS
+        // If no token is provided, it falls back to the default (Anon) client, which might fail RLS
+        let client = supabase;
+        if (token) {
+            client = createClient(SUPABASE_URL, SUPABASE_KEY, {
+                global: {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            });
+        }
+
+        const { data, error } = await client
             .from('user_recipes')
             .insert([payload])
             .select()
