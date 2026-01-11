@@ -34,13 +34,24 @@ async function getRecipes() {
     }
 }
 
-async function getUserRecipes(userId) {
+async function getUserRecipes(userId, token) {
     if (!userId) return [];
     try {
-        const { data, error } = await supabase
+        // Use authenticated client if token is provided to satisfy RLS
+        let client = supabase;
+        if (token) {
+            client = createClient(SUPABASE_URL, SUPABASE_KEY, {
+                global: {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            });
+        }
+
+        const { data, error } = await client
             .from('user_recipes')
             .select('*')
-            .eq('user_id', userId);
+            .eq('user_id', userId)
+            .order('created_at', { ascending: false }); // Sort by newest first
 
         if (error) throw error;
         return data || [];

@@ -186,7 +186,8 @@ app.post('/api/recipes/save', requireAuth, async (req, res) => {
 app.get('/api/recipes/mine', requireAuth, async (req, res) => {
     const userId = req.user.id;
     try {
-        const recipes = await getUserRecipes(userId);
+        const token = req.headers.authorization.split(' ')[1];
+        const recipes = await getUserRecipes(userId, token);
         res.json({ recipes });
     } catch (error) {
         console.error("Get Recipes Error:", error);
