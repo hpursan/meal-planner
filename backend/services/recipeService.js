@@ -73,7 +73,7 @@ async function saveUserRecipe(userId, recipeData) {
         if (error) throw error;
         return data;
     } catch (err) {
-        console.error('Error saving user recipe:', err);
+        console.error('Error saving user recipe:', err.message, err.details, err.hint);
         throw err;
     }
 }

@@ -95,7 +95,13 @@ async function parseRecipeFromText(text) {
             response_format: { type: "json_object" }
         });
 
-        const content = completion.choices[0].message.content;
+        let content = completion.choices[0].message.content;
+
+        // SANITIZATION: Remove Markdown code blocks if present
+        if (content.includes('```')) {
+            content = content.replace(/```json/g, '').replace(/```/g, '').trim();
+        }
+
         const parsed = JSON.parse(content);
 
         // Handle logical errors returned by AI

@@ -177,7 +177,7 @@ app.post('/api/recipes/save', requireAuth, async (req, res) => {
         res.json({ recipe: savedRecipe });
     } catch (error) {
         console.error("Save Recipe Error:", error);
-        res.status(500).json({ error: "Failed to save recipe." });
+        res.status(500).json({ error: error.message || "Failed to save recipe." });
     }
 });
 

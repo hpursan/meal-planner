@@ -44,7 +44,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
             Alert.alert("Saved!", "Recipe added to your personal library.");
             onClose(); // Close modal on success
         } catch (error) {
-            Alert.alert("Error", "Failed to save recipe. Please try again.");
+            Alert.alert("Error", error.message || "Failed to save recipe");
         } finally {
             setSaving(false);
         }

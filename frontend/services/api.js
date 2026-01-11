@@ -112,8 +112,14 @@ export const saveRecipe = async (recipe) => {
         });
 
         if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Save Failed: ${errorText}`);
+            let errorMessage = 'Failed to save recipe';
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData.error || errorMessage;
+            } catch (e) {
+                errorMessage = await response.text();
+            }
+            throw new Error(errorMessage);
         }
 
         const data = await response.json();
