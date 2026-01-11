@@ -9,8 +9,10 @@ import { supabase } from '../services/supabase';
 import * as Haptics from 'expo-haptics';
 import { useEffect, useState } from 'react';
 import PaywallModal from '../components/PaywallModal';
-import ImportRecipeModal from '../components/ImportRecipeModal'; // <--- New Import
+import ImportRecipeModal from '../components/ImportRecipeModal';
 import RecipeModal from '../components/RecipeModal';
+import OnboardingModal from '../components/OnboardingModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
     const router = useRouter();
@@ -38,6 +40,23 @@ export default function HomeScreen() {
     const [paywallVisible, setPaywallVisible] = useState(false);
     const [importVisible, setImportVisible] = useState(false);
     const [importedMeal, setImportedMeal] = useState(null);
+    const [onboardingVisible, setOnboardingVisible] = useState(false);
+
+    useEffect(() => {
+        checkOnboarding();
+    }, []);
+
+    const checkOnboarding = async () => {
+        try {
+            const hasViewed = await AsyncStorage.getItem('has_viewed_onboarding_v2');
+            if (!hasViewed) {
+                // Small delay to ensure app is loaded
+                setTimeout(() => setOnboardingVisible(true), 500);
+            }
+        } catch (e) {
+            console.error('Failed to check onboarding status');
+        }
+    };
 
     useEffect(() => {
         if (plan.length === 0) {
@@ -251,42 +270,49 @@ export default function HomeScreen() {
             <LinearGradient colors={['#0F0C29', '#302B63', '#24243E']} style={styles.background} />
 
             <View style={styles.topBar}>
-                <TouchableOpacity
-                    onPress={() => {
-                        if (isPro) {
-                            router.push('/history');
-                        } else {
-                            setPaywallVisible(true);
-                        }
-                    }}
-                    style={styles.iconButton}
-                    accessibilityLabel="My Plans History"
-                >
-                    <Ionicons name="receipt-outline" size={24} color={isPro ? '#FFF' : '#777'} />
-                </TouchableOpacity>
+                <View style={styles.menuItem}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            if (isPro) {
+                                router.push('/history');
+                            } else {
+                                setPaywallVisible(true);
+                            }
+                        }}
+                        style={styles.iconButton}
+                        accessibilityLabel="My Plans History"
+                    >
+                        <Ionicons name="receipt-outline" size={24} color={isPro ? '#FFF' : '#777'} />
+                    </TouchableOpacity>
+                    <Text style={styles.menuLabel}>History</Text>
+                </View>
 
-                <TouchableOpacity
-                    onPress={() => {
-                        if (isPro) {
-                            setImportVisible(true);
-                        } else {
-                            setPaywallVisible(true);
-                        }
-                    }}
-                    style={styles.iconButton}
-                >
-                    <Ionicons name="add-circle-outline" size={24} color={isPro ? "#BB86FC" : "#777"} />
-                </TouchableOpacity>
+                <View style={styles.menuItem}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            if (isPro) {
+                                setImportVisible(true);
+                            } else {
+                                setPaywallVisible(true);
+                            }
+                        }}
+                        style={styles.iconButton}
+                    >
+                        <Ionicons name="add-circle-outline" size={24} color={isPro ? "#BB86FC" : "#777"} />
+                    </TouchableOpacity>
+                    <Text style={styles.menuLabel}>Import</Text>
+                </View>
 
-                <Text style={styles.appTitle}>👨‍🍳</Text>
-
-                <TouchableOpacity
-                    onPress={() => router.push('/settings')}
-                    style={styles.iconButton}
-                    accessibilityLabel="Settings"
-                >
-                    <Ionicons name="settings-outline" size={24} color="#FFF" />
-                </TouchableOpacity>
+                <View style={styles.menuItem}>
+                    <TouchableOpacity
+                        onPress={() => router.push('/settings')}
+                        style={styles.iconButton}
+                        accessibilityLabel="Settings"
+                    >
+                        <Ionicons name="settings-outline" size={24} color="#FFF" />
+                    </TouchableOpacity>
+                    <Text style={styles.menuLabel}>Settings</Text>
+                </View>
             </View>
 
             {plan.length > 0 && (
@@ -345,6 +371,11 @@ export default function HomeScreen() {
                 onClose={() => setImportedMeal(null)}
                 isPro={isPro}
                 onUnlockPro={() => setPaywallVisible(true)}
+            />
+
+            <OnboardingModal
+                visible={onboardingVisible}
+                onClose={() => setOnboardingVisible(false)}
             />
         </View>
     );
@@ -419,5 +450,15 @@ const styles = StyleSheet.create({
         zIndex: 10,
         backgroundColor: 'rgba(0,0,0,0.2)',
         borderRadius: 12,
+    },
+    menuItem: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 4,
+    },
+    menuLabel: {
+        color: 'rgba(255,255,255,0.7)',
+        fontSize: 10,
+        fontWeight: '500',
     },
 });
