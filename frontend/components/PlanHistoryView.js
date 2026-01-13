@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useFocusEffect } from 'expo-router';
 import { supabase } from '../services/supabase';
 import { usePlan } from '../context/PlanContext';
@@ -13,44 +14,46 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
 
     useFocusEffect(
         useCallback(() => {
+            let isActive = true;
+
+            const fetchHistory = async () => {
+                if (!userId) return;
+                setLoading(true);
+
+                const { data, error } = await supabase
+                    .from('saved_plans')
+                    .select('id, name, created_at, plan_data, checked_items')
+                    .eq('user_id', userId)
+                    .order('created_at', { ascending: false });
+
+                if (isActive) {
+                    if (error) {
+                        // Check for network error likely causes
+                        console.log('History fetch error:', error);
+                        // Don't show Alert for network errors, just empty state with message
+                        setPlans([]);
+                        if (
+                            error.message &&
+                            (error.message.includes('Load failed') || error.message.includes('Network request failed'))
+                        ) {
+                            // Silent fail or toast
+                        } else {
+                            showAlert('Error', error.message);
+                        }
+                    } else {
+                        setPlans(data || []);
+                    }
+                    setLoading(false);
+                }
+            };
+
             fetchHistory();
-        }, [])
+
+            return () => {
+                isActive = false;
+            };
+        }, [userId, isOnline])
     );
-
-    // Auto-retry when coming online
-    React.useEffect(() => {
-        if (isOnline) {
-            fetchHistory();
-        }
-    }, [isOnline]);
-
-    const fetchHistory = async () => {
-        setLoading(true);
-        const { data, error } = await supabase
-            .from('saved_plans')
-            .select('id, name, created_at, plan_data, checked_items')
-            .eq('user_id', userId)
-            .order('created_at', { ascending: false });
-
-        if (error) {
-            // Check for network error likely causes
-            console.log('History fetch error:', error);
-            // Don't show Alert for network errors, just empty state with message
-            setPlans([]);
-            // Ideally we'd have a specific UI for "Offline", basically just suppress alert if it's 'Load failed'
-            if (
-                error.message &&
-                (error.message.includes('Load failed') || error.message.includes('Network request failed'))
-            ) {
-                // Silent fail or toast
-            } else {
-                showAlert('Error', error.message);
-            }
-        } else {
-            setPlans(data || []);
-        }
-        setLoading(false);
-    };
 
     const showAlert = (title, message, buttons = []) => {
         setAlertConfig({ visible: true, title, message, buttons });
@@ -88,15 +91,26 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
 
     const renderItem = ({ item }) => (
         <View style={styles.card}>
-            <TouchableOpacity style={styles.cardContent} onPress={() => onLoadPlan(item)}>
-                <View>
-                    <Text style={styles.planName}>{item.name || 'Untitled Plan'}</Text>
+            <TouchableOpacity style={styles.mainClickable} onPress={() => onLoadPlan(item)}>
+                <View style={styles.iconContainer}>
+                    <Ionicons name="calendar-outline" size={24} color="#BB86FC" />
+                </View>
+                <View style={styles.textContainer}>
+                    <Text style={styles.planName} numberOfLines={1}>
+                        {item.name || 'Untitled Plan'}
+                    </Text>
                     <Text style={styles.date}>{formatDate(item.created_at)}</Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => deletePlan(item.id)} style={styles.deleteButton}>
-                <Text style={styles.deleteText}>🗑</Text>
+            <View style={styles.divider} />
+
+            <TouchableOpacity
+                onPress={() => deletePlan(item.id)}
+                style={styles.deleteButton}
+                hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+                <Ionicons name="trash-outline" size={20} color="#FF6B6B" />
             </TouchableOpacity>
         </View>
     );
@@ -105,10 +119,10 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
         <View style={styles.container}>
             <View style={styles.header}>
                 <TouchableOpacity onPress={onBack} style={styles.backButton}>
-                    <Text style={styles.backButtonText}>← Back</Text>
+                    <Ionicons name="arrow-back" size={24} color="#FFF" />
                 </TouchableOpacity>
                 <Text style={styles.title}>My Plans</Text>
-                <View style={{ width: 60 }} />
+                <View style={{ width: 40 }} />
             </View>
 
             {loading ? (
@@ -119,7 +133,12 @@ export default function PlanHistoryView({ userId, onLoadPlan, onBack }) {
                     renderItem={renderItem}
                     keyExtractor={(item) => item.id}
                     contentContainerStyle={styles.listContent}
-                    ListEmptyComponent={<Text style={styles.emptyText}>No saved plans found (are you offline?).</Text>}
+                    ListEmptyComponent={
+                        <View style={styles.emptyContainer}>
+                            <Ionicons name="albums-outline" size={64} color="#333" />
+                            <Text style={styles.emptyText}>No saved plans yet.</Text>
+                        </View>
+                    }
                 />
             )}
 
@@ -138,27 +157,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        maxWidth: 800, // web polish: max width
-        alignSelf: 'center', // web polish: center
+        maxWidth: 800,
+        alignSelf: 'center',
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
+        paddingTop: 60, // Consistent with other screens
         marginBottom: 20,
     },
     title: {
-        fontSize: 24,
+        fontSize: 20, // Reduced from 24 to match MyRecipes
         fontWeight: 'bold',
         color: '#FFF',
     },
     backButton: {
-        padding: 10,
-    },
-    backButtonText: {
-        color: '#AAA',
-        fontSize: 16,
+        padding: 8,
     },
     listContent: {
         paddingHorizontal: 20,
@@ -166,43 +182,65 @@ const styles = StyleSheet.create({
     },
     card: {
         backgroundColor: '#1E1E2E',
-        borderRadius: 12,
+        borderRadius: 16,
         marginBottom: 12,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
         borderWidth: 1,
         borderColor: '#333',
-        overflow: 'hidden',
+        height: 72, // Fixed comfortable height
+        paddingRight: 16, // Padding for delete button
     },
-    cardContent: {
+    mainClickable: {
         flex: 1,
-        padding: 16,
-    },
-    deleteButton: {
-        padding: 16,
-        backgroundColor: '#382020',
+        flexDirection: 'row',
+        alignItems: 'center',
         height: '100%',
+        paddingLeft: 16,
+    },
+    iconContainer: {
+        width: 40,
+        height: 40,
+        borderRadius: 10,
+        backgroundColor: 'rgba(187, 134, 252, 0.1)',
         justifyContent: 'center',
         alignItems: 'center',
+        marginRight: 14,
     },
-    deleteText: {
-        fontSize: 20,
+    textContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        paddingRight: 10,
     },
     planName: {
         color: '#FFF',
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: '600',
-        marginBottom: 4,
+        marginBottom: 2,
     },
     date: {
         color: '#888',
         fontSize: 12,
     },
+    divider: {
+        width: 1,
+        height: '60%',
+        backgroundColor: '#333',
+        marginHorizontal: 8,
+    },
+    deleteButton: {
+        padding: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    emptyContainer: {
+        alignItems: 'center',
+        marginTop: 60,
+        opacity: 0.5,
+    },
     emptyText: {
-        color: '#666',
-        textAlign: 'center',
-        marginTop: 50,
+        color: '#888',
+        marginTop: 16,
         fontSize: 16,
     },
 });

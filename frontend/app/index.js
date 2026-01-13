@@ -167,7 +167,10 @@ export default function HomeScreen() {
                 'Symphony',
                 'Medley',
             ];
-            const randomName = `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
+            const today = new Date();
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const dateStr = `${today.getDate()} ${months[today.getMonth()]}`;
+            const randomName = `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]} (${dateStr})`;
             setPlanName(randomName);
         }
     }, [plan.length, loadFromCache]);

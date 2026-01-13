@@ -27,7 +27,7 @@ const MOCK_PACKAGES = [
 ];
 
 export default function PaywallModal({ visible, onClose }) {
-    const { packages, purchasePackage, restorePurchases, isPro, isRestoring } = usePlan();
+    const { packages, purchasePackage, restorePurchases, isPro, isRestoring, debugUnlock } = usePlan();
     const [purchasing, setPurchasing] = useState(null); // Identifier of pkg being bought
 
     // Use Context Packages if available, otherwise MOCK (for UI Dev)
@@ -120,6 +120,18 @@ export default function PaywallModal({ visible, onClose }) {
                     <TouchableOpacity style={styles.closeButton} onPress={onClose}>
                         <Text style={styles.closeText}>Maybe Later</Text>
                     </TouchableOpacity>
+
+                    {__DEV__ && (
+                        <TouchableOpacity
+                            onPress={() => {
+                                debugUnlock();
+                                onClose();
+                            }}
+                            style={{ marginTop: 20, padding: 10, backgroundColor: '#333' }}
+                        >
+                            <Text style={{ color: 'red', fontSize: 10 }}>DEV UNLOCK</Text>
+                        </TouchableOpacity>
+                    )}
                 </ScrollView>
             </LinearGradient>
         </Modal>

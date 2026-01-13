@@ -150,7 +150,7 @@ export function PlanProvider({ children }) {
         try {
             await AsyncStorage.removeItem(CACHE_KEY_PLAN);
             await AsyncStorage.removeItem(CACHE_KEY_CHECKED);
-        } catch (e) {}
+        } catch (e) { }
     };
 
     return (
@@ -184,6 +184,7 @@ export function PlanProvider({ children }) {
                 purchasePackage,
                 restorePurchases,
                 isRestoring,
+                debugUnlock: () => setIsPro(true),
             }}
         >
             {children}

@@ -1,8 +1,8 @@
 {
     "expo": {
-        "name": "Meal Planner",
+        "name": "MealPlan AI: Diet & Grocery",
         "slug": "meal-planner",
-        "version": "1.0.4",
+        "version": "1.0.8",
         "scheme": "mealplanner",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -16,7 +16,7 @@
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.pursan.mealplanner",
-            "buildNumber": "49",
+            "buildNumber": "62",
             "infoPlist": {
                 "ITSAppUsesNonExemptEncryption": false
             }
@@ -34,6 +34,7 @@
         "plugins": [
             "expo-router",
             "expo-apple-authentication",
+            "expo-notifications",
             [
                 "@sentry/react-native/expo",
                 {

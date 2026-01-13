@@ -27,6 +27,7 @@ const slides = [
         description: 'Access all your past plans and favorite recipes in one place. Never lose a great meal again.',
         icon: 'receipt',
         colors: ['#FF6B6B', '#556270', '#4ECDC4'],
+        description: 'Access your collection anytime in Settings -> My Saved Recipes. Never lose a great meal idea again.',
     },
 ];
 
@@ -53,12 +54,12 @@ export default function OnboardingModal({ visible, onClose }) {
                     colors={currentSlide.colors}
                     style={styles.background}
                 />
-                
+
                 <View style={styles.content}>
                     <View style={styles.iconContainer}>
                         <Ionicons name={currentSlide.icon} size={80} color="#FFF" />
                     </View>
-                    
+
                     <Text style={styles.title}>{currentSlide.title}</Text>
                     <Text style={styles.description}>{currentSlide.description}</Text>
 
@@ -78,10 +79,10 @@ export default function OnboardingModal({ visible, onClose }) {
                         <Text style={styles.buttonText}>
                             {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
                         </Text>
-                        <Ionicons 
-                            name={currentIndex === slides.length - 1 ? "checkmark" : "arrow-forward"} 
-                            size={20} 
-                            color="#333" 
+                        <Ionicons
+                            name={currentIndex === slides.length - 1 ? "checkmark" : "arrow-forward"}
+                            size={20}
+                            color="#333"
                         />
                     </TouchableOpacity>
                 </View>

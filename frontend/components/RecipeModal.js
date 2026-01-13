@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image, Alert, Share } from 'react-native';
 import { useKeepAwake } from 'expo-keep-awake';
+import * as StoreReview from 'expo-store-review';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { saveRecipe } from '../services/api';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
@@ -8,6 +10,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     const [imageError, setImageError] = useState(false);
     const [saving, setSaving] = useState(false);
     const [saveError, setSaveError] = useState(null);
+    const [saveSuccess, setSaveSuccess] = useState(false);
 
     // Check if this is a temporary imported meal (starts with 'temp_')
     const isImportedTemp = selectedMeal?.id?.toString().startsWith('temp_');
@@ -16,6 +19,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     useEffect(() => {
         setImageError(false);
         setSaveError(null);
+        setSaveSuccess(false);
     }, [selectedMeal]);
 
     if (!selectedMeal) return null;
@@ -38,14 +42,75 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         : `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}${selectedMeal.image}`;
     const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}/images/generic_fallback_meal.png`;
 
+    const handleShare = async () => {
+        try {
+            let message = `🍽️ ${selectedMeal.name}\n\n`;
+
+            if (selectedMeal.calories) {
+                message += `🔥 ${selectedMeal.calories} kcal\n`;
+            }
+            if (selectedMeal.macros) {
+                message += `💪 P: ${selectedMeal.macros.protein} | C: ${selectedMeal.macros.carbs} | F: ${selectedMeal.macros.fats}\n`;
+            }
+            message += '\n';
+
+            if (selectedMeal.ingredients && selectedMeal.ingredients.length > 0) {
+                message += "🥕 Ingredients:\n";
+                selectedMeal.ingredients.forEach(ing => {
+                    const line = typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`;
+                    message += `• ${line}\n`;
+                });
+                message += '\n';
+            }
+
+            if (selectedMeal.instructions && selectedMeal.instructions.length > 0) {
+                message += "📝 Instructions:\n";
+                selectedMeal.instructions.forEach((step, index) => {
+                    message += `${index + 1}. ${step}\n`;
+                });
+                message += '\n';
+            }
+
+            message += "Generated with MealPlan AI 🤖";
+
+            await Share.share({
+                message,
+            });
+        } catch (error) {
+            console.log('Share failed:', error);
+        }
+    };
+
     const handleSave = async () => {
-        if (saving) return;
+        if (saving || saveSuccess) return;
         setSaving(true);
         setSaveError(null);
+        setSaveSuccess(false);
+
         try {
             await saveRecipe(selectedMeal);
-            Alert.alert("Saved!", "Recipe added to your personal library.");
-            onClose(); // Close modal on success
+            setSaveSuccess(true);
+
+            // Trigger Rate My App check
+            try {
+                // Increment save count
+                const savedCount = parseInt(await AsyncStorage.getItem('saved_recipes_count') || '0', 10) + 1;
+                await AsyncStorage.setItem('saved_recipes_count', savedCount.toString());
+
+                // Trigger review on 3rd save (and later, 20th etc)
+                if (savedCount === 3 || savedCount === 20) {
+                    if (await StoreReview.hasAction()) {
+                        StoreReview.requestReview();
+                    }
+                }
+            } catch (e) {
+                // Ignore review errors, don't block user
+                console.log("Review trigger error:", e);
+            }
+
+            setTimeout(() => {
+                onClose(); // Close modal on success after delay
+            }, 1500);
         } catch (error) {
             setSaveError(error.message || "Failed to save recipe");
         } finally {
@@ -74,13 +139,18 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                             <Text style={styles.modalTitle} numberOfLines={1}>{selectedMeal.name}</Text>
                         </View>
 
+                        {/* Share Button */}
+                        <TouchableOpacity onPress={handleShare} style={styles.iconButton}>
+                            <Text style={{ fontSize: 20 }}>📤</Text>
+                        </TouchableOpacity>
+
                         {isImportedTemp && (
                             <TouchableOpacity
                                 onPress={handleSave}
-                                style={[styles.saveButton, saving && { opacity: 0.7 }]}
-                                disabled={saving}
+                                style={[styles.saveButton, (saving || saveSuccess) && { opacity: 0.7 }]}
+                                disabled={saving || saveSuccess}
                             >
-                                <Text style={styles.saveButtonText}>{saving ? "Saving..." : "Save"}</Text>
+                                <Text style={styles.saveButtonText}>{saveSuccess ? "Saved!" : (saving ? "Saving..." : "Save")}</Text>
                             </TouchableOpacity>
                         )}
 
@@ -95,8 +165,14 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                         </View>
                     )}
 
-                    <ScrollView style={styles.modalScroll}>
+                    {saveSuccess && (
+                        <View style={styles.successBanner}>
+                            <Text style={styles.successText}>✅ Saved! Find it in Settings {'>'} My Saved Recipes</Text>
+                        </View>
+                    )}
 
+                    <ScrollView style={styles.modalScroll}>
+                        {/* Content continues... */}
                         <View style={styles.tagRow}>
                             <View style={styles.calBadge}>
                                 <Text style={styles.calText}>{selectedMeal.calories || 'N/A'} kcal</Text>
@@ -222,6 +298,16 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: '#888',
         lineHeight: 24,
+    },
+    iconButton: {
+        padding: 8,
+        marginRight: 8,
+        backgroundColor: 'rgba(255,255,255,0.1)',
+        borderRadius: 20,
+        width: 36,
+        height: 36,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     modalScroll: {
         padding: 20,
@@ -370,6 +456,20 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: '#FF5252',
+        fontSize: 14,
+        fontWeight: '600',
+        textAlign: 'center',
+    },
+    successBanner: {
+        margin: 20,
+        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+        borderWidth: 1,
+        borderColor: 'rgba(76, 175, 80, 0.3)',
+        borderRadius: 8,
+        padding: 12,
+    },
+    successText: {
+        color: '#4CAF50',
         fontSize: 14,
         fontWeight: '600',
         textAlign: 'center',

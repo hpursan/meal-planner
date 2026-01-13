@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, Share, Alert } from 'react-native';
 import { usePlan } from '../context/PlanContext';
 import { supabase } from '../services/supabase';
 
@@ -62,6 +62,37 @@ export default function ShoppingListView({ plan }) {
         }));
     };
 
+    const handleShare = async () => {
+        try {
+            const lines = ["🛒 Shopping List (MealPlan AI)"];
+
+            // Pending Items
+            const pending = listData.filter(item => !checkedItems[item]);
+            if (pending.length > 0) {
+                lines.push("\nTo Buy:");
+                pending.forEach(item => lines.push(`[ ] ${item}`));
+            }
+
+            // Checked Items
+            const done = listData.filter(item => checkedItems[item]);
+            if (done.length > 0) {
+                lines.push("\nChecked:");
+                done.forEach(item => lines.push(`[x] ${item}`));
+            }
+
+            if (lines.length === 1) {
+                Alert.alert("Empty List", "Nothing to share!");
+                return;
+            }
+
+            await Share.share({
+                message: lines.join("\n"),
+            });
+        } catch (error) {
+            console.log("Share failed:", error);
+        }
+    };
+
     const renderItem = ({ item }) => {
         const isChecked = checkedItems[item];
         const count = ingredients[item];
@@ -86,21 +117,19 @@ export default function ShoppingListView({ plan }) {
                         <Text style={[styles.itemText, isChecked && styles.itemTextChecked]}>{item}</Text>
                     </TouchableOpacity>
 
-                    {count > 1 && (
-                        <TouchableOpacity
-                            onPress={() => toggleExpanded(item)}
-                            style={styles.countBadge}
-                            accessibilityRole="button"
-                            accessibilityLabel={`View recipes for ${item}`}
-                            accessibilityHint={
-                                isExpanded ? 'Collapse recipe list' : 'Expand to see which recipes use this ingredient'
-                            }
-                        >
-                            <Text style={styles.count}>
-                                {count}x {isExpanded ? '▲' : '▼'}
-                            </Text>
-                        </TouchableOpacity>
-                    )}
+                    <TouchableOpacity
+                        onPress={() => toggleExpanded(item)}
+                        style={[styles.countBadge, count === 1 && styles.countBadgeSingle]}
+                        accessibilityRole="button"
+                        accessibilityLabel={`View recipes for ${item}`}
+                        accessibilityHint={
+                            isExpanded ? 'Collapse recipe list' : 'Expand to see which recipes use this ingredient'
+                        }
+                    >
+                        <Text style={[styles.count, count === 1 && styles.countSingle]}>
+                            {count > 1 ? `${count}x ` : ''}{isExpanded ? '▲' : '▼'}
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
                 {isExpanded && (
@@ -127,6 +156,12 @@ export default function ShoppingListView({ plan }) {
 
     return (
         <View style={styles.container}>
+            <View style={styles.headerRow}>
+                <Text style={styles.headerTitle}>Shopping List</Text>
+                <TouchableOpacity onPress={handleShare} style={styles.shareButton}>
+                    <Text style={styles.shareButtonText}>📤 Share</Text>
+                </TouchableOpacity>
+            </View>
             <FlatList
                 data={listData}
                 keyExtractor={(item) => item}
@@ -144,6 +179,32 @@ const styles = StyleSheet.create({
         backgroundColor: '#1E1E2E',
         borderRadius: 16,
         overflow: 'hidden',
+    },
+    headerRow: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: 16,
+        paddingBottom: 0,
+        backgroundColor: '#1E1E2E',
+    },
+    headerTitle: {
+        color: '#FFF',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    shareButton: {
+        backgroundColor: '#302B63',
+        paddingHorizontal: 12,
+        paddingVertical: 6,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: '#444',
+    },
+    shareButtonText: {
+        color: '#BB86FC',
+        fontSize: 14,
+        fontWeight: '600',
     },
     listContent: {
         padding: 20,
@@ -202,10 +263,18 @@ const styles = StyleSheet.create({
         paddingVertical: 4,
         borderRadius: 8,
     },
+    countBadgeSingle: {
+        backgroundColor: 'transparent',
+        paddingHorizontal: 4,
+    },
     count: {
         color: '#BB86FC',
         fontSize: 12,
         fontWeight: 'bold',
+    },
+    countSingle: {
+        color: '#666',
+        fontSize: 16,
     },
     detailsContainer: {
         paddingLeft: 42, // Indent to align with text

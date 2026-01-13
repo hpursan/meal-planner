@@ -37,9 +37,21 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
     const [text, setText] = useState('');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(null);
+
+    // Reset states when modal visibility changes
+    useEffect(() => {
+        if (isVisible) {
+            setText('');
+            setError(null);
+            setSuccess(null);
+        }
+    }, [isVisible]);
 
     const handleImport = async () => {
         setError(null);
+        setSuccess(null);
+
         if (!text.trim() || text.length < 10) {
             setError("Please paste a valid recipe URL or text (min 10 chars).");
             return;
@@ -48,10 +60,13 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
         setLoading(true);
         try {
             const meal = await importRecipe(text);
-            Alert.alert("Success!", `Imported "${meal.name}" successfully.`);
-            onImportSuccess(meal); // Callback to add to plan or favorites
-            setText('');
-            onClose();
+            setSuccess(`Imported "${meal.name}" successfully!`);
+
+            // Delay closing to show success message
+            setTimeout(() => {
+                onImportSuccess(meal); // Callback to add to plan or favorites
+                onClose();
+            }, 1500);
         } catch (error) {
             setError(error.message);
         } finally {
@@ -87,6 +102,12 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                             </View>
                         )}
 
+                        {success && (
+                            <View style={styles.successContainer}>
+                                <Text style={styles.successText}>✅ {success}</Text>
+                            </View>
+                        )}
+
                         <TextInput
                             style={styles.input}
                             multiline
@@ -96,17 +117,18 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                             onChangeText={(val) => {
                                 setText(val);
                                 if (error) setError(null);
+                                if (success) setSuccess(null);
                             }}
                             autoFocus
                         />
 
                         <TouchableOpacity
-                            style={[styles.importButtonWrapper, loading && styles.disabledButton]}
+                            style={[styles.importButtonWrapper, (loading || success) && styles.disabledButton]}
                             onPress={handleImport}
-                            disabled={loading}
+                            disabled={loading || !!success}
                         >
                             <LinearGradient
-                                colors={loading ? ['#333', '#444'] : ['#BB86FC', '#7F5AF0']}
+                                colors={success ? ['#4CAF50', '#2E7D32'] : (loading ? ['#333', '#444'] : ['#BB86FC', '#7F5AF0'])}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                                 style={styles.gradientButton}
@@ -114,7 +136,7 @@ export default function ImportRecipeModal({ isVisible, onClose, onImportSuccess 
                                 {loading ? (
                                     <MagicLoader />
                                 ) : (
-                                    <Text style={styles.buttonText}>✨ Magic Import</Text>
+                                    <Text style={styles.buttonText}>{success ? "Success!" : "✨ Magic Import"}</Text>
                                 )}
                             </LinearGradient>
                         </TouchableOpacity>
@@ -181,6 +203,19 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: '#FF5252',
+        fontSize: 14,
+        fontWeight: '600',
+    },
+    successContainer: {
+        backgroundColor: 'rgba(76, 175, 80, 0.1)',
+        borderWidth: 1,
+        borderColor: 'rgba(76, 175, 80, 0.3)',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 16,
+    },
+    successText: {
+        color: '#4CAF50',
         fontSize: 14,
         fontWeight: '600',
     },

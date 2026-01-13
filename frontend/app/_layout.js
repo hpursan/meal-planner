@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/react-native';
+import * as Notifications from 'expo-notifications';
 
 import { Stack } from 'expo-router';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -11,6 +12,14 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 Sentry.init({
     dsn: 'https://8b2f089a6caedcbeefb0e2613ab6048f@o4510637378371584.ingest.us.sentry.io/4510637392723968',
     debug: false,
+});
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: true,
+        shouldSetBadge: false,
+    }),
 });
 
 // Keep the splash screen visible while we fetch resources
@@ -45,6 +54,36 @@ function RootLayoutNav() {
         });
 
         return () => subscription.unsubscribe();
+    }, []);
+
+    useEffect(() => {
+        async function configureNotifications() {
+            const { status } = await Notifications.getPermissionsAsync();
+            if (status !== 'granted') {
+                const { status: newStatus } = await Notifications.requestPermissionsAsync();
+                if (newStatus !== 'granted') return;
+            }
+
+            // Cancel all previous to avoid duplicates
+            await Notifications.cancelAllScheduledNotificationsAsync();
+
+            // Schedule for Sunday at 6 PM
+            await Notifications.scheduleNotificationAsync({
+                content: {
+                    title: "Time to Plan! 📅",
+                    body: "Spend 5 minutes now to save hours this week.",
+                },
+                trigger: {
+                    type: 'calendar',
+                    weekday: 1, // Sunday
+                    hour: 18,
+                    minute: 0,
+                    repeats: true,
+                },
+            });
+        }
+
+        configureNotifications();
     }, []);
 
     useEffect(() => {

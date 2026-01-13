@@ -64,7 +64,7 @@ export default function FeedbackModal({ visible, onClose }) {
                         </TouchableOpacity>
                     </View>
 
-                    <Text style={styles.subtitle}>Found a bug? Have a feature idea? Let us know!</Text>
+                    <Text style={styles.subtitle}>We're still improving! Spot a bug or have an idea? Let us know so we can make this the best meal planner for you.</Text>
 
                     <TextInput
                         style={styles.input}
