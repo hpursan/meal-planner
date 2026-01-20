@@ -82,7 +82,11 @@ export default function ResultsScreen() {
                 )}
 
                 <View style={styles.headerRow}>
-                    <Text style={styles.title}>{planName || 'Your Plan'}</Text>
+                    <View style={{ flex: 1, marginRight: 10 }}>
+                        <Text style={styles.title} numberOfLines={1} adjustsFontSizeToFit>
+                            {planName || 'Your Plan'}
+                        </Text>
+                    </View>
                     <TouchableOpacity onPress={handleNewPlan} style={styles.smallButton}>
                         <Text style={styles.smallButtonText}>New</Text>
                     </TouchableOpacity>

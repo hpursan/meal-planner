@@ -64,7 +64,7 @@ export default function PaywallModal({ visible, onClose }) {
                     {/* Features List */}
                     <View style={styles.features}>
                         <FeatureRow icon="📅" text="Plan Full Weeks (7 Days)" />
-                        <FeatureRow icon="✨" text="Ad-Free Experience" />
+
                         <FeatureRow icon="🚀" text="Priority Support & Updates" />
                         <FeatureRow icon="❤️" text="Support Independent Dev" />
                     </View>
@@ -91,7 +91,9 @@ export default function PaywallModal({ visible, onClose }) {
                                         </Text>
                                         <Text style={styles.productPrice}>{pkg.product.priceString}</Text>
                                     </View>
-                                    <Text style={styles.productDesc}>{pkg.product.description}</Text>
+                                    <Text style={styles.productDesc}>
+                                        {isAnnual ? 'Best Value • Save 50%' : 'Full Access • Cancel Anytime'}
+                                    </Text>
 
                                     {purchasing === pkg.identifier && (
                                         <ActivityIndicator style={{ marginTop: 10 }} color="#FFF" />

@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/react-native';
 
 const API_KEYS = {
     ios: process.env.EXPO_PUBLIC_RC_KEY_IOS || 'appl_jHlXOVmnbFquXCvaIQbAFzszaNO',
-    android: '', // Placeholder
+    android: process.env.EXPO_PUBLIC_RC_KEY_ANDROID,
 };
 
 export const PurchasesService = {
@@ -12,6 +12,12 @@ export const PurchasesService = {
         try {
             if (Platform.OS === 'ios') {
                 await Purchases.configure({ apiKey: API_KEYS.ios });
+            } else if (Platform.OS === 'android') {
+                if (API_KEYS.android) {
+                    await Purchases.configure({ apiKey: API_KEYS.android });
+                } else {
+                    console.warn('RevenueCat Android API Key is missing');
+                }
             }
         } catch (e) {
             console.error('RC Init Error', e);

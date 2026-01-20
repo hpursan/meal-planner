@@ -8,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Constants from 'expo-constants';
 import { useEffect, useState } from 'react';
 import FeedbackModal from '../components/FeedbackModal';
+import ContactModal from '../components/ContactModal';
 import PaywallModal from '../components/PaywallModal';
 import { usePlan } from '../context/PlanContext';
 
@@ -98,23 +99,10 @@ export default function SettingsScreen() {
         }
     };
 
-    const handleContactSupport = () => {
-        const email = 'helpme.mealplanner@gmail.com';
-        const url = `mailto:${email}?subject=Meal Planner Support`;
+    const [contactVisible, setContactVisible] = useState(false);
 
-        Alert.alert('Contact Support', `Please email us at:\n${email}`, [
-            { text: 'Cancel', style: 'cancel' },
-            {
-                text: 'Open Mail App',
-                onPress: async () => {
-                    try {
-                        await Linking.openURL(url);
-                    } catch (e) {
-                        console.log('Could not open mail app:', e);
-                    }
-                },
-            },
-        ]);
+    const handleContactSupport = () => {
+        setContactVisible(true);
     };
 
     return (
@@ -268,6 +256,7 @@ export default function SettingsScreen() {
             </ScrollView>
 
             <FeedbackModal visible={feedbackVisible} onClose={() => setFeedbackVisible(false)} />
+            <ContactModal visible={contactVisible} onClose={() => setContactVisible(false)} />
             <PaywallModal visible={paywallVisible} onClose={() => setPaywallVisible(false)} />
         </View>
     );
