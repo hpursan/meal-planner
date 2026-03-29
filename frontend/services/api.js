@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/react-native';
 
 // Host handling for Android Emulator vs iOS Simulator vs Web vs Physical Device
 // Fallback to Production URL to ensure TestFlight builds work even if Env Vars fail
-const API_HOST = process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com';
+const API_HOST = (process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com').trim();
 
 const getAuthHeaders = async () => {
     const {

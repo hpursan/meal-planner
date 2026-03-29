@@ -14,8 +14,8 @@ app.set('trust proxy', 1); // Trust Render's load balancer
 const PORT = process.env.PORT || 3000;
 
 // Initialize Supabase Client for Auth Verification
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL;
-const supabaseKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+const supabaseUrl = (process.env.EXPO_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || '').trim();
+const supabaseKey = (process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY || '').trim();
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const path = require('path');
