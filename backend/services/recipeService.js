@@ -10,7 +10,14 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 // Fallback to local JSON if DB fails
 const localRecipes = require('../recipes_dump.json');
 
+let cachedRecipes = null; // In-memory cache
+
 async function getRecipes() {
+    // Return cached recipes if available
+    if (cachedRecipes && cachedRecipes.length > 0) {
+        return cachedRecipes;
+    }
+
     try {
         const { data, error } = await supabase
             .from('recipes')
@@ -22,14 +29,17 @@ async function getRecipes() {
         }
 
         if (data && data.length > 0) {
-            console.log(`Fetched ${data.length} recipes from Supabase.`);
+            console.log(`Fetched ${data.length} recipes from Supabase and cached in memory.`);
+            cachedRecipes = data;
             return data;
         }
 
         console.warn('Supabase returned no recipes. Using local fallback.');
+        cachedRecipes = localRecipes;
         return localRecipes;
     } catch (err) {
         console.error('DB Connection Failed. Fallback to local JSON.', err);
+        cachedRecipes = localRecipes;
         return localRecipes;
     }
 }

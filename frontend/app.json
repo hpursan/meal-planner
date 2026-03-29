@@ -1,6 +1,6 @@
 {
     "expo": {
-        "name": "MealPlan AI: Diet & Grocery",
+        "name": "MealPlan AI: Diet, Macros & Grocery",
         "slug": "meal-planner",
         "version": "1.0.9",
         "scheme": "mealplanner",
@@ -27,7 +27,8 @@
                 "foregroundImage": "./assets/adaptive-icon.png",
                 "backgroundColor": "#ffffff"
             },
-            "edgeToEdgeEnabled": true
+            "edgeToEdgeEnabled": true,
+            "versionCode": 63
         },
         "web": {
             "favicon": "./assets/favicon.png"

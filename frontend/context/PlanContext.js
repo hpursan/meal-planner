@@ -36,16 +36,18 @@ export function PlanProvider({ children }) {
     // Initialize RevenueCat
     useEffect(() => {
         const initPurchases = async () => {
-            // Only init if online, or handle offline gracefully
             try {
-                await PurchasesService.init();
-                const info = await PurchasesService.getCustomerInfo();
-                setIsPro(PurchasesService.isPro(info));
+                // PurchasesService.init() is now handled in _layout.js for faster startup.
+                // Here we just fetch the user's state in parallel.
+                const [info, pkgs] = await Promise.all([
+                    PurchasesService.getCustomerInfo(),
+                    PurchasesService.getOfferings(),
+                ]);
 
-                const pkgs = await PurchasesService.getOfferings();
-                setPackages(pkgs);
+                if (info) setIsPro(PurchasesService.isPro(info));
+                if (pkgs) setPackages(pkgs);
             } catch (e) {
-                console.log('RevenueCat init failed', e);
+                console.log('PlanContext: RevenueCat sync failed', e);
             }
         };
         initPurchases();

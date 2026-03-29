@@ -21,6 +21,7 @@ const getAuthHeaders = async () => {
 export const generatePlan = async (days, preferences, meatFreeDays) => {
     try {
         const headers = await getAuthHeaders();
+        console.time('API:generatePlan');
         const response = await fetch(`${API_HOST}/api/plan`, {
             method: 'POST',
             headers,
@@ -30,6 +31,7 @@ export const generatePlan = async (days, preferences, meatFreeDays) => {
                 meatFreeDays,
             }),
         });
+        console.timeEnd('API:generatePlan');
 
         if (!response.ok) {
             const errorText = await response.text(); // Try to get backend error message

@@ -108,10 +108,12 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
     }
 
     try {
+        console.time('Backend:generatePlan');
         // Try to get user recipes if they are logged in
         const userRecipes = await fetchUserRecipesIfAuth(req);
 
         let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes);
+        console.timeEnd('Backend:generatePlan');
         res.json({ plan });
     } catch (error) {
         console.error("Plan Generation Error:", error);

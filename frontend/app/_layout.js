@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../services/supabase';
 import * as SplashScreen from 'expo-splash-screen';
 import { ErrorBoundary } from '../components/ErrorBoundary';
+import { PurchasesService } from '../services/purchases';
 
 Sentry.init({
     dsn: 'https://8b2f089a6caedcbeefb0e2613ab6048f@o4510637378371584.ingest.us.sentry.io/4510637392723968',
@@ -34,22 +35,32 @@ function RootLayoutNav() {
     const [initialized, setInitialized] = useState(false);
 
     useEffect(() => {
-        // Check initial session
-        supabase.auth.getSession().then(({ data: { session } }) => {
-            setSession(session);
-            setInitialized(true);
+        async function initializeApp() {
+            try {
+                // Initialize Auth and RevenueCat in parallel for faster startup
+                const [sessionResult, _] = await Promise.all([
+                    supabase.auth.getSession(),
+                    PurchasesService.init(),
+                ]);
 
-            // NOTE: We REMOVED automatic redirect logic here.
-            // This prevents "Redirect Loop" when app resumes from background (e.g. Closing Safari).
-            // User must manually log in if session is lost.
-        });
+                if (sessionResult.data.session) {
+                    setSession(sessionResult.data.session);
+                }
+            } catch (error) {
+                console.error('Initialization error:', error);
+                Sentry.captureException(error);
+            } finally {
+                setInitialized(true);
+            }
+        }
+
+        initializeApp();
 
         // Listen for changes
         const {
             data: { subscription },
         } = supabase.auth.onAuthStateChange(async (event, session) => {
             setSession(session);
-            // We only log events now, no forced redirects.
             console.log('Auth Event:', event);
         });
 
@@ -88,10 +99,10 @@ function RootLayoutNav() {
 
     useEffect(() => {
         if (initialized) {
-            // Hide splash screen after a short delay to ensure smooth transition
-            setTimeout(async () => {
-                await SplashScreen.hideAsync();
-            }, 1000);
+            // Hide splash screen immediately once services are ready
+            SplashScreen.hideAsync().catch((e) => {
+                console.warn('Failed to hide splash screen:', e);
+            });
         }
     }, [initialized]);
 

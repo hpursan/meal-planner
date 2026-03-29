@@ -37,11 +37,14 @@ Do this first for every new project.
 5.  **Render.com**: Connect GitHub repo.
     - Create "Web Service" (Node).
     - Set Environment Variables (Supabase keys, OpenAI keys).
-6.  **RevenueCat**: Create a new project -> Add iOS App.
-    - generate **Public API Key** (`appl_...`).
+6.  **RevenueCat**: Create a new project -> Add iOS App & Android App.
+    - generate **Public API Key** (`appl_...` for iOS, `goog_...` for Android).
     - Define **Entitlements** (`pro`) and **Offerings** (`default`).
 7.  **Sentry**: Create project (React Native).
     - Copy DSN for error tracking.
+8.  **Google Play Console** ($25 one-time): Required for Play Store.
+    - Create Payments Profile (Individual).
+    - Verify Identity (takes 48h).
 
 ---
 
@@ -86,27 +89,40 @@ How to make an MVP feel like a V10 product.
 ---
 
 ## 🚢 5. The Release Pipeline (Submission)
-Use the script to avoid human error.
 
+### **A. iOS (App Store)**
 1.  **Preparation**:
-    - Update `app.json`: Increment `buildNumber`.
+    - Update `app.json`: Increment `ios.buildNumber`.
     - Check `.env`: Ensure Prod Keys are set.
 2.  **The Script**:
     - Run `./deploy_ios.sh --local`.
     - This bumps version, builds `.ipa`, and uploads to TestFlight.
 3.  **App Store Connect**:
-    - **Privacy Policy**: Host a simple HTML page on your backend (`/public/privacy.html`).
-    - **Support URL**: Host a support page (`/public/support.html`).
-    - **EULA**: Add standard Apple link to description.
-    - **Screenshots**: Use a frame generator (don't upload raw screenshots).
-4.  **Submit**:
     - Select Build -> Submit for Review.
     - Response time: ~24-48 hours.
+
+### **B. Android (Google Play Store)**
+1.  **Preparation (First Run)**:
+    - Get RevenueCat Android API Key (`goog_...`).
+    - Add to `.env`: `EXPO_PUBLIC_RC_KEY_ANDROID`.
+    - Upload secret to Cloud: `eas secret:create --scope project --name EXPO_PUBLIC_RC_KEY_ANDROID --value <KEY>`.
+    - Update `app.json`: Ensure `android.package`, `android.versionCode`, and `android.adaptiveIcon` are set.
+2.  **Build**:
+    - Run: `eas build --platform android --profile production`.
+    - *Note*: This generates an `.aab` (Android App Bundle).
+3.  **Google Play Console**:
+    - Go to **Release > Testing > Internal testing**.
+    - Create Release -> Upload `.aab`.
+    - **Critical**: You MUST have a Payments Profile created (even for free apps with IAP) or IAP testing will fail.
+    - Add testers by email list.
+4.  **Store Listing**:
+    - Unlike iOS, Internal Testing requires a draft Store Listing (Short Description + Full Description) before first upload.
 
 ---
 
 ## 🧠 6. Lessons Learned (Avoid these mistakes)
 - **Env Vars**: EAS Build does *not* automatically read local `.env`. Always use `eas secret:push` OR fallback values in code (carefully).
+- **Android Payments**: You cannot test IAP on Android without a valid Payments Profile in Google Play Console. Even if the app builds, the Paywall will crash without it.
 - **Review Fallbacks**: Apple Reviewers might be on IPv6 or weird networks. Ensure API has robust timeouts and fallbacks (like we added for `API_URL`).
 - **Simplicity**: Do less, but resolve it better. The "Cooking Animation" added more value than 10 extra features would have.
 
