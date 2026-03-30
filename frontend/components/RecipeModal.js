@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView, Modal, Image, Alert, Share } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useKeepAwake } from 'expo-keep-awake';
 import * as StoreReview from 'expo-store-review';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { saveRecipe } from '../services/api';
+import * as Haptics from 'expo-haptics';
+import { Ionicons } from '@expo/vector-icons';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
     useKeepAwake();
@@ -11,6 +13,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
     const [saving, setSaving] = useState(false);
     const [saveError, setSaveError] = useState(null);
     const [saveSuccess, setSaveSuccess] = useState(false);
+    const [checkedIngredients, setCheckedIngredients] = useState({});
 
     // Check if this is a temporary imported meal (starts with 'temp_')
     const isImportedTemp = selectedMeal?.id?.toString().startsWith('temp_');
@@ -20,6 +23,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         setImageError(false);
         setSaveError(null);
         setSaveSuccess(false);
+        setCheckedIngredients({});
     }, [selectedMeal]);
 
     if (!selectedMeal) return null;
@@ -90,6 +94,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         try {
             await saveRecipe(selectedMeal);
             setSaveSuccess(true);
+            Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
             // Trigger Rate My App check
             try {
@@ -194,33 +199,58 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                                         onUnlockPro();
                                     }
                                 }}
-                                style={styles.macrosContainer}
                             >
-                                <View style={styles.macroRow}>
-                                    <View style={styles.macroItem}>
-                                        <Text style={styles.macroLabel}>Calories</Text>
-                                        <Text style={styles.macroValue}>{selectedMeal.macros.calories}</Text>
+                                <LinearGradient
+                                    colors={['#2A2A35', '#1E1E2E']}
+                                    style={styles.macrosContainer}
+                                >
+                                    <View style={styles.macroRow}>
+                                        <View style={styles.macroItem}>
+                                            <Text style={styles.macroLabel}>Calories</Text>
+                                            <Text style={styles.macroValue}>{selectedMeal.macros.calories}</Text>
+                                        </View>
+                                        {renderMacro('Protein', selectedMeal.macros.protein)}
+                                        {renderMacro('Carbs', selectedMeal.macros.carbs)}
+                                        {renderMacro('Fats', selectedMeal.macros.fats)}
                                     </View>
-                                    {renderMacro('Protein', selectedMeal.macros.protein)}
-                                    {renderMacro('Carbs', selectedMeal.macros.carbs)}
-                                    {renderMacro('Fats', selectedMeal.macros.fats)}
-                                </View>
-                                {!isPro && (
-                                    <View style={styles.unlockOverlay}>
-                                        <Text style={styles.unlockText}>Tap to Unlock Macros</Text>
-                                    </View>
-                                )}
+                                    {!isPro && (
+                                        <View style={styles.unlockOverlay}>
+                                            <Text style={styles.unlockText}>Tap to Unlock Macros</Text>
+                                        </View>
+                                    )}
+                                </LinearGradient>
                             </TouchableOpacity>
                         )}
 
                         <Text style={styles.sectionHeader}>Ingredients</Text>
                         <View style={styles.ingredientList}>
                             {selectedMeal.ingredients ? (
-                                selectedMeal.ingredients.map((ing, i) => (
-                                    <Text key={i} style={styles.ingredientText}>
-                                        • {typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`}
-                                    </Text>
-                                ))
+                                selectedMeal.ingredients.map((ing, i) => {
+                                    const isChecked = !!checkedIngredients[i];
+                                    return (
+                                        <TouchableOpacity
+                                            key={i}
+                                            style={styles.ingredientRow}
+                                            onPress={() => {
+                                                Haptics.selectionAsync();
+                                                setCheckedIngredients((prev) => ({
+                                                    ...prev,
+                                                    [i]: !prev[i],
+                                                }));
+                                            }}
+                                            activeOpacity={0.7}
+                                        >
+                                            <Ionicons
+                                                name={isChecked ? 'checkbox' : 'square-outline'}
+                                                size={20}
+                                                color={isChecked ? '#4CAF50' : '#888'}
+                                            />
+                                            <Text style={[styles.ingredientText, isChecked && styles.ingredientTextChecked]}>
+                                                {typeof ing === 'string' ? ing : `${ing.quantity} ${ing.name}`}
+                                            </Text>
+                                        </TouchableOpacity>
+                                    );
+                                })
                             ) : (
                                 <Text style={styles.ingredientText}>No ingredients listed.</Text>
                             )}
@@ -356,8 +386,18 @@ const styles = StyleSheet.create({
     ingredientText: {
         color: '#DDD',
         fontSize: 15,
-        marginBottom: 6,
         lineHeight: 20,
+        flex: 1,
+    },
+    ingredientTextChecked: {
+        color: '#666',
+        textDecorationLine: 'line-through',
+    },
+    ingredientRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
+        marginBottom: 12,
     },
     instructionList: {
         paddingBottom: 40,

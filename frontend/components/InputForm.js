@@ -16,6 +16,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Colors } from '../constants/Colors';
 import { Typography } from '../constants/Typography';
 import { Spacing } from '../constants/Spacing';
+import * as Haptics from 'expo-haptics';
 
 const PREFERENCES = [
     { id: 'Vegan', icon: '🌿', label: 'Vegan' },
@@ -62,6 +63,7 @@ const DurationPill = ({ val, days, setDays, isPro, onProFeature }) => {
                 if (isLocked) {
                     onProFeature && onProFeature();
                 } else {
+                    Haptics.selectionAsync();
                     setDays(val.toString());
                 }
             }}
@@ -223,7 +225,10 @@ export default function InputForm({
                                         styles.gridItem,
                                         selectedPrefs.includes(pref.id) && styles.gridItemSelected,
                                     ]}
-                                    onPress={() => togglePref(pref.id)}
+                                    onPress={() => {
+                                        Haptics.selectionAsync();
+                                        togglePref(pref.id);
+                                    }}
                                 >
                                     <Text style={styles.gridIcon}>{pref.icon}</Text>
                                     <Text
@@ -255,7 +260,10 @@ export default function InputForm({
                                         styles.dayCircle,
                                         meatFreeDays.includes(day.id) && styles.dayCircleSelected,
                                     ]}
-                                    onPress={() => toggleMeatFreeDay(day.id)}
+                                    onPress={() => {
+                                        Haptics.selectionAsync();
+                                        toggleMeatFreeDay(day.id);
+                                    }}
                                 >
                                     <Text
                                         style={[
