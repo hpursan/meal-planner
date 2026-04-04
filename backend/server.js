@@ -97,7 +97,7 @@ const fetchUserRecipesIfAuth = async (req) => {
 
 // Public: Generate Plan endpoint (Optional Auth for Custom Recipes)
 app.post('/api/plan', generationLimiter, async (req, res) => {
-    const { preferences, days, meatFreeDays } = req.body;
+    const { preferences, days, meatFreeDays, goal } = req.body;
 
     if (!days || isNaN(days)) {
         return res.status(400).json({ error: "Invalid days parameter" });
@@ -112,7 +112,7 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
         // Try to get user recipes if they are logged in
         const userRecipes = await fetchUserRecipesIfAuth(req);
 
-        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes);
+        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes, goal);
         console.timeEnd('Backend:generatePlan');
         res.json({ plan });
     } catch (error) {

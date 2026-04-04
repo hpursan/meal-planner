@@ -18,7 +18,7 @@ const getAuthHeaders = async () => {
     return headers;
 };
 
-export const generatePlan = async (days, preferences, meatFreeDays) => {
+export const generatePlan = async (days, preferences, meatFreeDays, goal) => {
     try {
         const headers = await getAuthHeaders();
         const startTime = Date.now();
@@ -29,6 +29,7 @@ export const generatePlan = async (days, preferences, meatFreeDays) => {
                 preferences,
                 days,
                 meatFreeDays,
+                goal,
             }),
         });
         console.log(`API:generatePlan took ${Date.now() - startTime}ms`);

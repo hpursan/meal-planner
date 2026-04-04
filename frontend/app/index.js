@@ -197,9 +197,10 @@ export default function HomeScreen() {
         }
     };
 
-    const handleGeneratePlan = async (overrideDays, overridePrefs) => {
+    const handleGeneratePlan = async (overrideDays, overridePrefs, overrideGoal) => {
         const targetDays = overrideDays || days;
         const targetPrefs = overridePrefs || selectedPrefs;
+        const targetGoal = overrideGoal || null; // Goal is optional for manual generation
 
         if (!targetDays || isNaN(targetDays) || parseInt(targetDays) <= 0) {
             Alert.alert('Invalid Input', 'Please enter a valid number of days.');
@@ -227,7 +228,7 @@ export default function HomeScreen() {
 
         setLoading(true);
         try {
-            const data = await generatePlan(numDays, targetPrefs, meatFreeDays);
+            const data = await generatePlan(numDays, targetPrefs, meatFreeDays, targetGoal);
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
             // Get session to save (optional logic, could verify first)
@@ -401,7 +402,8 @@ export default function HomeScreen() {
                     setTimeout(() => {
                         const d = answers.days ? answers.days.toString() : '7';
                         const p = (answers.diet && answers.diet !== 'None') ? [answers.diet] : [];
-                        handleGeneratePlan(d, p);
+                        const g = answers.goal || null;
+                        handleGeneratePlan(d, p, g);
                     }, 500);
                 }}
             />
