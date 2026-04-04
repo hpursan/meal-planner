@@ -5,7 +5,7 @@ import { BlurView } from 'expo-blur';
 const SmartImage = ({ uri, style }) => {
     const [error, setError] = useState(false);
     // Align with RecipeModal fallback
-    const API_URL = process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com';
+    const API_URL = (process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com').trim();
 
     React.useEffect(() => {
         setError(false);
@@ -15,7 +15,7 @@ const SmartImage = ({ uri, style }) => {
         return <Image source={{ uri: `${API_URL}/images/generic_fallback_meal.png` }} style={style} />;
     }
 
-    const fullUri = uri.startsWith('http') ? uri : `${API_URL}${uri}`;
+    const fullUri = uri.startsWith('http') ? uri : `${API_URL}${uri.startsWith('/') ? '' : '/'}${uri}`;
 
     return (
         <Image
@@ -79,10 +79,10 @@ export default function MealPlanView({ plan, onSelectMeal, onSwapMeal, isOnline 
                                                 onPress={() =>
                                                     isOnline
                                                         ? onSwapMeal(
-                                                              index,
-                                                              type.charAt(0).toUpperCase() + type.slice(1),
-                                                              meal
-                                                          )
+                                                            index,
+                                                            type.charAt(0).toUpperCase() + type.slice(1),
+                                                            meal
+                                                        )
                                                         : alert('Cannot swap meals while offline.')
                                                 }
                                                 style={[styles.swapButton, !isOnline && { opacity: 0.3 }]}

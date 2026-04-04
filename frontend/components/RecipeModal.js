@@ -42,10 +42,11 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         </View>
     );
 
-    const imageUrl = selectedMeal.image.startsWith('http')
+    const API_URL = (process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com').trim();
+    const imageUrl = selectedMeal.image?.startsWith('http')
         ? selectedMeal.image
-        : `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}${selectedMeal.image}`;
-    const fallbackUrl = `${process.env.EXPO_PUBLIC_API_URL || 'https://meal-planner-dtkf.onrender.com'}/images/generic_fallback_meal.png`;
+        : `${API_URL}${selectedMeal.image?.startsWith('/') ? '' : '/'}${selectedMeal.image || 'images/generic_fallback_meal.png'}`;
+    const fallbackUrl = `${API_URL}/images/generic_fallback_meal.png`;
 
     const handleShare = async () => {
         try {
