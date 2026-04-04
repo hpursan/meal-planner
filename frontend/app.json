@@ -16,7 +16,7 @@
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.pursan.mealplanner",
-            "buildNumber": "66",
+            "buildNumber": "70",
             "infoPlist": {
                 "ITSAppUsesNonExemptEncryption": false
             }
