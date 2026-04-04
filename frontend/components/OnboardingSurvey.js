@@ -27,7 +27,7 @@ const questions = [
             { label: 'Keto', icon: 'flash-outline', value: 'Keto' },
             { label: 'No Restrictions', icon: 'infinite-outline', value: 'None' },
         ],
-        colors: ['#BB86FC', '#7F5AF0', '#5c3c92'],
+        colors: ['#00b09b', '#96c93d'], // Vibrant Green
     },
     {
         id: 'days',
@@ -46,25 +46,32 @@ export default function OnboardingSurvey({ onComplete }) {
     const [answers, setAnswers] = useState({});
     const fadeAnim = useState(new Animated.Value(1))[0];
 
-    const handleSelect = async (value) => {
+    const handleSelect = (value) => {
         if (Platform.OS !== 'web') {
-            Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            try {
+                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+            } catch (e) { }
         }
 
-        const newAnswers = { ...answers, [questions[step].id]: value };
-        setAnswers(newAnswers);
+        const nextStepData = { ...answers, [questions[step].id]: value };
+        setAnswers(nextStepData);
 
-        // Animate transition
+        // Animate out
         Animated.timing(fadeAnim, {
             toValue: 0,
-            duration: 200,
+            duration: 150,
             useNativeDriver: true,
         }).start(() => {
             if (step < questions.length - 1) {
-                setStep(step + 1);
-                fadeAnim.setValue(1);
+                setStep(s => s + 1);
+                // Animate in
+                Animated.timing(fadeAnim, {
+                    toValue: 1,
+                    duration: 250,
+                    useNativeDriver: true,
+                }).start();
             } else {
-                finish(newAnswers);
+                finish(nextStepData);
             }
         });
     };
@@ -95,6 +102,7 @@ export default function OnboardingSurvey({ onComplete }) {
                             key={option.value}
                             style={styles.optionButton}
                             onPress={() => handleSelect(option.value)}
+                            activeOpacity={0.7}
                         >
                             <View style={styles.iconCircle}>
                                 <Ionicons name={option.icon} size={32} color="#FFF" />
@@ -148,7 +156,6 @@ const styles = StyleSheet.create({
     },
     optionsGrid: {
         width: '100%',
-        gap: 15,
     },
     optionButton: {
         flexDirection: 'row',
@@ -158,6 +165,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         borderWidth: 1,
         borderColor: 'rgba(255, 255, 255, 0.25)',
+        marginBottom: 15, // Replaces gap
     },
     iconCircle: {
         width: 60,
