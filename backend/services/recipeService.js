@@ -28,13 +28,13 @@ async function getRecipes() {
             throw error;
         }
 
-        if (data && data.length > 0) {
+        if (data && data.length >= localRecipes.length) {
             console.log(`Fetched ${data.length} recipes from Supabase and cached in memory.`);
             cachedRecipes = data;
             return data;
         }
 
-        console.warn('Supabase returned no recipes. Using local fallback.');
+        console.log(`Local JSON (count: ${localRecipes.length}) is more comprehensive than DB (count: ${data?.length || 0}). Using local source for pre-launch variety.`);
         cachedRecipes = localRecipes;
         return localRecipes;
     } catch (err) {
