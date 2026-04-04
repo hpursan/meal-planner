@@ -197,13 +197,16 @@ export default function HomeScreen() {
         }
     };
 
-    const handleGeneratePlan = async () => {
-        if (!days || isNaN(days) || parseInt(days) <= 0) {
+    const handleGeneratePlan = async (overrideDays, overridePrefs) => {
+        const targetDays = overrideDays || days;
+        const targetPrefs = overridePrefs || selectedPrefs;
+
+        if (!targetDays || isNaN(targetDays) || parseInt(targetDays) <= 0) {
             Alert.alert('Invalid Input', 'Please enter a valid number of days.');
             return;
         }
 
-        const numDays = parseInt(days);
+        const numDays = parseInt(targetDays);
         const MAX_FREE_DAYS = 3;
 
         // Paywall Gate: Allow the VERY FIRST plan to be free regardless of length
@@ -224,7 +227,7 @@ export default function HomeScreen() {
 
         setLoading(true);
         try {
-            const data = await generatePlan(parseInt(days), selectedPrefs, meatFreeDays);
+            const data = await generatePlan(numDays, targetPrefs, meatFreeDays);
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
             // Get session to save (optional logic, could verify first)
@@ -394,9 +397,11 @@ export default function HomeScreen() {
                     }
 
                     // Small delay then auto-trigger generation
-                    // This is the "Frictionless" part
+                    // Pass values directly to bypass React closure lag
                     setTimeout(() => {
-                        handleGeneratePlan();
+                        const d = answers.days ? answers.days.toString() : '7';
+                        const p = (answers.diet && answers.diet !== 'None') ? [answers.diet] : [];
+                        handleGeneratePlan(d, p);
                     }, 500);
                 }}
             />
