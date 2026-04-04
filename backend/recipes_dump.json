@@ -3090,7 +3090,7 @@
       "Poach: Use a spoon to make 3 wells in the sauce. Crack an egg into each well.",
       "Finish: Cover and cook for 5-8 mins until egg whites are set but yolks are still runny. Top with feta and parsley."
     ],
-    "image": "/images/shakshuka.jpg",
+    "image": "/images/shakshuka_201.png",
     "is_premium": false,
     "macros": {
       "calories": 320,
@@ -3147,7 +3147,7 @@
       "Cook: Broil 6-8 inches from heat for 8-10 mins until charred and flaky.",
       "Steam: Briefly steam/sauté bok choy and serve alongside salmon."
     ],
-    "image": "/images/miso_salmon.jpg",
+    "image": "/images/miso_salmon_202.png",
     "is_premium": true,
     "macros": {
       "calories": 480,
@@ -3203,7 +3203,7 @@
       "Simmer: Add spinach puree, garam masala, and salt. Simmer for 5 mins.",
       "Finish: Fold in paneer and cream. Serve hot with naan or rice."
     ],
-    "image": "/images/palak_paneer.jpg",
+    "image": "/images/palak_paneer_203.png",
     "is_premium": false,
     "macros": {
       "calories": 410,
@@ -3259,7 +3259,7 @@
       "Season: Stir in soy sauce and a pinch of sugar.",
       "Finish: Remove from heat and fold in Thai basil. Serve over jasmine rice."
     ],
-    "image": "/images/thai_green_curry.jpg",
+    "image": "/images/thai_green_curry_204.png",
     "is_premium": false,
     "macros": {
       "calories": 450,
@@ -3310,7 +3310,7 @@
       "Rest: Let meat rest for 5 mins.",
       "Serve: Serve with a side of tzatziki and a Greek salad."
     ],
-    "image": "/images/greek_lamb.jpg",
+    "image": "/images/greek_lamb_chops_205.png",
     "is_premium": true,
     "macros": {
       "calories": 520,
@@ -3365,7 +3365,7 @@
       "Assemble: Top with meat, beans, corn, and sliced avocado.",
       "Finish: Garnish with salsa and a dollop of Greek yogurt."
     ],
-    "image": "/images/burrito_bowl.jpg",
+    "image": "/images/burrito_bowl_206.png",
     "is_premium": false,
     "macros": {
       "calories": 550,
@@ -3420,7 +3420,7 @@
       "Simmer: Pour in broth. Cover and simmer for 15 mins until veggies are tender.",
       "Serve: Serve over a bed of fluffy couscous."
     ],
-    "image": "/images/chickpea_tagine.jpg",
+    "image": "/images/chickpea_tagine_207.png",
     "is_premium": false,
     "macros": {
       "calories": 380,
@@ -3471,7 +3471,7 @@
       "Veg: Toss in zucchini noodles and cook for 2-3 mins until tender-crisp.",
       "Combine: Return shrimp to pan, toss with lemon juice and parsley. Serve immediately."
     ],
-    "image": "/images/shrimp_scampi.jpg",
+    "image": "/images/garlic_shrimp.png",
     "is_premium": true,
     "macros": {
       "calories": 420,
@@ -3522,7 +3522,7 @@
       "Assemble: Place quinoa in a bowl. Top with baked tofu and cucumber.",
       "Finish: Drizzle generously with the peanut satay sauce."
     ],
-    "image": "/images/peanut_tofu.jpg",
+    "image": "/images/generic_fallback_meal.png",
     "is_premium": false,
     "macros": {
       "calories": 460,
@@ -3574,7 +3574,7 @@
       "Roast: Brush with olive oil. Bake at 375°F for 40-50 mins until tender.",
       "Serve: Serve hot as a main or side dish."
     ],
-    "image": "/images/ratatouille.jpg",
+    "image": "/images/zucchini_bolognese.png",
     "is_premium": false,
     "macros": {
       "calories": 250,
@@ -3625,7 +3625,7 @@
       "Chill: Refrigerate overnight or for at least 4 hours.",
       "Serve: Top with fresh berries before eating."
     ],
-    "image": "/images/overnight_oats.jpg",
+    "image": "/images/oatmeal_berries.png",
     "is_premium": false,
     "macros": {
       "calories": 310,
@@ -3672,7 +3672,7 @@
       "Fold: Gently fold in pieces of smoked salmon at the very end (don't overcook the salmon).",
       "Serve: Dollop with Greek yogurt and serve on toast."
     ],
-    "image": "/images/salmon_eggs.jpg",
+    "image": "/images/shakshuka.png",
     "is_premium": true,
     "macros": {
       "calories": 380,
@@ -3727,7 +3727,7 @@
       "Dress: Whisk lemon juice, olive oil, salt, and pepper. Pour over salad.",
       "Marinate: Let sit for at least 20 mins for flavors to meld."
     ],
-    "image": "/images/quinoa_tabouli.jpg",
+    "image": "/images/quinoa_salad.png",
     "is_premium": false,
     "macros": {
       "calories": 400,
@@ -3779,7 +3779,7 @@
       "Pasta: Boil spaghetti until al dente.",
       "Combine: Toss pasta with the lentil sauce and serve with nutritional yeast."
     ],
-    "image": "/images/lentil_bolognese.jpg",
+    "image": "/images/spaghetti_bolognese.png",
     "is_premium": false,
     "macros": {
       "calories": 450,
@@ -3826,7 +3826,7 @@
       "Grill: Grill or broil for 10-12 mins, turning occasionally, until chicken is cooked through.",
       "Serve: Serve with a side of lemon rice or salad."
     ],
-    "image": "/images/chicken_tikka_skewers.jpg",
+    "image": "/images/chicken_curry.png",
     "is_premium": true,
     "macros": {
       "calories": 420,
@@ -3873,7 +3873,7 @@
       "Combine: Toss potatoes, beans, onion, and mackerel in a bowl.",
       "Dress: Mix mustard with a little olive oil and lemon juice. Drizzle over salad."
     ],
-    "image": "/images/mackerel_salad.jpg",
+    "image": "/images/salmon_salad.png",
     "is_premium": false,
     "macros": {
       "calories": 490,
@@ -3924,7 +3924,7 @@
       "Roast: Bake at 400°F for 25-30 mins, flipping once, until edges are charred.",
       "Finish: Drizzle with tahini sauce before serving."
     ],
-    "image": "/images/cauli_steak.jpg",
+    "image": "/images/cauliflower_rice_stir_fry.png",
     "is_premium": false,
     "macros": {
       "calories": 310,
@@ -3970,7 +3970,7 @@
       "Roll: Fold ends and roll tightly.",
       "Serve: Slice diagonally and enjoy."
     ],
-    "image": "/images/turkey_wrap.jpg",
+    "image": "/images/chicken_wrap.png",
     "is_premium": false,
     "macros": {
       "calories": 380,
@@ -4020,7 +4020,7 @@
       "Assemble: Place noodles in a bowl. Pour hot broth over them.",
       "Finish: Top with halved boiled egg, corn, and green onions."
     ],
-    "image": "/images/miso_ramen.jpg",
+    "image": "/images/generic_fallback_meal.png",
     "is_premium": true,
     "macros": {
       "calories": 520,
@@ -4071,7 +4071,7 @@
       "Assemble: Fill tortillas with roasted potato and beans.",
       "Finish: Top with cilantro and a squeeze of lime."
     ],
-    "image": "/images/sweet_potato_tacos.jpg",
+    "image": "/images/beef_tacos.jpg",
     "is_premium": false,
     "macros": {
       "calories": 440,
@@ -4123,7 +4123,7 @@
       "Assemble: Top with edamame, seaweed salad, and the marinated tuna.",
       "Serve: Drizzle with spicy mayo if desired."
     ],
-    "image": "/images/poke_bowl.jpg",
+    "image": "/images/miso_glazed_cod.png",
     "is_premium": true,
     "macros": {
       "calories": 480,
@@ -4169,7 +4169,7 @@
       "Smooth: Blend on high until creamy and green.",
       "Serve: Pour into a glass and drink immediately."
     ],
-    "image": "/images/green_smoothie.jpg",
+    "image": "/images/berry_smoothie_bowl.png",
     "is_premium": false,
     "macros": {
       "calories": 280,
@@ -4216,7 +4216,7 @@
       "Layer: Place lentil mix in a baking dish. Top with mashed potatoes.",
       "Bake: Bake at 400°F for 20 mins until potatoes are golden."
     ],
-    "image": "/images/lentil_pie.jpg",
+    "image": "/images/vegetarian_chili.png",
     "is_premium": false,
     "macros": {
       "calories": 420,
@@ -4263,7 +4263,7 @@
       "Cheese: Sprinkle with cheese.",
       "Bake: Bake at 375°F for 25 mins until bubbling."
     ],
-    "image": "/images/enchiladas.jpg",
+    "image": "/images/chicken_wrap.png",
     "is_premium": true,
     "macros": {
       "calories": 550,
@@ -4309,7 +4309,7 @@
       "Dress: Drizzle with olive oil, lemon juice, and dried oregano.",
       "Serve: Enjoy cold as a refreshing lunch."
     ],
-    "image": "/images/orzo_salad.jpg",
+    "image": "/images/caprese_salad.png",
     "is_premium": false,
     "macros": {
       "calories": 390,
@@ -4357,7 +4357,7 @@
       "Sauce: Pour in soy sauce mixed with a little cornstarch and water.",
       "Toss: Cook until sauce thickens and coats the tofu."
     ],
-    "image": "/images/kung_pao_tofu.jpg",
+    "image": "/images/tofu_scramble.png",
     "is_premium": true,
     "macros": {
       "calories": 440,
@@ -4403,7 +4403,7 @@
       "Base: Place corn and beans over mixed greens.",
       "Finish: Top with chicken and drizzle with ranch."
     ],
-    "image": "/images/bbq_salad.jpg",
+    "image": "/images/grilled_chicken_caesar.png",
     "is_premium": false,
     "macros": {
       "calories": 460,
@@ -4450,7 +4450,7 @@
       "Top: Pour remaining sauce and sprinkle cheese over shells.",
       "Bake: Bake at 375°F for 20 mins until cheese is bubbly."
     ],
-    "image": "/images/stuffed_shells.jpg",
+    "image": "/images/pesto_pasta.png",
     "is_premium": true,
     "macros": {
       "calories": 510,
@@ -4496,7 +4496,7 @@
       "Pasta: Cook pasta al dente.",
       "Combine: Toss pasta with the cauliflower alfredo sauce. Garnish with pepper."
     ],
-    "image": "/images/cauli_alfredo.jpg",
+    "image": "/images/cauliflower_rice_stir_fry.png",
     "is_premium": false,
     "macros": {
       "calories": 380,
@@ -4543,7 +4543,7 @@
       "Simmer: Pour in broth and add prunes. Cover and simmer for 45-60 mins until lamb is tender.",
       "Serve: Garnish with fresh mint and serve with couscous."
     ],
-    "image": "/images/lamb_stew.jpg",
+    "image": "/images/beef_stir_fry.png",
     "is_premium": true,
     "macros": {
       "calories": 540,
@@ -4590,7 +4590,7 @@
       "Grill: Cook on a non-stick pan for 3 mins per side.",
       "Serve: Top with fresh berries."
     ],
-    "image": "/images/protein_french_toast.jpg",
+    "image": "/images/almond_flour_pancakes.png",
     "is_premium": false,
     "macros": {
       "calories": 350,
@@ -4637,7 +4637,7 @@
       "Dress: Drizzle with a vinaigrette of olive oil, lemon, and dijon mustard.",
       "Serve: Classic French lunch vibes."
     ],
-    "image": "/images/nicoise_salad.jpg",
+    "image": "/images/tuna_salad.png",
     "is_premium": true,
     "macros": {
       "calories": 420,
@@ -4688,7 +4688,7 @@
       "Arrange: Top with individual mounds of spinach, carrots, sprouts, and beef.",
       "Finish: Place fried egg in the center and add gochujang. Mix everything before eating."
     ],
-    "image": "/images/bibimbap.jpg",
+    "image": "/images/beef_stir_fry.png",
     "is_premium": true,
     "macros": {
       "calories": 580,
@@ -4735,7 +4735,7 @@
       "Roll: Fold and roll tightly.",
       "Serve: Perfect for a light, fresh lunch."
     ],
-    "image": "/images/caprese_wrap.jpg",
+    "image": "/images/avocado_toast_egg.png",
     "is_premium": false,
     "macros": {
       "calories": 380,
@@ -4778,7 +4778,7 @@
       "Grill: Cook on a pan for 2 mins per side until cheese is melted.",
       "Serve: Serve with salsa."
     ],
-    "image": "/images/breakfast_quesadilla.jpg",
+    "image": "/images/bacon_and_eggs.png",
     "is_premium": false,
     "macros": {
       "calories": 420,
@@ -4824,7 +4824,7 @@
       "Season: Drizzle with olive oil and top with lemon slices.",
       "Bake: Bake at 400°F for 12-15 mins until cod is flaky."
     ],
-    "image": "/images/roasted_cod.jpg",
+    "image": "/images/miso_glazed_cod.png",
     "is_premium": true,
     "macros": {
       "calories": 350,
@@ -4871,7 +4871,7 @@
       "Layer: Layer zucchini, ricotta, and meat sauce in a small dish.",
       "Bake: Top with mozzarella and bake at 375°F for 30 mins."
     ],
-    "image": "/images/zucchini_lasagna.jpg",
+    "image": "/images/zucchini_bolognese.png",
     "is_premium": false,
     "macros": {
       "calories": 410,
@@ -4918,7 +4918,7 @@
       "Simmer: Add hot broth 1/2 cup at a time, stirring constantly until absorbed.",
       "Finish: Once rice is creamy, stir in parmesan and a bit of butter."
     ],
-    "image": "/images/mushroom_risotto.jpg",
+    "image": "/images/mushroom_frittata.png",
     "is_premium": true,
     "macros": {
       "calories": 480,
@@ -4964,7 +4964,7 @@
       "Stir: Stir in pumpkin puree, spice, and protein powder.",
       "Finish: Top with chopped walnuts and a splash of milk."
     ],
-    "image": "/images/pumpkin_oats.jpg",
+    "image": "/images/oatmeal_berries.png",
     "is_premium": false,
     "macros": {
       "calories": 340,
@@ -5011,7 +5011,7 @@
       "Sauce: Add soy sauce and toss until everything is coated.",
       "Finish: Sprinkle with sesame seeds and serve with rice."
     ],
-    "image": "/images/beef_ginger.jpg",
+    "image": "/images/beef_stir_fry.png",
     "is_premium": false,
     "macros": {
       "calories": 520,
