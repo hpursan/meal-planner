@@ -34,7 +34,9 @@ export default function HomeScreen() {
         setIsOfflineMode,
         isOnline,
         isPro,
-        clearPlan, // <--- Add this
+        clearPlan,
+        isFirstPlanFree,
+        markFirstPlanUsed,
     } = usePlan();
 
     const [paywallVisible, setPaywallVisible] = useState(false);
@@ -204,11 +206,15 @@ export default function HomeScreen() {
         const numDays = parseInt(days);
         const MAX_FREE_DAYS = 3;
 
-        // Paywall Gate for Free Users
-        if (!isPro && numDays > MAX_FREE_DAYS) {
+        // Paywall Gate: Allow the VERY FIRST plan to be free regardless of length
+        // This is the "Endowment Effect" trigger.
+        if (!isPro && numDays > MAX_FREE_DAYS && !isFirstPlanFree) {
             setPaywallVisible(true);
             return;
         }
+
+        // If it's the first plan and they successfully generate, mark it as used
+        const isActuallyFirstFree = !isPro && isFirstPlanFree;
 
         if (numDays > 30) {
             // Can increase to 30 for Pro
@@ -247,10 +253,11 @@ export default function HomeScreen() {
             }
 
             setPlan(data.plan);
-            setIsOfflineMode(false); // We just fetched fresh data successfully
-            // setPlanId is missing from my Context definition! I need to add it to PlanContext later.
-            // For now, I'll assume we might not need it immediately or fix context.
-            // Actually, context needs planId state.
+            setIsOfflineMode(false);
+
+            if (isActuallyFirstFree) {
+                await markFirstPlanUsed();
+            }
 
             router.push('/results');
         } catch (error) {
@@ -378,7 +385,20 @@ export default function HomeScreen() {
 
             <OnboardingModal
                 visible={onboardingVisible}
-                onClose={() => setOnboardingVisible(false)}
+                onComplete={async (answers) => {
+                    setOnboardingVisible(false);
+                    // Map survey answers to local state
+                    if (answers.days) setDays(answers.days.toString());
+                    if (answers.diet && answers.diet !== 'None') {
+                        setSelectedPrefs([answers.diet]);
+                    }
+
+                    // Small delay then auto-trigger generation
+                    // This is the "Frictionless" part
+                    setTimeout(() => {
+                        handleGeneratePlan();
+                    }, 500);
+                }}
             />
         </View>
     );

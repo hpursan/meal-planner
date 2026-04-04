@@ -24,6 +24,7 @@ export function PlanProvider({ children }) {
     const [isPro, setIsPro] = useState(false);
     const [packages, setPackages] = useState([]);
     const [isRestoring, setIsRestoring] = useState(false);
+    const [isFirstPlanFree, setIsFirstPlanFree] = useState(false);
 
     // Network Status Listener
     useEffect(() => {
@@ -51,7 +52,28 @@ export function PlanProvider({ children }) {
             }
         };
         initPurchases();
+        checkFirstPlanStatus();
     }, []);
+
+    const checkFirstPlanStatus = async () => {
+        try {
+            const hasUsedFree = await AsyncStorage.getItem('has_used_first_free_plan');
+            if (!hasUsedFree) {
+                setIsFirstPlanFree(true);
+            }
+        } catch (e) {
+            console.error('Error checking first plan status', e);
+        }
+    };
+
+    const markFirstPlanUsed = async () => {
+        try {
+            await AsyncStorage.setItem('has_used_first_free_plan', 'true');
+            setIsFirstPlanFree(false);
+        } catch (e) {
+            console.error('Error marking first plan used', e);
+        }
+    };
 
     // Helper functions for UI
     const purchasePackage = async (pkg) => {
@@ -187,6 +209,10 @@ export function PlanProvider({ children }) {
                 restorePurchases,
                 isRestoring,
                 debugUnlock: () => setIsPro(true),
+                // Growth Logic
+                isFirstPlanFree,
+                setIsFirstPlanFree,
+                markFirstPlanUsed,
             }}
         >
             {children}
