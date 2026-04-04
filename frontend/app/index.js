@@ -50,7 +50,7 @@ export default function HomeScreen() {
 
     const checkOnboarding = async () => {
         try {
-            const hasViewed = await AsyncStorage.getItem('has_viewed_onboarding_v2');
+            const hasViewed = await AsyncStorage.getItem('has_viewed_onboarding_v3');
             if (!hasViewed) {
                 // Small delay to ensure app is loaded
                 setTimeout(() => setOnboardingVisible(true), 500);

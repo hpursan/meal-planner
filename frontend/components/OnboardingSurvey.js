@@ -72,7 +72,7 @@ export default function OnboardingSurvey({ onComplete }) {
     const finish = async (finalAnswers) => {
         try {
             await AsyncStorage.setItem('initial_onboarding_prefs', JSON.stringify(finalAnswers));
-            await AsyncStorage.setItem('has_viewed_onboarding_v2', 'true');
+            await AsyncStorage.setItem('has_viewed_onboarding_v3', 'true');
             onComplete(finalAnswers);
         } catch (e) {
             console.error('Error saving onboarding info', e);
