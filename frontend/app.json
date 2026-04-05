@@ -2,7 +2,7 @@
     "expo": {
         "name": "MealPlan AI: Diet, Macros & Grocery",
         "slug": "meal-planner",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "scheme": "mealplanner",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -16,7 +16,7 @@
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.pursan.mealplanner",
-            "buildNumber": "81",
+            "buildNumber": "83",
             "infoPlist": {
                 "ITSAppUsesNonExemptEncryption": false
             }
@@ -28,7 +28,7 @@
                 "backgroundColor": "#ffffff"
             },
             "edgeToEdgeEnabled": true,
-            "versionCode": 66
+            "versionCode": 67
         },
         "web": {
             "favicon": "./assets/favicon.png"
