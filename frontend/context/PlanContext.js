@@ -7,6 +7,7 @@ const PlanContext = createContext();
 
 const CACHE_KEY_PLAN = 'cached_plan_data';
 const CACHE_KEY_CHECKED = 'cached_checked_items';
+const CACHE_KEY_EXCLUDED = 'excluded_recipe_ids';
 
 export function PlanProvider({ children }) {
     const [plan, setPlan] = useState([]);
@@ -19,6 +20,7 @@ export function PlanProvider({ children }) {
     const [checkedItems, setCheckedItems] = useState({});
     const [isOfflineMode, setIsOfflineMode] = useState(false); // "Cached Mode"
     const [isOnline, setIsOnline] = useState(true); // "Network State"
+    const [excludedIds, setExcludedIds] = useState([]);
 
     // RevenueCat State
     const [isPro, setIsPro] = useState(false);
@@ -53,7 +55,19 @@ export function PlanProvider({ children }) {
         };
         initPurchases();
         checkFirstPlanStatus();
+        loadExcludedFromAsync();
     }, []);
+
+    const loadExcludedFromAsync = async () => {
+        try {
+            const stored = await AsyncStorage.getItem(CACHE_KEY_EXCLUDED);
+            if (stored) {
+                setExcludedIds(JSON.parse(stored));
+            }
+        } catch (e) {
+            console.error('Failed to load excluded IDs', e);
+        }
+    };
 
     const checkFirstPlanStatus = async () => {
         try {
@@ -72,6 +86,26 @@ export function PlanProvider({ children }) {
             setIsFirstPlanFree(false);
         } catch (e) {
             console.error('Error marking first plan used', e);
+        }
+    };
+
+    const excludeRecipe = async (id) => {
+        const newExclusions = [...new Set([...excludedIds, id])];
+        setExcludedIds(newExclusions);
+        try {
+            await AsyncStorage.setItem(CACHE_KEY_EXCLUDED, JSON.stringify(newExclusions));
+        } catch (e) {
+            console.error('Failed to save exclusion', e);
+        }
+    };
+
+    const restoreRecipe = async (id) => {
+        const newExclusions = excludedIds.filter((eid) => eid !== id);
+        setExcludedIds(newExclusions);
+        try {
+            await AsyncStorage.setItem(CACHE_KEY_EXCLUDED, JSON.stringify(newExclusions));
+        } catch (e) {
+            console.error('Failed to restore recipe', e);
         }
     };
 
@@ -213,6 +247,10 @@ export function PlanProvider({ children }) {
                 isFirstPlanFree,
                 setIsFirstPlanFree,
                 markFirstPlanUsed,
+                // Exclusion Logic
+                excludedIds,
+                excludeRecipe,
+                restoreRecipe,
             }}
         >
             {children}

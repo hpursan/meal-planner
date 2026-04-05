@@ -97,7 +97,7 @@ const fetchUserRecipesIfAuth = async (req) => {
 
 // Public: Generate Plan endpoint (Optional Auth for Custom Recipes)
 app.post('/api/plan', generationLimiter, async (req, res) => {
-    const { preferences, days, meatFreeDays, goal } = req.body;
+    const { preferences, days, meatFreeDays, goal, excludedIds } = req.body;
 
     if (!days || isNaN(days)) {
         return res.status(400).json({ error: "Invalid days parameter" });
@@ -112,7 +112,7 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
         // Try to get user recipes if they are logged in
         const userRecipes = await fetchUserRecipesIfAuth(req);
 
-        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes, goal);
+        let plan = await generateMealPlan(preferences || [], parseInt(days), meatFreeDays || [], userRecipes, goal, excludedIds || []);
         console.timeEnd('Backend:generatePlan');
         res.json({ plan });
     } catch (error) {
@@ -123,11 +123,11 @@ app.post('/api/plan', generationLimiter, async (req, res) => {
 
 // Public: Swap Meal endpoint (Optional Auth)
 app.post('/api/swap', async (req, res) => {
-    const { currentId, type, preferences } = req.body;
+    const { currentId, type, preferences, excludedIds } = req.body;
 
     try {
         const userRecipes = await fetchUserRecipesIfAuth(req);
-        const newMeal = await getSwapMeal(currentId, type, preferences, userRecipes);
+        const newMeal = await getSwapMeal(currentId, type, preferences, userRecipes, excludedIds || []);
 
         if (!newMeal) {
             return res.status(404).json({ error: "No alternative found" });
@@ -136,7 +136,20 @@ app.post('/api/swap', async (req, res) => {
         res.json({ meal: newMeal });
     } catch (error) {
         console.error("Swap Error:", error);
-        res.status(500).json({ error: "Failed to swap meal." });
+        res.status(500).json({ error: 'Failed to swap meal.' });
+    }
+});
+
+// Public: Get all recipe metadata (for exclusion management)
+app.get('/api/recipes/metadata', async (req, res) => {
+    try {
+        const { getRecipes } = require('./services/recipeService');
+        const recipes = await getRecipes();
+        const metadata = recipes.map((r) => ({ id: r.id, name: r.name }));
+        res.json({ recipes: metadata });
+    } catch (error) {
+        console.error('Metadata Error:', error);
+        res.status(500).json({ error: 'Failed to fetch metadata.' });
     }
 });
 

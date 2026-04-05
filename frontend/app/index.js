@@ -37,6 +37,7 @@ export default function HomeScreen() {
         clearPlan,
         isFirstPlanFree,
         markFirstPlanUsed,
+        excludedIds,
     } = usePlan();
 
     const [paywallVisible, setPaywallVisible] = useState(false);
@@ -226,9 +227,8 @@ export default function HomeScreen() {
             return;
         }
 
-        setLoading(true);
         try {
-            const data = await generatePlan(numDays, targetPrefs, meatFreeDays, targetGoal);
+            const data = await generatePlan(numDays, targetPrefs, meatFreeDays, targetGoal, excludedIds);
             Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
 
             // Get session to save (optional logic, could verify first)

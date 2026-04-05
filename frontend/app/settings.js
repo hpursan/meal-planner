@@ -17,7 +17,7 @@ export default function SettingsScreen() {
     const [userEmail, setUserEmail] = useState('');
     const [feedbackVisible, setFeedbackVisible] = useState(false);
     const [paywallVisible, setPaywallVisible] = useState(false);
-    const { isPro, packages } = usePlan();
+    const { isPro, packages, excludedIds } = usePlan();
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -184,6 +184,22 @@ export default function SettingsScreen() {
                             <Text style={styles.label}>My Saved Recipes</Text>
                         </View>
                         <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                    </TouchableOpacity>
+
+                    <View style={{ height: 1, backgroundColor: Colors.border.default, opacity: 0.5 }} />
+
+                    <TouchableOpacity
+                        style={[styles.row, { paddingVertical: 12 }]}
+                        onPress={() => router.push('/excluded-recipes')}
+                    >
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 18, marginRight: 10 }}>🚫</Text>
+                            <Text style={styles.label}>Excluded Recipes</Text>
+                        </View>
+                        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <Text style={[styles.value, { marginRight: 8 }]}>{excludedIds.length}</Text>
+                            <Text style={{ color: Colors.text.muted, fontSize: 18 }}>›</Text>
+                        </View>
                     </TouchableOpacity>
                 </View>
 

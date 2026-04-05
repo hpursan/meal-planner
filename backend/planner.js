@@ -1,7 +1,9 @@
 const { getRecipes } = require('./services/recipeService');
 
-const filterRecipes = (allRecipes, preferences, mealType, goal) => {
+const filterRecipes = (allRecipes, preferences, mealType, goal, excludedIds = []) => {
     return allRecipes.filter(recipe => {
+        // Exclude specific IDs (Blacklist)
+        if (excludedIds.includes(recipe.id)) return false;
         // Must match meal type
         const rType = recipe.type || "Dinner";
         if (rType !== mealType) return false;
@@ -48,7 +50,7 @@ const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
 // daysMap identifying map index 0-6 to Mon-Sun
 const DAYS_OF_WEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
-const generateMealPlan = async (preferences, days, meatFreeDays = [], userRecipes = [], goal = null) => {
+const generateMealPlan = async (preferences, days, meatFreeDays = [], userRecipes = [], goal = null, excludedIds = []) => {
     const globalRecipes = await getRecipes();
     const allRecipes = [...globalRecipes, ...userRecipes];
 
@@ -74,9 +76,9 @@ const generateMealPlan = async (preferences, days, meatFreeDays = [], userRecipe
             }
         }
 
-        const breakfastOptions = filterRecipes(allRecipes, dailyPreferences, "Breakfast", goal);
-        const lunchOptions = filterRecipes(allRecipes, dailyPreferences, "Lunch", goal);
-        const dinnerOptions = filterRecipes(allRecipes, dailyPreferences, "Dinner", goal);
+        const breakfastOptions = filterRecipes(allRecipes, dailyPreferences, "Breakfast", goal, excludedIds);
+        const lunchOptions = filterRecipes(allRecipes, dailyPreferences, "Lunch", goal, excludedIds);
+        const dinnerOptions = filterRecipes(allRecipes, dailyPreferences, "Dinner", goal, excludedIds);
 
         // Fallback if no matching recipes found (generic placeholder)
         const fallback = (type) => ({
@@ -100,12 +102,12 @@ const generateMealPlan = async (preferences, days, meatFreeDays = [], userRecipe
     return plan;
 };
 
-const getSwapMeal = async (currentId, mealType, preferences, userRecipes = []) => {
+const getSwapMeal = async (currentId, mealType, preferences, userRecipes = [], excludedIds = []) => {
     const globalRecipes = await getRecipes();
     const allRecipes = [...globalRecipes, ...userRecipes];
 
     // Filter potential replacements
-    const options = filterRecipes(allRecipes, preferences || [], mealType);
+    const options = filterRecipes(allRecipes, preferences || [], mealType, null, excludedIds);
 
     // Remove the current meal from options
     // Assuming currentId is numeric.

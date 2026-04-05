@@ -18,7 +18,7 @@ const getAuthHeaders = async () => {
     return headers;
 };
 
-export const generatePlan = async (days, preferences, meatFreeDays, goal) => {
+export const generatePlan = async (days, preferences, meatFreeDays, goal, excludedIds = []) => {
     try {
         const headers = await getAuthHeaders();
         const startTime = Date.now();
@@ -30,6 +30,7 @@ export const generatePlan = async (days, preferences, meatFreeDays, goal) => {
                 days,
                 meatFreeDays,
                 goal,
+                excludedIds,
             }),
         });
         console.log(`API:generatePlan took ${Date.now() - startTime}ms`);
@@ -52,7 +53,7 @@ export const generatePlan = async (days, preferences, meatFreeDays, goal) => {
     }
 };
 
-export const swapMeal = async (currentId, type, preferences) => {
+export const swapMeal = async (currentId, type, preferences, excludedIds = []) => {
     try {
         const headers = await getAuthHeaders();
         const response = await fetch(`${API_HOST}/api/swap`, {
@@ -62,6 +63,7 @@ export const swapMeal = async (currentId, type, preferences) => {
                 currentId,
                 type,
                 preferences,
+                excludedIds,
             }),
         });
 
@@ -164,6 +166,27 @@ export const getMyRecipes = async () => {
         return data.recipes;
     } catch (error) {
         console.error('API Error (getMyRecipes):', error);
+        Sentry.captureException(error);
+        throw error;
+    }
+};
+
+export const getRecipesMetadata = async () => {
+    try {
+        const headers = await getAuthHeaders();
+        const response = await fetch(`${API_HOST}/api/recipes/metadata`, {
+            method: 'GET',
+            headers,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Fetch Failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.recipes;
+    } catch (error) {
+        console.error('API Error (getRecipesMetadata):', error);
         Sentry.captureException(error);
         throw error;
     }

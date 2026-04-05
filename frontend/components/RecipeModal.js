@@ -6,9 +6,11 @@ import * as StoreReview from 'expo-store-review';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { saveRecipe } from '../services/api';
 import * as Haptics from 'expo-haptics';
+import { usePlan } from '../context/PlanContext';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro }) {
+    const { excludeRecipe } = usePlan();
     useKeepAwake();
     const [imageError, setImageError] = useState(false);
     const [saving, setSaving] = useState(false);
@@ -125,6 +127,25 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
         }
     };
 
+    const handleExclude = () => {
+        Alert.alert(
+            "Remove Recipe?",
+            "We won't suggest this recipe in your future meal plans. You can restore it later in Settings.",
+            [
+                { text: "Cancel", style: "cancel" },
+                {
+                    text: "Never Show Again",
+                    style: "destructive",
+                    onPress: async () => {
+                        await excludeRecipe(selectedMeal.id);
+                        Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+                        onClose();
+                    }
+                }
+            ]
+        );
+    };
+
     return (
         <Modal animationType="slide" transparent={true} visible={!!selectedMeal} onRequestClose={onClose}>
             <View style={styles.modalOverlay}>
@@ -158,6 +179,13 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                                 disabled={saving || saveSuccess}
                             >
                                 <Text style={styles.saveButtonText}>{saveSuccess ? "Saved!" : (saving ? "Saving..." : "Save")}</Text>
+                            </TouchableOpacity>
+                        )}
+
+                        {/* Exclude Button */}
+                        {!isImportedTemp && (
+                            <TouchableOpacity onPress={handleExclude} style={[styles.iconButton, { marginRight: 8 }]}>
+                                <Ionicons name="eye-off-outline" size={20} color="#FF5252" />
                             </TouchableOpacity>
                         )}
 
@@ -274,7 +302,7 @@ export default function RecipeModal({ selectedMeal, onClose, isPro, onUnlockPro 
                     </ScrollView>
                 </View>
             </View>
-        </Modal>
+        </Modal >
     );
 }
 
