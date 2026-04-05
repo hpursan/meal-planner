@@ -16,7 +16,7 @@
         "ios": {
             "supportsTablet": true,
             "bundleIdentifier": "com.pursan.mealplanner",
-            "buildNumber": "83",
+            "buildNumber": "84",
             "infoPlist": {
                 "ITSAppUsesNonExemptEncryption": false
             }
@@ -28,7 +28,7 @@
                 "backgroundColor": "#ffffff"
             },
             "edgeToEdgeEnabled": true,
-            "versionCode": 67
+            "versionCode": 68
         },
         "web": {
             "favicon": "./assets/favicon.png"
